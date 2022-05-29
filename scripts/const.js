@@ -6,5 +6,7 @@ export const CST = {
     NUMBERS: {
         WIDTH: 1500,
         HEIGHT: 720
-    }
+    },
+    MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"]
+    
 }
