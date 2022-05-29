@@ -1,4 +1,4 @@
-import { CharacterSprite } from "/CharacterSprite.js";
+import { CharacterSprite } from "/scripts/CharacterSprite.js";
 
 export class CharacterHeap {
     static id = 0;
