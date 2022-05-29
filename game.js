@@ -1,4 +1,4 @@
-var width = 1280;
+var width = 1500;
 var height = 720;
 var background;
 var parus;
@@ -32,7 +32,7 @@ function preload() {
 function create ()
 {
     background = this.add.tileSprite(width/2, height/2, width, height, 'background');
-    parus = this.physics.add.sprite(400, 425, 'parus');
+    parus = this.physics.add.sprite(400, 375, 'parus');
 
     this.anims.create({
         key: 'idle',
