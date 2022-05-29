@@ -1,9 +1,10 @@
+/// <reference path="../typings/phaser.d.ts" />
 export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
     id;
     hp;
     reachFlag = false;
 
-    constructor(scene, x, y, texture, scale, _id, flip = false) {
+    constructor(scene, x, y, texture, scale, flip = false) {
         super(scene, x, y, texture);
 
         scene.sys.updateList.add(this);
@@ -11,7 +12,6 @@ export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
         this.setScale(scale);
         scene.physics.world.enableBody(this);
         this.setImmovable(true);
-        this.id = _id;
         this.flipX = flip;
     }
 }

@@ -1,3 +1,5 @@
+/// <reference path="./typings/phaser.d.ts" />
+
 import { MenuScene } from "./scenes/MenuScene.js";
 import { PlayScene } from "./scenes/PlayScene.js";
 import { CST } from "./scripts/const.js";
