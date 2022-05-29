@@ -1,6 +1,6 @@
-import { MenuScene } from "../scenes/MenuScene.js";
-import { PlayScene } from "../scenes/PlayScene.js";
-import { CST } from "./const.js";
+import { MenuScene } from "./scenes/MenuScene.js";
+import { PlayScene } from "./scenes/PlayScene.js";
+import { CST } from "./scripts/const.js";
 
 var width = CST.NUMBERS.WIDTH;
 var height = CST.NUMBERS.HEIGHT;
