@@ -1,8 +1,9 @@
 export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
+    id;
     hp;
-    deathAnimation;
+    reachFlag = false;
 
-    constructor(scene, x, y, texture, _hp = 100, _deathAnimation, scale = 3) {
+    constructor(scene, x, y, texture, scale, _id, flip = false) {
         super(scene, x, y, texture);
 
         scene.sys.updateList.add(this);
@@ -10,14 +11,7 @@ export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
         this.setScale(scale);
         scene.physics.world.enableBody(this);
         this.setImmovable(true);
-        this.hp = _hp;
-        this.deathAnimation = _deathAnimation;
-    }
-
-    damage(_hp) {
-        this.hp -= _hp;
-        if (this.hp <= 0){
-            this.play(this.deathAnimation);
-        }
+        this.id = _id;
+        this.flipX = flip;
     }
 }
