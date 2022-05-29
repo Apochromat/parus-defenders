@@ -1,6 +1,9 @@
+html{
+    background: black;
+}
 body {
     margin: 0;
     display: flex;
     justify-content: center;
-    background: linear-gradient(#00bef1 10%, #00c7f0 35%, #5cd3f2 42%, #7dab3f 50%, #008edf 55%, #94c34b 82%);
+    background: black;
 }
