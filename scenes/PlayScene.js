@@ -1,6 +1,6 @@
-import { CST } from "/scripts/const.js";
-import { createAnimations } from "/scripts/Animations.js";
-import * as Characters from "/scripts/Characters.js"
+import { CST } from "../scripts/const.js";
+import { createAnimations } from "../scripts/Animations.js";
+import * as Characters from "../scripts/Characters.js"
 export class PlayScene extends Phaser.Scene{
     constructor() {
         super({

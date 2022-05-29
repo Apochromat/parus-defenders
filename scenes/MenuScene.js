@@ -1,4 +1,4 @@
-import { CST } from "/scripts/const.js";
+import { CST } from "../scripts/const.js";
 export class MenuScene extends Phaser.Scene{
     constructor() {
         super({
