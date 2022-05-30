@@ -14,7 +14,8 @@ export const CST = {
         Background: "background",
         Parus: "parus",
         PlayButton: 'playButton',
-        OptionsButton: 'optionsButton'
+        OptionsButton: 'optionsButton',
+        StatusBar: "statusBar"
     },
     SPRITES32: {
         MonsterTwig: "monster_twig",

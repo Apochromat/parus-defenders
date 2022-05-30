@@ -8,7 +8,10 @@ export class PlayScene extends Phaser.Scene{
         })
     }
     enemies;
-
+    graphicsHP;
+    graphicsMP;
+    textMP;
+    textHP;
     init() {
     }
 
@@ -36,6 +39,14 @@ export class PlayScene extends Phaser.Scene{
                 obj2.reachFlag = true;
             }
         });
+        
+        this.graphicsHP =  this.add.graphics({fillStyle: { color: 0xff1500} }).setDepth(1);
+        this.graphicsMP = this.add.graphics({fillStyle: { color: 0x009efa} }).setDepth(1);
+        this.titleHP = this.add.text(240, 12, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        this.titleMP = this.add.text(240, 46, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        let statusBar = this.add.image(this.game.renderer.width / 2, 40, CST.IMAGES.StatusBar).setDepth(0);
+        this.setStatusHP(1000, 1000);
+        this.setStatusMP(1000, 1000);
 
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 1300,
@@ -93,7 +104,7 @@ export class PlayScene extends Phaser.Scene{
             else {
                 this.characterHeap.heap[el].remove();
             }
-        }
+        }     
     }
 
     randomIntFromInterval(min, max) { // min and max included 
@@ -135,6 +146,18 @@ export class PlayScene extends Phaser.Scene{
         return sizer;
     }
 
-    
+    setStatusHP(curHP, maxHP){
+        this.graphicsHP.clear();
+        var rect = new Phaser.Geom.Rectangle(227, 16, 525*curHP/maxHP, 14);
+        this.graphicsHP.fillRectShape(rect);
+        this.titleHP.setText(curHP);
+    }
+
+    setStatusMP(curMP, maxMP){
+        this.graphicsMP.clear();
+        var rect = new Phaser.Geom.Rectangle(227, 50, 525*curMP/maxMP, 14);
+        this.graphicsMP.fillRectShape(rect);
+        this.titleMP.setText(curMP);
+    }
 
 }

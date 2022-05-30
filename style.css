@@ -1,3 +1,7 @@
+@font-face {
+    font-family: NumbersFont;
+    src: url('./assets/ShareTechMono-Regular.ttf');
+}
 html{
     background: black;
 }
