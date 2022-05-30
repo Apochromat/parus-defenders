@@ -1,13 +1,16 @@
 import { CST } from "../scripts/const.js";
 import { createAnimations } from "../scripts/Animations.js";
-import * as Characters from "../scripts/Characters.js"
+import { Parus } from "../scripts/Parus.js";
+import * as Characters from "../scripts/Characters.js";
 export class PlayScene extends Phaser.Scene{
     constructor() {
         super({
             key: CST.SCENES.PLAY
         })
     }
+
     enemies;
+    parus;
     graphicsHP;
     graphicsMP;
     textMP;
@@ -26,17 +29,25 @@ export class PlayScene extends Phaser.Scene{
     create ()
     {
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        let parus = this.physics.add.sprite(400, 425, CST.IMAGES.Parus).setImmovable();
+        this.parus = new Parus(this);
 
         this.characterHeap = new Characters.CharacterHeap();
         this.enemies = this.add.group();
         createAnimations(this);
 
-        this.physics.add.collider(parus, this.enemies, (obj1, obj2) => {
-            if (!obj2.reachFlag) {
-                obj2.setVelocity(0, 0);
-                obj2.setAnimationHit();
-                obj2.reachFlag = true;
+        this.physics.add.collider(this.parus, this.enemies, (obj1, obj2) => {
+            obj2.setVelocity(0, 0);
+            obj2.setAnimationHit();
+            if (Date.now() - obj2.lastDamageTime >= obj2.cooldown) {
+                obj2.lastDamageTime = Date.now();
+                if(!obj1.damage(obj2.damagePerHit)) {
+                    for (let el in this.characterHeap.heap) {
+                        this.characterHeap.heap[el].damagePerHit = 0;
+                        this.characterHeap.heap[el].setAnimationDeath();
+                        this.characterHeap.heap[el].remove();
+                    }
+                    obj1.currHP = obj1.maxHP;
+                };
             }
         });
         
@@ -45,8 +56,6 @@ export class PlayScene extends Phaser.Scene{
         this.titleHP = this.add.text(240, 12, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
         this.titleMP = this.add.text(240, 46, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
         let statusBar = this.add.image(this.game.renderer.width / 2, 40, CST.IMAGES.StatusBar).setDepth(0);
-        this.setStatusHP(1000, 1000);
-        this.setStatusMP(1000, 1000);
 
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 1300,
@@ -97,9 +106,11 @@ export class PlayScene extends Phaser.Scene{
     }
 
     update () {
+        this.setStatusHP(this.parus.currHP, this.parus.maxHP);
+        this.setStatusMP(this.parus.currMP, this.parus.maxMP);
         for (let el in this.characterHeap.heap) {
             if (this.characterHeap.heap[el].hp >= 0){  
-                this.characterHeap.heap[el].damage(this.randomIntFromInterval(-2, 5));
+                this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
             }
             else {
                 this.characterHeap.heap[el].remove();

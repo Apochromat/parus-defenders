@@ -10,18 +10,28 @@ export class CharacterHeap {
         switch (type) {
             case "twig":
                 this.heap[CharacterHeap.id] = new MonsterTwig(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].damagePerHit = CST.CHARACTERS.MonsterTwig.Damage;
+                this.heap[CharacterHeap.id].cooldown = CST.CHARACTERS.MonsterTwig.Cooldown;
                 break;
             case "brainer":
                 this.heap[CharacterHeap.id] = new MonsterBrainer(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].damagePerHit = CST.CHARACTERS.MonsterBrainer.Damage;
+                this.heap[CharacterHeap.id].cooldown = CST.CHARACTERS.MonsterBrainer.Cooldown;
                 break;
             case "ghoul":
                 this.heap[CharacterHeap.id] = new MonsterGhoul(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].damagePerHit = CST.CHARACTERS.MonsterGhoul.Damage;
+                this.heap[CharacterHeap.id].cooldown = CST.CHARACTERS.MonsterGhoul.Cooldown;
                 break;
             case "hedgehog":
                 this.heap[CharacterHeap.id] = new MonsterHedgehog(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].damagePerHit = CST.CHARACTERS.MonsterHedgehog.Damage;
+                this.heap[CharacterHeap.id].cooldown = CST.CHARACTERS.MonsterHedgehog.Cooldown;
                 break;
             case "slayer":
                 this.heap[CharacterHeap.id] = new MonsterSlayer(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].damagePerHit = CST.CHARACTERS.MonsterSlayer.Damage;
+                this.heap[CharacterHeap.id].cooldown = CST.CHARACTERS.MonsterSlayer.Cooldown;
                 break;
         }
         scene.enemies.add(this.heap[CharacterHeap.id]);
@@ -42,7 +52,7 @@ export class MonsterTwig extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Idle) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Death) {
             this.play(CST.ANIMATIONS.MonsterTwig.Idle);
             this.setVelocityX(0);
         }
@@ -50,7 +60,7 @@ export class MonsterTwig extends CharacterSprite {
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Walk) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Death) {
             this.play(CST.ANIMATIONS.MonsterTwig.Walk);
             this.setVelocityX(-this.speed);
         }
@@ -58,7 +68,7 @@ export class MonsterTwig extends CharacterSprite {
     }
 
     setAnimationHit(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Hit) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Death) {
             this.play(CST.ANIMATIONS.MonsterTwig.Hit);
             this.setVelocity(0, 0);
         }
@@ -78,7 +88,7 @@ export class MonsterTwig extends CharacterSprite {
         if (this.hp <= 0) {
             this.setAnimationDeath();
         }
-        return this;
+        return this
     }
 
     remove() {
@@ -99,7 +109,7 @@ export class MonsterBrainer extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Idle) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Death) {
             this.play(CST.ANIMATIONS.MonsterBrainer.Idle);
             this.setVelocityX(0);
         }
@@ -107,7 +117,7 @@ export class MonsterBrainer extends CharacterSprite {
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Walk) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Death) {
             this.play(CST.ANIMATIONS.MonsterBrainer.Walk);
             this.setVelocityX(-this.speed);
         }
@@ -115,7 +125,7 @@ export class MonsterBrainer extends CharacterSprite {
     }
 
     setAnimationHit(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Hit) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Death) {
             this.play(CST.ANIMATIONS.MonsterBrainer.Hit);
             this.setVelocity(0, 0);
         }
@@ -157,7 +167,7 @@ export class MonsterGhoul extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Idle) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
             this.play(CST.ANIMATIONS.MonsterGhoul.Idle);
             this.setVelocityX(0);
         }
@@ -165,7 +175,7 @@ export class MonsterGhoul extends CharacterSprite {
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Walk) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
             this.play(CST.ANIMATIONS.MonsterGhoul.Walk);
             this.setVelocityX(-this.speed);
         }
@@ -173,7 +183,7 @@ export class MonsterGhoul extends CharacterSprite {
     }
 
     setAnimationHit(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Hit) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
             this.play(CST.ANIMATIONS.MonsterGhoul.Hit);
             this.setVelocity(0, 0);
         }
@@ -215,7 +225,7 @@ export class MonsterHedgehog extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Idle) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Death) {
             this.play(CST.ANIMATIONS.MonsterHedgehog.Idle);
             this.setVelocityX(0);
         }
@@ -223,7 +233,7 @@ export class MonsterHedgehog extends CharacterSprite {
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Idle) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Death) {
             this.play(CST.ANIMATIONS.MonsterHedgehog.Idle);
             this.setVelocityX(-this.speed);
         }
@@ -231,7 +241,7 @@ export class MonsterHedgehog extends CharacterSprite {
     }
 
     setAnimationHit(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Hit) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Death) {
             this.play(CST.ANIMATIONS.MonsterHedgehog.Hit);
             this.setVelocity(0, 0);
         }
@@ -273,7 +283,7 @@ export class MonsterSlayer extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Idle) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Death) {
             this.play(CST.ANIMATIONS.MonsterSlayer.Idle);
             this.setVelocityX(0);
         }
@@ -281,7 +291,7 @@ export class MonsterSlayer extends CharacterSprite {
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Walk) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Death) {
             this.play(CST.ANIMATIONS.MonsterSlayer.Walk);
             this.setVelocityX(-this.speed);
         }
@@ -289,7 +299,7 @@ export class MonsterSlayer extends CharacterSprite {
     }
 
     setAnimationHit(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Hit) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Death) {
             this.play(CST.ANIMATIONS.MonsterSlayer.Hit);
             this.setVelocity(0, 0);
         }

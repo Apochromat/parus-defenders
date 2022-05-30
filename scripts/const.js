@@ -6,7 +6,9 @@ export const CST = {
     },
     NUMBERS: {
         WIDTH: 1500,
-        HEIGHT: 720
+        HEIGHT: 720,
+        ParusX: 400,
+        ParusY: 425
     },
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
@@ -64,9 +66,9 @@ export const CST = {
     },
     CHARACTERS: {
         MonsterTwig: {
-            HealPoints: 1000,
+            HealPoints: 1500,
             Damage: 10,
-            Cooldown: 10,
+            Cooldown: 1000,
             Speed: 150,
             PhysicalProtection: 10,
             MagicProtection: 10,
@@ -74,8 +76,8 @@ export const CST = {
         },
         MonsterBrainer: {
             HealPoints: 2000,
-            Damage: 10,
-            Cooldown: 10,
+            Damage: 25,
+            Cooldown: 1000,
             Speed: 100,
             PhysicalProtection: 10,
             MagicProtection: 10,
@@ -83,8 +85,8 @@ export const CST = {
         },
         MonsterGhoul: {
             HealPoints: 3000,
-            Damage: 10,
-            Cooldown: 10,
+            Damage: 50,
+            Cooldown: 1000,
             Speed: 100,
             PhysicalProtection: 10,
             MagicProtection: 10,
@@ -92,8 +94,8 @@ export const CST = {
         },
         MonsterHedgehog: {
             HealPoints: 4000,
-            Damage: 10,
-            Cooldown: 10,
+            Damage: 40,
+            Cooldown: 1000,
             Speed: 75,
             PhysicalProtection: 10,
             MagicProtection: 10,
@@ -101,8 +103,8 @@ export const CST = {
         },
         MonsterSlayer: {
             HealPoints: 5000,
-            Damage: 10,
-            Cooldown: 10,
+            Damage: 75,
+            Cooldown: 1000,
             Speed: 50,
             PhysicalProtection: 10,
             MagicProtection: 10,

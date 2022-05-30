@@ -69,7 +69,7 @@ export function createAnimations (scene) {
 
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterGhoul.Walk,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterGhoul, { frames: [ 8, 9, 19, 11, 12, 13, 14, 15 ] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterGhoul, { frames: [ 8, 9, 10, 11, 12, 13, 14, 15 ] }),
         frameRate: 8,
         repeat: -1
     });
