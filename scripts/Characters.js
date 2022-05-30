@@ -1,4 +1,4 @@
-/// <reference path="../typings/phaser.d.ts" />
+//@ts-check
 import { CharacterSprite } from "./CharacterSprite.js";
 
 export class CharacterHeap {

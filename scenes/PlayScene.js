@@ -1,4 +1,3 @@
-/// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
 import { createAnimations } from "../scripts/Animations.js";
 import * as Characters from "../scripts/Characters.js"

@@ -1,4 +1,4 @@
-/// <reference path="./typings/phaser.d.ts" />
+//@ts-check
 
 import { MenuScene } from "./scenes/MenuScene.js";
 import { PlayScene } from "./scenes/PlayScene.js";
