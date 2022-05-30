@@ -9,26 +9,23 @@ export class CharacterHeap {
     createMonster(type = "twig", scene, x, y){
         switch (type) {
             case "twig":
-                this.heap[CharacterHeap.id] = new MonsterTwig(scene, x, y, CharacterHeap.id, this.heap).setDepth(y);
-                scene.enemies.add(this.heap[CharacterHeap.id]);
+                this.heap[CharacterHeap.id] = new MonsterTwig(scene, x, y, CharacterHeap.id, this.heap);
                 break;
             case "brainer":
-                this.heap[CharacterHeap.id] = new MonsterBrainer(scene, x, y, CharacterHeap.id, this.heap).setDepth(y);
-                scene.enemies.add(this.heap[CharacterHeap.id]);
+                this.heap[CharacterHeap.id] = new MonsterBrainer(scene, x, y, CharacterHeap.id, this.heap);
                 break;
             case "ghoul":
-                this.heap[CharacterHeap.id] = new MonsterGhoul(scene, x, y, CharacterHeap.id, this.heap).setDepth(y);
-                scene.enemies.add(this.heap[CharacterHeap.id]);
+                this.heap[CharacterHeap.id] = new MonsterGhoul(scene, x, y, CharacterHeap.id, this.heap);
                 break;
             case "hedgehog":
-                this.heap[CharacterHeap.id] = new MonsterHedgehog(scene, x, y, CharacterHeap.id, this.heap).setDepth(y);
-                scene.enemies.add(this.heap[CharacterHeap.id]);
+                this.heap[CharacterHeap.id] = new MonsterHedgehog(scene, x, y, CharacterHeap.id, this.heap);
                 break;
             case "slayer":
-                this.heap[CharacterHeap.id] = new MonsterSlayer(scene, x, y, CharacterHeap.id, this.heap).setDepth(y);
-                scene.enemies.add(this.heap[CharacterHeap.id]);
+                this.heap[CharacterHeap.id] = new MonsterSlayer(scene, x, y, CharacterHeap.id, this.heap);
                 break;
         }
+        scene.enemies.add(this.heap[CharacterHeap.id]);
+        this.heap[CharacterHeap.id].setDepth(y + this.heap[CharacterHeap.id].height);
         CharacterHeap.id++;
         return this.heap[CharacterHeap.id-1];
     }
@@ -45,32 +42,32 @@ export class MonsterTwig extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_twig_idle") {
-            this.play("monster_twig_idle");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Idle) {
+            this.play(CST.ANIMATIONS.MonsterTwig.Idle);
             this.setVelocityX(0);
         }
         return this;
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_twig_walk") {
-            this.play("monster_twig_walk");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Walk) {
+            this.play(CST.ANIMATIONS.MonsterTwig.Walk);
             this.setVelocityX(-this.speed);
         }
         return this;
     }
 
-    setAnimationKick(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_twig_kick") {
-            this.play("monster_twig_kick");
+    setAnimationHit(){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Hit) {
+            this.play(CST.ANIMATIONS.MonsterTwig.Hit);
             this.setVelocity(0, 0);
         }
         return this;
     }
 
     setAnimationDeath(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_twig_death") {
-            this.play("monster_twig_death");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Death) {
+            this.play(CST.ANIMATIONS.MonsterTwig.Death);
             this.setVelocity(0, 0);
         }
         return this;
@@ -102,32 +99,32 @@ export class MonsterBrainer extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_brainer_idle") {
-            this.play("monster_brainer_idle");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Idle) {
+            this.play(CST.ANIMATIONS.MonsterBrainer.Idle);
             this.setVelocityX(0);
         }
         return this;
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_brainer_walk") {
-            this.play("monster_brainer_walk");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Walk) {
+            this.play(CST.ANIMATIONS.MonsterBrainer.Walk);
             this.setVelocityX(-this.speed);
         }
         return this;
     }
 
-    setAnimationKick(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_brainer_kick") {
-            this.play("monster_brainer_kick");
+    setAnimationHit(){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Hit) {
+            this.play(CST.ANIMATIONS.MonsterBrainer.Hit);
             this.setVelocity(0, 0);
         }
         return this;
     }
 
     setAnimationDeath(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_brainer_death") {
-            this.play("monster_brainer_death");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Death) {
+            this.play(CST.ANIMATIONS.MonsterBrainer.Death);
             this.setVelocity(0, 0);
         }
         return this;
@@ -160,32 +157,32 @@ export class MonsterGhoul extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_ghoul_idle") {
-            this.play("monster_ghoul_idle");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Idle) {
+            this.play(CST.ANIMATIONS.MonsterGhoul.Idle);
             this.setVelocityX(0);
         }
         return this;
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_ghoul_walk") {
-            this.play("monster_ghoul_walk");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Walk) {
+            this.play(CST.ANIMATIONS.MonsterGhoul.Walk);
             this.setVelocityX(-this.speed);
         }
         return this;
     }
 
-    setAnimationKick(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_ghoul_kick") {
-            this.play("monster_ghoul_kick");
+    setAnimationHit(){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Hit) {
+            this.play(CST.ANIMATIONS.MonsterGhoul.Hit);
             this.setVelocity(0, 0);
         }
         return this;
     }
 
     setAnimationDeath(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_ghoul_death") {
-            this.play("monster_ghoul_death");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
+            this.play(CST.ANIMATIONS.MonsterGhoul.Death);
             this.setVelocity(0, 0);
         }
         return this;
@@ -218,32 +215,32 @@ export class MonsterHedgehog extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_hedgehog_idle") {
-            this.play("monster_hedgehog_idle");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Idle) {
+            this.play(CST.ANIMATIONS.MonsterHedgehog.Idle);
             this.setVelocityX(0);
         }
         return this;
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_hedgehog_walk") {
-            this.play("monster_hedgehog_walk");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Idle) {
+            this.play(CST.ANIMATIONS.MonsterHedgehog.Idle);
             this.setVelocityX(-this.speed);
         }
         return this;
     }
 
-    setAnimationKick(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_hedgehog_kick") {
-            this.play("monster_hedgehog_kick");
+    setAnimationHit(){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Hit) {
+            this.play(CST.ANIMATIONS.MonsterHedgehog.Hit);
             this.setVelocity(0, 0);
         }
         return this;
     }
 
     setAnimationDeath(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_hedgehog_death") {
-            this.play("monster_hedgehog_death");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Death) {
+            this.play(CST.ANIMATIONS.MonsterHedgehog.Death);
             this.setVelocity(0, 0);
         }
         return this;
@@ -276,32 +273,32 @@ export class MonsterSlayer extends CharacterSprite {
     }
 
     setAnimationIdle(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_slayer_idle") {
-            this.play("monster_slayer_idle");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Idle) {
+            this.play(CST.ANIMATIONS.MonsterSlayer.Idle);
             this.setVelocityX(0);
         }
         return this;
     }
 
     setAnimationWalk(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_slayer_walk") {
-            this.play("monster_slayer_walk");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Walk) {
+            this.play(CST.ANIMATIONS.MonsterSlayer.Walk);
             this.setVelocityX(-this.speed);
         }
         return this;
     }
 
-    setAnimationKick(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_slayer_kick") {
-            this.play("monster_slayer_kick");
+    setAnimationHit(){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Hit) {
+            this.play(CST.ANIMATIONS.MonsterSlayer.Hit);
             this.setVelocity(0, 0);
         }
         return this;
     }
 
     setAnimationDeath(){
-        if (this.anims.currentAnim == null || this.anims.currentAnim.key != "monster_slayer_death") {
-            this.play("monster_slayer_death");
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Death) {
+            this.play(CST.ANIMATIONS.MonsterSlayer.Death);
             this.setVelocity(0, 0);
         }
         return this;

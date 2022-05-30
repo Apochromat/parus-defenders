@@ -32,7 +32,7 @@ export class PlayScene extends Phaser.Scene{
         this.physics.add.collider(parus, this.enemies, (obj1, obj2) => {
             if (!obj2.reachFlag) {
                 obj2.setVelocity(0, 0);
-                obj2.setAnimationKick();
+                obj2.setAnimationHit();
                 obj2.reachFlag = true;
             }
         });
@@ -81,7 +81,7 @@ export class PlayScene extends Phaser.Scene{
             .setChildrenInteractive()
             .on('child.click', function (args) {
                 console.log(args.text);
-                args.scene.characterHeap.createMonster(args.text, args.scene, 1550, args.scene.randomIntFromInterval(550, 620)).setAnimationWalk();
+                args.scene.characterHeap.createMonster(args.text, args.scene, 1550, args.scene.randomIntFromInterval(530, 620)).setAnimationWalk();
             })
     }
 

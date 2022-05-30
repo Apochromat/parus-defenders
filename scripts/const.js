@@ -30,7 +30,36 @@ export const CST = {
     ],
     MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
     ANIMATIONS: {
-
+        MonsterTwig: {
+            Idle: 'monster_twig_idle',
+            Walk: 'monster_twig_walk',
+            Hit: 'monster_twig_hit',
+            Death: 'monster_twig_death'
+        },
+        MonsterBrainer: {
+            Idle: 'monster_brainer_idle',
+            Walk: 'monster_brainer_walk',
+            Hit: 'monster_brainer_hit',
+            Death: 'monster_brainer_death'
+        },
+        MonsterGhoul: {
+            Idle: 'monster_ghoul_idle',
+            Walk: 'monster_ghoul_walk',
+            Hit: 'monster_ghoul_hit',
+            Death: 'monster_ghoul_death'
+        },
+        MonsterHedgehog: {
+            Idle: 'monster_hedgehog_idle',
+            Walk: 'monster_hedgehog_walk',
+            Hit: 'monster_hedgehog_hit',
+            Death: 'monster_hedgehog_death'
+        },
+        MonsterSlayer: {
+            Idle: 'monster_slayer_idle',
+            Walk: 'monster_slayer_walk',
+            Hit: 'monster_slayer_hit',
+            Death: 'monster_slayer_death'
+        }
     },
     CHARACTERS: {
         MonsterTwig: {
