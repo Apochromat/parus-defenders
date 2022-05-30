@@ -13,24 +13,17 @@ export class PlayScene extends Phaser.Scene{
     }
 
     preload() {
-        this.load.image('background', "assets/images/background.png");
-        this.load.spritesheet('monster_twig', "assets/sprites/monster_twig.png", { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('monster_brainer', "assets/sprites/monster_brainer.png", { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('monster_hedgehog', "assets/sprites/monster_hedgehog.png", { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('monster_slayer', "assets/sprites/monster_slayer.png", { frameWidth: 64, frameHeight: 64 });
-        this.load.spritesheet('monster_ghoul', "assets/sprites/monster_ghoul.png", { frameWidth: 32, frameHeight: 32 });
-        this.load.image('parus', "assets/sprites/parus.png");
-        this.load.image('optionButton', "assets/images/options_button.png");
+        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.BackgroundEvening);
         this.load.scenePlugin({
             key: 'rexuiplugin',
-            url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
+            url: './libs/rexuiplugin.min.js',
             sceneKey: 'rexUI'
         });
     }
     create ()
     {
-        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, 'background');
-        let parus = this.physics.add.sprite(400, 425, 'parus').setImmovable();
+        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
+        let parus = this.physics.add.sprite(400, 425, CST.IMAGES.Parus).setImmovable();
 
         this.characterHeap = new Characters.CharacterHeap();
         this.enemies = this.add.group();

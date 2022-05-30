@@ -1,5 +1,6 @@
 //@ts-check
 import { CharacterSprite } from "./CharacterSprite.js";
+import { CST } from "../scripts/const.js";
 
 export class CharacterHeap {
     static id = 0;
@@ -35,10 +36,10 @@ export class CharacterHeap {
 }
 
 export class MonsterTwig extends CharacterSprite {
-    speed = 150;
-    constructor(scene, x, y, id, heap, hp = 1000, scale=3,) {
-        super(scene, x, y, "monster_twig", scale, true);
-        this.hp = hp;
+    constructor(scene, x, y, id, heap, scale=3) {
+        super(scene, x, y, CST.SPRITES32.MonsterTwig, scale, true);
+        this.hp = CST.CHARACTERS.MonsterTwig.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterTwig.Speed;
         this.id = id;
         this.heap = heap;
     }
@@ -92,10 +93,10 @@ export class MonsterTwig extends CharacterSprite {
 }
 
 export class MonsterBrainer extends CharacterSprite {
-    speed = 75;
-    constructor(scene, x, y, id, heap, hp = 3000, scale=3,) {
-        super(scene, x, y, "monster_brainer", scale, true);
-        this.hp = hp;
+    constructor(scene, x, y, id, heap, scale=3) {
+        super(scene, x, y, CST.SPRITES32.MonsterBrainer, scale, true);
+        this.hp = CST.CHARACTERS.MonsterBrainer.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterBrainer.Speed;
         this.id = id;
         this.heap = heap;
     }
@@ -150,10 +151,10 @@ export class MonsterBrainer extends CharacterSprite {
 }
 
 export class MonsterGhoul extends CharacterSprite {
-    speed = 175;
-    constructor(scene, x, y, id, heap, hp = 3000, scale=3,) {
-        super(scene, x, y, "monster_ghoul", scale, true);
-        this.hp = hp;
+    constructor(scene, x, y, id, heap, scale=3) {
+        super(scene, x, y, CST.SPRITES32.MonsterGhoul, scale, true);
+        this.hp = CST.CHARACTERS.MonsterGhoul.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterGhoul.Speed;
         this.id = id;
         this.heap = heap;
     }
@@ -208,10 +209,10 @@ export class MonsterGhoul extends CharacterSprite {
 }
 
 export class MonsterHedgehog extends CharacterSprite {
-    speed = 50;
-    constructor(scene, x, y, id, heap, hp = 8000, scale=3,) {
-        super(scene, x, y, "monster_hedgehog", scale, true);
-        this.hp = hp;
+    constructor(scene, x, y, id, heap, scale=3) {
+        super(scene, x, y, CST.SPRITES32.MonsterHedgehog, scale, true);
+        this.hp = CST.CHARACTERS.MonsterHedgehog.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterHedgehog.Speed;
         this.id = id;
         this.heap = heap;
     }
@@ -266,10 +267,10 @@ export class MonsterHedgehog extends CharacterSprite {
 }
 
 export class MonsterSlayer extends CharacterSprite {
-    speed = 75;
-    constructor(scene, x, y, id, heap, hp = 3000, scale=3,) {
-        super(scene, x, y, "monster_slayer", scale, true);
-        this.hp = hp;
+    constructor(scene, x, y, id, heap, scale=3) {
+        super(scene, x, y, CST.SPRITES64.MonsterSlayer, scale, true);
+        this.hp = CST.CHARACTERS.MonsterSlayer.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterSlayer.Speed;
         this.id = id;
         this.heap = heap;
     }

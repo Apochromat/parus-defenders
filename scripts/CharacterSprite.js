@@ -2,6 +2,7 @@
 export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
     id;
     hp;
+    speed;
     reachFlag = false;
 
     constructor(scene, x, y, texture, scale, flip = false) {
