@@ -7,6 +7,10 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     maxMP;
     currHP;
     currMP;
+    insideHeroSlots;
+    outsideHeroSlots;
+    isBuildingAvailable;
+    heroWindows = [];
 
     constructor(scene, level=0) {
         super(scene, CST.NUMBERS.ParusX, CST.NUMBERS.ParusY, CST.IMAGES.Parus);
@@ -15,7 +19,6 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         scene.sys.displayList.add(this);
         scene.physics.world.enableBody(this);
         this.setImmovable(true);
-        
         this.setLevel(level);
     }
 
@@ -33,6 +36,23 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         this.maxMP = CST.PARUS[this.level].MaxMP;
         this.currHP = this.maxHP;
         this.currMP = this.maxMP;
+        this.insideHeroSlots = CST.PARUS[this.level].InsideHeroSlots;
+        this.outsideHeroSlots = CST.PARUS[this.level].OutsideHeroSlots;
+        this.isBuildingAvailable = CST.PARUS[this.level].isBuildingAvailable;
     }
 
+    createHeroWindows() {
+        for (let i = 0; i < this.insideHeroSlots; i++){
+            this.heroWindows[i] = new HeroWindow(this.scene, CST.INSIDEHEROSLOTS[i+1].x, CST.INSIDEHEROSLOTS[i+1].y);
+        }
+    }
+}
+
+export class HeroWindow extends Phaser.GameObjects.Image {
+    constructor(scene, x, y) {
+        super(scene, x, y, CST.IMAGES.CharacterWindow);
+        scene.sys.displayList.add(this);
+        this.setScale(2);
+        this.setDepth(2);
+    }
 }

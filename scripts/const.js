@@ -7,14 +7,15 @@ export const CST = {
     NUMBERS: {
         WIDTH: 1500,
         HEIGHT: 720,
-        ParusX: 400,
-        ParusY: 425
+        ParusX: 410,
+        ParusY: 415
     },
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
         BackgroundMenu: 'backgroundMenu',
         Background: "background",
         Parus: "parus",
+        CharacterWindow: "characterWindow",
         PlayButton: 'playButton',
         OptionsButton: 'optionsButton',
         StatusBar: "statusBar"
@@ -143,10 +144,36 @@ export const CST = {
         4 : {
             MaxHP: 2000,
             MaxMP: 2000,
-            InsideHeroSlots: 2,
+            InsideHeroSlots: 6,
             OutsideHeroSlots: 0,
             isBuildingAvailable: false
         }
+    },
+    INSIDEHEROSLOTS: {
+        1: {
+            x: 200,
+            y: 200
+        },
+        2: {
+            x: 300,
+            y: 200
+        },
+        3: {
+            x: 400,
+            y: 200
+        },
+        4: {
+            x: 200,
+            y: 400
+        },
+        5: {
+            x: 300,
+            y: 400
+        },
+        6: {
+            x: 400,
+            y: 400
+        },
     }
 
 }

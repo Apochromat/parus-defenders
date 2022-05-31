@@ -1,6 +1,6 @@
 import { CST } from "../scripts/const.js";
 import { createAnimations } from "../scripts/Animations.js";
-import { Parus } from "../scripts/Parus.js";
+import { HeroWindow, Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
 export class PlayScene extends Phaser.Scene{
 
@@ -37,6 +37,7 @@ export class PlayScene extends Phaser.Scene{
     {
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
         this.parus = new Parus(this, 3);
+        this.parus.createHeroWindows();
 
         this.characterHeap = new Characters.CharacterHeap();
         this.enemies = this.add.group();
@@ -60,8 +61,6 @@ export class PlayScene extends Phaser.Scene{
             }
         });
         
-        
-
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 1300,
             y: 300,
