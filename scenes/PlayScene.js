@@ -16,6 +16,12 @@ export class PlayScene extends Phaser.Scene{
     titleLVL;
     titleWAVE;
     titleCOIN;
+    toolBarLeft;
+    toolBarRight;
+    toolBarClose;
+    toolBarField;
+    shopBar;
+    skillBar;
 
     constructor() {
         super({
@@ -84,10 +90,10 @@ export class PlayScene extends Phaser.Scene{
         );
         
         var scrollablePanel = this.rexUI.add.scrollablePanel({
-            x: 1300,
-            y: 300,
-            width: 300,
-            height: 350,
+            x: 850,
+            y: 250,
+            width: 200,
+            height: 250,
 
             scrollMode: 0,
 
@@ -229,10 +235,68 @@ export class PlayScene extends Phaser.Scene{
         this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
         this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
         let statusBar = this.add.image(this.game.renderer.width / 2, 50, CST.IMAGES.StatusBar).setDepth(0);
-        let shopBar = this.add.image(this.game.renderer.width - 541, this.game.renderer.height-30, CST.IMAGES.ShopBar).setDepth(1);
-        let skillBar = this.add.image(this.game.renderer.width - 241, this.game.renderer.height-30, CST.IMAGES.SkillBar).setDepth(1);
-        let battleButton = this.add.image(this.game.renderer.width - 50, 52, CST.IMAGES.BattleButton).setDepth(1);
-        //let bar = this.add.image(this.game.renderer.width - 388, this.game.renderer.height-300, CST.IMAGES.Bar).setDepth(1);
-    }
+        this.shopBar = this.add.image(this.game.renderer.width - 597, this.game.renderer.height-30, CST.IMAGES.ToolBarLeft).setDepth(1);
+        this.skillBar = this.add.image(this.game.renderer.width - 297, this.game.renderer.height-30, CST.IMAGES.ToolBarRight).setDepth(1);
+        let battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(1);
+        this.toolBarRight =  this.add.image(this.game.renderer.width - 297, this.game.renderer.height-567, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarPrimal);
+        this.toolBarLeft =  this.add.image(this.game.renderer.width - 597, this.game.renderer.height-567, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarMinor);
+        this.toolBarClose =  this.add.image(this.game.renderer.width - 128, this.game.renderer.height-508, CST.IMAGES.ToolBarClose).setDepth(CST.DEPTHS.ToolBarClose);
+        this.toolBarField =  this.add.image(this.game.renderer.width - 447, this.game.renderer.height-270, CST.IMAGES.ToolBarField).setDepth(CST.DEPTHS.ToolBarField);
+    
+        this.toolBarRight.setInteractive();
+        this.toolBarLeft.setInteractive();
+        this.toolBarClose.setInteractive();
+        this.shopBar.setInteractive();
+        this.skillBar.setInteractive();
+        this.toolBarRight.visible = false;
+        this.toolBarLeft.visible = false;
+        this.toolBarField.visible = false;
+        this.toolBarClose.visible = false;
+        this.shopBar.visible = true;
+        this.skillBar.visible = true;
 
+        this.toolBarLeft.on("pointerup", () => {
+            this.raiseToolbarLeft();
+        });
+        this.toolBarRight.on("pointerup", () => {
+            this.raiseToolbarRight();
+        });
+        this.toolBarClose.on("pointerup", () => {
+            this.closeToolbar();
+        });
+        this.shopBar.on("pointerup", () => {
+            this.raiseToolbarLeft();
+        });
+        this.skillBar.on("pointerup", () => {
+            this.raiseToolbarRight();
+        });
+    }
+    raiseToolbarLeft(){
+        this.shopBar.visible = false;
+        this.skillBar.visible = false;
+        this.toolBarRight.visible = true;
+        this.toolBarLeft.visible = true;
+        this.toolBarField.visible = true;
+        this.toolBarClose.visible = true;
+        this.toolBarLeft.setDepth(CST.DEPTHS.ToolBarPrimal);
+        this.toolBarRight.setDepth(CST.DEPTHS.ToolBarMinor);
+    }
+    raiseToolbarRight(){
+        this.shopBar.visible = false;
+        this.skillBar.visible = false;
+        this.toolBarRight.visible = true;
+        this.toolBarLeft.visible = true;
+        this.toolBarField.visible = true;
+        this.toolBarClose.visible = true;
+        this.toolBarRight.setDepth(CST.DEPTHS.ToolBarPrimal);
+        this.toolBarLeft.setDepth(CST.DEPTHS.ToolBarMinor);
+    }
+    closeToolbar(){
+        this.toolBarRight.visible = false;
+        this.toolBarLeft.visible = false;
+        this.toolBarField.visible = false;
+        this.toolBarClose.visible = false;
+        this.shopBar.visible = true;
+        this.skillBar.visible = true;
+    }
 }

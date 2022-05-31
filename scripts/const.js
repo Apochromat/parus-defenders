@@ -20,9 +20,10 @@ export const CST = {
         BattleButton: "newWaveButton",
         OptionsButton: 'optionsButton',
         StatusBar: "statusBar",
-        ShopBar: "shopBar",
-        SkillBar: "skillBar",
-        Bar: "bar"
+        ToolBarClose: "toolBarClose",
+        ToolBarLeft: "toolBarLeft",
+        ToolBarRight: "toolBarRight",
+        ToolBarField: "toolBarField"
     },
     SPRITES32: {
         MonsterTwig: "monster_twig",
@@ -191,6 +192,12 @@ export const CST = {
             x: 511,
             y: 266
         },
+    },
+    DEPTHS: {
+        ToolBarClose: 5000,
+        ToolBarField: 5002,
+        ToolBarPrimal: 5003,
+        ToolBarMinor: 5001
     }
 
 }
