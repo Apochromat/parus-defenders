@@ -16,6 +16,7 @@ export const CST = {
         Background: "background",
         Parus: "parus",
         CharacterWindow: "characterWindow",
+        HPIcon: "icon_hp",
         PlayButton: 'playButton',
         BattleButton: "newWaveButton",
         OptionsButton: 'optionsButton',
@@ -39,6 +40,7 @@ export const CST = {
 
     ],
     MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
+    SHOPLIST: ["Parus", "lox", "  ", "a", "b"],
     ANIMATIONS: {
         MonsterTwig: {
             Idle: 'monster_twig_idle',
@@ -125,7 +127,7 @@ export const CST = {
         },
         HeroCat: {
             HealPoints: 1500,
-            Damage: 50,
+            Damage: 500,
             Cooldown: 1000,
             Speed: 50,
         }
@@ -197,7 +199,8 @@ export const CST = {
         ToolBarClose: 5000,
         ToolBarField: 5002,
         ToolBarPrimal: 5003,
-        ToolBarMinor: 5001
+        ToolBarMinor: 5001,
+        ToolBarRecyclerView: 5004
     }
 
 }

@@ -22,6 +22,8 @@ export class PlayScene extends Phaser.Scene{
     toolBarField;
     shopBar;
     skillBar;
+    scrollablePanel;
+    recyclerViewShop;
 
     constructor() {
         super({
@@ -40,10 +42,9 @@ export class PlayScene extends Phaser.Scene{
             sceneKey: 'rexUI'
         });
     }
-    create ()
-    {
+    create () {
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        this.parus = new Parus(this, 0);
+        this.parus = new Parus(this, 4);
         this.parus.createHeroWindows();
 
         this.characterHeap = new Characters.CharacterHeap();
@@ -89,7 +90,7 @@ export class PlayScene extends Phaser.Scene{
             }
         );
         
-        var scrollablePanel = this.rexUI.add.scrollablePanel({
+        this.scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 850,
             y: 250,
             width: 200,
@@ -129,7 +130,7 @@ export class PlayScene extends Phaser.Scene{
             }
         }).layout()
 
-        scrollablePanel
+        this.scrollablePanel
             .setChildrenInteractive()
             .on('child.click', function (args) {
                 console.log(args.text);
@@ -271,6 +272,7 @@ export class PlayScene extends Phaser.Scene{
             this.raiseToolbarRight();
         });
     }
+
     raiseToolbarLeft(){
         this.shopBar.visible = false;
         this.skillBar.visible = false;
@@ -280,8 +282,52 @@ export class PlayScene extends Phaser.Scene{
         this.toolBarClose.visible = true;
         this.toolBarLeft.setDepth(CST.DEPTHS.ToolBarPrimal);
         this.toolBarRight.setDepth(CST.DEPTHS.ToolBarMinor);
+
+        this.recyclerViewShop = this.rexUI.add.scrollablePanel({
+            x: 1050,
+            y: 450,
+            width: 500,
+            height: 500,
+
+            scrollMode: 0,
+
+            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x515151),
+
+            panel: {
+                child: this.createGridShop(this),
+                mask: {
+                    mask: true,
+                    padding: 1,
+                }
+            },
+
+            mouseWheelScroller: {
+                focus: false,
+                speed: 0.1
+            },
+
+            space: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+
+                panel: 10,
+                header: 10
+            }
+        }).layout().setDepth(CST.DEPTHS.ToolBarRecyclerView);
+
+        this.recyclerViewShop.setChildrenInteractive({
+            targets: [
+                this.recyclerViewShop.getByName("key", true)
+            ]
+        })
+        .on('child.click', function() {
+            console.log("HI");
+        })
     }
     raiseToolbarRight(){
+        this.recyclerViewShop.visible = false;
         this.shopBar.visible = false;
         this.skillBar.visible = false;
         this.toolBarRight.visible = true;
@@ -298,5 +344,89 @@ export class PlayScene extends Phaser.Scene{
         this.toolBarClose.visible = false;
         this.shopBar.visible = true;
         this.skillBar.visible = true;
+        this.scrollablePanel.visible = false;
+        this.recyclerViewShop.visible = false;
+    }
+
+    createGridShop(scene) {
+        // Create table body
+        var sizer = scene.rexUI.add.fixWidthSizer({
+            space: {
+                left: 3,
+                right: 3,
+                top: 3,
+                bottom: 3,
+                item: 8,
+                line: 8,
+            }
+        })
+
+    
+        for (let el of CST.SHOPLIST) {
+            sizer
+            .add(
+                this.createTable(scene, 'shop'), // child
+                { expand: true }
+            )
+            .add(
+                scene.rexUI.add.label({
+                    orientation: 'x',
+                    icon: scene.add.image(0, 0,CST.IMAGES.HPIcon),
+                    space: { icon: 1 }
+                })
+            )
+        }
+        
+        return sizer;
+    }
+
+
+    createTable(scene, key) {
+        var table = scene.rexUI.add.gridSizer({
+            width: 300,
+            height: 120,
+            column: 3,
+            row: 3,
+    
+            rowProportions: 1,
+            space: { column: 40, row: 10, left: 30, right: 0, top: 10, bottom: 10 },
+            name: "key"
+        }).setDepth(CST.DEPTHS.ToolBarRecyclerView)
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d),
+        );
+
+        table.add(this.createIcon(scene), 0, 1, 'center', 0, true);
+        table.add(this.createLable(scene, "magaz"), 1, 0, 'center', 0, true);
+        table.add(this.createLable(scene, "lox"), 1, 1, 'center', 0, true);
+        table.add(this.createLable(scene, "lvl"), 2, 0, 'center', 0, true);
+        table.add(this.createLable(scene, "cost"), 2, 1, 'center', 0, true);
+        table.add(this.createLable(scene, "buy"), 2, 2, 'bottom', 0, true);
+    
+        return scene.rexUI.add.sizer({
+        })
+            .add(
+            table, 1, 'center', 0, true 
+            );
+    }
+
+    createIcon(scene) {
+        var label = scene.rexUI.add.label({
+            orientation: 'x',
+            icon: scene.add.image(0, 0,CST.IMAGES.HPIcon),
+            space: { icon: 1 }
+        }).setDepth(CST.DEPTHS.ToolBarRecyclerView);
+    
+        return label;
+    }
+
+    createLable(scene, name) {
+        var label = scene.rexUI.add.label({
+            orientation: 'x',
+            text: scene.add.text(0, 0, name),
+            space: { icon: 1 }
+        });
+    
+        return label;
     }
 }
