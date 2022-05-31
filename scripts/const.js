@@ -17,8 +17,12 @@ export const CST = {
         Parus: "parus",
         CharacterWindow: "characterWindow",
         PlayButton: 'playButton',
+        BattleButton: "newWaveButton",
         OptionsButton: 'optionsButton',
-        StatusBar: "statusBar"
+        StatusBar: "statusBar",
+        ShopBar: "shopBar",
+        SkillBar: "skillBar",
+        Bar: "bar"
     },
     SPRITES32: {
         MonsterTwig: "monster_twig",

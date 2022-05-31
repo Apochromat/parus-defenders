@@ -43,6 +43,10 @@ export class PlayScene extends Phaser.Scene{
         this.enemies = this.add.group();
         createAnimations(this);
         this.createStatusBar();
+        let shopBar = this.add.image(this.game.renderer.width - 541, this.game.renderer.height-30, CST.IMAGES.ShopBar).setDepth(1);
+        let skillBar = this.add.image(this.game.renderer.width - 241, this.game.renderer.height-30, CST.IMAGES.SkillBar).setDepth(1);
+        let battleButton = this.add.image(this.game.renderer.width - 50, 52, CST.IMAGES.BattleButton).setDepth(1);
+        let bar = this.add.image(this.game.renderer.width - 388, this.game.renderer.height-300, CST.IMAGES.Bar).setDepth(1);
         
 
         this.physics.add.collider(this.parus, this.enemies, (obj1, obj2) => {
