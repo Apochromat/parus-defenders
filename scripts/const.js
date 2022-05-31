@@ -28,7 +28,8 @@ export const CST = {
         MonsterTwig: "monster_twig",
         MonsterBrainer: "monster_brainer",
         MonsterGhoul: "monster_ghoul",
-        MonsterHedgehog: "monster_hedgehog"
+        MonsterHedgehog: "monster_hedgehog",
+        HeroCat: "hero_cat"
     },
     SPRITES64: {
         MonsterSlayer: "monster_slayer"
@@ -67,6 +68,12 @@ export const CST = {
             Walk: 'monster_slayer_walk',
             Hit: 'monster_slayer_hit',
             Death: 'monster_slayer_death'
+        },
+        HeroCat: {
+            Idle: 'hero_cat_idle',
+            Walk: 'hero_cat_walk',
+            Hit: 'hero_cat_hit',
+            Death: 'hero_cat_death'
         }
     },
     CHARACTERS: {
@@ -114,6 +121,12 @@ export const CST = {
             PhysicalProtection: 10,
             MagicProtection: 10,
             Cost: 25
+        },
+        HeroCat: {
+            HealPoints: 1500,
+            Damage: 50,
+            Cooldown: 1000,
+            Speed: 50,
         }
     },
     PARUS: {
@@ -127,21 +140,21 @@ export const CST = {
         1 : {
             MaxHP: 1000,
             MaxMP: 1000,
-            InsideHeroSlots: 2,
+            InsideHeroSlots: 3,
             OutsideHeroSlots: 0,
             isBuildingAvailable: false
         },
         2 : {
             MaxHP: 1250,
             MaxMP: 1250,
-            InsideHeroSlots: 2,
+            InsideHeroSlots: 4,
             OutsideHeroSlots: 0,
             isBuildingAvailable: false
         },
         3 : {
             MaxHP: 1500,
             MaxMP: 1500,
-            InsideHeroSlots: 2,
+            InsideHeroSlots: 5,
             OutsideHeroSlots: 0,
             isBuildingAvailable: false
         },
@@ -155,28 +168,28 @@ export const CST = {
     },
     INSIDEHEROSLOTS: {
         1: {
-            x: 200,
-            y: 200
+            x: 311,
+            y: 546
         },
         2: {
-            x: 300,
-            y: 200
+            x: 511,
+            y: 546
         },
         3: {
-            x: 400,
-            y: 200
+            x: 311,
+            y: 406
         },
         4: {
-            x: 200,
-            y: 400
+            x: 511,
+            y: 406
         },
         5: {
-            x: 300,
-            y: 400
+            x: 311,
+            y: 266
         },
         6: {
-            x: 400,
-            y: 400
+            x: 511,
+            y: 266
         },
     }
 

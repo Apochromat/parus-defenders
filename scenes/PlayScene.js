@@ -1,10 +1,11 @@
 import { CST } from "../scripts/const.js";
 import { createAnimations } from "../scripts/Animations.js";
-import { HeroWindow, Parus } from "../scripts/Parus.js";
+import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
 export class PlayScene extends Phaser.Scene{
 
     enemies;
+    heroes;
     parus;
     graphicsHP;
     graphicsMP;
@@ -36,34 +37,51 @@ export class PlayScene extends Phaser.Scene{
     create ()
     {
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        this.parus = new Parus(this, 3);
+        this.parus = new Parus(this, 0);
         this.parus.createHeroWindows();
 
         this.characterHeap = new Characters.CharacterHeap();
         this.enemies = this.add.group();
+        this.heroes = this.add.group();
         createAnimations(this);
         this.createStatusBar();
-        let shopBar = this.add.image(this.game.renderer.width - 541, this.game.renderer.height-30, CST.IMAGES.ShopBar).setDepth(1);
-        let skillBar = this.add.image(this.game.renderer.width - 241, this.game.renderer.height-30, CST.IMAGES.SkillBar).setDepth(1);
-        let battleButton = this.add.image(this.game.renderer.width - 50, 52, CST.IMAGES.BattleButton).setDepth(1);
-        let bar = this.add.image(this.game.renderer.width - 388, this.game.renderer.height-300, CST.IMAGES.Bar).setDepth(1);
-        
 
-        this.physics.add.collider(this.parus, this.enemies, (obj1, obj2) => {
-            obj2.setVelocity(0, 0);
-            obj2.setAnimationHit();
-            if (Date.now() - obj2.lastDamageTime >= obj2.specs.Cooldown) {
-                obj2.lastDamageTime = Date.now();
-                if(!obj1.damage(obj2.specs.Damage)) {
-                    for (let el in this.characterHeap.heap) {
-                        this.characterHeap.heap[el].specs.Damage = 0;
-                        this.characterHeap.heap[el].setAnimationDeath();
-                        this.characterHeap.heap[el].remove();
-                    }
-                    obj1.currHP = obj1.maxHP;
-                };
+        this.physics.add.collider(this.parus, this.enemies,
+            // При столкновении
+            (obj1, obj2) => {
+                obj2.setVelocity(0, 0);
+                obj2.setAnimationHit();
+                if (Date.now() - obj2.lastDamageTime >= obj2.specs.Cooldown) {
+                    obj2.lastDamageTime = Date.now();
+                    if(!obj1.damage(obj2.specs.Damage)) {
+                        for (let el in this.characterHeap.heap) {
+                            this.characterHeap.heap[el].specs.Damage = 0;
+                            this.characterHeap.heap[el].setAnimationDeath();
+                            this.characterHeap.heap[el].remove();
+                        }
+                        obj1.currHP = obj1.maxHP;
+                    };
+                }
             }
-        });
+        );
+
+        this.physics.add.collider(this.heroes, this.enemies,
+            // При столкновении
+            (obj1, obj2) => {
+                obj2.setVelocity(0, 0);
+                obj2.setAnimationHit();
+                obj1.setVelocity(0, 0);
+                obj1.setAnimationHit(false);
+                if (Date.now() - obj1.lastDamageTime >= obj1.specs.Cooldown) {
+                    obj1.lastDamageTime = Date.now();
+                    obj2.damage(obj1.specs.Damage);
+                }
+                if (Date.now() - obj2.lastDamageTime >= obj2.specs.Cooldown) {
+                    obj2.lastDamageTime = Date.now();
+                    obj1.damage(obj2.specs.Damage);
+                }
+            }
+        );
         
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 1300,
@@ -117,15 +135,10 @@ export class PlayScene extends Phaser.Scene{
         this.setStatusHP(this.parus.currHP, this.parus.maxHP);
         this.setStatusMP(this.parus.currMP, this.parus.maxMP);
         this.setStatusLVL(30, 80, 2);
-        this.setStatusWAVE(1, 1, 5, 4500);
+        this.setStatusWAVE(0, 1, 5, 4500);
         this.setStatusCOIN(1000000);
         for (let el in this.characterHeap.heap) {
-            if (this.characterHeap.heap[el].hp >= 0){  
-                this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
-            }
-            else {
-                this.characterHeap.heap[el].remove();
-            }
+            this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
         }     
     }
 
@@ -143,7 +156,7 @@ export class PlayScene extends Phaser.Scene{
                 bottom: 3,
                 item: 8,
                 line: 8,
-            },
+            }
         }).addBackground(scene.rexUI.add.roundRectangle(0, 0, 10, 10, 0, 0x260e04))
     
         for (let el of CST.MONSTERLIST) {
@@ -216,6 +229,10 @@ export class PlayScene extends Phaser.Scene{
         this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
         this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
         let statusBar = this.add.image(this.game.renderer.width / 2, 50, CST.IMAGES.StatusBar).setDepth(0);
+        let shopBar = this.add.image(this.game.renderer.width - 541, this.game.renderer.height-30, CST.IMAGES.ShopBar).setDepth(1);
+        let skillBar = this.add.image(this.game.renderer.width - 241, this.game.renderer.height-30, CST.IMAGES.SkillBar).setDepth(1);
+        let battleButton = this.add.image(this.game.renderer.width - 50, 52, CST.IMAGES.BattleButton).setDepth(1);
+        //let bar = this.add.image(this.game.renderer.width - 388, this.game.renderer.height-300, CST.IMAGES.Bar).setDepth(1);
     }
 
 }

@@ -43,16 +43,20 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
 
     createHeroWindows() {
         for (let i = 0; i < this.insideHeroSlots; i++){
-            this.heroWindows[i] = new HeroWindow(this.scene, CST.INSIDEHEROSLOTS[i+1].x, CST.INSIDEHEROSLOTS[i+1].y);
+            this.heroWindows[i] = new HeroWindow(this.scene, CST.INSIDEHEROSLOTS[i+1].x, CST.INSIDEHEROSLOTS[i+1].y, i);
         }
     }
 }
 
 export class HeroWindow extends Phaser.GameObjects.Image {
-    constructor(scene, x, y) {
-        super(scene, x, y, CST.IMAGES.CharacterWindow);
+    constructor(scene, x, y, index) {
+        super(scene, x, y, CST.IMAGES.CharacterWindow).setDepth(3);
+        this.index = index;
         scene.sys.displayList.add(this);
-        this.setScale(2);
-        this.setDepth(2);
+        this.setScale(2.5);
+        this.setInteractive();
+        this.on("pointerup", () => {
+            this.scene.characterHeap.createHero("cat", this.scene, 750, this.scene.randomIntFromInterval(530, 620)).setAnimationWalk(false);
+        })
     }
 }

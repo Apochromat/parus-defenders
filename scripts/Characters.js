@@ -6,6 +6,19 @@ export class CharacterHeap {
     static id = 0;
     heap = {};
 
+    createHero(type = "cat", scene, x, y){
+        switch (type) {
+            case "cat":
+                this.heap[CharacterHeap.id] = new HeroCat(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCat));
+                break;
+        }
+        scene.heroes.add(this.heap[CharacterHeap.id]);
+        this.heap[CharacterHeap.id].setDepth(y + this.heap[CharacterHeap.id].height);
+        CharacterHeap.id++;
+        return this.heap[CharacterHeap.id-1];
+    }
+
     createMonster(type = "twig", scene, x, y){
         switch (type) {
             case "twig":
@@ -86,8 +99,10 @@ export class MonsterTwig extends CharacterSprite {
         this.hp -= _hp;
         if (this.hp <= 0) {
             this.setAnimationDeath();
+            this.remove();
+            return false
         }
-        return this
+        return true
     }
 
     remove() {
@@ -147,8 +162,10 @@ export class MonsterBrainer extends CharacterSprite {
         this.hp -= _hp;
         if (this.hp <= 0) {
             this.setAnimationDeath();
+            this.remove();
+            return false
         }
-        return this;
+        return true
     }
 
     remove() {
@@ -212,8 +229,10 @@ export class MonsterGhoul extends CharacterSprite {
         this.hp -= _hp;
         if (this.hp <= 0) {
             this.setAnimationDeath();
+            this.remove();
+            return false
         }
-        return this;
+        return true
     }
 
     remove() {
@@ -274,8 +293,10 @@ export class MonsterHedgehog extends CharacterSprite {
         this.hp -= _hp;
         if (this.hp <= 0) {
             this.setAnimationDeath();
+            this.remove();
+            return false
         }
-        return this;
+        return true
     }
 
     remove() {
@@ -336,8 +357,10 @@ export class MonsterSlayer extends CharacterSprite {
         this.hp -= _hp;
         if (this.hp <= 0) {
             this.setAnimationDeath();
+            this.remove();
+            return false
         }
-        return this;
+        return true
     }
 
     remove() {
@@ -347,4 +370,67 @@ export class MonsterSlayer extends CharacterSprite {
         })
     }
 
+}
+
+export class HeroCat extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale=3) {
+        super(scene, x, y, CST.SPRITES32.HeroCat, scale);
+        this.hp = CST.CHARACTERS.HeroCat.HealPoints;
+        this.speed = CST.CHARACTERS.HeroCat.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Death) {
+            this.play(CST.ANIMATIONS.HeroCat.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Death) {
+            this.play(CST.ANIMATIONS.HeroCat.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Death) {
+            this.play(CST.ANIMATIONS.HeroCat.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true){
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Death) {
+            this.play(CST.ANIMATIONS.HeroCat.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.setAnimationDeath();
+            this.remove();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', ()=>{
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
 }
