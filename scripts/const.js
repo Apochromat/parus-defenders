@@ -110,6 +110,43 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25
         }
+    },
+    PARUS: {
+        0 : {
+            MaxHP: 500,
+            MaxMP: 500,
+            InsideHeroSlots: 2,
+            OutsideHeroSlots: 0,
+            isBuildingAvailable: false
+        },
+        1 : {
+            MaxHP: 1000,
+            MaxMP: 1000,
+            InsideHeroSlots: 2,
+            OutsideHeroSlots: 0,
+            isBuildingAvailable: false
+        },
+        2 : {
+            MaxHP: 1250,
+            MaxMP: 1250,
+            InsideHeroSlots: 2,
+            OutsideHeroSlots: 0,
+            isBuildingAvailable: false
+        },
+        3 : {
+            MaxHP: 1500,
+            MaxMP: 1500,
+            InsideHeroSlots: 2,
+            OutsideHeroSlots: 0,
+            isBuildingAvailable: false
+        },
+        4 : {
+            MaxHP: 2000,
+            MaxMP: 2000,
+            InsideHeroSlots: 2,
+            OutsideHeroSlots: 0,
+            isBuildingAvailable: false
+        }
     }
 
 }

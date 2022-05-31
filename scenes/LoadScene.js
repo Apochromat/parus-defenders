@@ -52,15 +52,6 @@ export class LoadScene extends Phaser.Scene {
             }
         })
 
-        //simulate large load
-        for(let i = 0; i < 100; i++){
-            this.load.setPath("./assets/images")
-            this.load.spritesheet("parus" + i, "parus.png", {
-                frameHeight: 32,
-                frameWidth: 32
-            });
-        }
-
         this.load.on("progress", (percent) => {
             loadingBar.fillRect(50, this.game.renderer.height / 2, (this.game.renderer.width - 100) * percent, 50);
         })

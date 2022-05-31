@@ -3,11 +3,6 @@ import { createAnimations } from "../scripts/Animations.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
 export class PlayScene extends Phaser.Scene{
-    constructor() {
-        super({
-            key: CST.SCENES.PLAY
-        })
-    }
 
     enemies;
     parus;
@@ -20,6 +15,13 @@ export class PlayScene extends Phaser.Scene{
     titleLVL;
     titleWAVE;
     titleCOIN;
+
+    constructor() {
+        super({
+            key: CST.SCENES.PLAY
+        })
+    }
+
     init() {
     }
 
@@ -34,20 +36,22 @@ export class PlayScene extends Phaser.Scene{
     create ()
     {
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        this.parus = new Parus(this);
+        this.parus = new Parus(this, 3);
 
         this.characterHeap = new Characters.CharacterHeap();
         this.enemies = this.add.group();
         createAnimations(this);
+        this.createStatusBar();
+        
 
         this.physics.add.collider(this.parus, this.enemies, (obj1, obj2) => {
             obj2.setVelocity(0, 0);
             obj2.setAnimationHit();
-            if (Date.now() - obj2.lastDamageTime >= obj2.cooldown) {
+            if (Date.now() - obj2.lastDamageTime >= obj2.specs.Cooldown) {
                 obj2.lastDamageTime = Date.now();
-                if(!obj1.damage(obj2.damagePerHit)) {
+                if(!obj1.damage(obj2.specs.Damage)) {
                     for (let el in this.characterHeap.heap) {
-                        this.characterHeap.heap[el].damagePerHit = 0;
+                        this.characterHeap.heap[el].specs.Damage = 0;
                         this.characterHeap.heap[el].setAnimationDeath();
                         this.characterHeap.heap[el].remove();
                     }
@@ -56,16 +60,7 @@ export class PlayScene extends Phaser.Scene{
             }
         });
         
-        this.graphicsHP =  this.add.graphics({fillStyle: { color: 0xff1500} }).setDepth(1);
-        this.graphicsMP = this.add.graphics({fillStyle: { color: 0x009efa} }).setDepth(1);
-        this.graphicsLVL =  this.add.graphics({fillStyle: { color: 0x51c751} }).setDepth(1);
-        this.graphicsWAVE = this.add.graphics({fillStyle: { color: 0xe8e8e8} }).setDepth(1);
-        this.titleHP = this.add.text(240, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleMP = this.add.text(240, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleLVL = this.add.text(853, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        let statusBar = this.add.image(this.game.renderer.width / 2, 50, CST.IMAGES.StatusBar).setDepth(0);
+        
 
         var scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 1300,
@@ -93,7 +88,7 @@ export class PlayScene extends Phaser.Scene{
             header: this.rexUI.add.label({
                 height: 30,
                 orientation: 0,
-                text: this.add.text(0, 0, 'Header'),
+                text: this.add.text(0, 0, 'Spawn Menu'),
             }),
 
             space: {
@@ -131,7 +126,7 @@ export class PlayScene extends Phaser.Scene{
         }     
     }
 
-    randomIntFromInterval(min, max) { // min and max included 
+    randomIntFromInterval(min, max) { 
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
@@ -200,12 +195,24 @@ export class PlayScene extends Phaser.Scene{
         }
         else{
             this.titleWAVE.setText(numWave);
-        }
-        
+        }    
     }
 
     setStatusCOIN(numCoins){
         this.titleCOIN.setText(numCoins);
+    }
+
+    createStatusBar() {
+        this.graphicsHP =  this.add.graphics({fillStyle: { color: 0xff1500} }).setDepth(1);
+        this.graphicsMP = this.add.graphics({fillStyle: { color: 0x009efa} }).setDepth(1);
+        this.graphicsLVL =  this.add.graphics({fillStyle: { color: 0x51c751} }).setDepth(1);
+        this.graphicsWAVE = this.add.graphics({fillStyle: { color: 0xe8e8e8} }).setDepth(1);
+        this.titleHP = this.add.text(240, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        this.titleMP = this.add.text(240, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        this.titleLVL = this.add.text(853, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        let statusBar = this.add.image(this.game.renderer.width / 2, 50, CST.IMAGES.StatusBar).setDepth(0);
     }
 
 }
