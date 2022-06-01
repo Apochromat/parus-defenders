@@ -40,7 +40,110 @@ export const CST = {
 
     ],
     MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
-    SHOPLIST: ["Parus", "lox"],
+    SHOPLIST: {
+        ParusHP: {
+            IndexInList: 0,
+            Name: "Укрепить Парус",
+            Description: "Увеличение HP\n Паруса",
+            LevelCost: [
+                100, 
+                250, 
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        ParusMP: {
+            IndexInList: 1,
+            Name: "Укрепить Парус",
+            Description: "Увеличение MP\n Паруса",
+            LevelCost: [
+                100, 
+                250, 
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        ParusDEF: {
+            IndexInList: 2,
+            Name: "Укрепить Парус",
+            Description: "Увеличение защиты\n Паруса",
+            LevelCost: [
+                100, 
+                250, 
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        CatKnight: {
+            IndexInList: 3,
+            Name: "Укрепить Кота",
+            Description: "Увеличение урон Кота\n бла-бла-бла",
+            LevelCost: [
+                100, 
+                250, 
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        CatNinja: {
+            IndexInList: 4,
+            Name: "Укрепить Кота",
+            Description: "Увеличение урон Кота\n бла-бла-бла",
+            LevelCost: [
+                100, 
+                250, 
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        CatMag: {
+            IndexInList: 5,
+            Name: "Укрепить Кота",
+            Description: "Увеличение уронa\n Кота\n бла-бла\n-бла",
+            LevelCost: [
+                100, 
+                250, 
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        }
+    },
     ANIMATIONS: {
         MonsterTwig: {
             Idle: 'monster_twig_idle',
