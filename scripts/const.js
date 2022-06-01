@@ -42,9 +42,8 @@ export const CST = {
     MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
     SHOPLIST: {
         ParusHP: {
-            IndexInList: 0,
             Name: "Укрепить Парус",
-            Description: "Увеличение HP\n Паруса",
+            Description: "Увеличение HP Паруса",
             LevelCost: [
                 100, 
                 250, 
@@ -59,9 +58,8 @@ export const CST = {
             ]
         },
         ParusMP: {
-            IndexInList: 1,
             Name: "Укрепить Парус",
-            Description: "Увеличение MP\n Паруса",
+            Description: "Увеличение MP Паруса",
             LevelCost: [
                 100, 
                 250, 
@@ -76,9 +74,8 @@ export const CST = {
             ]
         },
         ParusDEF: {
-            IndexInList: 2,
             Name: "Укрепить Парус",
-            Description: "Увеличение защиты\n Паруса",
+            Description: "Увеличение защиты Паруса",
             LevelCost: [
                 100, 
                 250, 
@@ -93,7 +90,6 @@ export const CST = {
             ]
         },
         CatKnight: {
-            IndexInList: 3,
             Name: "Укрепить Кота",
             Description: "Увеличение урон Кота\n бла-бла-бла",
             LevelCost: [
@@ -110,7 +106,6 @@ export const CST = {
             ]
         },
         CatNinja: {
-            IndexInList: 4,
             Name: "Укрепить Кота",
             Description: "Увеличение урон Кота\n бла-бла-бла",
             LevelCost: [
@@ -127,7 +122,6 @@ export const CST = {
             ]
         },
         CatMag: {
-            IndexInList: 5,
             Name: "Укрепить Кота",
             Description: "Увеличение уронa\n Кота\n бла-бла\n-бла",
             LevelCost: [
@@ -143,6 +137,12 @@ export const CST = {
                 250000
             ]
         }
+    },
+    SKILLSLIST: {
+        Cooldown: {
+            Name: "Cooldown",
+            Description: "Уменьшение времени \nперезарядки"
+        },
     },
     ANIMATIONS: {
         MonsterTwig: {

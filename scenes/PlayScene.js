@@ -25,6 +25,7 @@ export class PlayScene extends Phaser.Scene{
     skillBar;
     scrollablePanel;
     recyclerViewShop;
+    recyclerViewSkills;
     statusBar;
     battleButton;
 
@@ -47,14 +48,16 @@ export class PlayScene extends Phaser.Scene{
     }
     create () {
         this.playerStats = {
-            COUNT_EL_SHOP: 5, //Кол-во позиций в магазине(считаем с нуля, заполняем ручками). Необходимо для скрола списка при покупке 
-            LEVELS: {
+            LEVELS_SHOP: {
                 ParusHP: 0,
                 ParusMP: 0,
                 ParusDEF: 0,
                 CatKnight: 0,
                 CatNinja: 0,
                 CatMag: 0
+            },
+            LEVELS_SKILLS: {
+                Cooldown: 0
             },
             COINS: 1000000
         };
@@ -116,7 +119,7 @@ export class PlayScene extends Phaser.Scene{
             background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x4e342e),
 
             panel: {
-                child: this.createGrid(this),
+                child: this.createGridMonsters(this),
                 mask: {
                     mask: true,
                     padding: 1,
@@ -168,7 +171,7 @@ export class PlayScene extends Phaser.Scene{
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
-    createGrid(scene) {
+    createGridMonsters(scene) {
         // Create table body
         var sizer = scene.rexUI.add.fixWidthSizer({
             space: {
@@ -289,6 +292,9 @@ export class PlayScene extends Phaser.Scene{
     }
 
     raiseToolbarLeft(){
+        if (this.recyclerViewSkills != undefined) {
+            this.recyclerViewSkills.visible = false;
+        }
         this.shopBar.visible = false;
         this.skillBar.visible = false;
         this.toolBarRight.visible = true;
@@ -309,7 +315,7 @@ export class PlayScene extends Phaser.Scene{
             background: this.rexUI.add.roundRectangle(0, 0, 1, 1, 10, 0x515151),
 
             panel: {
-                child: this.createGridShop(this),
+                child: this.createGrid(this, 1),
                 mask: {
                     mask: true,
                     padding: 1,
@@ -339,16 +345,19 @@ export class PlayScene extends Phaser.Scene{
         })
         .on('child.click', function(child) {
             let currName = child.getParentSizer().name;
-            this.scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[this.scene.playerStats.LEVELS[currName]]
+            this.scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[this.scene.playerStats.LEVELS_SHOP[currName]]
             this.scene.setStatusCOIN(this.scene.playerStats.COINS);
-            this.scene.playerStats.LEVELS[currName] += 1;
+            this.scene.playerStats.LEVELS_SHOP[currName] += 1;
+            let temp = this.scene.recyclerViewShop.t;
             this.scene.closeToolbar();
             this.scene.raiseToolbarLeft();
-            this.scene.recyclerViewShop.t = CST.SHOPLIST[currName].IndexInList / this.scene.playerStats.COUNT_EL_SHOP;
+            this.scene.recyclerViewShop.t = temp;
         })
     }
     raiseToolbarRight(){
-        this.recyclerViewShop.visible = false;
+        if (this.recyclerViewShop != undefined) {
+            this.recyclerViewShop.visible = false;
+        }
         this.shopBar.visible = false;
         this.skillBar.visible = false;
         this.toolBarRight.visible = true;
@@ -357,6 +366,54 @@ export class PlayScene extends Phaser.Scene{
         this.toolBarClose.visible = true;
         this.toolBarRight.setDepth(CST.DEPTHS.ToolBarPrimal);
         this.toolBarLeft.setDepth(CST.DEPTHS.ToolBarMinor);
+
+        this.recyclerViewSkills = this.rexUI.add.scrollablePanel({
+            x: 1050,
+            y: 450,
+            width: 500,
+            height: 500,
+
+            scrollMode: 0,
+
+            background: this.rexUI.add.roundRectangle(0, 0, 1, 1, 10, 0x515151),
+
+            panel: {
+                child: this.createGrid(this, 2),
+                mask: {
+                    mask: true,
+                    padding: 1,
+                }
+            },
+
+            mouseWheelScroller: {
+                focus: false,
+                speed: 0.3
+            },
+
+            space: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+
+                panel: 10
+            }
+        }).layout().setDepth(CST.DEPTHS.ToolBarRecyclerView);
+        let targets = []
+        for (let el in CST.SKILLSLIST) {
+            targets.push(this.recyclerViewSkills.getByName(el, true))
+        }
+        this.recyclerViewSkills.setChildrenInteractive({
+            targets: targets
+        })
+        .on('child.click', function(child) {
+            let currName = child.getParentSizer().name;
+            this.scene.playerStats.LEVELS_SKILLS[currName] += 1;
+            let temp = this.scene.recyclerViewSkills.t;
+            this.scene.closeToolbar();
+            this.scene.raiseToolbarRight();
+            this.scene.recyclerViewSkills.t = temp;
+        })
     }
     closeToolbar(){
         this.toolBarRight.visible = false;
@@ -365,11 +422,15 @@ export class PlayScene extends Phaser.Scene{
         this.toolBarClose.visible = false;
         this.shopBar.visible = true;
         this.skillBar.visible = true;
-        this.recyclerViewShop.visible = false;
+        if (this.recyclerViewShop != undefined) {
+            this.recyclerViewShop.visible = false;
+        }
+        if (this.recyclerViewSkills != undefined) {
+            this.recyclerViewSkills.visible = false;
+        }
     }
 
-    createGridShop(scene) {
-        // Create table body
+    createGrid(scene, type) {
         var sizer = scene.rexUI.add.fixWidthSizer({
             space: {
                 left: 3,
@@ -380,21 +441,28 @@ export class PlayScene extends Phaser.Scene{
                 line: 8,
             }
         })
-
-    
-        for (let el in CST.SHOPLIST) {
-            sizer
-            .add(
-                this.createTable(scene, el), // child
-                { expand: true }
-            )
+        if(type == 1){
+            for (let el in CST.SHOPLIST) {
+                sizer
+                .add(
+                    this.createShopItem(scene, el), // child
+                    { expand: true }
+                )
+            }
+        }
+        else if(type == 2){
+            for (let el in CST.SKILLSLIST) {
+                sizer
+                .add(
+                    this.createSkillsItem(scene, el), // child
+                    { expand: true }
+                )
+            }
         }
         
         return sizer;
     }
-
-
-    createTable(scene, key) {
+    createShopItem(scene, key) {
         var table = scene.rexUI.add.gridSizer({
             width: 500,
             height: 120,
@@ -402,18 +470,18 @@ export class PlayScene extends Phaser.Scene{
             row: 3,
             rowProportions: 2,
             columnProportions: 1,
-            space: { column: 0, row: 10, left: 0, right: 0, top: 0, bottom: 0 }
+            space: { column: -150, row: 10, left: 0, right: 0, top: 0, bottom: 0 }
         }).setDepth(CST.DEPTHS.ToolBarRecyclerView)
         .addBackground(
-            scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d),
+            scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
         );
 
-        table.add(this.createIcon(scene), 0, 1, 'center', {left: 30}, true);
-        table.add(this.createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', 0, true);
-        table.add(this.createLable(scene, CST.SHOPLIST[key].Description), 1, 1, 'left', {right: 300}, true);
-        table.add(this.createLable(scene, "LVL " + this.playerStats.LEVELS[key]), 2, 0, 'right', {left: 50}, true);
-        table.add(this.createLable(scene,  CST.SHOPLIST[key].LevelCost[this.playerStats.LEVELS[key]]), 2, 1, 'center', {left: 50}, true);
-        table.add(this.createPseudoTable(scene, key), 2, 2, 'right', {left: 50}, true);
+        table.add(this.createIcon(scene), 0, 1, 'center', {left: 25, right: 150}, true);
+        table.add(this.createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', {left: 50}, true);
+        table.add(this.createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', {right: 0}, true);
+        table.add(this.createLable(scene, "LVL " + this.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', {left: 150}, true);
+        table.add(this.createLable(scene,  CST.SHOPLIST[key].LevelCost[this.playerStats.LEVELS_SHOP[key]], 2), 2, 1, 'center', {left: 150}, true);
+        table.add(this.createButtonAdd(scene, key, 2), 2, 2, 'right', {top: 5, left: 150}, true);
     
         return scene.rexUI.add.sizer({
         })
@@ -422,18 +490,60 @@ export class PlayScene extends Phaser.Scene{
             );
     }
 
-    createPseudoTable(scene, key) {
+    createButtonAdd(scene, key, type) {
         var table = scene.rexUI.add.gridSizer({
             column: 1,
             row: 1,
-            name: key
-        }).setDepth(CST.DEPTHS.ToolBarRecyclerView);
+            name: key,
+            space: {left: 0, right: 0, top: 0, bottom: 90 }
+        })
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 20, 20, 5, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),)
+            .setDepth(CST.DEPTHS.ToolBarRecyclerView);
 
-        table.add(
-            scene.rexUI.add.label({
-                text: scene.add.text(0, 0, "BUY"),
-            })
+        if (type == 1) {
+            table.add(
+                scene.rexUI.add.label({
+                    text: scene.add.text(0, 0, "BUY"),
+                })
+            );
+        }
+        else if (type == 2) {
+            table.add(
+                scene.rexUI.add.label({
+                    text: scene.add.text(0, 0, "UPGRADE"),
+                    space: {left: 25, right: 0, top: 5, bottom: 0 }
+                })
+            );
+        }
+        
+    
+        return scene.rexUI.add.sizer({
+        })
+            .add(
+            table, 1, 'center', 0, true 
+            );
+    }
+
+    createSkillsItem(scene, key) {
+        var table = scene.rexUI.add.gridSizer({
+            width: 500,
+            height: 120,
+            column: 3,
+            row: 3,
+            rowProportions: 1,
+            columnProportions: 2,
+            space: { column: -150, row: 10, left: 0, right: 0, top: 0, bottom: 0 }
+        }).setDepth(CST.DEPTHS.ToolBarRecyclerView)
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
         );
+
+        table.add(this.createIcon(scene), 0, 1, 'center', {left: 25, right: 150}, true);
+        table.add(this.createLable(scene, CST.SKILLSLIST[key].Name), 1, 0, 'left', {left: 50}, true);
+        table.add(this.createLable(scene, CST.SKILLSLIST[key].Description, 3), 1, 1, 'left', {right: 0}, true);
+        table.add(this.createLable(scene, "LVL " + this.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);
+        table.add(this.createButtonAdd(scene, key, 2), 2, 2, 'right', {top: 5, left: 150}, true);
     
         return scene.rexUI.add.sizer({
         })
@@ -450,11 +560,29 @@ export class PlayScene extends Phaser.Scene{
         return label;
     }
 
-    createLable(scene, name) {
-        var label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name),
-        });
-    
+    createLable(scene, name, type) {
+        var label
+        if (type == 1) { //LVL text
+            label = scene.rexUI.add.label({
+                text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 24, color: '#51c751' }),
+            });
+        }
+        else if(type == 2){ //cost text
+            label = scene.rexUI.add.label({
+                text: scene.add.text(0, 0, name, { fontFamily: 'NumbersFont', fontSize: 24, color: '#ffffff' }),
+            });
+        }
+        else if(type == 3){ //description
+            label = scene.rexUI.add.label({
+                text: scene.add.text(0, 0, name, {fontSize: 16, color: '#ffffff' }),
+            });
+        }
+        else{
+            label = scene.rexUI.add.label({
+                text: scene.add.text(0, 0, name, { fontFamily: 'Garamond', fontSize: 24, color: '#ffffff' }),
+            });
+        }
+        
         return label;
     }
 }
