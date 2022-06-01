@@ -308,7 +308,7 @@ export class PlayScene extends Phaser.Scene{
             x: 1050,
             y: 450,
             width: 500,
-            height: 500,
+            height: 528,
 
             scrollMode: 0,
 
@@ -325,6 +325,11 @@ export class PlayScene extends Phaser.Scene{
             mouseWheelScroller: {
                 focus: false,
                 speed: 0.3
+            },
+
+            slider: {
+                track: this.rexUI.add.roundRectangle(0, 0, 20, 10, 10, 0x3d3d3d),
+                thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 13, 0x939393),
             },
 
             space: {
@@ -371,7 +376,7 @@ export class PlayScene extends Phaser.Scene{
             x: 1050,
             y: 450,
             width: 500,
-            height: 500,
+            height: 528,
 
             scrollMode: 0,
 
@@ -388,6 +393,11 @@ export class PlayScene extends Phaser.Scene{
             mouseWheelScroller: {
                 focus: false,
                 speed: 0.3
+            },
+
+            slider: {
+                track: this.rexUI.add.roundRectangle(0, 0, 20, 10, 10, 0x3d3d3d),
+                thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 13, 0x939393),
             },
 
             space: {
