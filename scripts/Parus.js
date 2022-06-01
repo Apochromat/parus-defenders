@@ -57,6 +57,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.setInteractive();
         this.on("pointerup", () => {
             this.scene.characterHeap.createHero("cat", this.scene, 620, this.scene.randomIntFromInterval(530, 620)).setAnimationWalk(false);
+            this.scene.openHeroesBar(this.index);
         })
     }
 }

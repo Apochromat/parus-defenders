@@ -24,7 +24,10 @@ export const CST = {
         ToolBarClose: "toolBarClose",
         ToolBarLeft: "toolBarLeft",
         ToolBarRight: "toolBarRight",
-        ToolBarField: "toolBarField"
+        ToolBarField: "toolBarField",
+        HeroesBarClose: "heroesBarClose",
+        HeroesBarField: "heroesBarField",
+        CatKnight: "catKnight"
     },
     SPRITES32: {
         MonsterTwig: "monster_twig",
@@ -102,7 +105,10 @@ export const CST = {
                 50000,
                 80000,
                 125000,
-                250000
+                250000,
+                500000,
+                1000000,
+                10000000
             ]
         },
         CatNinja: {
@@ -180,6 +186,36 @@ export const CST = {
             Walk: 'hero_cat_walk',
             Hit: 'hero_cat_hit',
             Death: 'hero_cat_death'
+        }
+    },
+    HEROES: {
+        HeroCat: {
+            Name: "Кот-Рыцарь",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat2: {
+            Name: "Кот-Рыцарь",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat3: {
+            Name: "Кот-Рыцарь",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat4: {
+            Name: "Кот-Рыцарь",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
         }
     },
     CHARACTERS: {
@@ -303,7 +339,10 @@ export const CST = {
         ToolBarField: 5002,
         ToolBarPrimal: 5003,
         ToolBarMinor: 5001,
-        ToolBarRecyclerView: 5004
+        ToolBarRecyclerView: 5004,
+        HeroesBarField: 5006,
+        HeroesBarClose: 5006,
+        HeroesBarRecyclerView: 5007
     }
 
 }
