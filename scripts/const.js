@@ -40,7 +40,7 @@ export const CST = {
 
     ],
     MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
-    SHOPLIST: ["Parus", "lox", "  ", "a", "b"],
+    SHOPLIST: ["Parus", "lox"],
     ANIMATIONS: {
         MonsterTwig: {
             Idle: 'monster_twig_idle',

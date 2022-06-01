@@ -293,7 +293,7 @@ export class PlayScene extends Phaser.Scene{
 
             scrollMode: 0,
 
-            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x515151),
+            background: this.rexUI.add.roundRectangle(0, 0, 1, 1, 10, 0x515151),
 
             panel: {
                 child: this.createGridShop(this),
@@ -314,18 +314,19 @@ export class PlayScene extends Phaser.Scene{
                 top: 10,
                 bottom: 10,
 
-                panel: 10,
-                header: 10
+                panel: 10
             }
         }).layout().setDepth(CST.DEPTHS.ToolBarRecyclerView);
 
+        let targets = []
+        for (let el of CST.SHOPLIST) {
+            targets.push(this.recyclerViewShop.getByName(el, true))
+        }
         this.recyclerViewShop.setChildrenInteractive({
-            targets: [
-                this.recyclerViewShop.getByName("key", true)
-            ]
+            targets: targets
         })
-        .on('child.click', function() {
-            console.log("HI");
+        .on('child.click', function(child) {
+            console.log(child.getParentSizer().name);
         })
     }
     raiseToolbarRight(){
@@ -367,15 +368,12 @@ export class PlayScene extends Phaser.Scene{
         for (let el of CST.SHOPLIST) {
             sizer
             .add(
-                this.createTable(scene, 'shop'), // child
+                this.createTable(scene, el), // child
                 { expand: true }
             )
             .add(
-                scene.rexUI.add.label({
-                    orientation: 'x',
-                    icon: scene.add.image(0, 0,CST.IMAGES.HPIcon),
-                    space: { icon: 1 }
-                })
+                this.createPseudoTable(scene, el), // child
+                { expand: true } 
             )
         }
         
@@ -391,8 +389,7 @@ export class PlayScene extends Phaser.Scene{
             row: 3,
     
             rowProportions: 1,
-            space: { column: 40, row: 10, left: 30, right: 0, top: 10, bottom: 10 },
-            name: "key"
+            space: { column: 40, row: 10, left: 30, right: 0, top: 10, bottom: 10 }
         }).setDepth(CST.DEPTHS.ToolBarRecyclerView)
         .addBackground(
             scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d),
@@ -404,6 +401,33 @@ export class PlayScene extends Phaser.Scene{
         table.add(this.createLable(scene, "lvl"), 2, 0, 'center', 0, true);
         table.add(this.createLable(scene, "cost"), 2, 1, 'center', 0, true);
         table.add(this.createLable(scene, "buy"), 2, 2, 'bottom', 0, true);
+    
+        return scene.rexUI.add.sizer({
+        })
+            .add(
+            table, 1, 'center', 0, true 
+            );
+    }
+
+    createPseudoTable(scene, key) {
+        var table = scene.rexUI.add.gridSizer({
+            width: 30,
+            height: 120,
+            column: 1,
+            row: 1,
+    
+            rowProportions: 1,
+            space: { column: 40, row: 10, left: 30, right: 0, top: 10, bottom: 10 },
+            name: key
+        }).setDepth(CST.DEPTHS.ToolBarRecyclerView+1);
+
+        table.add(
+            scene.rexUI.add.label({
+                orientation: 'x',
+                icon: scene.add.image(0, 0,CST.IMAGES.HPIcon),
+                space: { icon: 1 }
+            })
+        );
     
         return scene.rexUI.add.sizer({
         })
