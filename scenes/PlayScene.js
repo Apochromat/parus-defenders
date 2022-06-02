@@ -257,11 +257,11 @@ export class PlayScene extends Phaser.Scene{
         this.graphicsMP = this.add.graphics({fillStyle: { color: 0x009efa} }).setDepth(1);
         this.graphicsLVL =  this.add.graphics({fillStyle: { color: 0x51c751} }).setDepth(1);
         this.graphicsWAVE = this.add.graphics({fillStyle: { color: 0xe8e8e8} }).setDepth(1);
-        this.titleHP = this.add.text(240, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleMP = this.add.text(240, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleLVL = this.add.text(853, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
-        this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'NumbersFont', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 5 }).setDepth(2);
+        this.titleHP = this.add.text(240, 22, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
+        this.titleMP = this.add.text(240, 56, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
+        this.titleLVL = this.add.text(853, 22, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
+        this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
+        this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
         this.statusBar = this.add.image(this.game.renderer.width / 2, 50, CST.IMAGES.StatusBar).setDepth(0);
         this.shopBar = this.add.image(this.game.renderer.width - 597, this.game.renderer.height-30, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarField);
         this.skillBar = this.add.image(this.game.renderer.width - 297, this.game.renderer.height-30, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarField);
@@ -676,8 +676,8 @@ export class PlayScene extends Phaser.Scene{
         else if (type == 2) {
             table.add(
                 scene.rexUI.add.label({
-                    text: scene.add.text(0, 0, "UPGRADE"),
-                    space: {left: 25, right: 0, top: 5, bottom: 0 }
+                    text: scene.add.text(0, 0, "UPGRADE", { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff' }),
+                    space: {left: 20, right: 0, top: 5, bottom: 0 }
                 })
             );
         }
@@ -706,17 +706,17 @@ export class PlayScene extends Phaser.Scene{
         }
         else if(type == 2){ //cost text
             label = scene.rexUI.add.label({
-                text: scene.add.text(0, 0, name, { fontFamily: 'NumbersFont', fontSize: 24, color: '#ffffff' }),
+                text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
             });
         }
         else if(type == 3){ //description
             label = scene.rexUI.add.label({
-                text: scene.add.text(0, 0, name, {fontSize: 16, color: '#ffffff' }),
+                text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 16, color: '#ffffff' }),
             });
         }
         else{
             label = scene.rexUI.add.label({
-                text: scene.add.text(0, 0, name, { fontFamily: 'Garamond', fontSize: 24, color: '#ffffff' }),
+                text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
             });
         }
         

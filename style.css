@@ -2,6 +2,14 @@
     font-family: NumbersFont;
     src: url('./assets/ShareTechMono-Regular.ttf');
 }
+@font-face {
+    font-family: ContraCur;
+    src: url('./assets/ContraCur.ttf');
+}
+@font-face {
+    font-family: ClearSans;
+    src: url('./assets/ClearSans.ttf');
+}
 html{
     background: black;
 }
