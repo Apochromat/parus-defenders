@@ -410,7 +410,7 @@ export class PlayScene extends Phaser.Scene{
         })       
     }
 
-    openToolbarLeft(){
+    openToolbarLeft(t = null){
         this.closeHeroesBar();
         if (this.recyclerViewSkills != undefined) {
             this.recyclerViewSkills.visible = false;
@@ -424,6 +424,9 @@ export class PlayScene extends Phaser.Scene{
         this.toolBarLeft.setDepth(CST.DEPTHS.ToolBarPrimal);
         this.toolBarRight.setDepth(CST.DEPTHS.ToolBarMinor);
 
+        if (this.recyclerViewShop != undefined) {
+            this.recyclerViewShop.destroy();
+        }
         this.recyclerViewShop = this.rexUI.add.scrollablePanel({
             x: 1050,
             y: 450,
@@ -472,14 +475,15 @@ export class PlayScene extends Phaser.Scene{
             this.scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[this.scene.playerStats.LEVELS_SHOP[currName]]
             this.scene.setStatusCOIN(this.scene.playerStats.COINS);
             this.scene.playerStats.LEVELS_SHOP[currName] += 1;
-            let temp = this.scene.recyclerViewShop.t;
             this.scene.closeToolbar();
-            this.scene.openToolbarLeft();
-            this.scene.recyclerViewShop.t = temp;
+            this.scene.openToolbarLeft(this.scene.recyclerViewShop.t);
         })
+        if (t != null){
+            this.t = t;
+        }
     }
 
-    openToolbarRight(){
+    openToolbarRight(t = null){
         this.closeHeroesBar();
         if (this.recyclerViewShop != undefined) {
             this.recyclerViewShop.visible = false;
@@ -493,6 +497,9 @@ export class PlayScene extends Phaser.Scene{
         this.toolBarRight.setDepth(CST.DEPTHS.ToolBarPrimal);
         this.toolBarLeft.setDepth(CST.DEPTHS.ToolBarMinor);
 
+        if (this.recyclerViewSkills != undefined) {
+            this.recyclerViewSkills.destroy();
+        }
         this.recyclerViewSkills = this.rexUI.add.scrollablePanel({
             x: 1050,
             y: 450,
@@ -539,12 +546,13 @@ export class PlayScene extends Phaser.Scene{
         })
         .on('child.click', function(child) {
             let currName = child.getParentSizer().name;
-            this.scene.playerStats.LEVELS_SKILLS[currName] += 1;
-            let temp = this.scene.recyclerViewSkills.t;
+            child.scene.playerStats.LEVELS_SKILLS[currName] += 1;
             this.scene.closeToolbar();
-            this.scene.openToolbarRight();
-            this.scene.recyclerViewSkills.t = temp;
+            this.scene.openToolbarRight(this.scene.recyclerViewSkills.t);
         })
+        if (t != null){
+            this.t = t;
+        }
     }
 
     closeToolbar(){
@@ -555,10 +563,10 @@ export class PlayScene extends Phaser.Scene{
         this.shopBar.visible = true;
         this.skillBar.visible = true;
         if (this.recyclerViewShop != undefined) {
-            this.recyclerViewShop.destroy();
+            this.recyclerViewShop.visible = false;
         }
         if (this.recyclerViewSkills != undefined) {
-            this.recyclerViewSkills.destroy();
+            this.recyclerViewSkills.visible = false;
         }
     }
 
