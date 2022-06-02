@@ -16,7 +16,6 @@ export const CST = {
         Background: "background",
         Parus: "parus",
         CharacterWindow: "characterWindow",
-        HPIcon: "icon_hp",
         PlayButton: 'playButton',
         BattleButton: "newWaveButton",
         OptionsButton: 'optionsButton',
@@ -27,7 +26,17 @@ export const CST = {
         ToolBarField: "toolBarField",
         HeroesBarClose: "heroesBarClose",
         HeroesBarField: "heroesBarField",
-        CatKnight: "catKnight"
+    },
+    ICONS: {
+        HPIcon: "icon_hp",
+        HeroCat: "iconHeroCat",
+        HeroCat2: "iconHeroCat2",
+        HeroCat3: "iconHeroCat3",
+        HeroCat4: "iconHeroCat4",
+        HeroCat5: "iconHeroCat5",
+        HeroCat6: "iconHeroCat6",
+        HeroCat7: "iconHeroCat7",
+        HeroCat8: "iconHeroCat8"
     },
     SPRITES32: {
         MonsterTwig: "monster_twig",
@@ -40,7 +49,6 @@ export const CST = {
         MonsterSlayer: "monster_slayer"
     },
     AUDIO: [
-
     ],
     MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
     SHOPLIST: {
@@ -188,36 +196,6 @@ export const CST = {
             Death: 'hero_cat_death'
         }
     },
-    HEROES: {
-        HeroCat: {
-            Name: "Кот-Рыцарь",
-            HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
-        },
-        HeroCat2: {
-            Name: "Кот-Рыцарь",
-            HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
-        },
-        HeroCat3: {
-            Name: "Кот-Рыцарь",
-            HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
-        },
-        HeroCat4: {
-            Name: "Кот-Рыцарь",
-            HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
-        }
-    },
     CHARACTERS: {
         MonsterTwig: {
             HealPoints: 1500,
@@ -265,6 +243,56 @@ export const CST = {
             Cost: 25
         },
         HeroCat: {
+            Name: "Кот-Рыцарь",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat2: {
+            Name: "Кот-Рыцарь 2",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat3: {
+            Name: "Кот-Рыцарь 3",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat4: {
+            Name: "Кот-Рыцарь 4",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat5: {
+            Name: "Кот-Рыцарь 5",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat6: {
+            Name: "Кот-Рыцарь 6",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat7: {
+            Name: "Кот-Рыцарь 7",
+            HealPoints: 1500,
+            Damage: 500,
+            Cooldown: 1000,
+            Speed: 50,
+        },
+        HeroCat8: {
+            Name: "Кот-Рыцарь 8",
             HealPoints: 1500,
             Damage: 500,
             Cooldown: 1000,
@@ -308,28 +336,28 @@ export const CST = {
             isBuildingAvailable: false
         }
     },
-    INSIDEHEROSLOTS: {
-        1: {
+    INSIDE_HERO_SLOTS: {
+        0: {
             x: 300,
+            y: 546
+        },
+        1: {
+            x: 520,
             y: 546
         },
         2: {
-            x: 520,
-            y: 546
+            x: 300,
+            y: 434
         },
         3: {
-            x: 300,
+            x: 520,
             y: 434
         },
         4: {
-            x: 520,
-            y: 434
-        },
-        5: {
             x: 300,
             y: 315
         },
-        6: {
+        5: {
             x: 520,
             y: 315
         },
@@ -342,7 +370,7 @@ export const CST = {
         ToolBarRecyclerView: 5004,
         HeroesBarField: 5006,
         HeroesBarClose: 5006,
-        HeroesBarRecyclerView: 5007
+        HeroesBarRecyclerView: 5007,
+        Slots: 1000
     }
-
 }

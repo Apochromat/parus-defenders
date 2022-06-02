@@ -9,10 +9,18 @@ export class LoadScene extends Phaser.Scene {
     init() {
 
     }
+
     loadImages() {
         this.load.setPath("./assets/images");
         for (let prop in CST.IMAGES) {
             this.load.image(CST.IMAGES[prop], CST.IMAGES[prop]+".png");
+        }
+    }
+
+    loadIcons() {
+        this.load.setPath("./assets/icons");
+        for (let prop in CST.ICONS) {
+            this.load.image(CST.ICONS[prop], CST.ICONS[prop]+".png");
         }
     }
 
@@ -42,6 +50,7 @@ export class LoadScene extends Phaser.Scene {
     preload() {
         //load image, spritesheet, sound
         this.loadImages();
+        this.loadIcons();
         this.loadAudio();
         this.loadSprites();
 

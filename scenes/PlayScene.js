@@ -49,6 +49,7 @@ export class PlayScene extends Phaser.Scene{
             sceneKey: 'rexUI'
         });
     }
+
     create () {
         this.playerStats = {
             LEVELS_SHOP: {
@@ -66,13 +67,35 @@ export class PlayScene extends Phaser.Scene{
                 HeroCat: 0,
                 HeroCat2: 0,
                 HeroCat3: 0,
-                HeroCat4: 0
+                HeroCat4: 0,
+                HeroCat5: 0,
+                HeroCat6: 0,
+                HeroCat7: 0,
+                HeroCat8: 0
             },
-            COINS: 1000000
+            COINS: 1000000,
+            AVAILABLE_HEROES: [
+                "HeroCat",
+                "HeroCat2",
+                "HeroCat3",
+                "HeroCat4",
+                "HeroCat5",
+                "HeroCat6",
+                "HeroCat7",
+                "HeroCat8"
+            ],
+            INSIDE_HERO_SLOTS: [
+                "Empty",
+                "Empty",
+                "Empty",
+                "Empty",
+                "Empty",
+                "Empty"
+            ]
         };
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
         this.parus = new Parus(this, 4);
-        this.parus.createHeroWindows();
+        this.parus.createHeroWindows(this.playerStats);
 
         this.characterHeap = new Characters.CharacterHeap();
         this.enemies = this.add.group();
@@ -289,10 +312,10 @@ export class PlayScene extends Phaser.Scene{
         this.skillBar.visible = true;
 
         this.toolBarLeft.on("pointerup", () => {
-            this.raiseToolbarLeft();
+            this.openToolbarLeft();
         });
         this.toolBarRight.on("pointerup", () => {
-            this.raiseToolbarRight();
+            this.openToolbarRight();
         });
         this.toolBarClose.on("pointerup", () => {
             this.closeToolbar();
@@ -301,20 +324,23 @@ export class PlayScene extends Phaser.Scene{
             this.closeHeroesBar();
         });
         this.shopBar.on("pointerup", () => {
-            this.raiseToolbarLeft();
+            this.openToolbarLeft();
         });
         this.skillBar.on("pointerup", () => {
-            this.raiseToolbarRight();
+            this.openToolbarRight();
         });
     }
+
     closeHeroesBar(){
         this.heroesBarField.visible = false;
         this.heroesBarClose.visible = false;
         if (this.recyclerViewHeroes != undefined) {
-            this.recyclerViewHeroes.visible = false;
+            this.recyclerViewHeroes.destroy();
         }
     }
+
     openHeroesBar(index){
+        this.closeToolbar();
         this.closeHeroesBar();
         this.heroesBarField.visible = true;
         this.heroesBarClose.visible = true;
@@ -330,7 +356,7 @@ export class PlayScene extends Phaser.Scene{
             background: this.rexUI.add.roundRectangle(0, 0, 1, 1, 10, 0x515151),
 
             panel: {
-                child: this.createGrid(this, 3),
+                child: this.createGrid(this, 3, index),
                 mask: {
                     mask: true,
                     padding: 1,
@@ -359,26 +385,33 @@ export class PlayScene extends Phaser.Scene{
                 right: 10,
                 top: 10,
                 bottom: 10,
-
                 panel: 10
             }
         }).layout().setDepth(CST.DEPTHS.HeroesBarRecyclerView); 
+
         let targets = [];
-        for (let el in CST.HEROES) {
+        for (let el of this.playerStats.AVAILABLE_HEROES) {
             targets.push(this.recyclerViewHeroes.getByName(el, true))
         }
+
         this.recyclerViewHeroes.setChildrenInteractive({
             targets: targets
         })
         .on('child.click', function(child) {
             let currName = child.getParentSizer().name;
+            this.scene.playerStats.AVAILABLE_HEROES.splice(this.scene.playerStats.AVAILABLE_HEROES.indexOf(currName), 1);
+            if (this.scene.playerStats.INSIDE_HERO_SLOTS[child.getParentSizer().index] != "Empty") {
+                this.scene.playerStats.AVAILABLE_HEROES.push(this.scene.playerStats.INSIDE_HERO_SLOTS[child.getParentSizer().index]);
+            }
+            this.scene.playerStats.INSIDE_HERO_SLOTS[child.getParentSizer().index] = currName;
+            this.scene.parus.createHeroWindows(this.scene.playerStats);
+            this.scene.openHeroesBar(child.getParentSizer().index);
             console.log(currName);
         })       
     }
 
-
-
-    raiseToolbarLeft(){
+    openToolbarLeft(){
+        this.closeHeroesBar();
         if (this.recyclerViewSkills != undefined) {
             this.recyclerViewSkills.visible = false;
         }
@@ -424,7 +457,6 @@ export class PlayScene extends Phaser.Scene{
                 right: 10,
                 top: 10,
                 bottom: 10,
-
                 panel: 10
             }
         }).layout().setDepth(CST.DEPTHS.ToolBarRecyclerView);
@@ -442,11 +474,13 @@ export class PlayScene extends Phaser.Scene{
             this.scene.playerStats.LEVELS_SHOP[currName] += 1;
             let temp = this.scene.recyclerViewShop.t;
             this.scene.closeToolbar();
-            this.scene.raiseToolbarLeft();
+            this.scene.openToolbarLeft();
             this.scene.recyclerViewShop.t = temp;
         })
     }
-    raiseToolbarRight(){
+
+    openToolbarRight(){
+        this.closeHeroesBar();
         if (this.recyclerViewShop != undefined) {
             this.recyclerViewShop.visible = false;
         }
@@ -508,7 +542,7 @@ export class PlayScene extends Phaser.Scene{
             this.scene.playerStats.LEVELS_SKILLS[currName] += 1;
             let temp = this.scene.recyclerViewSkills.t;
             this.scene.closeToolbar();
-            this.scene.raiseToolbarRight();
+            this.scene.openToolbarRight();
             this.scene.recyclerViewSkills.t = temp;
         })
     }
@@ -521,14 +555,14 @@ export class PlayScene extends Phaser.Scene{
         this.shopBar.visible = true;
         this.skillBar.visible = true;
         if (this.recyclerViewShop != undefined) {
-            this.recyclerViewShop.visible = false;
+            this.recyclerViewShop.destroy();
         }
         if (this.recyclerViewSkills != undefined) {
-            this.recyclerViewSkills.visible = false;
+            this.recyclerViewSkills.destroy();
         }
     }
 
-    createGrid(scene, type) {
+    createGrid(scene, type, index=0) {
         var sizer = scene.rexUI.add.fixWidthSizer({
             space: {
                 left: 3,
@@ -539,6 +573,7 @@ export class PlayScene extends Phaser.Scene{
                 line: 8,
             }
         })
+
         if(type == 1){
             for (let el in CST.SHOPLIST) {
                 sizer
@@ -548,6 +583,7 @@ export class PlayScene extends Phaser.Scene{
                 )
             }
         }
+
         else if(type == 2){
             for (let el in CST.SKILLSLIST) {
                 sizer
@@ -557,11 +593,13 @@ export class PlayScene extends Phaser.Scene{
                 )
             }
         }
+
         else if(type == 3){
-            for (let el in CST.HEROES) {
+            for (let el of this.playerStats.AVAILABLE_HEROES) {
+                if (el == undefined) {continue}
                 sizer
                 .add(
-                    this.createHeroesItem(scene, el), // child
+                    this.createHeroesItem(scene, el, index), // child
                     { expand: true }
                 )
             }
@@ -584,8 +622,8 @@ export class PlayScene extends Phaser.Scene{
             scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
         );
 
-        table.add(this.createIcon(scene, "HPIcon"), 0, 1, 'center', {left: 25, right: 150}, true);
-        table.add(this.createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', {left: 50}, true);
+        table.add(this.createIcon(scene, CST.ICONS.HPIcon), 0, 1, 'center', {left: 25, right: 150}, true);
+        table.add(this.createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
         table.add(this.createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', {right: 0}, true);
         table.add(this.createLable(scene, "LVL " + this.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', {left: 150}, true);
         table.add(this.createLable(scene,  CST.SHOPLIST[key].LevelCost[this.playerStats.LEVELS_SHOP[key]], 2), 2, 1, 'center', {left: 150}, true);
@@ -612,8 +650,8 @@ export class PlayScene extends Phaser.Scene{
             scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
         );
 
-        table.add(this.createIcon(scene, "HPIcon"), 0, 1, 'center', {left: 25, right: 150}, true);
-        table.add(this.createLable(scene, CST.SKILLSLIST[key].Name), 1, 0, 'left', {left: 50}, true);
+        table.add(this.createIcon(scene, CST.ICONS.HPIcon), 0, 1, 'center', {left: 25, right: 150}, true);
+        table.add(this.createLable(scene, CST.SKILLSLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
         table.add(this.createLable(scene, CST.SKILLSLIST[key].Description, 3), 1, 1, 'left', {right: 0}, true);
         table.add(this.createLable(scene, "LVL " + this.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);
         table.add(this.createButtonAdd(scene, key, 2), 2, 2, 'right', {top: 5, left: 150}, true);
@@ -625,7 +663,7 @@ export class PlayScene extends Phaser.Scene{
             );
     }
 
-    createHeroesItem(scene, key) {
+    createHeroesItem(scene, key, index) {
         var table = scene.rexUI.add.gridSizer({
             name: key,
             width: 375,
@@ -639,14 +677,14 @@ export class PlayScene extends Phaser.Scene{
         .addBackground(
             scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
         );
-
-        table.add(this.createIcon(scene, "CatKnight"), 0, 1, 'center', {left: 15, right: 0}, true);
-        table.add(this.createLable(scene, CST.HEROES[key].Name), 1, 0, 'left', {left: 50}, true);
-        table.add(this.createLable(scene, "HP: " + CST.HEROES[key].HealPoints, 3), 1, 1, 'left', {right: 0}, true);
-        table.add(this.createLable(scene, "Damage: " + CST.HEROES[key].Damage, 3), 1, 2, 'left', {right: 0, bottom: 20}, true);
+        table.index = index;
+        table.add(this.createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 15, right: 0}, true);
+        table.add(this.createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
+        table.add(this.createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 3), 1, 1, 'left', {right: 0}, true);
+        table.add(this.createLable(scene, "Damage: " + CST.CHARACTERS[key].Damage, 3), 1, 2, 'left', {right: 0, bottom: 20}, true);
         table.add(this.createLable(scene, "LVL " + this.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-        table.add(this.createLable(scene, "CoolDown: " + CST.HEROES[key].Cooldown, 3), 2, 1, 'left', {right: 0}, true);
-        table.add(this.createLable(scene, "Speed: " + CST.HEROES[key].Speed, 3), 2, 2, 'left', {left: 50, bottom: 20}, true);
+        table.add(this.createLable(scene, "CoolDown: " + CST.CHARACTERS[key].Cooldown, 3), 2, 1, 'left', {right: 0}, true);
+        table.add(this.createLable(scene, "Speed: " + CST.CHARACTERS[key].Speed, 3), 2, 2, 'left', {left: 50, bottom: 20}, true);
     
         return scene.rexUI.add.sizer({
         })
@@ -689,9 +727,10 @@ export class PlayScene extends Phaser.Scene{
             table, 1, 'center', 0, true 
             );
     }
+
     createIcon(scene, name) {
         var label = scene.rexUI.add.label({
-            icon: scene.add.image(0, 0,CST.IMAGES[name]),
+            icon: scene.add.image(0, 0, name),
         }).setDepth(CST.DEPTHS.ToolBarRecyclerView);
     
         return label;
