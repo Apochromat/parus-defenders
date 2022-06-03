@@ -11,6 +11,10 @@ var config = {
     type: Phaser.AUTO,
     width: width,
     height: height,
+    scale: {
+        // Fit to window
+        mode: Phaser.Scale.FIT,
+    },
     physics: {
         default: 'arcade',
         arcade: {
@@ -23,7 +27,8 @@ var config = {
     render:{
         pixelArt: true,
         antialias: true,
-        antialiasGL: true
+        antialiasGL: true,
+        mipmapFilter: "LINEAR_MIPMAP_LINEAR"
     }
 };
 
