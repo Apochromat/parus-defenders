@@ -122,23 +122,24 @@ export class PlayScene extends Phaser.Scene{
                 HeroCat8: 0
             },
             AVAILABLE_HEROES: [
-                "HeroCat",
-                "HeroCat2",
-                "HeroCat3",
-                "HeroCat4",
-                "HeroCat5",
-                "HeroCat6",
-                "HeroCat7",
-                "HeroCat8"
+                "HeroCat"
             ],
-            INSIDE_HERO_SLOTS: [
-                "Empty",
-                "Empty",
-                "Empty",
-                "Empty",
-                "Empty",
-                "Empty"
-            ]
+            HERO_SLOTS: [
+                CST.EMPTY,
+                CST.EMPTY,
+                CST.EMPTY,
+                CST.EMPTY,
+                CST.EMPTY,
+                CST.EMPTY
+            ],
+            HERO_SLOTS_SPAWNTIME: [
+                Date.now(),
+                Date.now(),
+                Date.now(),
+                Date.now(),
+                Date.now(),
+                Date.now()
+            ],
         };
     }
 
@@ -148,11 +149,11 @@ export class PlayScene extends Phaser.Scene{
             (obj1, obj2) => {
                 obj2.setVelocity(0, 0);
                 obj2.setAnimationHit();
-                if (Date.now() - obj2.lastDamageTime >= obj2.specs.Cooldown) {
+                if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
                     obj2.lastDamageTime = Date.now();
-                    if(!obj1.damage(obj2.specs.Damage)) {
+                    if(!obj1.damage(obj2.specs.PhysicalDamage)) {
                         for (let el in this.characterHeap.heap) {
-                            this.characterHeap.heap[el].specs.Damage = 0;
+                            this.characterHeap.heap[el].specs.PhysicalDamage = 0;
                             this.characterHeap.heap[el].setAnimationDeath();
                             this.characterHeap.heap[el].remove();
                         }
@@ -169,13 +170,13 @@ export class PlayScene extends Phaser.Scene{
                 obj2.setAnimationHit();
                 obj1.setVelocity(0, 0);
                 obj1.setAnimationHit(false);
-                if (Date.now() - obj1.lastDamageTime >= obj1.specs.Cooldown) {
+                if (Date.now() - obj1.lastDamageTime >= obj1.specs.AttackCooldown) {
                     obj1.lastDamageTime = Date.now();
-                    obj2.damage(obj1.specs.Damage);
+                    obj2.damage(obj1.specs.PhysicalDamage);
                 }
-                if (Date.now() - obj2.lastDamageTime >= obj2.specs.Cooldown) {
+                if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
                     obj2.lastDamageTime = Date.now();
-                    obj1.damage(obj2.specs.Damage);
+                    obj1.damage(obj2.specs.PhysicalDamage);
                 }
             }
         );
@@ -191,7 +192,11 @@ export class PlayScene extends Phaser.Scene{
         this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
         this.battleButton.on("pointerup", () => {
-            this.characterHeap.createHero("cat", this, 620, this.randomIntFromInterval(530, 620)).setAnimationWalk(false);
+            for (let i = 0; i < 3; i++) {
+                this.characterHeap.createHero("cat", this, 
+                this.randomIntFromInterval(CST.NUMBERS.SpawnAreaX0, CST.NUMBERS.SpawnAreaX1), 
+                this.randomIntFromInterval(CST.NUMBERS.SpawnAreaY0, CST.NUMBERS.SpawnAreaY1)).setAnimationWalk(false);
+            }
         });
     }
 

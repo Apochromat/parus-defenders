@@ -1,4 +1,5 @@
 export const CST = {
+    EMPTY: "Empty",
     SCENES: {
         MENU: "MENU",
         PLAY: "PLAY",
@@ -8,7 +9,11 @@ export const CST = {
         WIDTH: 1500,
         HEIGHT: 720,
         ParusX: 410,
-        ParusY: 415
+        ParusY: 415,
+        SpawnAreaX0: 620,
+        SpawnAreaY0: 530,
+        SpawnAreaX1: 700,
+        SpawnAreaY1: 620,
     },
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
@@ -25,7 +30,7 @@ export const CST = {
         ToolBarRight: "toolBarRight",
         ToolBarField: "toolBarField",
         HeroesBarClose: "heroesBarClose",
-        HeroesBarField: "heroesBarField",
+        HeroesBarField: "heroesBarField"
     },
     ICONS: {
         HPIcon: "icon_hp",
@@ -199,104 +204,180 @@ export const CST = {
     CHARACTERS: {
         MonsterTwig: {
             HealPoints: 1500,
-            Damage: 10,
-            Cooldown: 1000,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
             Speed: 150,
             PhysicalProtection: 10,
+            PoisonProtection: 10,
             MagicProtection: 10,
-            Cost: 25
+            Cost: 25,
+            Experience: 10
         },
         MonsterBrainer: {
             HealPoints: 2000,
-            Damage: 25,
-            Cooldown: 1000,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
             Speed: 100,
             PhysicalProtection: 10,
+            PoisonProtection: 10,
             MagicProtection: 10,
-            Cost: 25
+            Cost: 25,
+            Experience: 10
         },
         MonsterGhoul: {
             HealPoints: 3000,
-            Damage: 50,
-            Cooldown: 1000,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
             Speed: 100,
             PhysicalProtection: 10,
+            PoisonProtection: 10,
             MagicProtection: 10,
-            Cost: 25
+            Cost: 25,
+            Experience: 10
         },
         MonsterHedgehog: {
             HealPoints: 4000,
-            Damage: 40,
-            Cooldown: 1000,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
             Speed: 75,
             PhysicalProtection: 10,
+            PoisonProtection: 10,
             MagicProtection: 10,
-            Cost: 25
+            Cost: 25,
+            Experience: 10
         },
         MonsterSlayer: {
             HealPoints: 5000,
-            Damage: 75,
-            Cooldown: 1000,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
             Speed: 50,
             PhysicalProtection: 10,
+            PoisonProtection: 10,
             MagicProtection: 10,
-            Cost: 25
+            Cost: 25,
+            Experience: 10
         },
         HeroCat: {
             Name: "Кот-Рыцарь",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat2: {
             Name: "Кот-Рыцарь 2",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat3: {
             Name: "Кот-Рыцарь 3",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat4: {
             Name: "Кот-Рыцарь 4",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat5: {
             Name: "Кот-Рыцарь 5",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat6: {
             Name: "Кот-Рыцарь 6",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat7: {
             Name: "Кот-Рыцарь 7",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         },
         HeroCat8: {
             Name: "Кот-Рыцарь 8",
             HealPoints: 1500,
-            Damage: 500,
-            Cooldown: 1000,
-            Speed: 50,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50
         }
     },
     PARUS: {
@@ -336,7 +417,7 @@ export const CST = {
             isBuildingAvailable: false
         }
     },
-    INSIDE_HERO_SLOTS: {
+    HERO_SLOTS: {
         0: {
             x: 300,
             y: 546

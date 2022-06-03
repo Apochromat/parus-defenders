@@ -86,10 +86,10 @@ export function openHeroesBar(scene, index){
     .on('child.click', function(child) {
         let currName = child.getParentSizer().name;
         scene.playerStats.AVAILABLE_HEROES.splice(scene.playerStats.AVAILABLE_HEROES.indexOf(currName), 1);
-        if (scene.playerStats.INSIDE_HERO_SLOTS[child.getParentSizer().index] != "Empty") {
-            scene.playerStats.AVAILABLE_HEROES.push(scene.playerStats.INSIDE_HERO_SLOTS[child.getParentSizer().index]);
+        if (scene.playerStats.HERO_SLOTS[child.getParentSizer().index] != CST.EMPTY) {
+            scene.playerStats.AVAILABLE_HEROES.push(scene.playerStats.HERO_SLOTS[child.getParentSizer().index]);
         }
-        scene.playerStats.INSIDE_HERO_SLOTS[child.getParentSizer().index] = currName;
+        scene.playerStats.HERO_SLOTS[child.getParentSizer().index] = currName;
         scene.parus.createHeroWindows(scene.playerStats);
         openHeroesBar(scene, child.getParentSizer().index);
     })       
@@ -134,10 +134,10 @@ function createHeroesItem(scene, key, index) {
     table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 15, right: 0}, true);
     table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
     table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
-    table.add(createLable(scene, "Damage: " + CST.CHARACTERS[key].Damage, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
+    table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].PoisonDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
     table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-    table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].Cooldown, 2), 2, 1, 'left', {right: 0}, true);
-    table.add(createLable(scene, "Speed: " + CST.CHARACTERS[key].Speed, 2), 2, 2, 'left', {left: 50, bottom: 20}, true);
+    table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
+    //table.add(createLable(scene, "Speed: " + CST.CHARACTERS[key].Speed, 2), 2, 2, 'left', {left: 50, bottom: 20}, true);
 
     return scene.rexUI.add.sizer({
     })
