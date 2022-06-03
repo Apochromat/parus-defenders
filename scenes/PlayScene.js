@@ -77,15 +77,12 @@ export class PlayScene extends Phaser.Scene{
         this.createSpawnMonstersBar();
 
         this.setPhysicsEnemies();
-
-        this.update();
-        
     }
 
     update () {
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
-        setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
+        setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS-1);
         setStatusWAVE(this, 1, 1, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
         for (let el in this.characterHeap.heap) {
