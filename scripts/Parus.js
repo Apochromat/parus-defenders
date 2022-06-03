@@ -1,5 +1,6 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
+import { openHeroesBar } from "../scripts/CreateHeroesBar.js";
 
 export class Parus extends Phaser.Physics.Arcade.Sprite {
     level;
@@ -63,7 +64,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.setScale(2.5);
         this.setInteractive();
         this.on("pointerup", () => {
-            this.scene.openHeroesBar(this.index);
+            openHeroesBar(this.scene, this.index);
         })
     }
 }
