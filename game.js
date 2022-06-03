@@ -21,7 +21,9 @@ var config = {
         LoadScene, MenuScene, PlayScene
     ],
     render:{
-        pixelArt: true
+        pixelArt: true,
+        antialias: true,
+        antialiasGL: true
     }
 };
 

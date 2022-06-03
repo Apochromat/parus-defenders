@@ -302,6 +302,7 @@ export class PlayScene extends Phaser.Scene{
         this.heroesBarClose.setInteractive();
         this.shopBar.setInteractive();
         this.skillBar.setInteractive();
+        this.battleButton.setInteractive();
         this.toolBarRight.visible = false;
         this.toolBarLeft.visible = false;
         this.toolBarField.visible = false;
@@ -328,6 +329,9 @@ export class PlayScene extends Phaser.Scene{
         });
         this.skillBar.on("pointerup", () => {
             this.openToolbarRight();
+        });
+        this.battleButton.on("pointerup", () => {
+            this.characterHeap.createHero("cat", this, 620, this.randomIntFromInterval(530, 620)).setAnimationWalk(false);
         });
     }
 
