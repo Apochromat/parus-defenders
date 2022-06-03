@@ -14,6 +14,7 @@ export const CST = {
         SpawnAreaY0: 530,
         SpawnAreaX1: 700,
         SpawnAreaY1: 620,
+        SaveDataDelay: 10000
     },
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
@@ -382,39 +383,40 @@ export const CST = {
     },
     PARUS: {
         0 : {
-            MaxHP: 500,
-            MaxMP: 500,
-            InsideHeroSlots: 2,
-            OutsideHeroSlots: 0,
-            isBuildingAvailable: false
+            MaxHP: 250,
+            MaxMP: 250,
+            HeroSlots: 1,
+            BuildingSlots: 0
         },
         1 : {
-            MaxHP: 1000,
-            MaxMP: 1000,
-            InsideHeroSlots: 3,
-            OutsideHeroSlots: 0,
-            isBuildingAvailable: false
+            MaxHP: 500,
+            MaxMP: 500,
+            HeroSlots: 2,
+            BuildingSlots: 0
         },
         2 : {
-            MaxHP: 1250,
-            MaxMP: 1250,
-            InsideHeroSlots: 4,
-            OutsideHeroSlots: 0,
-            isBuildingAvailable: false
+            MaxHP: 1000,
+            MaxMP: 1000,
+            HeroSlots: 3,
+            BuildingSlots: 0
         },
         3 : {
-            MaxHP: 1500,
-            MaxMP: 1500,
-            InsideHeroSlots: 5,
-            OutsideHeroSlots: 0,
-            isBuildingAvailable: false
+            MaxHP: 1250,
+            MaxMP: 1250,
+            HeroSlots: 4,
+            BuildingSlots: 1
         },
         4 : {
+            MaxHP: 1500,
+            MaxMP: 1500,
+            HeroSlots: 5,
+            BuildingSlots: 2
+        },
+        5 : {
             MaxHP: 2000,
             MaxMP: 2000,
-            InsideHeroSlots: 6,
-            OutsideHeroSlots: 0,
-            isBuildingAvailable: false
+            HeroSlots: 6,
+            BuildingSlots: 3
         }
     },
     HERO_SLOTS: {

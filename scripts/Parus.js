@@ -8,9 +8,8 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     maxMP;
     currHP;
     currMP;
-    insideHeroSlots;
-    outsideHeroSlots;
-    isBuildingAvailable;
+    HeroSlots;
+    BuildingSlots;
     heroWindows = [];
 
     constructor(scene, level=0) {
@@ -37,13 +36,13 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         this.maxMP = CST.PARUS[this.level].MaxMP;
         this.currHP = this.maxHP;
         this.currMP = this.maxMP;
-        this.insideHeroSlots = CST.PARUS[this.level].InsideHeroSlots;
-        this.outsideHeroSlots = CST.PARUS[this.level].OutsideHeroSlots;
-        this.isBuildingAvailable = CST.PARUS[this.level].isBuildingAvailable;
+        this.HeroSlots = CST.PARUS[this.level].HeroSlots;
+        this.BuildingSlots = CST.PARUS[this.level].BuildingSlots;
+        this.createHeroWindows(this.scene.playerStats);
     }
 
     createHeroWindows(playerStats) {
-        for (let i = 0; i < this.insideHeroSlots; i++){
+        for (let i = 0; i < this.HeroSlots; i++){
             if (this.heroWindows[i] != undefined) {
                 if (this.heroWindows[i].heroImage != undefined) {
                     this.heroWindows[i].heroImage.destroy();

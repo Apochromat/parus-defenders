@@ -1,5 +1,6 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
+import { erasePlayerData } from "../scripts/PlayerData.js";
 export class MenuScene extends Phaser.Scene {
     constructor() {
         super({
@@ -20,6 +21,9 @@ export class MenuScene extends Phaser.Scene {
 
         playButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.PLAY);
+        })
+        optionButton.on("pointerup", () => {
+            erasePlayerData();
         })
     }
 }
