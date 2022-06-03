@@ -19,30 +19,33 @@ export function closeHeroesBar(scene){
     scene.heroesBarField.visible = false;
     scene.heroesBarClose.visible = false;
     
+    if (scene.itemCurrentHero != undefined) {
+        scene.itemCurrentHero.destroy();
+    }
     if (scene.recyclerViewHeroes != undefined) {
         scene.recyclerViewHeroes.destroy();
     }
 }
 
-export function openHeroesBar(scene, index){
+export function openHeroesBar(scene, index, t = null){
     closeToolBar(scene);
     closeHeroesBar(scene);
 
     scene.heroesBarField.visible = true;
     scene.heroesBarClose.visible = true;
 
-    scene.recyclerViewHeroes = scene.rexUI.add.scrollablePanel({
+    scene.itemCurrentHero = scene.rexUI.add.scrollablePanel({
         x: 1274,
-        y: 360,
+        y: 225,
         width: 434,
-        height: 450,
+        height: 180,
 
         scrollMode: 0,
 
         background: scene.rexUI.add.roundRectangle(0, 0, 1, 1, 10, 0x515151),
 
         panel: {
-            child: createGrid(scene, index),
+            child: scene.rexUI.add.fixWidthSizer({}).add(createHeroesItem(scene, scene.playerStats.HERO_SLOTS[index], index, 1)),
             mask: {
                 mask: true,
                 padding: 1,
@@ -60,6 +63,38 @@ export function openHeroesBar(scene, index){
             text: scene.add.text(0, 0, "Окно Героя: " + index, { fontFamily: 'Garamond', fontSize: 24, color: '#ffffff' }),
             space: {left: 0, right: 10, top: 0, bottom: 10 }
         }),
+
+        space: {
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10,
+            panel: 10
+        }
+    }).layout().setDepth(CST.DEPTHS.HeroesBarRecyclerView);
+
+    scene.recyclerViewHeroes = scene.rexUI.add.scrollablePanel({
+        x: 1274,
+        y: 455,
+        width: 434,
+        height: 270,
+
+        scrollMode: 0,
+
+        background: scene.rexUI.add.roundRectangle(0, 0, 1, 1, 10, 0x515151),
+
+        panel: {
+            child: createGrid(scene, index),
+            mask: {
+                mask: true,
+                padding: 1,
+            }
+        },
+
+        mouseWheelScroller: {
+            focus: false,
+            speed: 0.3
+        },
 
         slider: {
             track: scene.rexUI.add.roundRectangle(0, 0, 20, 10, 10, 0x3d3d3d),
@@ -91,8 +126,11 @@ export function openHeroesBar(scene, index){
         }
         scene.playerStats.HERO_SLOTS[child.getParentSizer().index] = currName;
         scene.parus.createHeroWindows(scene.playerStats);
-        openHeroesBar(scene, child.getParentSizer().index);
-    })       
+        openHeroesBar(scene, child.getParentSizer().index, scene.recyclerViewHeroes.t);
+    }) 
+    if (t != null){
+        scene.recyclerViewHeroes.t = t;
+    }      
 }
 
 function createGrid(scene, index=0) {
@@ -116,7 +154,7 @@ function createGrid(scene, index=0) {
     return sizer;
 }
 
-function createHeroesItem(scene, key, index) {
+function createHeroesItem(scene, key, index, type) {
     var table = scene.rexUI.add.gridSizer({
         name: key,
         width: 375,
@@ -131,14 +169,19 @@ function createHeroesItem(scene, key, index) {
         scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
     );
     table.index = index;
-    table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 15, right: 0}, true);
-    table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
-    table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
-    table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].PoisonDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
-    table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-    table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
-    //table.add(createLable(scene, "Speed: " + CST.CHARACTERS[key].Speed, 2), 2, 2, 'left', {left: 50, bottom: 20}, true);
 
+    if (scene.playerStats.HERO_SLOTS[index] == CST.EMPTY && type == 1) {
+
+    }
+    else {
+        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 15, right: 0}, true);
+        table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
+        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
+        table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].PoisonDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
+        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
+        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
+    }
+    
     return scene.rexUI.add.sizer({
     })
         .add(

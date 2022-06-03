@@ -28,6 +28,7 @@ export class PlayScene extends Phaser.Scene{
     toolBarClose;
     toolBarField;
 
+    itemCurrentHero;
     recyclerViewHeroes;
     heroesBarField;
     heroesBarClose;
@@ -74,7 +75,7 @@ export class PlayScene extends Phaser.Scene{
         createAnimations(this);
 
         this.createGUI();
-        this.createSpawnMonstersBar();
+        // this.createSpawnMonstersBar();
 
         this.setPhysicsEnemies();
     }
@@ -122,7 +123,13 @@ export class PlayScene extends Phaser.Scene{
                 HeroCat8: 0
             },
             AVAILABLE_HEROES: [
-                "HeroCat"
+                "HeroCat",
+                "HeroCat7",
+                "HeroCat2",
+                "HeroCat3",
+                "HeroCat4",
+                "HeroCat5",
+                "HeroCat6",
             ],
             HERO_SLOTS: [
                 CST.EMPTY,

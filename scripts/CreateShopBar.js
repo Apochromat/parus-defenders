@@ -98,7 +98,7 @@ export function openToolbarLeft(scene, t = null){
         }
     })
     if (t != null){
-        scene.t = t;
+        scene.recyclerViewShop.t = t;
     }
 }
 

@@ -95,7 +95,7 @@ export function openToolbarRight(scene, t = null){
         } 
     })
     if (t != null){
-        scene.t = t;
+        scene.recyclerViewSkills.t = t;
     }
 }
 
