@@ -12,8 +12,7 @@ var config = {
     width: width,
     height: height,
     scale: {
-        // Fit to window
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.FIT
     },
     physics: {
         default: 'arcade',
