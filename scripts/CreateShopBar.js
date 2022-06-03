@@ -1,22 +1,46 @@
 import { CST } from "./const.js";
+import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { closeToolBar } from "../scripts/CreateToolBar.js";
+
+export function createShopBar(scene){
+    scene.shopBar = scene.add.image(scene.game.renderer.width - 597, scene.game.renderer.height-30, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarField);
+    scene.toolBarLeft =  scene.add.image(scene.game.renderer.width - 597, scene.game.renderer.height-567, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarMinor);
+
+    scene.toolBarLeft.setInteractive();
+    scene.shopBar.setInteractive();
+
+    scene.toolBarLeft.visible = false;
+    scene.shopBar.visible = true;
+    
+    scene.toolBarLeft.on("pointerup", () => {
+        openToolbarLeft(scene);
+    });
+    scene.shopBar.on("pointerup", () => {
+        openToolbarLeft(scene);
+    });
+}
 
 export function openToolbarLeft(scene, t = null){
-    scene.closeHeroesBar();
+    closeHeroesBar(scene);
+
     if (scene.recyclerViewSkills != undefined) {
         scene.recyclerViewSkills.visible = false;
     }
+
     scene.shopBar.visible = false;
     scene.skillBar.visible = false;
     scene.toolBarRight.visible = true;
     scene.toolBarLeft.visible = true;
     scene.toolBarField.visible = true;
     scene.toolBarClose.visible = true;
+
     scene.toolBarLeft.setDepth(CST.DEPTHS.ToolBarPrimal);
     scene.toolBarRight.setDepth(CST.DEPTHS.ToolBarMinor);
 
     if (scene.recyclerViewShop != undefined) {
         scene.recyclerViewShop.destroy();
     }
+    
     scene.recyclerViewShop = scene.rexUI.add.scrollablePanel({
         x: 1050,
         y: 450,
@@ -65,7 +89,7 @@ export function openToolbarLeft(scene, t = null){
         scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]]
         scene.setStatusCOIN(scene.playerStats.COINS);
         scene.playerStats.LEVELS_SHOP[currName] += 1;
-        scene.closeToolbar();
+        closeToolBar(scene);
         openToolbarLeft(scene, scene.recyclerViewShop.t);
     })
     if (t != null){

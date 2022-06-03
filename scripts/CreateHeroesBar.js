@@ -1,8 +1,33 @@
 import { CST } from "./const.js";
+import { closeToolBar } from "../scripts/CreateToolBar.js";
+
+export function createHeroesBar(scene){
+    scene.heroesBarField =  scene.add.image(scene.game.renderer.width - 171, 391, CST.IMAGES.HeroesBarField).setDepth(CST.DEPTHS.HeroesBarField);
+    scene.heroesBarClose =  scene.add.image(scene.game.renderer.width - 491, 153, CST.IMAGES.HeroesBarClose).setDepth(CST.DEPTHS.HeroesBarClose);
+
+    scene.heroesBarClose.setInteractive();
+
+    scene.heroesBarField.visible = false;
+    scene.heroesBarClose.visible = false;
+    
+    scene.heroesBarClose.on("pointerup", () => {
+        closeHeroesBar(scene);
+    });
+}
+
+export function closeHeroesBar(scene){
+    scene.heroesBarField.visible = false;
+    scene.heroesBarClose.visible = false;
+    
+    if (scene.recyclerViewHeroes != undefined) {
+        scene.recyclerViewHeroes.destroy();
+    }
+}
 
 export function openHeroesBar(scene, index){
-    scene.closeToolbar();
-    scene.closeHeroesBar();
+    closeToolBar(scene);
+    closeHeroesBar(scene);
+
     scene.heroesBarField.visible = true;
     scene.heroesBarClose.visible = true;
 

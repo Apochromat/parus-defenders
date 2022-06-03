@@ -1,7 +1,10 @@
 import { CST } from "../scripts/const.js";
 import { createAnimations } from "../scripts/Animations.js";
-import { openToolbarLeft } from "../scripts/CreateShopBar.js";
-import { openToolbarRight } from "../scripts/CreateSkillsBar.js";
+import { createStatusBar, setStatusHP, setStatusMP, setStatusLVL, setStatusCOIN, setStatusWAVE } from "../scripts/CreateStatusBar.js";
+import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
+import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
+import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
+import { createHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
 export class PlayScene extends Phaser.Scene{
@@ -10,27 +13,34 @@ export class PlayScene extends Phaser.Scene{
     enemies;
     heroes;
     parus;
+
     graphicsHP;
     graphicsMP;
     graphicsLVL;
     graphicsWAVE;
+
     titleMP;
     titleHP;
     titleLVL;
     titleWAVE;
     titleCOIN;
-    toolBarLeft;
-    toolBarRight;
+
     toolBarClose;
     toolBarField;
+
+    recyclerViewHeroes;
     heroesBarField;
     heroesBarClose;
-    shopBar;
-    skillBar;
-    scrollablePanel;
+
+    toolBarLeft;
     recyclerViewShop;
+    shopBar;
+
+    toolBarRight;
     recyclerViewSkills;
-    recyclerViewHeroes;
+    skillBar;
+
+    scrollablePanel;
     statusBar;
     battleButton;
 
@@ -53,7 +63,43 @@ export class PlayScene extends Phaser.Scene{
     }
 
     create () {
+        this.createPlayerStats()
+        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
+        this.parus = new Parus(this, 4);
+        this.parus.createHeroWindows(this.playerStats);
+
+        this.characterHeap = new Characters.CharacterHeap();
+        this.enemies = this.add.group();
+        this.heroes = this.add.group();
+        createAnimations(this);
+
+        this.createGUI();
+        this.createSpawnMonstersBar();
+
+        this.setPhysicsEnemies()
+        
+    }
+
+    update () {
+        setStatusHP(this, this.parus.currHP, this.parus.maxHP);
+        setStatusMP(this, this.parus.currMP, this.parus.maxMP);
+        setStatusLVL(this, 30, 80, this.playerStats.LVL);
+        setStatusWAVE(this, 0, 1, this.playerStats.WAVE, 4500);
+        setStatusCOIN(this, this.playerStats.COINS);
+        for (let el in this.characterHeap.heap) {
+            this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
+        }     
+    }
+
+    randomIntFromInterval(min, max) { 
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    createPlayerStats(){
         this.playerStats = {
+            COINS: 1000000,
+            LVL: 5,
+            WAVE: 3,
             LEVELS_SHOP: {
                 ParusHP: 0,
                 ParusMP: 0,
@@ -75,7 +121,6 @@ export class PlayScene extends Phaser.Scene{
                 HeroCat7: 0,
                 HeroCat8: 0
             },
-            COINS: 1000000,
             AVAILABLE_HEROES: [
                 "HeroCat",
                 "HeroCat2",
@@ -95,16 +140,9 @@ export class PlayScene extends Phaser.Scene{
                 "Empty"
             ]
         };
-        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        this.parus = new Parus(this, 4);
-        this.parus.createHeroWindows(this.playerStats);
+    }
 
-        this.characterHeap = new Characters.CharacterHeap();
-        this.enemies = this.add.group();
-        this.heroes = this.add.group();
-        createAnimations(this);
-        this.createStatusBar();
-
+    setPhysicsEnemies(){
         this.physics.add.collider(this.parus, this.enemies,
             // При столкновении
             (obj1, obj2) => {
@@ -141,7 +179,23 @@ export class PlayScene extends Phaser.Scene{
                 }
             }
         );
+    }
+
+    createGUI() {
+        createToolBar(this);
+        createShopBar(this);
+        createSkillsBar(this);
+        createHeroesBar(this);
+        createStatusBar(this);
         
+        this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
+        this.battleButton.setInteractive();
+        this.battleButton.on("pointerup", () => {
+            this.characterHeap.createHero("cat", this, 620, this.randomIntFromInterval(530, 620)).setAnimationWalk(false);
+        });
+    }
+
+    createSpawnMonstersBar(){
         this.scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 850,
             y: 250,
@@ -153,7 +207,7 @@ export class PlayScene extends Phaser.Scene{
             background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x4e342e),
 
             panel: {
-                child: this.createGridMonsters(this),
+                child: this.createGrid(this),
                 mask: {
                     mask: true,
                     padding: 1,
@@ -190,22 +244,7 @@ export class PlayScene extends Phaser.Scene{
             })
     }
 
-    update () {
-        this.setStatusHP(this.parus.currHP, this.parus.maxHP);
-        this.setStatusMP(this.parus.currMP, this.parus.maxMP);
-        this.setStatusLVL(30, 80, 2);
-        this.setStatusWAVE(0, 1, 5, 4500);
-        this.setStatusCOIN(this.playerStats.COINS);
-        for (let el in this.characterHeap.heap) {
-            this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
-        }     
-    }
-
-    randomIntFromInterval(min, max) { 
-        return Math.floor(Math.random() * (max - min + 1) + min)
-    }
-
-    createGridMonsters(scene) {
+    createGrid(scene) {
         // Create table body
         var sizer = scene.rexUI.add.fixWidthSizer({
             space: {
@@ -238,125 +277,5 @@ export class PlayScene extends Phaser.Scene{
         }
     
         return sizer;
-    }
-
-    setStatusHP(currHP, maxHP){
-        this.graphicsHP.clear();
-        var rect = new Phaser.Geom.Rectangle(227, 26, 525*currHP/maxHP, 14);
-        this.graphicsHP.fillRectShape(rect);
-        this.titleHP.setText(currHP);
-    }
-
-    setStatusMP(currMP, maxMP){
-        this.graphicsMP.clear();
-        var rect = new Phaser.Geom.Rectangle(227, 60, 525*currMP/maxMP, 14);
-        this.graphicsMP.fillRectShape(rect);
-        this.titleMP.setText(currMP);
-    }
-
-    setStatusLVL(currXP, maxXP, LVL){
-        this.graphicsLVL.clear();
-        var rect = new Phaser.Geom.Rectangle(840, 26, 217*currXP/maxXP, 14);
-        this.graphicsLVL.fillRectShape(rect);
-        this.titleLVL.setText(LVL);
-    }
-
-    setStatusWAVE(type, coef, numWave = 0, numHPBoss = 0){
-        this.graphicsWAVE.clear();
-        var rect = new Phaser.Geom.Rectangle(840, 60, 482*coef, 14);
-        this.graphicsWAVE.fillRectShape(rect);
-        if (type == 1) {
-            this.titleWAVE.setText(numWave + "   " + "BOSS: " + numHPBoss + " HP");
-        }
-        else{
-            this.titleWAVE.setText(numWave);
-        }    
-    }
-
-    setStatusCOIN(numCoins){
-        this.titleCOIN.setText(numCoins);
-    }
-
-    createStatusBar() {
-        this.graphicsHP =  this.add.graphics({fillStyle: { color: 0xff1500} }).setDepth(1);
-        this.graphicsMP = this.add.graphics({fillStyle: { color: 0x009efa} }).setDepth(1);
-        this.graphicsLVL =  this.add.graphics({fillStyle: { color: 0x51c751} }).setDepth(1);
-        this.graphicsWAVE = this.add.graphics({fillStyle: { color: 0xe8e8e8} }).setDepth(1);
-        this.titleHP = this.add.text(240, 22, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
-        this.titleMP = this.add.text(240, 56, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
-        this.titleLVL = this.add.text(853, 22, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
-        this.titleWAVE = this.add.text(853, 56, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
-        this.titleCOIN = this.add.text(1130, 22, 0, { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
-        this.statusBar = this.add.image(this.game.renderer.width / 2, 50, CST.IMAGES.StatusBar).setDepth(0);
-        this.shopBar = this.add.image(this.game.renderer.width - 597, this.game.renderer.height-30, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarField);
-        this.skillBar = this.add.image(this.game.renderer.width - 297, this.game.renderer.height-30, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarField);
-        this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
-        this.toolBarRight =  this.add.image(this.game.renderer.width - 297, this.game.renderer.height-567, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarPrimal);
-        this.toolBarLeft =  this.add.image(this.game.renderer.width - 597, this.game.renderer.height-567, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarMinor);
-        this.toolBarClose =  this.add.image(this.game.renderer.width - 128, this.game.renderer.height-508, CST.IMAGES.ToolBarClose).setDepth(CST.DEPTHS.ToolBarClose);
-        this.toolBarField =  this.add.image(this.game.renderer.width - 447, this.game.renderer.height-270, CST.IMAGES.ToolBarField).setDepth(CST.DEPTHS.ToolBarField);
-        this.heroesBarField =  this.add.image(this.game.renderer.width - 171, 391, CST.IMAGES.HeroesBarField).setDepth(CST.DEPTHS.HeroesBarField);
-        this.heroesBarClose =  this.add.image(this.game.renderer.width - 491, 153, CST.IMAGES.HeroesBarClose).setDepth(CST.DEPTHS.HeroesBarClose);
-
-        this.toolBarRight.setInteractive();
-        this.toolBarLeft.setInteractive();
-        this.toolBarClose.setInteractive();
-        this.heroesBarClose.setInteractive();
-        this.shopBar.setInteractive();
-        this.skillBar.setInteractive();
-        this.battleButton.setInteractive();
-        this.toolBarRight.visible = false;
-        this.toolBarLeft.visible = false;
-        this.toolBarField.visible = false;
-        this.toolBarClose.visible = false;
-        this.heroesBarField.visible = false;
-        this.heroesBarClose.visible = false;
-        this.shopBar.visible = true;
-        this.skillBar.visible = true;
-
-        this.toolBarLeft.on("pointerup", () => {
-            openToolbarLeft(this);
-        });
-        this.toolBarRight.on("pointerup", () => {
-            openToolbarRight(this);
-        });
-        this.toolBarClose.on("pointerup", () => {
-            this.closeToolbar();
-        });
-        this.heroesBarClose.on("pointerup", () => {
-            this.closeHeroesBar();
-        });
-        this.shopBar.on("pointerup", () => {
-            openToolbarLeft(this);
-        });
-        this.skillBar.on("pointerup", () => {
-            openToolbarRight(this);
-        });
-        this.battleButton.on("pointerup", () => {
-            this.characterHeap.createHero("cat", this, 620, this.randomIntFromInterval(530, 620)).setAnimationWalk(false);
-        });
-    }
-
-    closeHeroesBar(){
-        this.heroesBarField.visible = false;
-        this.heroesBarClose.visible = false;
-        if (this.recyclerViewHeroes != undefined) {
-            this.recyclerViewHeroes.destroy();
-        }
-    }
-
-    closeToolbar(){
-        this.toolBarRight.visible = false;
-        this.toolBarLeft.visible = false;
-        this.toolBarField.visible = false;
-        this.toolBarClose.visible = false;
-        this.shopBar.visible = true;
-        this.skillBar.visible = true;
-        if (this.recyclerViewShop != undefined) {
-            this.recyclerViewShop.visible = false;
-        }
-        if (this.recyclerViewSkills != undefined) {
-            this.recyclerViewSkills.visible = false;
-        }
     }
 }

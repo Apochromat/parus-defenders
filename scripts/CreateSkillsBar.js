@@ -1,22 +1,46 @@
 import { CST } from "./const.js";
+import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { closeToolBar } from "../scripts/CreateToolBar.js";
+
+export function createSkillsBar(scene){
+    scene.skillBar = scene.add.image(scene.game.renderer.width - 297, scene.game.renderer.height-30, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarField);
+    scene.toolBarRight =  scene.add.image(scene.game.renderer.width - 297, scene.game.renderer.height-567, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarPrimal);
+    
+    scene.toolBarRight.setInteractive();
+    scene.skillBar.setInteractive();
+
+    scene.toolBarRight.visible = false;
+    scene.skillBar.visible = true;
+
+    scene.toolBarRight.on("pointerup", () => {
+        openToolbarRight(scene);
+    });
+    scene.skillBar.on("pointerup", () => {
+        openToolbarRight(scene);
+    });
+}
 
 export function openToolbarRight(scene, t = null){
-    scene.closeHeroesBar();
+    closeHeroesBar(scene);
+
     if (scene.recyclerViewShop != undefined) {
         scene.recyclerViewShop.visible = false;
     }
+
     scene.shopBar.visible = false;
     scene.skillBar.visible = false;
     scene.toolBarRight.visible = true;
     scene.toolBarLeft.visible = true;
     scene.toolBarField.visible = true;
     scene.toolBarClose.visible = true;
+
     scene.toolBarRight.setDepth(CST.DEPTHS.ToolBarPrimal);
     scene.toolBarLeft.setDepth(CST.DEPTHS.ToolBarMinor);
 
     if (scene.recyclerViewSkills != undefined) {
         scene.recyclerViewSkills.destroy();
     }
+    
     scene.recyclerViewSkills = scene.rexUI.add.scrollablePanel({
         x: 1050,
         y: 450,
@@ -64,7 +88,7 @@ export function openToolbarRight(scene, t = null){
     .on('child.click', function(child) {
         let currName = child.getParentSizer().name;
         scene.playerStats.LEVELS_SKILLS[currName] += 1;
-        scene.closeToolbar();
+        closeToolBar(scene);
         openToolbarRight(scene, scene.recyclerViewSkills.t);
     })
     if (t != null){
