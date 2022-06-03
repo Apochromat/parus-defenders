@@ -45,6 +45,9 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     createHeroWindows(playerStats) {
         for (let i = 0; i < this.insideHeroSlots; i++){
             if (this.heroWindows[i] != undefined) {
+                if (this.heroWindows[i].heroImage != undefined) {
+                    this.heroWindows[i].heroImage.destroy();
+                }
                 this.heroWindows[i].destroy();
             }
             this.heroWindows[i] = new HeroWindow(this.scene, CST.HERO_SLOTS[i].x, CST.HERO_SLOTS[i].y, i, playerStats);

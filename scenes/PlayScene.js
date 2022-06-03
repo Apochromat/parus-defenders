@@ -83,7 +83,7 @@ export class PlayScene extends Phaser.Scene{
     update () {
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
-        setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS-1);
+        setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusWAVE(this, 1, 1, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
         for (let el in this.characterHeap.heap) {
@@ -98,7 +98,7 @@ export class PlayScene extends Phaser.Scene{
     createPlayerStats(){
         this.playerStats = {
             COINS: 1000000,
-            SKILL_POINTS: 5,
+            SKILL_POINTS: 4,
             LVL: 5,
             WAVE: 3,
             LEVELS_SHOP: {
