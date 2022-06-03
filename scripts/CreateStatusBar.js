@@ -29,11 +29,14 @@ export function setStatusMP(scene, currMP, maxMP){
     scene.titleMP.setText(currMP);
 }
 
-export function setStatusLVL(scene, currXP, maxXP, LVL){
+export function setStatusLVL(scene, currXP, maxXP, LVL, skillPoints){
     scene.graphicsLVL.clear();
     var rect = new Phaser.Geom.Rectangle(840, 26, 217*currXP/maxXP, 14);
     scene.graphicsLVL.fillRectShape(rect);
-    scene.titleLVL.setText(LVL);
+    if (skillPoints > 0) 
+        scene.titleLVL.setText(LVL + "                 " + "SkillPoints: " + skillPoints);
+    else
+        scene.titleLVL.setText(LVL);
 }
 
 export function setStatusWAVE(scene, type, coef, numWave = 0, numHPBoss = 0){
@@ -41,7 +44,7 @@ export function setStatusWAVE(scene, type, coef, numWave = 0, numHPBoss = 0){
     var rect = new Phaser.Geom.Rectangle(840, 60, 482*coef, 14);
     scene.graphicsWAVE.fillRectShape(rect);
     if (type == 1) {
-        scene.titleWAVE.setText(numWave + "   " + "BOSS: " + numHPBoss + " HP");
+        scene.titleWAVE.setText(numWave + "   BOSS: " + numHPBoss + " HP");
     }
     else{
         scene.titleWAVE.setText(numWave);

@@ -76,15 +76,17 @@ export class PlayScene extends Phaser.Scene{
         this.createGUI();
         this.createSpawnMonstersBar();
 
-        this.setPhysicsEnemies()
+        this.setPhysicsEnemies();
+
+        this.update();
         
     }
 
     update () {
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
-        setStatusLVL(this, 30, 80, this.playerStats.LVL);
-        setStatusWAVE(this, 0, 1, this.playerStats.WAVE, 4500);
+        setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
+        setStatusWAVE(this, 1, 1, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
         for (let el in this.characterHeap.heap) {
             this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
@@ -98,6 +100,7 @@ export class PlayScene extends Phaser.Scene{
     createPlayerStats(){
         this.playerStats = {
             COINS: 1000000,
+            SKILL_POINTS: 5,
             LVL: 5,
             WAVE: 3,
             LEVELS_SHOP: {
@@ -182,11 +185,11 @@ export class PlayScene extends Phaser.Scene{
     }
 
     createGUI() {
+        createStatusBar(this);
         createToolBar(this);
         createShopBar(this);
         createSkillsBar(this);
         createHeroesBar(this);
-        createStatusBar(this);
         
         this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();

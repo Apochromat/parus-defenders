@@ -87,9 +87,12 @@ export function openToolbarRight(scene, t = null){
     })
     .on('child.click', function(child) {
         let currName = child.getParentSizer().name;
-        scene.playerStats.LEVELS_SKILLS[currName] += 1;
-        closeToolBar(scene);
-        openToolbarRight(scene, scene.recyclerViewSkills.t);
+        if (scene.playerStats.SKILL_POINTS != 0) {
+            scene.playerStats.SKILL_POINTS -= 1;
+            scene.playerStats.LEVELS_SKILLS[currName] += 1;
+            closeToolBar(scene);
+            openToolbarRight(scene, scene.recyclerViewSkills.t);
+        } 
     })
     if (t != null){
         scene.t = t;

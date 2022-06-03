@@ -1,6 +1,7 @@
 import { CST } from "./const.js";
 import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
+import { setStatusCOIN } from "../scripts/CreateStatusBar.js";
 
 export function createShopBar(scene){
     scene.shopBar = scene.add.image(scene.game.renderer.width - 597, scene.game.renderer.height-30, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarField);
@@ -86,11 +87,15 @@ export function openToolbarLeft(scene, t = null){
     })
     .on('child.click', function(child) {
         let currName = child.getParentSizer().name;
-        scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]]
-        scene.setStatusCOIN(scene.playerStats.COINS);
-        scene.playerStats.LEVELS_SHOP[currName] += 1;
-        closeToolBar(scene);
-        openToolbarLeft(scene, scene.recyclerViewShop.t);
+        if ((scene.playerStats.COINS - CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]]) >= 0 &&
+            CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]] != undefined
+        ) {
+            scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]];
+            setStatusCOIN(scene, scene.playerStats.COINS);
+            scene.playerStats.LEVELS_SHOP[currName] += 1;
+            closeToolBar(scene);
+            openToolbarLeft(scene, scene.recyclerViewShop.t);
+        }
     })
     if (t != null){
         scene.t = t;
