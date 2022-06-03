@@ -5,6 +5,7 @@ import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
 import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
 import { createHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
 export class PlayScene extends Phaser.Scene{
@@ -66,7 +67,7 @@ export class PlayScene extends Phaser.Scene{
     create () {
         this.createPlayerStats()
         this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        this.parus = new Parus(this, 4);
+        this.parus = new Parus(this, 5);
         this.parus.createHeroWindows(this.playerStats);
 
         this.characterHeap = new Characters.CharacterHeap();
@@ -81,6 +82,10 @@ export class PlayScene extends Phaser.Scene{
     }
 
     update () {
+        if (Date.now() - this.playerStats.Date >= CST.NUMBERS.SaveDataDelay) {
+            savePlayerData(this.playerStats);
+            console.log("Data Saved");
+        }
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
@@ -96,58 +101,7 @@ export class PlayScene extends Phaser.Scene{
     }
 
     createPlayerStats(){
-        this.playerStats = {
-            COINS: 1000000,
-            SKILL_POINTS: 4,
-            LVL: 5,
-            WAVE: 3,
-            LEVELS_SHOP: {
-                ParusHP: 0,
-                ParusMP: 0,
-                ParusDEF: 0,
-                CatKnight: 0,
-                CatNinja: 0,
-                CatMag: 0
-            },
-            LEVELS_SKILLS: {
-                Cooldown: 0
-            },
-            LEVELS_HEROES: {
-                HeroCat: 0,
-                HeroCat2: 0,
-                HeroCat3: 0,
-                HeroCat4: 0,
-                HeroCat5: 0,
-                HeroCat6: 0,
-                HeroCat7: 0,
-                HeroCat8: 0
-            },
-            AVAILABLE_HEROES: [
-                "HeroCat",
-                "HeroCat7",
-                "HeroCat2",
-                "HeroCat3",
-                "HeroCat4",
-                "HeroCat5",
-                "HeroCat6",
-            ],
-            HERO_SLOTS: [
-                CST.EMPTY,
-                CST.EMPTY,
-                CST.EMPTY,
-                CST.EMPTY,
-                CST.EMPTY,
-                CST.EMPTY
-            ],
-            HERO_SLOTS_SPAWNTIME: [
-                Date.now(),
-                Date.now(),
-                Date.now(),
-                Date.now(),
-                Date.now(),
-                Date.now()
-            ],
-        };
+        this.playerStats = loadPlayerData();
     }
 
     setPhysicsEnemies(){
