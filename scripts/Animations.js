@@ -24,8 +24,95 @@ export function createAnimations(scene) {
     });
 
     scene.anims.create({
-        key: CST.ANIMATIONS.HeroCat.Death,  
+        key: CST.ANIMATIONS.HeroCat.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCat, { frames: [14, 15, 16, 17, 18, 19] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Centurion
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroCenturion.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [48, 49, 50, 51, 52] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroCenturion.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [60, 61, 62, 63, 64, 65] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroCenturion.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [0, 1, 2, 3, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroCenturion.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [24, 25, 26, 27, 28] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Nightmare
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroNightmare.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroNightmare.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [23, 24, 25, 26, 27, 28] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroNightmare.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 ] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroNightmare.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Wizard
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWizard.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [32, 33, 34, 35, 36, 37] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWizard.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [16, 17, 18, 19, 20, 21, 22, 23 ] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWizard.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWizard.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [24, 25, 26, 27, 28, 29, 30, 31] }),
         frameRate: 8,
         repeat: 0
     });

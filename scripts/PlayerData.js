@@ -1,6 +1,7 @@
 import { CST } from "../scripts/const.js";
 
 var SAVE_KEY = "ParusSave";
+var DisableSaving = true;
 
 var playerDataTemplate = {
     Date: Date.now(),
@@ -22,22 +23,13 @@ var playerDataTemplate = {
     },
     LEVELS_HEROES: {
         HeroCat: 0,
-        HeroCat2: 0,
-        HeroCat3: 0,
-        HeroCat4: 0,
-        HeroCat5: 0,
-        HeroCat6: 0,
-        HeroCat7: 0,
-        HeroCat8: 0
+        HeroCenturion: 0,
+        HeroNightmare: 0
     },
     AVAILABLE_HEROES: [
         "HeroCat",
-        "HeroCat7",
-        "HeroCat2",
-        "HeroCat3",
-        "HeroCat4",
-        "HeroCat5",
-        "HeroCat6",
+        "HeroCenturion",
+        "HeroNightmare"
     ],
     HERO_SLOTS: [
         CST.EMPTY,
@@ -59,7 +51,7 @@ var playerDataTemplate = {
 
 export function loadPlayerData(){
     let temp = JSON.parse(localStorage.getItem(SAVE_KEY));
-    if (temp != null){
+    if (temp != null && !DisableSaving){
         return temp;
     }
     return playerDataTemplate;

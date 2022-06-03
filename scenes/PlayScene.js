@@ -76,7 +76,7 @@ export class PlayScene extends Phaser.Scene{
         createAnimations(this);
 
         this.createGUI();
-        // this.createSpawnMonstersBar();
+        this.createSpawnMonstersBar();
 
         this.setPhysicsEnemies();
     }
@@ -153,8 +153,8 @@ export class PlayScene extends Phaser.Scene{
         this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
         this.battleButton.on("pointerup", () => {
-            for (let i = 0; i < 3; i++) {
-                this.characterHeap.createHero("cat", this, 
+            for (let i = 0; i < 1; i++) {
+                this.characterHeap.createHero("wizard", this, 
                 this.randomIntFromInterval(CST.NUMBERS.SpawnAreaX0, CST.NUMBERS.SpawnAreaX1), 
                 this.randomIntFromInterval(CST.NUMBERS.SpawnAreaY0, CST.NUMBERS.SpawnAreaY1)).setAnimationWalk(false);
             }

@@ -14,7 +14,7 @@ export const CST = {
         SpawnAreaY0: 530,
         SpawnAreaX1: 700,
         SpawnAreaY1: 620,
-        SaveDataDelay: 10000
+        SaveDataDelay: 60000
     },
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
@@ -36,8 +36,8 @@ export const CST = {
     ICONS: {
         HPIcon: "icon_hp",
         HeroCat: "iconHeroCat",
-        HeroCat2: "iconHeroCat2",
-        HeroCat3: "iconHeroCat3",
+        HeroCenturion: "iconHeroCat2",
+        HeroNightmare: "iconHeroCat3",
         HeroCat4: "iconHeroCat4",
         HeroCat5: "iconHeroCat5",
         HeroCat6: "iconHeroCat6",
@@ -49,10 +49,15 @@ export const CST = {
         MonsterBrainer: "monster_brainer",
         MonsterGhoul: "monster_ghoul",
         MonsterHedgehog: "monster_hedgehog",
-        HeroCat: "hero_cat"
+        HeroCat: "hero_cat",
+        HeroCenturion: "hero_centurion"
     },
     SPRITES64: {
         MonsterSlayer: "monster_slayer"
+    },
+    SPRITES80:{
+        HeroNightmare: "hero_nightmare",
+        HeroWizard: "hero_wisard"
     },
     AUDIO: [
     ],
@@ -200,11 +205,29 @@ export const CST = {
             Walk: 'hero_cat_walk',
             Hit: 'hero_cat_hit',
             Death: 'hero_cat_death'
+        },
+        HeroCenturion: {
+            Idle: 'hero_centurion_idle',
+            Walk: 'hero_centurion_walk',
+            Hit: 'hero_centurion_hit',
+            Death: 'hero_centurion_death'
+        },
+        HeroNightmare: {
+            Idle: 'hero_nightmare_idle',
+            Walk: 'hero_nightmare_walk',
+            Hit: 'hero_nightmare_hit',
+            Death: 'hero_nightmare_death'
+        },
+        HeroWizard: {
+            Idle: 'hero_wizard_idle',
+            Walk: 'hero_wizard_walk',
+            Hit: 'hero_wizard_hit',
+            Death: 'hero_wizard_death'
         }
     },
     CHARACTERS: {
         MonsterTwig: {
-            HealPoints: 1500,
+            HealPoints: 500,
             PhysicalDamage: 10,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -282,8 +305,8 @@ export const CST = {
             MagicProtection: 10,
             Speed: 50
         },
-        HeroCat2: {
-            Name: "Кот-Рыцарь 2",
+        HeroCenturion: {
+            Name: "Центурион Рори",
             HealPoints: 1500,
             PhysicalDamage: 10,
             PoisonDamage: 10,
@@ -296,8 +319,8 @@ export const CST = {
             MagicProtection: 10,
             Speed: 50
         },
-        HeroCat3: {
-            Name: "Кот-Рыцарь 3",
+        HeroNightmare: {
+            Name: "Кошмар",
             HealPoints: 1500,
             PhysicalDamage: 10,
             PoisonDamage: 10,
@@ -310,64 +333,8 @@ export const CST = {
             MagicProtection: 10,
             Speed: 50
         },
-        HeroCat4: {
-            Name: "Кот-Рыцарь 4",
-            HealPoints: 1500,
-            PhysicalDamage: 10,
-            PoisonDamage: 10,
-            MagicDamage: 10,
-            AttackCooldown: 1000,
-            SpawnCooldown: 10000,
-            SpawnBatchSize: 3,
-            PhysicalProtection: 10,
-            PoisonProtection: 10,
-            MagicProtection: 10,
-            Speed: 50
-        },
-        HeroCat5: {
-            Name: "Кот-Рыцарь 5",
-            HealPoints: 1500,
-            PhysicalDamage: 10,
-            PoisonDamage: 10,
-            MagicDamage: 10,
-            AttackCooldown: 1000,
-            SpawnCooldown: 10000,
-            SpawnBatchSize: 3,
-            PhysicalProtection: 10,
-            PoisonProtection: 10,
-            MagicProtection: 10,
-            Speed: 50
-        },
-        HeroCat6: {
-            Name: "Кот-Рыцарь 6",
-            HealPoints: 1500,
-            PhysicalDamage: 10,
-            PoisonDamage: 10,
-            MagicDamage: 10,
-            AttackCooldown: 1000,
-            SpawnCooldown: 10000,
-            SpawnBatchSize: 3,
-            PhysicalProtection: 10,
-            PoisonProtection: 10,
-            MagicProtection: 10,
-            Speed: 50
-        },
-        HeroCat7: {
-            Name: "Кот-Рыцарь 7",
-            HealPoints: 1500,
-            PhysicalDamage: 10,
-            PoisonDamage: 10,
-            MagicDamage: 10,
-            AttackCooldown: 1000,
-            SpawnCooldown: 10000,
-            SpawnBatchSize: 3,
-            PhysicalProtection: 10,
-            PoisonProtection: 10,
-            MagicProtection: 10,
-            Speed: 50
-        },
-        HeroCat8: {
-            Name: "Кот-Рыцарь 8",
+        HeroWizard: {
+            Name: "Чародей",
             HealPoints: 1500,
             PhysicalDamage: 10,
             PoisonDamage: 10,
