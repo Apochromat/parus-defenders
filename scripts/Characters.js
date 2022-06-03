@@ -79,6 +79,9 @@ export class MonsterTwig extends CharacterSprite {
 
     setAnimationHit(isLeftOriented = true){
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Death) {
+            this.once('animationcomplete', ()=>{
+                this.setAnimationWalk(isLeftOriented)
+            })
             this.play(CST.ANIMATIONS.MonsterTwig.Hit);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
@@ -142,6 +145,9 @@ export class MonsterBrainer extends CharacterSprite {
 
     setAnimationHit(isLeftOriented = true){
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Death) {
+            this.once('animationcomplete', ()=>{
+                this.setAnimationWalk(isLeftOriented)
+            })
             this.play(CST.ANIMATIONS.MonsterBrainer.Hit);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
@@ -207,6 +213,9 @@ export class MonsterGhoul extends CharacterSprite {
 
     setAnimationHit(isLeftOriented = true){
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
+            this.once('animationcomplete', ()=>{
+                this.setAnimationWalk(isLeftOriented)
+            })
             this.play(CST.ANIMATIONS.MonsterGhoul.Hit);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
@@ -273,6 +282,9 @@ export class MonsterHedgehog extends CharacterSprite {
 
     setAnimationHit(isLeftOriented = true){
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Death) {
+            this.once('animationcomplete', ()=>{
+                this.setAnimationWalk(isLeftOriented)
+            })
             this.play(CST.ANIMATIONS.MonsterHedgehog.Hit);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
@@ -337,6 +349,9 @@ export class MonsterSlayer extends CharacterSprite {
 
     setAnimationHit(isLeftOriented = true){
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Death) {
+            this.once('animationcomplete', ()=>{
+                this.setAnimationWalk(isLeftOriented)
+            })
             this.play(CST.ANIMATIONS.MonsterSlayer.Hit);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
@@ -401,6 +416,9 @@ export class HeroCat extends CharacterSprite {
 
     setAnimationHit(isLeftOriented = true){
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Death) {
+            this.once('animationcomplete', ()=>{
+                this.setAnimationIdle(isLeftOriented)
+            })
             this.play(CST.ANIMATIONS.HeroCat.Hit);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;

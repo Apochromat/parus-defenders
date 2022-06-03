@@ -20,7 +20,7 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.HeroCat.Hit,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCat, { frames: [0, 1, 2, 3, 7, 8, 9, 10] }),
         frameRate: 8,
-        repeat: -1
+        repeat: 0
     });
 
     scene.anims.create({
@@ -49,7 +49,7 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.MonsterTwig.Hit,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterTwig, { frames: [16, 17, 18, 19, 20, 21] }),
         frameRate: 8,
-        repeat: -1
+        repeat: 0
     });
 
     scene.anims.create({
@@ -78,7 +78,7 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.MonsterBrainer.Hit,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterBrainer, { frames: [7, 8, 9, 10] }),
         frameRate: 8,
-        repeat: -1
+        repeat: 0
     });
 
     scene.anims.create({
@@ -107,7 +107,7 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.MonsterGhoul.Hit,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterGhoul, { frames: [16, 17, 18, 19, 20, 21] }),
         frameRate: 8,
-        repeat: -1
+        repeat: 0
     });
 
     scene.anims.create({
@@ -136,7 +136,7 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.MonsterHedgehog.Hit,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterHedgehog, { frames: [8, 9, 10, 11] }),
         frameRate: 8,
-        repeat: -1
+        repeat: 0
     });
 
     scene.anims.create({
@@ -165,7 +165,7 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.MonsterSlayer.Hit,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterSlayer, { frames: [16, 17, 18, 19, 20] }),
         frameRate: 8,
-        repeat: -1
+        repeat: 0
     });
 
     scene.anims.create({
