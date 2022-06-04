@@ -112,8 +112,6 @@ export class MonsterTwig extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterTwig.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterTwig.Cost;
             this.setAnimationDeath();
             this.remove();
             return false
@@ -123,6 +121,10 @@ export class MonsterTwig extends CharacterSprite {
 
     remove() {
         this.once('animationcomplete', () => {
+            if (this.scene != undefined) {
+                this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterTwig.Experience;
+                this.scene.playerStats.COINS += CST.CHARACTERS.MonsterTwig.Cost;
+            }
             this.destroy()
             delete this.heap[this.id];
         })
@@ -180,8 +182,6 @@ export class MonsterBrainer extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterBrainer.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterBrainer.Cost;
             this.setAnimationDeath();
             this.remove();
             return false
@@ -190,6 +190,10 @@ export class MonsterBrainer extends CharacterSprite {
     }
 
     remove() {
+        if (this.scene != undefined) {
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterBrainer.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterBrainer.Cost;
+        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -252,8 +256,6 @@ export class MonsterGhoul extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterGhoul.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterGhoul.Cost;
             this.setAnimationDeath();
             this.remove();
             return false
@@ -262,6 +264,10 @@ export class MonsterGhoul extends CharacterSprite {
     }
 
     remove() {
+        if (this.scene != undefined) {
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterGhoul.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterGhoul.Cost;
+        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -321,8 +327,6 @@ export class MonsterHedgehog extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterHedgehog.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterHedgehog.Cost;
             this.setAnimationDeath();
             this.remove();
             return false
@@ -331,6 +335,10 @@ export class MonsterHedgehog extends CharacterSprite {
     }
 
     remove() {
+        if (this.scene != undefined) {
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterHedgehog.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterHedgehog.Cost;
+        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -390,8 +398,6 @@ export class MonsterSlayer extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterSlayer.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterSlayer.Cost;
             this.setAnimationDeath();
             this.remove();
             return false
@@ -400,6 +406,10 @@ export class MonsterSlayer extends CharacterSprite {
     }
 
     remove() {
+        if (this.scene != undefined) {
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterSlayer.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterSlayer.Cost;
+        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
