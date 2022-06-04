@@ -5,11 +5,12 @@ var DisableSaving = true;
 
 var playerDataTemplate = {
     Date: Date.now(),
+    BattleMode: false,
     COINS: 1000,
     SKILL_POINTS: 0,
     LVL: 1,
     EXPERIENCE: 10,
-    WAVE: 0,
+    WAVE: 1,
     LEVELS_SHOP: {
         ParusHP: 0,
         ParusMP: 0,
@@ -59,6 +60,7 @@ export function loadPlayerData(){
 
 export function savePlayerData (playerData) {
     playerData.Date = Date.now()
+    playerData.BattleMode = false;
     localStorage.setItem(SAVE_KEY, JSON.stringify(playerData));
 }
 

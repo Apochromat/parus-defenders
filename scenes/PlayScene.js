@@ -5,9 +5,11 @@ import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
 import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
 import { createHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { randomIntFromInterval } from "../scripts/Misc.js";
 import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
+import { Wave } from "../scripts/WaveGenerator.js";
 export class PlayScene extends Phaser.Scene{
 
     playerStats;
@@ -33,6 +35,8 @@ export class PlayScene extends Phaser.Scene{
     recyclerViewHeroes;
     heroesBarField;
     heroesBarClose;
+
+    waveObject;
 
     toolBarLeft;
     recyclerViewShop;
@@ -86,18 +90,33 @@ export class PlayScene extends Phaser.Scene{
             savePlayerData(this.playerStats);
             console.log("Data Saved");
         }
+        this.wave();
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusWAVE(this, 1, 1, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
         for (let el in this.characterHeap.heap) {
-            this.characterHeap.heap[el].damage(this.randomIntFromInterval(0, 2));
+            this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
         }     
     }
 
-    randomIntFromInterval(min, max) { 
-        return Math.floor(Math.random() * (max - min + 1) + min)
+    wave(){
+        if (this.playerStats.BattleMode) {
+            if (!this.waveObject.finished){
+                this.waveObject.run();
+            }
+            else if (this.enemies.getLength() == 0){
+                this.playerStats.BattleMode = false;
+                for (let el in this.characterHeap.heap) {
+                    this.characterHeap.heap[el].specs.PhysicalDamage = 0;
+                    this.characterHeap.heap[el].setAnimationDeath();
+                    this.characterHeap.heap[el].remove();
+                }
+                obj1.currHP = obj1.maxHP;
+                this.playerStats.WAVE += 1;
+            }
+        }
     }
 
     createPlayerStats(){
@@ -119,6 +138,7 @@ export class PlayScene extends Phaser.Scene{
                             this.characterHeap.heap[el].remove();
                         }
                         obj1.currHP = obj1.maxHP;
+                        this.playerStats.BattleMode = false;
                     };
                 }
             }
@@ -153,11 +173,11 @@ export class PlayScene extends Phaser.Scene{
         this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
         this.battleButton.on("pointerup", () => {
-            for (let i = 0; i < 1; i++) {
-                this.characterHeap.createHero("wizard", this, 
-                this.randomIntFromInterval(CST.NUMBERS.SpawnAreaX0, CST.NUMBERS.SpawnAreaX1), 
-                this.randomIntFromInterval(CST.NUMBERS.SpawnAreaY0, CST.NUMBERS.SpawnAreaY1)).setAnimationWalk(false);
+            if (this.waveObject != undefined) {
+                this.waveObject.destroy();
             }
+            this.waveObject = new Wave(this, this.playerStats.WAVE);
+            this.playerStats.BattleMode = true;
         });
     }
 
@@ -206,7 +226,9 @@ export class PlayScene extends Phaser.Scene{
             .setChildrenInteractive()
             .on('child.click', function (args) {
                 console.log(args.text);
-                args.scene.characterHeap.createMonster(args.text, args.scene, 1550, args.scene.randomIntFromInterval(530, 620)).setAnimationWalk();
+                args.scene.characterHeap.createMonster(args.text, args.scene,
+                    randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
+                    randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
             })
     }
 

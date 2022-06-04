@@ -10,10 +10,18 @@ export const CST = {
         HEIGHT: 720,
         ParusX: 410,
         ParusY: 415,
-        SpawnAreaX0: 620,
-        SpawnAreaY0: 530,
-        SpawnAreaX1: 700,
-        SpawnAreaY1: 620,
+        HeroSpawnArea: {
+            X0: 620,
+            Y0: 530,
+            X1: 700,
+            Y1: 620
+        },
+        MonsterSpawnArea: {
+            X0: 1550,
+            Y0: 530,
+            X1: 1600,
+            Y1: 620
+        },
         SaveDataDelay: 60000
     },
     IMAGES: {
@@ -55,20 +63,20 @@ export const CST = {
     SPRITES64: {
         MonsterSlayer: "monster_slayer"
     },
-    SPRITES80:{
+    SPRITES80: {
         HeroNightmare: "hero_nightmare",
         HeroWizard: "hero_wisard"
     },
     AUDIO: [
     ],
-    MONSTERLIST: ["twig", "brainer", "ghoul", "hedgehog", "slayer"],
+    MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer"],
     SHOPLIST: {
         ParusHP: {
             Name: "Укрепить Парус",
             Description: "Увеличение HP Паруса",
             LevelCost: [
-                100, 
-                250, 
+                100,
+                250,
                 1000,
                 5000,
                 15000,
@@ -83,8 +91,8 @@ export const CST = {
             Name: "Укрепить Парус",
             Description: "Увеличение MP Паруса",
             LevelCost: [
-                100, 
-                250, 
+                100,
+                250,
                 1000,
                 5000,
                 15000,
@@ -99,8 +107,8 @@ export const CST = {
             Name: "Укрепить Парус",
             Description: "Увеличение защиты Паруса",
             LevelCost: [
-                100, 
-                250, 
+                100,
+                250,
                 1000,
                 5000,
                 15000,
@@ -115,8 +123,8 @@ export const CST = {
             Name: "Укрепить Кота",
             Description: "Увеличение урон Кота\n бла-бла-бла",
             LevelCost: [
-                100, 
-                250, 
+                100,
+                250,
                 1000,
                 5000,
                 15000,
@@ -134,8 +142,8 @@ export const CST = {
             Name: "Укрепить Кота",
             Description: "Увеличение урон Кота\n бла-бла-бла",
             LevelCost: [
-                100, 
-                250, 
+                100,
+                250,
                 1000,
                 5000,
                 15000,
@@ -150,8 +158,8 @@ export const CST = {
             Name: "Укрепить Кота",
             Description: "Увеличение уронa\n Кота\n бла-бла\n-бла",
             LevelCost: [
-                100, 
-                250, 
+                100,
+                250,
                 1000,
                 5000,
                 15000,
@@ -349,37 +357,37 @@ export const CST = {
         }
     },
     PARUS: {
-        0 : {
+        0: {
             MaxHP: 250,
             MaxMP: 250,
             HeroSlots: 1,
             BuildingSlots: 0
         },
-        1 : {
+        1: {
             MaxHP: 500,
             MaxMP: 500,
             HeroSlots: 2,
             BuildingSlots: 0
         },
-        2 : {
+        2: {
             MaxHP: 1000,
             MaxMP: 1000,
             HeroSlots: 3,
             BuildingSlots: 0
         },
-        3 : {
+        3: {
             MaxHP: 1250,
             MaxMP: 1250,
             HeroSlots: 4,
             BuildingSlots: 1
         },
-        4 : {
+        4: {
             MaxHP: 1500,
             MaxMP: 1500,
             HeroSlots: 5,
             BuildingSlots: 2
         },
-        5 : {
+        5: {
             MaxHP: 2000,
             MaxMP: 2000,
             HeroSlots: 6,
@@ -422,5 +430,59 @@ export const CST = {
         HeroesBarClose: 5006,
         HeroesBarRecyclerView: 5007,
         Slots: 1000
+    },
+    WAVE_GENERATOR: {
+        MinSpawnDelay: 500,
+        SpawnDelayVariety: 100,
+        PlateauSpawnWave: 1000,
+        MinMonsterAmount: 15,
+        MonsterWaveCoefficient: 5,
+        MonsterPreferences: {
+            MonsterTwig: {
+                MinWave: 1,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterBrainer: {
+                MinWave: 1,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterGhoul: {
+                MinWave: 1,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterHedgehog: {
+                MinWave: 1,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterSlayer: {
+                MinWave: 1,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            }
+        }
     }
 }

@@ -6,21 +6,21 @@ export class CharacterHeap {
     static id = 0;
     heap = {};
 
-    createHero(type = "cat", scene, x, y) {
+    createHero(type = "HeroCat", scene, x, y) {
         switch (type) {
-            case "cat":
+            case "HeroCat":
                 this.heap[CharacterHeap.id] = new HeroCat(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCat));
                 break;
-            case "centurion":
+            case "HeroCenturion":
                 this.heap[CharacterHeap.id] = new HeroCenturion(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCenturion));
                 break;
-            case "nightmare":
+            case "HeroNightmare":
                 this.heap[CharacterHeap.id] = new HeroNightmare(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroNightmare));
                 break;
-            case "wizard":
+            case "HeroWizard":
                 this.heap[CharacterHeap.id] = new HeroWizard(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroWizard));
                 break;
@@ -31,25 +31,25 @@ export class CharacterHeap {
         return this.heap[CharacterHeap.id - 1];
     }
 
-    createMonster(type = "twig", scene, x, y) {
+    createMonster(type = "MonsterTwig", scene, x, y) {
         switch (type) {
-            case "twig":
+            case "MonsterTwig":
                 this.heap[CharacterHeap.id] = new MonsterTwig(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterTwig));
                 break;
-            case "brainer":
+            case "MonsterBrainer":
                 this.heap[CharacterHeap.id] = new MonsterBrainer(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterBrainer));
                 break;
-            case "ghoul":
+            case "MonsterGhoul":
                 this.heap[CharacterHeap.id] = new MonsterGhoul(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterGhoul));
                 break;
-            case "hedgehog":
+            case "MonsterHedgehog":
                 this.heap[CharacterHeap.id] = new MonsterHedgehog(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterHedgehog));
                 break;
-            case "slayer":
+            case "MonsterSlayer":
                 this.heap[CharacterHeap.id] = new MonsterSlayer(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterSlayer));
                 break;
