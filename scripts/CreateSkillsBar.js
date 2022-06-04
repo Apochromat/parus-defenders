@@ -134,7 +134,7 @@ function createSkillsItem(scene, key) {
         scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
     );
 
-    table.add(createIcon(scene, CST.ICONS.HPIcon), 0, 1, 'center', {left: 25, right: 150}, true);
+    table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 25, right: 150}, true);
     table.add(createLable(scene, CST.SKILLSLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
     table.add(createLable(scene, CST.SKILLSLIST[key].Description, 2), 1, 1, 'left', {right: 0}, true);
     table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);

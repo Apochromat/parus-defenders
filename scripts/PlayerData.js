@@ -13,15 +13,26 @@ var playerDataTemplate = {
     WAVE: 1,
     WAVE_PROGRESS: 0,
     LEVELS_SHOP: {
-        ParusHP: 0,
-        ParusMP: 0,
-        ParusDEF: 0,
-        CatKnight: 0,
-        CatNinja: 0,
-        CatMag: 0
+        Parus: 0,
+        HeroCat: 0,
+        HeroCenturion: 0,
+        HeroNightmare: 0,
+        HeroWizard: 0
     },
     LEVELS_SKILLS: {
-        Cooldown: 0
+        BonusGold: 0,
+        BonusExperience: 0,
+        SpawnCooldown: 0,
+        Damage: 0,
+        HealPoints: 0,
+        CriticalChance: 0,
+        CriticalDamage: 0,
+        ParusDefense: 0,
+        Speed: 0,
+        MPRecovery: 0,
+        PhisicalDamage: 0,
+        MagicDamage: 0,
+        PoisonDamage: 0
     },
     LEVELS_HEROES: {
         HeroCat: 0,
