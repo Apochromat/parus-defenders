@@ -10,7 +10,7 @@ var playerDataTemplate = {
     SKILL_POINTS: 0,
     LVL: 1,
     EXPERIENCE: 0,
-    WAVE: 1,
+    WAVE: 20,
     WAVE_PROGRESS: 0,
     LEVELS_SHOP: {
         Parus: 0,

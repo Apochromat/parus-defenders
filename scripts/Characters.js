@@ -2,6 +2,10 @@ import { CharacterSprite } from "./CharacterSprite.js";
 import { CST } from "../scripts/const.js";
 
 export class CharacterHeap {
+    scene;
+    constructor(scene){
+        this.scene = scene;
+    }
     static id = 0;
     heap = {};
 
@@ -10,18 +14,22 @@ export class CharacterHeap {
             case "HeroCat":
                 this.heap[CharacterHeap.id] = new HeroCat(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCat));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroCat.MPCost;
                 break;
             case "HeroCenturion":
                 this.heap[CharacterHeap.id] = new HeroCenturion(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCenturion));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroCenturion.MPCost;
                 break;
             case "HeroNightmare":
                 this.heap[CharacterHeap.id] = new HeroNightmare(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroNightmare));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroNightmare.MPCost;
                 break;
             case "HeroWizard":
                 this.heap[CharacterHeap.id] = new HeroWizard(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroWizard));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroWizard.MPCost;
                 break;
         }
         scene.heroes.add(this.heap[CharacterHeap.id]);

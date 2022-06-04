@@ -585,7 +585,7 @@ export const CST = {
             Experience: 10
         },
         MonsterBrainer: {
-            HealPoints: 2000,
+            HealPoints: 700,
             PhysicalDamage: 10,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -598,7 +598,7 @@ export const CST = {
             Experience: 10
         },
         MonsterGhoul: {
-            HealPoints: 3000,
+            HealPoints: 800,
             PhysicalDamage: 10,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -611,7 +611,7 @@ export const CST = {
             Experience: 10
         },
         MonsterHedgehog: {
-            HealPoints: 4000,
+            HealPoints: 900,
             PhysicalDamage: 10,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -624,7 +624,7 @@ export const CST = {
             Experience: 10
         },
         MonsterSlayer: {
-            HealPoints: 5000,
+            HealPoints: 1000,
             PhysicalDamage: 10,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -648,25 +648,27 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 50
+            Speed: 50,
+            MPCost: 25
         },
         HeroCenturion: {
             Name: "Центурион Рори",
-            HealPoints: 1500,
-            PhysicalDamage: 10,
+            HealPoints: 2000,
+            PhysicalDamage: 25,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 10000,
+            SpawnCooldown: 5000,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 50
+            Speed: 50,
+            MPCost: 25
         },
         HeroNightmare: {
             Name: "Кошмар",
-            HealPoints: 1500,
+            HealPoints: 2500,
             PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -676,21 +678,23 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 150
+            Speed: 150,
+            MPCost: 25
         },
         HeroWizard: {
             Name: "Чародей",
-            HealPoints: 1500,
-            PhysicalDamage: 10,
+            HealPoints: 1000,
+            PhysicalDamage: 60,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 60000,
+            SpawnCooldown: 8000,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 100
+            Speed: 100,
+            MPCost: 25
         }
     },
     PARUS: {
@@ -796,7 +800,7 @@ export const CST = {
             },
             MonsterGhoul: {
                 MinWave: 1,
-                MaxWave: 50,
+                MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
                 HealthBoost: 0.1,
@@ -805,7 +809,7 @@ export const CST = {
             },
             MonsterHedgehog: {
                 MinWave: 1,
-                MaxWave: 50,
+                MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
                 HealthBoost: 0.1,
@@ -814,7 +818,7 @@ export const CST = {
             },
             MonsterSlayer: {
                 MinWave: 1,
-                MaxWave: 50,
+                MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
                 HealthBoost: 0.1,

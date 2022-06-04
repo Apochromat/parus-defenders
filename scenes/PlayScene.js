@@ -77,7 +77,7 @@ export class PlayScene extends Phaser.Scene {
         this.parus = new Parus(this, 5);
         this.parus.createHeroWindows(this.playerStats);
 
-        this.characterHeap = new Characters.CharacterHeap();
+        this.characterHeap = new Characters.CharacterHeap(this);
         this.enemies = this.add.group();
         this.heroes = this.add.group();
         createAnimations(this);
@@ -145,6 +145,7 @@ export class PlayScene extends Phaser.Scene {
                     this.characterHeap.heap[el].remove();
                 }
                 this.parus.currHP = this.parus.maxHP;
+                this.parus.currMP = this.parus.maxMP;
                 this.playerStats.WAVE += 1;
                 this.playerStats.WAVE_PROGRESS = 0;
             }
@@ -178,6 +179,7 @@ export class PlayScene extends Phaser.Scene {
                             this.characterHeap.heap[el].remove();
                         }
                         obj1.currHP = obj1.maxHP;
+                        obj1.currMP = obj1.maxMP;
                         this.playerStats.BattleMode = false;
                         this.playerStats.WAVE_PROGRESS = 0;
                     };

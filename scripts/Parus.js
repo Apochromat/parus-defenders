@@ -90,7 +90,9 @@ export class HeroWindow extends Phaser.GameObjects.Image {
 
         this.on("pointerup", () => {
             if (playerStats.BattleMode){
-                if (this.coof == 1 && playerStats.HERO_SLOTS[this.index] != CST.EMPTY) {
+                if (this.coof == 1 && 
+                    playerStats.HERO_SLOTS[this.index] != CST.EMPTY &&
+                    this.scene.parus.currMP >= CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].MPCost) {
                     this.graphicsStatusReady.clear();
                     this.coof = 0;
                     this.scene.characterHeap.createHero(playerStats.HERO_SLOTS[this.index], this.scene,
