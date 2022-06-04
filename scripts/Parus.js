@@ -49,8 +49,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
                 if (this.heroWindows[i].heroImage != undefined) {
                     this.heroWindows[i].heroImage.destroy();
                 }
-                this.heroWindows[i].graphicsStatusCell.clear();
-                this.heroWindows[i].graphicsStatusInWait.clear();
+                this.heroWindows[i].clearWindowProgress();
                 this.heroWindows[i].destroy();
             }
             this.heroWindows[i] = new HeroWindow(this.scene, CST.HERO_SLOTS[i].x, CST.HERO_SLOTS[i].y, i, playerStats);
@@ -72,7 +71,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.x = x;
         this.y = y; 
         this.index = index;
-        this.coof = 0;
+        this.coof = 1;
         this.heroImage;
 
         if (this.graphicsStatusInWait == undefined) 
@@ -81,7 +80,8 @@ export class HeroWindow extends Phaser.GameObjects.Image {
 
         if (playerStats.HERO_SLOTS[index] != CST.EMPTY) {
             this.heroImage = scene.add.image(x, y, CST.ICONS[playerStats.HERO_SLOTS[index]]).setDepth(CST.DEPTHS.Slots);
-            this.setHeroWindowProgress(playerStats);
+            if (playerStats.BattleMode) 
+                this.setHeroWindowProgress(playerStats);     
         }
 
         scene.sys.displayList.add(this);
@@ -115,7 +115,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         if (playerStats.HERO_SLOTS[this.index] != CST.EMPTY){
             this.graphicsStatusInWait.clear();
             this.graphicsStatusReady.clear();
-            if ( ((Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index])/CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown) >= 1) {
+            if ( ((Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index])/CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown) >= 1 || this.coof == 1) {
                 this.coof = 1;
                 var rect = new Phaser.Geom.Rectangle(this.x - 39, this.y - 55, 79, 10);
                 this.graphicsStatusReady.fillRectShape(rect);
@@ -131,5 +131,11 @@ export class HeroWindow extends Phaser.GameObjects.Image {
             var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y - 57, 83, 14);
             this.graphicsStatusCell.fillRectShape(cell);
         }    
+    }
+
+    clearWindowProgress(){
+        this.graphicsStatusCell.clear();
+        this.graphicsStatusReady.clear();
+        this.graphicsStatusInWait.clear();
     }
 }

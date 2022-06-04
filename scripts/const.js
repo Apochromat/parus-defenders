@@ -685,7 +685,7 @@ export const CST = {
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 10000,
+            SpawnCooldown: 60000,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
@@ -725,7 +725,7 @@ export const CST = {
             BuildingSlots: 2
         },
         5: {
-            MaxHP: 500000,
+            MaxHP: 2000,
             MaxMP: 2000,
             HeroSlots: 6,
             BuildingSlots: 3

@@ -100,12 +100,14 @@ export class PlayScene extends Phaser.Scene {
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
+
         for (let el in this.characterHeap.heap) 
             this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
         
-        for (let i = 0; i < this.parus.heroWindows.length; i++) 
-            this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
-
+        if (this.playerStats.BattleMode) 
+            for (let i = 0; i < this.parus.heroWindows.length; i++) 
+                this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);      
+        
         if (this.playerStats.BattleMode && this.battleFlag == 0) {
             closeToolBar(this);
             closeHeroesBar(this);
@@ -120,6 +122,12 @@ export class PlayScene extends Phaser.Scene {
             this.shopBar.visible = true;
             this.battleButton.visible = true;
             this.scrollablePanel.visible = true;
+
+            for (let i = 0; i < this.parus.heroWindows.length; i++) {
+                this.parus.heroWindows[i].coof = 1;
+                this.parus.heroWindows[i].clearWindowProgress();
+            }
+               
             this.battleFlag = 0;
         }
     }
@@ -140,15 +148,6 @@ export class PlayScene extends Phaser.Scene {
                 this.playerStats.WAVE += 1;
                 this.playerStats.WAVE_PROGRESS = 0;
             }
-            // for (let i in this.playerStats.HERO_SLOTS) {
-            //     if (this.playerStats.HERO_SLOTS[i] == CST.EMPTY) continue;
-            //     if (Date.now() - this.playerStats.HERO_SLOTS_SPAWNTIME[i] >= CST.CHARACTERS[this.playerStats.HERO_SLOTS[i]].SpawnCooldown) {
-            //         this.characterHeap.createHero(this.playerStats.HERO_SLOTS[i], this,
-            //             randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
-            //             randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
-            //         this.playerStats.HERO_SLOTS_SPAWNTIME[i] = Date.now();
-            //     }
-            // }
         }
     }
 
