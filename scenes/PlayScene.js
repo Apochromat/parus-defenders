@@ -4,7 +4,7 @@ import { createStatusBar, setStatusHP, setStatusMP, setStatusLVL, setStatusCOIN,
 import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
 import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
-import { createHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { closeHeroesBar, createHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { randomIntFromInterval } from "../scripts/Misc.js";
 import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
@@ -51,6 +51,7 @@ export class PlayScene extends Phaser.Scene {
     battleButton;
     spawnButton;
 
+    battleFlag = 0;
 
     constructor() {
         super({
@@ -99,8 +100,27 @@ export class PlayScene extends Phaser.Scene {
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
-        for (let el in this.characterHeap.heap) {
+        for (let el in this.characterHeap.heap) 
             this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
+        
+        for (let i = 0; i < this.parus.heroWindows.length; i++) 
+            this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
+
+        if (this.playerStats.BattleMode && this.battleFlag == 0) {
+            closeToolBar(this);
+            closeHeroesBar(this);
+            this.skillBar.visible = false;
+            this.shopBar.visible = false;
+            this.battleButton.visible = false;
+            this.scrollablePanel.visible = false;
+            this.battleFlag = 1;
+        }
+        else if (!this.playerStats.BattleMode && this.battleFlag == 1) {
+            this.skillBar.visible = true;
+            this.shopBar.visible = true;
+            this.battleButton.visible = true;
+            this.scrollablePanel.visible = true;
+            this.battleFlag = 0;
         }
     }
 
@@ -120,15 +140,15 @@ export class PlayScene extends Phaser.Scene {
                 this.playerStats.WAVE += 1;
                 this.playerStats.WAVE_PROGRESS = 0;
             }
-            for (let i in this.playerStats.HERO_SLOTS) {
-                if (this.playerStats.HERO_SLOTS[i] == CST.EMPTY) continue;
-                if (Date.now() - this.playerStats.HERO_SLOTS_SPAWNTIME[i] >= CST.CHARACTERS[this.playerStats.HERO_SLOTS[i]].SpawnCooldown) {
-                    this.characterHeap.createHero(this.playerStats.HERO_SLOTS[i], this,
-                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
-                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
-                    this.playerStats.HERO_SLOTS_SPAWNTIME[i] = Date.now();
-                }
-            }
+            // for (let i in this.playerStats.HERO_SLOTS) {
+            //     if (this.playerStats.HERO_SLOTS[i] == CST.EMPTY) continue;
+            //     if (Date.now() - this.playerStats.HERO_SLOTS_SPAWNTIME[i] >= CST.CHARACTERS[this.playerStats.HERO_SLOTS[i]].SpawnCooldown) {
+            //         this.characterHeap.createHero(this.playerStats.HERO_SLOTS[i], this,
+            //             randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
+            //             randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
+            //         this.playerStats.HERO_SLOTS_SPAWNTIME[i] = Date.now();
+            //     }
+            // }
         }
     }
 
