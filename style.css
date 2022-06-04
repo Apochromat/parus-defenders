@@ -1,14 +1,14 @@
 @font-face {
     font-family: NumbersFont;
-    src: url('./assets/ShareTechMono-Regular.ttf');
+    src: url('./assets/fonts/ShareTechMono-Regular.ttf');
 }
 @font-face {
     font-family: ContraCur;
-    src: url('./assets/ContraCur.ttf');
+    src: url('./assets/fonts/ContraCur.ttf');
 }
 @font-face {
     font-family: ClearSans;
-    src: url('./assets/ClearSans.ttf');
+    src: url('./assets/fonts/ClearSans.ttf');
 }
 html{
     background: black;
