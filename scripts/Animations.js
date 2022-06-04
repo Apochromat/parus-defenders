@@ -54,7 +54,7 @@ export function createAnimations(scene) {
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroCenturion.Death,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [24, 25, 26, 27, 28] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [96, 97, 98, 99, 100, 101, 102] }),
         frameRate: 8,
         repeat: 0
     });

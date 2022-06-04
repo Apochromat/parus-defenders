@@ -49,6 +49,8 @@ export class PlayScene extends Phaser.Scene {
     scrollablePanel;
     statusBar;
     battleButton;
+    spawnButton;
+
 
     constructor() {
         super({
@@ -190,7 +192,12 @@ export class PlayScene extends Phaser.Scene {
             this.waveObject = new Wave(this, this.playerStats.WAVE);
             this.playerStats.BattleMode = true;
         });
-    }
+
+        this.spawnButton = this.add.image(75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
+        this.spawnButton.setInteractive();
+        this.spawnButton.on("pointerup", () => {
+            this.characterHeap.createHero("HeroCenturion", this, CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.Y0).setAnimationWalk(false);});
+        }
 
     createSpawnMonstersBar() {
         this.scrollablePanel = this.rexUI.add.scrollablePanel({

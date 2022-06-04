@@ -326,7 +326,7 @@ export const CST = {
         HeroNightmare: {
             Name: "Кошмар",
             HealPoints: 1500,
-            PhysicalDamage: 10,
+            PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
@@ -335,7 +335,7 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 50
+            Speed: 150
         },
         HeroWizard: {
             Name: "Чародей",
@@ -349,7 +349,7 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 50
+            Speed: 100
         }
     },
     PARUS: {
