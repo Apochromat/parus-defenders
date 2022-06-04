@@ -26,7 +26,7 @@ export class Wave {
             console.log(`Spawned ${this.spawnedMonsters}/${this.monsterMaximum}`);
             return false
         }
-        if (Date.now() - this.lastSpawnTime >= this.spawnDelay) {
+        if ((Date.now() - this.lastSpawnTime >= this.spawnDelay) && (this.scene.enemies.getLength() <= CST.WAVE_GENERATOR.MaximumMomentMonsters)) {
 
             let monsterName = CST.MONSTERLIST[randomIntFromInterval(0, CST.MONSTERLIST.length-1)];
             while ((CST.WAVE_GENERATOR.MonsterPreferences[monsterName].MinWave > this.number) ||
@@ -47,6 +47,7 @@ export class Wave {
             }
             
             this.spawnedMonsters += spawnAmount;
+            this.scene.playerStats.WAVE_PROGRESS = this.spawnedMonsters/this.monsterMaximum
             this.lastSpawnTime = Date.now();
 
         }

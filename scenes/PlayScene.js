@@ -10,7 +10,7 @@ import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
 import { Wave } from "../scripts/WaveGenerator.js";
-export class PlayScene extends Phaser.Scene{
+export class PlayScene extends Phaser.Scene {
 
     playerStats;
     enemies;
@@ -60,7 +60,7 @@ export class PlayScene extends Phaser.Scene{
     }
 
     preload() {
-        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.BackgroundEvening);
+        this.add.tileSprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.BackgroundEvening);
         this.load.scenePlugin({
             key: 'rexuiplugin',
             url: './libs/rexuiplugin.min.js',
@@ -68,9 +68,9 @@ export class PlayScene extends Phaser.Scene{
         });
     }
 
-    create () {
+    create() {
         this.createPlayerStats()
-        this.add.tileSprite(CST.NUMBERS.WIDTH/2, CST.NUMBERS.HEIGHT/2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
+        this.add.tileSprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
         this.parus = new Parus(this, 5);
         this.parus.createHeroWindows(this.playerStats);
 
@@ -85,8 +85,8 @@ export class PlayScene extends Phaser.Scene{
         this.setPhysicsEnemies();
     }
 
-    update () {
-        if (Date.now() - this.playerStats.Date >= CST.NUMBERS.SaveDataDelay) {
+    update() {
+        if (Date.now() - this.playerStats.Date >= CST.NUMBERS.SaveDataDelay && !this.playerStats.BattleMode) {
             savePlayerData(this.playerStats);
             console.log("Data Saved");
         }
@@ -94,36 +94,46 @@ export class PlayScene extends Phaser.Scene{
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
-        setStatusWAVE(this, 1, 1, this.playerStats.WAVE, 4500);
+        setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
         for (let el in this.characterHeap.heap) {
             this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
-        }     
+        }
     }
 
-    wave(){
+    wave() {
         if (this.playerStats.BattleMode) {
-            if (!this.waveObject.finished){
+            if (!this.waveObject.finished) {
                 this.waveObject.run();
             }
-            else if (this.enemies.getLength() == 0){
+            else if (this.enemies.getLength() == 0) {
                 this.playerStats.BattleMode = false;
                 for (let el in this.characterHeap.heap) {
                     this.characterHeap.heap[el].specs.PhysicalDamage = 0;
                     this.characterHeap.heap[el].setAnimationDeath();
                     this.characterHeap.heap[el].remove();
                 }
-                obj1.currHP = obj1.maxHP;
+                this.parus.currHP = this.parus.maxHP;
                 this.playerStats.WAVE += 1;
+                this.playerStats.WAVE_PROGRESS = 0;
+            }
+            for (let i in this.playerStats.HERO_SLOTS) {
+                if (this.playerStats.HERO_SLOTS[i] == CST.EMPTY) continue;
+                if (Date.now() - this.playerStats.HERO_SLOTS_SPAWNTIME[i] >= CST.CHARACTERS[this.playerStats.HERO_SLOTS[i]].SpawnCooldown) {
+                    this.characterHeap.createHero(this.playerStats.HERO_SLOTS[i], this,
+                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
+                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
+                    this.playerStats.HERO_SLOTS_SPAWNTIME[i] = Date.now();
+                }
             }
         }
     }
 
-    createPlayerStats(){
+    createPlayerStats() {
         this.playerStats = loadPlayerData();
     }
 
-    setPhysicsEnemies(){
+    setPhysicsEnemies() {
         this.physics.add.collider(this.parus, this.enemies,
             // При столкновении
             (obj1, obj2) => {
@@ -131,7 +141,7 @@ export class PlayScene extends Phaser.Scene{
                 obj2.setAnimationHit();
                 if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
                     obj2.lastDamageTime = Date.now();
-                    if(!obj1.damage(obj2.specs.PhysicalDamage)) {
+                    if (!obj1.damage(obj2.specs.PhysicalDamage)) {
                         for (let el in this.characterHeap.heap) {
                             this.characterHeap.heap[el].specs.PhysicalDamage = 0;
                             this.characterHeap.heap[el].setAnimationDeath();
@@ -139,6 +149,7 @@ export class PlayScene extends Phaser.Scene{
                         }
                         obj1.currHP = obj1.maxHP;
                         this.playerStats.BattleMode = false;
+                        this.playerStats.WAVE_PROGRESS = 0;
                     };
                 }
             }
@@ -169,19 +180,19 @@ export class PlayScene extends Phaser.Scene{
         createShopBar(this);
         createSkillsBar(this);
         createHeroesBar(this);
-        
-        this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
+
+        this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height - 62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
         this.battleButton.on("pointerup", () => {
             if (this.waveObject != undefined) {
-                this.waveObject.destroy();
+                delete this.waveObject;
             }
             this.waveObject = new Wave(this, this.playerStats.WAVE);
             this.playerStats.BattleMode = true;
         });
     }
 
-    createSpawnMonstersBar(){
+    createSpawnMonstersBar() {
         this.scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 850,
             y: 250,
@@ -244,16 +255,16 @@ export class PlayScene extends Phaser.Scene{
                 line: 8,
             }
         }).addBackground(scene.rexUI.add.roundRectangle(0, 0, 10, 10, 0, 0x260e04))
-    
+
         for (let el of CST.MONSTERLIST) {
             sizer.add(scene.rexUI.add.label({
                 width: 300, height: 60,
-    
+
                 background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x7b5e57),
                 text: scene.add.text(0, 0, `${el}`, {
                     fontSize: 18
                 }),
-    
+
                 align: 'center',
                 space: {
                     left: 10,
@@ -263,7 +274,7 @@ export class PlayScene extends Phaser.Scene{
                 }
             }));
         }
-    
+
         return sizer;
     }
 }

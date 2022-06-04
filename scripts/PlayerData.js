@@ -11,6 +11,7 @@ var playerDataTemplate = {
     LVL: 1,
     EXPERIENCE: 10,
     WAVE: 1,
+    WAVE_PROGRESS: 0,
     LEVELS_SHOP: {
         ParusHP: 0,
         ParusMP: 0,
@@ -25,12 +26,14 @@ var playerDataTemplate = {
     LEVELS_HEROES: {
         HeroCat: 0,
         HeroCenturion: 0,
-        HeroNightmare: 0
+        HeroNightmare: 0,
+        HeroWizard: 0
     },
     AVAILABLE_HEROES: [
         "HeroCat",
         "HeroCenturion",
-        "HeroNightmare"
+        "HeroNightmare",
+        "HeroWizard"
     ],
     HERO_SLOTS: [
         CST.EMPTY,

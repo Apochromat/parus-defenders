@@ -44,13 +44,9 @@ export const CST = {
     ICONS: {
         HPIcon: "icon_hp",
         HeroCat: "iconHeroCat",
-        HeroCenturion: "iconHeroCat2",
-        HeroNightmare: "iconHeroCat3",
-        HeroCat4: "iconHeroCat4",
-        HeroCat5: "iconHeroCat5",
-        HeroCat6: "iconHeroCat6",
-        HeroCat7: "iconHeroCat7",
-        HeroCat8: "iconHeroCat8"
+        HeroCenturion: "iconHeroCenturion",
+        HeroNightmare: "iconHeroNightmare",
+        HeroWizard: "iconHeroWizard",
     },
     SPRITES32: {
         MonsterTwig: "monster_twig",
@@ -306,7 +302,7 @@ export const CST = {
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 10000,
+            SpawnCooldown: 300,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
@@ -388,7 +384,7 @@ export const CST = {
             BuildingSlots: 2
         },
         5: {
-            MaxHP: 2000,
+            MaxHP: 500000,
             MaxMP: 2000,
             HeroSlots: 6,
             BuildingSlots: 3
@@ -435,8 +431,9 @@ export const CST = {
         MinSpawnDelay: 500,
         SpawnDelayVariety: 100,
         PlateauSpawnWave: 1000,
-        MinMonsterAmount: 15,
+        MinMonsterAmount: 5,
         MonsterWaveCoefficient: 5,
+        MaximumMomentMonsters: 30,
         MonsterPreferences: {
             MonsterTwig: {
                 MinWave: 1,
