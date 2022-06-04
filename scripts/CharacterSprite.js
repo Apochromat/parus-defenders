@@ -1,6 +1,7 @@
 /// <reference path="../typings/phaser.d.ts" />
 export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
     id;
+    alive = true;
     specs;
     hp;
     speed;

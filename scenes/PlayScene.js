@@ -95,7 +95,8 @@ export class PlayScene extends Phaser.Scene {
         this.wave();
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
-        setStatusLVL(this, 30, 80, this.playerStats.LVL, this.playerStats.SKILL_POINTS);
+        this.updateLVL();
+        setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
         for (let el in this.characterHeap.heap) {
@@ -128,6 +129,14 @@ export class PlayScene extends Phaser.Scene {
                     this.playerStats.HERO_SLOTS_SPAWNTIME[i] = Date.now();
                 }
             }
+        }
+    }
+
+    updateLVL(){
+        if (this.playerStats.EXPERIENCE >= CST.LEVELS_EXP[this.playerStats.LVL]){
+            this.playerStats.EXPERIENCE = this.playerStats.EXPERIENCE % CST.LEVELS_EXP[this.playerStats.LVL];
+            this.playerStats.LVL += 1;
+            this.playerStats.SKILL_POINTS += 1;
         }
     }
 

@@ -302,7 +302,7 @@ export const CST = {
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 300,
+            SpawnCooldown: 1000,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
@@ -481,5 +481,12 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             }
         }
+    },
+    LEVELS_EXP:{
+        1: 10,
+        2: 50,
+        3: 100,
+        4: 250,
+        5: 500
     }
 }

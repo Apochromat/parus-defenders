@@ -109,11 +109,20 @@ export class MonsterTwig extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterTwig.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterTwig.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
@@ -121,10 +130,6 @@ export class MonsterTwig extends CharacterSprite {
 
     remove() {
         this.once('animationcomplete', () => {
-            if (this.scene != undefined) {
-                this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterTwig.Experience;
-                this.scene.playerStats.COINS += CST.CHARACTERS.MonsterTwig.Cost;
-            }
             this.destroy()
             delete this.heap[this.id];
         })
@@ -179,21 +184,26 @@ export class MonsterBrainer extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterBrainer.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterBrainer.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
     }
 
     remove() {
-        if (this.scene != undefined) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterBrainer.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterBrainer.Cost;
-        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -253,21 +263,26 @@ export class MonsterGhoul extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterGhoul.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterGhoul.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
     }
 
     remove() {
-        if (this.scene != undefined) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterGhoul.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterGhoul.Cost;
-        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -324,21 +339,26 @@ export class MonsterHedgehog extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterHedgehog.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterHedgehog.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
     }
 
     remove() {
-        if (this.scene != undefined) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterHedgehog.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterHedgehog.Cost;
-        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -395,21 +415,26 @@ export class MonsterSlayer extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterSlayer.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterSlayer.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
     }
 
     remove() {
-        if (this.scene != undefined) {
-            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterSlayer.Experience;
-            this.scene.playerStats.COINS += CST.CHARACTERS.MonsterSlayer.Cost;
-        }
         this.once('animationcomplete', () => {
             this.destroy()
             delete this.heap[this.id];
@@ -466,11 +491,18 @@ export class HeroCat extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
@@ -532,11 +564,18 @@ export class HeroCenturion extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
@@ -598,11 +637,18 @@ export class HeroNightmare extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true
@@ -664,11 +710,18 @@ export class HeroWizard extends CharacterSprite {
         return this;
     }
 
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.setAnimationDeath();
-            this.remove();
+            this.death();
             return false
         }
         return true

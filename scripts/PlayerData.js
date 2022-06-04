@@ -9,7 +9,7 @@ var playerDataTemplate = {
     COINS: 1000,
     SKILL_POINTS: 0,
     LVL: 1,
-    EXPERIENCE: 10,
+    EXPERIENCE: 0,
     WAVE: 1,
     WAVE_PROGRESS: 0,
     LEVELS_SHOP: {
