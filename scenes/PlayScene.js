@@ -177,8 +177,7 @@ export class PlayScene extends Phaser.Scene {
                     if (!obj1.damage(obj2.specs.PhysicalDamage)) {
                         for (let el in this.characterHeap.heap) {
                             this.characterHeap.heap[el].specs.PhysicalDamage = 0;
-                            this.characterHeap.heap[el].setAnimationDeath();
-                            this.characterHeap.heap[el].remove();
+                            this.characterHeap.heap[el].death();
                         }
                         obj1.currHP = obj1.maxHP;
                         obj1.currMP = obj1.maxMP;

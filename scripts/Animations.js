@@ -117,6 +117,43 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Boss Cthulhu
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCthulhu.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCthulhu.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [24, 25, 26, 27, 28, 29, 30, 31] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCthulhu.Brainstorm,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [48, 49, 50, 51, 52, 53, 54, 55] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCthulhu.Tentacle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCthulhu.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Boss Black Dragon
 
     scene.anims.create({

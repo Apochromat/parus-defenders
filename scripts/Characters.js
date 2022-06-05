@@ -1,9 +1,10 @@
 import { CharacterSprite } from "./CharacterSprite.js";
 import { CST } from "../scripts/const.js";
+import { randomIntFromInterval } from "./Misc.js";
 
 export class CharacterHeap {
     scene;
-    constructor(scene){
+    constructor(scene) {
         this.scene = scene;
     }
     static id = 0;
@@ -63,6 +64,10 @@ export class CharacterHeap {
             case "BossBlackDragon":
                 this.heap[CharacterHeap.id] = new BossBlackDragon(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossBlackDragon));
+                break;
+            case "BossCthulhu":
+                this.heap[CharacterHeap.id] = new BossCthulhu(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCthulhu));
                 break;
         }
         scene.enemies.add(this.heap[CharacterHeap.id]);
@@ -456,7 +461,7 @@ export class MonsterSlayer extends CharacterSprite {
 }
 
 export class BossBlackDragon extends CharacterSprite {
-    constructor(scene, x, y, id, heap, scale = 3) {
+    constructor(scene, x, y, id, heap, scale = 5) {
         super(scene, x, y, CST.SPRITESDRAGON.BossBlackDragon, scale);
         this.hp = CST.CHARACTERS.BossBlackDragon.HealPoints;
         this.speed = CST.CHARACTERS.BossBlackDragon.Speed;
@@ -508,6 +513,84 @@ export class BossBlackDragon extends CharacterSprite {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.BossBlackDragon.Experience;
             this.scene.playerStats.COINS += CST.CHARACTERS.BossBlackDragon.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class BossCthulhu extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 5) {
+        super(scene, x, y, CST.SPRITECTHULHU.BossCthulhu, scale);
+        this.hp = CST.CHARACTERS.BossCthulhu.HealPoints;
+        this.speed = CST.CHARACTERS.BossCthulhu.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Death) {
+            this.play(CST.ANIMATIONS.BossCthulhu.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Death) {
+            this.play(CST.ANIMATIONS.BossCthulhu.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null ||(this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Brainstorm && 
+                                            this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Tentacle && 
+                                            this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Death)) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(randomIntFromInterval(0, 1) == 1 ? CST.ANIMATIONS.BossCthulhu.Brainstorm : CST.ANIMATIONS.BossCthulhu.Tentacle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Death) {
+            this.play(CST.ANIMATIONS.BossCthulhu.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.BossCthulhu.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.BossCthulhu.Cost;
             this.setAnimationDeath();
             this.remove();
         }

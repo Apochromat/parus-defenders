@@ -85,9 +85,12 @@ export const CST = {
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
     },
+    SPRITECTHULHU: {
+        BossCthulhu: "boss_cthulhu"
+    },
     AUDIO: [
     ],
-    MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon"],
+    MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
     SHOPLIST: {
         Parus: {
             Name: "Укрепить Парус",
@@ -560,6 +563,13 @@ export const CST = {
             Hit: 'boss_black_dragon_hit',
             Death: 'boss_black_dragon_death'
         },
+        BossCthulhu: {
+            Idle: 'boss_cthulhu_idle',
+            Walk: 'boss_cthulhu_walk',
+            Brainstorm: 'boss_cthulhu_brainstorm',
+            Tentacle: 'boss_cthulhu_tentacle',
+            Death: 'boss_cthulhu_death'
+        },
         HeroCat: {
             Idle: 'hero_cat_idle',
             Walk: 'hero_cat_walk',
@@ -650,6 +660,19 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10
+        },
+        BossCthulhu: {
+            HealPoints: 20000,
+            PhysicalDamage: 4000,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 15,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Cost: 30000,
+            Experience: 100
         },
         BossBlackDragon: {
             HealPoints: 10000,
@@ -859,6 +882,15 @@ export const CST = {
                 MinBatch: 1,
                 MaxBatch: 1,
                 HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossCthulhu: {
+                MinWave: 20,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.2,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             }

@@ -57,6 +57,12 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 151
             });
         }
+        for (let prop in CST.SPRITECTHULHU) {
+            this.load.spritesheet(CST.SPRITECTHULHU[prop], CST.SPRITECTHULHU[prop]+".png", {
+                frameHeight: 60,
+                frameWidth: 100
+            });
+        }
     }
 
     preload() {
