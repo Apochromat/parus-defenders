@@ -76,9 +76,12 @@ export const CST = {
         HeroNightmare: "hero_nightmare",
         HeroWizard: "hero_wisard"
     },
+    SPRITESDRAGON: {
+        BossBlackDragon: "boss_black_dragon"
+    },
     AUDIO: [
     ],
-    MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer"],
+    MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon"],
     SHOPLIST: {
         Parus: {
             Name: "Укрепить Парус",
@@ -545,6 +548,12 @@ export const CST = {
             Hit: 'monster_slayer_hit',
             Death: 'monster_slayer_death'
         },
+        BossBlackDragon: {
+            Idle: 'boss_black_dragon_idle',
+            Walk: 'boss_black_dragon_walk',
+            Hit: 'boss_black_dragon_hit',
+            Death: 'boss_black_dragon_death'
+        },
         HeroCat: {
             Idle: 'hero_cat_idle',
             Walk: 'hero_cat_walk',
@@ -634,6 +643,19 @@ export const CST = {
             PoisonProtection: 10,
             MagicProtection: 10,
             Cost: 25,
+            Experience: 10
+        },
+        BossBlackDragon: {
+            HealPoints: 10000,
+            PhysicalDamage: 200,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Cost: 10000,
             Experience: 10
         },
         HeroCat: {
@@ -821,6 +843,15 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossBlackDragon: {
+                MinWave: 20,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
                 HealthBoost: 0.1,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1

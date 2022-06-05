@@ -51,6 +51,12 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 80
             });
         }
+        for (let prop in CST.SPRITESDRAGON) {
+            this.load.spritesheet(CST.SPRITESDRAGON[prop], CST.SPRITESDRAGON[prop]+".png", {
+                frameHeight: 87,
+                frameWidth: 151
+            });
+        }
     }
 
     preload() {

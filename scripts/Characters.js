@@ -60,6 +60,10 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id] = new MonsterSlayer(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterSlayer));
                 break;
+            case "BossBlackDragon":
+                this.heap[CharacterHeap.id] = new BossBlackDragon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossBlackDragon));
+                break;
         }
         scene.enemies.add(this.heap[CharacterHeap.id]);
         this.heap[CharacterHeap.id].setDepth(y + this.heap[CharacterHeap.id].height);
@@ -428,6 +432,82 @@ export class MonsterSlayer extends CharacterSprite {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.MonsterSlayer.Experience;
             this.scene.playerStats.COINS += CST.CHARACTERS.MonsterSlayer.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class BossBlackDragon extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITESDRAGON.BossBlackDragon, scale);
+        this.hp = CST.CHARACTERS.BossBlackDragon.HealPoints;
+        this.speed = CST.CHARACTERS.BossBlackDragon.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Death) {
+            this.play(CST.ANIMATIONS.BossBlackDragon.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Death) {
+            this.play(CST.ANIMATIONS.BossBlackDragon.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.BossBlackDragon.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Death) {
+            this.play(CST.ANIMATIONS.BossBlackDragon.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += CST.CHARACTERS.BossBlackDragon.Experience;
+            this.scene.playerStats.COINS += CST.CHARACTERS.BossBlackDragon.Cost;
             this.setAnimationDeath();
             this.remove();
         }

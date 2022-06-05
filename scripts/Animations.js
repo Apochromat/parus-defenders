@@ -117,6 +117,37 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Boss Black Dragon
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossBlackDragon.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossBlackDragon.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossBlackDragon.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [32, 33, 34, 35, 36, 37, 38, 39] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossBlackDragon.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+
     // Monster Twig
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterTwig.Idle,
