@@ -1,6 +1,6 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
-import { erasePlayerData } from "../scripts/PlayerData.js";
+
 export class MenuScene extends Phaser.Scene {
     constructor() {
         super({

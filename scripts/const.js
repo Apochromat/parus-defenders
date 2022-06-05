@@ -88,8 +88,9 @@ export const CST = {
     SPRITECTHULHU: {
         BossCthulhu: "boss_cthulhu"
     },
-    AUDIO: [
-    ],
+    MUSIC: {
+        Psychosocial: "8-Bit_Misfits_Psychosocial"
+    },
     MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
     SHOPLIST: {
         Parus: {
