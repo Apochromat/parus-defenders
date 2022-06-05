@@ -5,7 +5,7 @@ import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
 import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
 import { closeHeroesBar, createHeroesBar } from "../scripts/CreateHeroesBar.js";
-import { randomIntFromInterval } from "../scripts/Misc.js";
+import { randomIntFromInterval, toggleFullScreen } from "../scripts/Misc.js";
 import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
@@ -226,6 +226,7 @@ export class PlayScene extends Phaser.Scene {
         this.spawnButton = this.add.image(75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.spawnButton.setInteractive();
         this.spawnButton.on("pointerup", () => {
+            toggleFullScreen();
             this.characterHeap.createHero("HeroCenturion", this, CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.Y0).setAnimationWalk(false);});
         }
 
