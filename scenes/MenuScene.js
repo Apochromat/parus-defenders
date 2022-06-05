@@ -23,7 +23,7 @@ export class MenuScene extends Phaser.Scene {
             this.scene.start(CST.SCENES.PLAY);
         })
         optionButton.on("pointerup", () => {
-            erasePlayerData();
+            this.scene.start(CST.SCENES.OPTIONS);
         })
     }
 }

@@ -12,6 +12,11 @@ var playerDataTemplate = {
     EXPERIENCE: 0,
     WAVE: 20,
     WAVE_PROGRESS: 0,
+    OPTIONS: {
+        Music: 80,
+        Sounds: 80,
+        Fullscreen: false
+    },
     LEVELS_SHOP: {
         Parus: 0,
         HeroCat: 0,
@@ -69,7 +74,7 @@ export function loadPlayerData(){
     if (temp != null && !DisableSaving){
         return temp;
     }
-    return playerDataTemplate;
+    return JSON.parse(JSON.stringify(playerDataTemplate));
 }
 
 export function savePlayerData (playerData) {

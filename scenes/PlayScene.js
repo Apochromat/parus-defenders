@@ -48,6 +48,8 @@ export class PlayScene extends Phaser.Scene {
 
     scrollablePanel;
     statusBar;
+    backButton;
+    fullscreenButton;
     battleButton;
     spawnButton;
 
@@ -223,10 +225,15 @@ export class PlayScene extends Phaser.Scene {
             this.playerStats.BattleMode = true;
         });
 
+        this.backButton = this.add.image(50, 50, CST.IMAGES.BackButton).setDepth(CST.DEPTHS.ToolBarField);
+        this.backButton.setInteractive();
+        this.backButton.on("pointerup", () => {
+            this.scene.start(CST.SCENES.MENU);
+        });
+
         this.spawnButton = this.add.image(75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.spawnButton.setInteractive();
         this.spawnButton.on("pointerup", () => {
-            toggleFullScreen();
             this.characterHeap.createHero("HeroCenturion", this, CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.Y0).setAnimationWalk(false);});
         }
 

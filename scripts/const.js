@@ -2,6 +2,7 @@ export const CST = {
     EMPTY: "Empty",
     SCENES: {
         MENU: "MENU",
+        OPTIONS: "OPTIONS",
         PLAY: "PLAY",
         LOAD: "LOAD"
     },
@@ -27,12 +28,17 @@ export const CST = {
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
         BackgroundMenu: 'backgroundMenu',
+        BackgroundOptions: 'backgroundOptions',
         Background: "background",
+        SwitchON: "switchOn",
+        SwitchOFF: "switchOff",
+        EraseButton: "eraseButton",
         Parus: "parus",
         CharacterWindow: "characterWindow",
         PlayButton: 'playButton',
         BattleButton: "newWaveButton",
         OptionsButton: 'optionsButton',
+        BackButton: 'backButton',
         StatusBar: "statusBar",
         ToolBarClose: "toolBarClose",
         ToolBarLeft: "toolBarLeft",

@@ -2,6 +2,7 @@
 import { MenuScene } from "./scenes/MenuScene.js";
 import { PlayScene } from "./scenes/PlayScene.js";
 import { LoadScene } from "./scenes/LoadScene.js";
+import { OptionsScene } from "./scenes/OptionsScene.js";
 import { CST } from "./scripts/const.js";
 
 var width = CST.NUMBERS.WIDTH;
@@ -23,7 +24,7 @@ var config = {
         }
     },
     scene: [
-        LoadScene, MenuScene, PlayScene
+        LoadScene, MenuScene, OptionsScene, PlayScene
     ],
     render:{
         pixelArt: true,
