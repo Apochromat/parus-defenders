@@ -1,5 +1,6 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
+import { loadPlayerData } from "../scripts/PlayerData.js";
 export class LoadScene extends Phaser.Scene {
     constructor() {
         super({
@@ -7,7 +8,7 @@ export class LoadScene extends Phaser.Scene {
         })
     }
     init() {
-
+        this.sound.pauseOnBlur = true;
     }
 
     loadImages() {
@@ -26,8 +27,8 @@ export class LoadScene extends Phaser.Scene {
 
     loadAudio() {
         this.load.setPath("./assets/audio");
-        for (let prop in CST.AUDIO) {
-            this.load.audio(CST.AUDIO[prop], CST.AUDIO[prop]);
+        for (let prop in CST.MUSIC) {
+            this.load.audio(CST.MUSIC[prop], CST.MUSIC[prop]+".mp3");
         }
     }
 
@@ -92,6 +93,18 @@ export class LoadScene extends Phaser.Scene {
         })
     }
     create() {
+        for (let prop in CST.MUSIC) {
+            this.game.music = this.sound.add(CST.MUSIC[prop]);
+        }
+        this.game.music.play({
+            mute: false,
+            volume: loadPlayerData().OPTIONS.Music/100,
+            // rate: 1,
+            // detune: 0,
+            // seek: 0,
+            loop: true,
+            // delay: 0
+        });
         this.scene.start(CST.SCENES.MENU);
     }
 }

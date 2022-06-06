@@ -79,6 +79,7 @@ export class OptionsScene extends Phaser.Scene {
 
             valuechangeCallback: function (value, oldValue, musicBar) {
                 musicBar.text = Math.round(Phaser.Math.Linear(0, 100, value));
+                this.scene.game.music.setVolume(value);
                 this.scene.actualData.OPTIONS.Music = Math.round(Phaser.Math.Linear(0, 100, value));
                 savePlayerData(this.scene.actualData);
             }
