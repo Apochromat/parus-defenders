@@ -138,6 +138,7 @@ function createSkillsItem(scene, key) {
     table.add(createLable(scene, CST.SKILLSLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
     table.add(createLable(scene, CST.SKILLSLIST[key].Description, 2), 1, 1, 'left', {right: 0}, true);
     table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);
+    table.add(createLable(scene, CST.SKILLSLIST[key].Levels[scene.playerStats.LEVELS_SKILLS[key]], 1), 2, 1, 'right', {left: 150}, true);
     table.add(createButtonAdd(scene, key), 2, 2, 'right', {top: 5, left: 150}, true);
 
     return scene.rexUI.add.sizer({

@@ -392,7 +392,7 @@ export const CST = {
             ]
         },
         Speed: {
-            Name: "Скорость передвижения",
+            Name: "Скорость",
             Description: "Увеличение скорости \nпередвижения героев",
             Levels: [
                 "+0%",
@@ -680,7 +680,7 @@ export const CST = {
             PhysicalDamage: 200,
             PoisonDamage: 10,
             MagicDamage: 10,
-            AttackCooldown: 2000,
+            AttackCooldown: 1000,
             Speed: 50,
             PhysicalProtection: 10,
             PoisonProtection: 10,
