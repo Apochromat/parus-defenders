@@ -1,5 +1,5 @@
 import { CST } from "../scripts/const.js";
-import { battle } from "../scripts/const.js";
+import { battle } from "../scripts/Battle.js";
 import { createAnimations } from "../scripts/Animations.js";
 import { createStatusBar, setStatusHP, setStatusMP, setStatusLVL, setStatusCOIN, setStatusWAVE } from "../scripts/CreateStatusBar.js";
 import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
@@ -88,7 +88,7 @@ export class PlayScene extends Phaser.Scene {
         this.createGUI();
         this.createSpawnMonstersBar();
 
-        this.setPhysicsEnemies();
+       // this.setPhysicsEnemies();
     }
 
     update() {
@@ -97,7 +97,7 @@ export class PlayScene extends Phaser.Scene {
             console.log("Data Saved");
         }
         this.wave();
-        battle(this.parus,this.enemies,this.heroes);
+        
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
@@ -134,6 +134,7 @@ export class PlayScene extends Phaser.Scene {
                
             this.battleFlag = 0;
         }
+        battle(this.parus,this.enemies,this.heroes);
     }
 
     wave() {

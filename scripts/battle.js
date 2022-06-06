@@ -18,6 +18,7 @@ export function battle(parus, enemies, heroes){
                     parus.currMP = parus.maxMP;
                      playerStats.BattleMode = false;
                      playerStats.WAVE_PROGRESS = 0;
+                     return playerStats;
                 };
             }
 
@@ -52,6 +53,7 @@ export function battle(parus, enemies, heroes){
                     parus.currMP = parus.maxMP;
                      playerStats.BattleMode = false;
                      playerStats.WAVE_PROGRESS = 0;
+                     return playerStats;
                 };
             }
 
@@ -94,6 +96,5 @@ export function battle(parus, enemies, heroes){
 
     }
 });
- })
-;
+ });
 };
