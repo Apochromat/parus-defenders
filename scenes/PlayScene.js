@@ -104,7 +104,7 @@ export class PlayScene extends Phaser.Scene {
         setStatusCOIN(this, this.playerStats.COINS);
 
         for (let el in this.characterHeap.heap) 
-            this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
+            //this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
         
         if (this.playerStats.BattleMode) 
             for (let i = 0; i < this.parus.heroWindows.length; i++) 
