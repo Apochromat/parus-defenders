@@ -893,7 +893,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterBrainer: {
-                MinWave: 1,
+                MinWave: 5,
                 MaxWave: 50,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -902,7 +902,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterHellhound: {
-                MinWave: 1,
+                MinWave: 10,
                 MaxWave: 50,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -911,8 +911,8 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterGhoul: {
-                MinWave: 1,
-                MaxWave: -1,
+                MinWave: 15,
+                MaxWave: 80,
                 MinBatch: 3,
                 MaxBatch: 5,
                 HealthBoost: 0.1,
@@ -920,7 +920,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterHedgehog: {
-                MinWave: 1,
+                MinWave: 15,
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -929,7 +929,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterSlayer: {
-                MinWave: 1,
+                MinWave: 20,
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -938,7 +938,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             BossBlackDragon: {
-                MinWave: 20,
+                MinWave: 40,
                 MaxWave: 50,
                 MinBatch: 1,
                 MaxBatch: 1,
@@ -947,7 +947,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             BossCthulhu: {
-                MinWave: 20,
+                MinWave: 40,
                 MaxWave: 50,
                 MinBatch: 1,
                 MaxBatch: 1,
