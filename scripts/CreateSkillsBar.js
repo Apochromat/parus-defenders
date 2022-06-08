@@ -3,8 +3,8 @@ import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
 
 export function createSkillsBar(scene){
-    scene.skillBar = scene.add.image(scene.game.renderer.width - 297, scene.game.renderer.height-30, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarField);
-    scene.toolBarRight =  scene.add.image(scene.game.renderer.width - 297, scene.game.renderer.height-567, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarPrimal);
+    scene.skillBar = scene.add.image(scene.game.renderer.width - 60, 450, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarField);
+    scene.toolBarRight =  scene.add.image(scene.game.renderer.width - 790, 450, CST.IMAGES.ToolBarRight).setDepth(CST.DEPTHS.ToolBarPrimal);
     
     scene.toolBarRight.setInteractive();
     scene.skillBar.setInteractive();
@@ -42,10 +42,10 @@ export function openToolbarRight(scene, t = null){
     }
     
     scene.recyclerViewSkills = scene.rexUI.add.scrollablePanel({
-        x: 1050,
-        y: 450,
-        width: 500,
-        height: 528,
+        x: scene.game.renderer.width - 365,
+        y: 530,
+        width: 690,
+        height: 780,
 
         scrollMode: 0,
 
@@ -70,11 +70,10 @@ export function openToolbarRight(scene, t = null){
         },
 
         space: {
-            left: 10,
+            left: 30,
             right: 10,
             top: 10,
             bottom: 10,
-
             panel: 10
         }
     }).layout().setDepth(CST.DEPTHS.ToolBarRecyclerView);
@@ -102,11 +101,8 @@ export function openToolbarRight(scene, t = null){
 function createGrid(scene) {
     var sizer = scene.rexUI.add.fixWidthSizer({
         space: {
-            left: 3,
-            right: 3,
             top: 3,
             bottom: 3,
-            item: 8,
             line: 8,
         }
     })
@@ -122,8 +118,8 @@ function createGrid(scene) {
 
 function createSkillsItem(scene, key) {
     var table = scene.rexUI.add.gridSizer({
-        width: 500,
-        height: 120,
+        width: 600,
+        height: 160,
         column: 3,
         row: 3,
         rowProportions: 1,
@@ -139,7 +135,7 @@ function createSkillsItem(scene, key) {
     table.add(createLable(scene, CST.SKILLSLIST[key].Description, 2), 1, 1, 'left', {right: 0}, true);
     table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);
     table.add(createLable(scene, CST.SKILLSLIST[key].Levels[scene.playerStats.LEVELS_SKILLS[key]], 1), 2, 1, 'right', {left: 150}, true);
-    table.add(createButtonAdd(scene, key), 2, 2, 'right', {top: 5, left: 150}, true);
+    table.add(createButtonAdd(scene, key), 2, 2, 'right', {top: 5, left: 160}, true);
 
     return scene.rexUI.add.sizer({
     })
@@ -160,17 +156,17 @@ function createLable(scene, name, type) {
     var label
     if (type == 1) { //LVL text
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 24, color: '#51c751' }),
+            text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 32, color: '#51c751' }),
         });
     }
     else if(type == 2){ //description
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 16, color: '#ffffff' }),
+            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
         });
     }
     else{
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 32, color: '#ffffff' }),
         });
     }
     
@@ -190,7 +186,7 @@ function createButtonAdd(scene, key) {
 
     table.add(
         scene.rexUI.add.label({
-            text: scene.add.text(0, 0, "UPGRADE", { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff' }),
+            text: scene.add.text(0, 0, "UPGRADE", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
             space: {left: 20, right: 0, top: 5, bottom: 0 }
         })
     );

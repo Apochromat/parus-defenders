@@ -7,21 +7,21 @@ export const CST = {
         LOAD: "LOAD"
     },
     NUMBERS: {
-        WIDTH: 1500,
-        HEIGHT: 720,
-        ParusX: 410,
-        ParusY: 415,
+        WIDTH: 1920,
+        HEIGHT: 1080,
+        ParusX: 580,
+        ParusY: 580,
         HeroSpawnArea: {
-            X0: 620,
-            Y0: 530,
-            X1: 700,
-            Y1: 620
+            X0: 810,
+            Y0: 730,
+            X1: 870,
+            Y1: 820
         },
         MonsterSpawnArea: {
-            X0: 1550,
-            Y0: 530,
-            X1: 1600,
-            Y1: 620
+            X0: 1720,
+            Y0: 730,
+            X1: 1770,
+            Y1: 820
         },
         SaveDataDelay: 60000
     },
@@ -98,8 +98,8 @@ export const CST = {
     MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
     SHOPLIST: {
         Parus: {
-            Name: "Укрепить Парус",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Парус",
+            Description: "Увеличение HP и \nMP Паруса",
             LevelCost: [
                 100,
                 250,
@@ -114,8 +114,8 @@ export const CST = {
             ]
         },
         HeroCat: {
-            Name: "Укрепить Кота-рыцаря",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Кот-рыцарь",
+            Description: "Увеличение HP и \nурона Кота",
             LevelCost: [
                 100,
                 250,
@@ -130,8 +130,8 @@ export const CST = {
             ]
         },
         HeroCenturion: {
-            Name: "Укрепить Рори",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Центурион Рори",
+            Description: "Увеличение HP и \nурона Рори",
             LevelCost: [
                 100,
                 250,
@@ -146,8 +146,8 @@ export const CST = {
             ]
         },
         HeroNightmare: {
-            Name: "Укрепить Кошмара",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Кошмар",
+            Description: "Увеличение HP и \nурона Кошмара",
             LevelCost: [
                 100,
                 250,
@@ -162,8 +162,8 @@ export const CST = {
             ]
         },
         HeroWizard: {
-            Name: "Укрепить Чародея",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Чародей",
+            Description: "Увеличение HP и \nурона Чародея",
             LevelCost: [
                 100,
                 250,
@@ -235,7 +235,7 @@ export const CST = {
         },
         SpawnCooldown: {
             Name: "Перезарядка",
-            Description: "Уменьшение времени между \nвызовами героев",
+            Description: "Уменьшение времени \nмежду вызовами героев",
             Levels: [
                 "-0%",
                 "-2.5%",
@@ -316,7 +316,7 @@ export const CST = {
         },
         CriticalChance: {
             Name: "Критический шанс",
-            Description: "Увеличение шанса критического \nурона",
+            Description: "Увеличение шанса \nкритического урона",
             Levels: [
                 "0%",
                 "+1%",
@@ -423,7 +423,7 @@ export const CST = {
             ]
         },
         MPRecovery: {
-            Name: "Восстановление маны",
+            Name: "Регенерация маны", 
             Description: "Увеличение скорости \nвосстановления маны",
             Levels: [
                 "+0%",
@@ -831,28 +831,28 @@ export const CST = {
     },
     HERO_SLOTS: {
         0: {
-            x: 300,
-            y: 546
+            x: 450,
+            y: 746
         },
         1: {
-            x: 520,
-            y: 546
+            x: 710,
+            y: 746
         },
         2: {
-            x: 300,
-            y: 434
+            x: 450,
+            y: 625
         },
         3: {
-            x: 520,
-            y: 434
+            x: 710,
+            y: 625
         },
         4: {
-            x: 300,
-            y: 315
+            x: 450,
+            y: 506
         },
         5: {
-            x: 520,
-            y: 315
+            x: 710,
+            y: 506
         },
     },
     DEPTHS: {
@@ -862,7 +862,7 @@ export const CST = {
         ToolBarMinor: 5001,
         ToolBarRecyclerView: 5004,
         HeroesBarField: 5006,
-        HeroesBarClose: 5006,
+        HeroesBarClose: 5005,
         HeroesBarRecyclerView: 5007,
         Slots: 1000
     },

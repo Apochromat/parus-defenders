@@ -2,8 +2,8 @@ import { CST } from "./const.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
 
 export function createHeroesBar(scene){
-    scene.heroesBarField =  scene.add.image(scene.game.renderer.width - 171, 391, CST.IMAGES.HeroesBarField).setDepth(CST.DEPTHS.HeroesBarField);
-    scene.heroesBarClose =  scene.add.image(scene.game.renderer.width - 491, 153, CST.IMAGES.HeroesBarClose).setDepth(CST.DEPTHS.HeroesBarClose);
+    scene.heroesBarField =  scene.add.image(scene.game.renderer.width - 300, 530, CST.IMAGES.HeroesBarField).setDepth(CST.DEPTHS.HeroesBarField);
+    scene.heroesBarClose =  scene.add.image(scene.game.renderer.width - 777, 169, CST.IMAGES.HeroesBarClose).setDepth(CST.DEPTHS.HeroesBarClose);
 
     scene.heroesBarClose.setInteractive();
 
@@ -35,10 +35,10 @@ export function openHeroesBar(scene, index, t = null){
     scene.heroesBarClose.visible = true;
 
     scene.itemCurrentHero = scene.rexUI.add.scrollablePanel({
-        x: 1274,
-        y: 225,
-        width: 434,
-        height: 180,
+        x: scene.game.renderer.width - 365,
+        y: 255,
+        width: 690,
+        height: 230,
 
         scrollMode: 0,
 
@@ -60,12 +60,12 @@ export function openHeroesBar(scene, index, t = null){
         header: scene.rexUI.add.label({
             height: 24,
             orientation: 0,
-            text: scene.add.text(0, 0, "Окно Героя: " + index, { fontFamily: 'Garamond', fontSize: 24, color: '#ffffff' }),
+            text: scene.add.text(0, 0, "Окно Героя: " + index, { fontFamily: 'Garamond', fontSize: 32, color: '#ffffff' }),
             space: {left: 0, right: 10, top: 0, bottom: 10 }
         }),
 
         space: {
-            left: 10,
+            left: 30,
             right: 10,
             top: 10,
             bottom: 10,
@@ -74,10 +74,10 @@ export function openHeroesBar(scene, index, t = null){
     }).layout().setDepth(CST.DEPTHS.HeroesBarRecyclerView);
 
     scene.recyclerViewHeroes = scene.rexUI.add.scrollablePanel({
-        x: 1274,
-        y: 455,
-        width: 434,
-        height: 270,
+        x: scene.game.renderer.width - 365,
+        y: 645,
+        width: 690,
+        height: 520,
 
         scrollMode: 0,
 
@@ -102,7 +102,7 @@ export function openHeroesBar(scene, index, t = null){
         },
 
         space: {
-            left: 10,
+            left: 30,
             right: 10,
             top: 10,
             bottom: 10,
@@ -171,8 +171,8 @@ function createGrid(scene, index=0) {
 
 function createHeroesItem(scene, key, index, type) {
     var table = scene.rexUI.add.gridSizer({
-        width: 375,
-        height: 120,
+        width: 600,
+        height: 160,
         column: 3,
         row: 3,
         rowProportions: 1,
@@ -188,22 +188,22 @@ function createHeroesItem(scene, key, index, type) {
         table.add(createLable(scene, "ПУСТОЕ ОКНО"), 1, 1, 'left', {left: 20}, true);
     }
     else if (type == 1){
-        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 15, right: 0}, true);
+        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 45, right: 0}, true);
         table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
         table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
         table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].PoisonDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
         table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
         table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
-        table.add(createButtonAdd(scene, key, index, 1), 2, 2, 'right', {top: 5, left: 90}, true);
+        table.add(createButtonAdd(scene, key, index, 1), 2, 2, 'right', {top: 5, left: 140}, true);
     }
     else {
-        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 15, right: 0}, true);
+        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 45, right: 0}, true);
         table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
         table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
         table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].PoisonDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
         table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
         table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
-        table.add(createButtonAdd(scene, key, index, 0), 2, 2, 'right', {top: 5, left: 100}, true);
+        table.add(createButtonAdd(scene, key, index, 0), 2, 2, 'right', {top: 5, left: 160}, true);
     }
     
     return scene.rexUI.add.sizer({
@@ -225,17 +225,17 @@ function createLable(scene, name, type) {
     var label
     if (type == 1) { //LVL text
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 24, color: '#51c751' }),
+            text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 32, color: '#51c751' }),
         });
     }
     else if(type == 2){ //description
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 16, color: '#ffffff' }),
+            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
         });
     }
     else{
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+            text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 32, color: '#ffffff' }),
         });
     }
     
@@ -258,7 +258,7 @@ function createButtonAdd(scene, key, index, type) {
         table.type = 0
         table.add(
             scene.rexUI.add.label({
-                text: scene.add.text(0, 0, "EQUIP", { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff' }),
+                text: scene.add.text(0, 0, "EQUIP", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
                 space: {left: 20, right: 0, top: 5, bottom: 0 }
             })
         );
@@ -267,7 +267,7 @@ function createButtonAdd(scene, key, index, type) {
         table.type = 1
         table.add(
             scene.rexUI.add.label({
-                text: scene.add.text(0, 0, "REMOVE", { fontFamily: 'ClearSans', fontSize: 18, color: '#ffffff' }),
+                text: scene.add.text(0, 0, "REMOVE", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
                 space: {left: 20, right: 0, top: 5, bottom: 0 }
             })
         );

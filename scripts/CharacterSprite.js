@@ -9,7 +9,7 @@ export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
     reachFlag = false;
     state; 
 
-    constructor(scene, x, y, texture, scale) {
+    constructor(scene, x, y, texture, scale = 1) {
         super(scene, x, y, texture);
 
         scene.sys.updateList.add(this);
