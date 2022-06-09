@@ -3,7 +3,7 @@ import { CST } from "../scripts/const.js";
 export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     enemies.getMatching("active", true).forEach(enemy => {
         console.log(enemy);
-        if (heroes.getLength() == 0 && Math.round(enemy.x)> parus.x+200) {
+        if (heroes.getLength() == 0 && Math.round(enemy.x)> parus.x+250) {
             var VectorX, VectorY;
             VectorX = (parus.x+200 - enemy.x);
             VectorY = (parus.y+150 - enemy.y);
