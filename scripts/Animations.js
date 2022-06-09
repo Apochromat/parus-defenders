@@ -146,8 +146,37 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
-     // Hero Witch
-     scene.anims.create({
+    // Hero Tesla
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroTesla.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [1, 5, 9, 13, 17, 21] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroTesla.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [2, 6, 10, 14, 18, 22] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroTesla.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroTesla.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [3, 7, 11, 15, 19, 23, 27, 31] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Witch
+    scene.anims.create({
         key: CST.ANIMATIONS.HeroWitch.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [1, 5, 9, 13, 17, 21] }),
         frameRate: 8,
@@ -261,6 +290,36 @@ export function createAnimations(scene) {
         frameRate: 8,
         repeat: 0
     });
+
+    // Hero Stormhead 
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroStormhead.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [1, 5, 9, 13, 17, 21, 25, 29, 33] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroStormhead.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [2, 6, 10, 14, 18, 22, 26, 30, 34, 38] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroStormhead.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroStormhead.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [3, 7, 11, 15, 19, 23, 27, 31] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
 
     // Hero Wizard
     scene.anims.create({

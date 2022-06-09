@@ -1,4 +1,5 @@
 
+
 export const CST = {
     EMPTY: "Empty",
     SCENES: {
@@ -68,10 +69,12 @@ export const CST = {
         HeroArchaeologist: "iconHeroArchaeologist",
         HeroSceleton: "iconHeroSceleton",
         HeroCenturion: "iconHeroCenturion",
+        HeroTesla: "iconHeroTesla",
         HeroWitch: "iconHeroWitch",
         HeroReaper: "iconHeroReaper",
         HeroNightmare: "iconHeroNightmare",
         HeroMinotaur: "iconHeroMinotaur",
+        HeroStormhead: "iconHeroStormhead",
         HeroWizard: "iconHeroWizard"
     },
     SPRITES32: {
@@ -92,6 +95,7 @@ export const CST = {
     SPRITES64: {
         MonsterSlayer: "monster_slayer",
         HeroMage: "hero_mage",
+        HeroTesla: "hero_tesla",
         HeroArchaeologist: "hero_archaeologist"
     },
     SPRITES80: {
@@ -100,6 +104,9 @@ export const CST = {
     },
     SPRITES96: {
         HeroMinotaur: "hero_minotaur",
+    },
+    SPRITES128: {
+        HeroStormhead: "hero_stormhead",
     },
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
@@ -111,7 +118,7 @@ export const CST = {
         Psychosocial: "8-Bit_Misfits_Psychosocial"
     },
     MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
-    HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroWizard"],
+    HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
         Parus: {
             Name: "Парус",
@@ -193,6 +200,22 @@ export const CST = {
                 250000
             ]
         },
+        HeroTesla: {
+            Name: "Тесла",
+            Description: "Увеличение HP и \nурона Тесла",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
         HeroWitch: {
             Name: "Ведьмочка",
             Description: "Увеличение HP и \nурона Ведьмы",
@@ -260,6 +283,22 @@ export const CST = {
         HeroMinotaur: {
             Name: "Минотавр",
             Description: "Увеличение HP и \nурона Минотавра",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroStormhead: {
+            Name: "Ш.Т.О.Р.М",
+            Description: "Увеличение HP и \nурона Ш.Т.О.Р.М",
             LevelCost: [
                 100,
                 250,
@@ -723,6 +762,12 @@ export const CST = {
             Hit: 'hero_sceleton_hit',
             Death: 'hero_sceleton_death'
         },
+        HeroTesla: {
+            Idle: 'hero_tesla_idle',
+            Walk: 'hero_tesla_walk',
+            Hit: 'hero_tesla_hit',
+            Death: 'hero_tesla_death'
+        },
         HeroWitch: {
             Idle: 'hero_witch_idle',
             Walk: 'hero_witch_walk',
@@ -752,6 +797,12 @@ export const CST = {
             Walk: 'hero_minotaur_walk',
             Hit: 'hero_minotaur_hit',
             Death: 'hero_minotaur_death'
+        },
+        HeroStormhead: {
+            Idle: 'hero_stormhead_idle',
+            Walk: 'hero_stormhead_walk',
+            Hit: 'hero_stormhead_hit',
+            Death: 'hero_stormhead_death'
         },
         HeroWizard: {
             Idle: 'hero_wizard_idle',
@@ -938,6 +989,21 @@ export const CST = {
             Speed: 50,
             MPCost: 70
         },
+        HeroTesla: {
+            Name: "Тесла",
+            HealPoints: 1500,
+            PhysicalDamage: 100,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 500,
+            SpawnCooldown: 8000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 70
+        },
         HeroWitch: {
             Name: "Ведьмочка",
             HealPoints: 1000,
@@ -1012,6 +1078,21 @@ export const CST = {
             MagicProtection: 10,
             Speed: 50,
             MPCost: 400
+        },
+        HeroStormhead: {
+            Name: "Ш.Т.О.Р.М",
+            HealPoints: 5000,
+            PhysicalDamage: 800,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            SpawnCooldown: 50000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 600
         },
         HeroWizard: {
             Name: "Чародей",

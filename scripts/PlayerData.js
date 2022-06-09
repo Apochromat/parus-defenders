@@ -24,10 +24,12 @@ var playerDataTemplate = {
         HeroArchaeologist: 0,
         HeroSceleton: 0,
         HeroCenturion: 0,
+        HeroTesla: 0,
         HeroWitch: 0,
         HeroReaper: 0,
         HeroNightmare: 0,
         HeroMinotaur: 0,
+        HeroStormhead: 0,
         HeroWizard: 0
     },
     LEVELS_SKILLS: {
@@ -51,10 +53,12 @@ var playerDataTemplate = {
         HeroArchaeologist: 0,
         HeroSceleton: 0,
         HeroCenturion: 0,
+        HeroTesla: 0,
         HeroWitch: 0,
         HeroReaper: 0,
         HeroNightmare: 0,
         HeroMinotaur: 0,
+        HeroStormhead: 0,
         HeroWizard: 0
     },
     AVAILABLE_HEROES: [
@@ -63,10 +67,12 @@ var playerDataTemplate = {
         "HeroArchaeologist",
         "HeroSceleton",
         "HeroCenturion",
+        "HeroTesla",
         "HeroWitch",
         "HeroReaper",
         "HeroNightmare",
         "HeroMinotaur",
+        "HeroStormhead",
         "HeroWizard"
     ],
     HERO_SLOTS: [
