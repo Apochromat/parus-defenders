@@ -3,6 +3,7 @@ import { PlayScene } from "../scenes/PlayScene.js";
 import { CST } from "../scripts/const.js";
 import { randomIntFromInterval } from "../scripts/Misc.js";
 import { openHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { CharacterSprite } from "./CharacterSprite.js";
 
 export class Parus extends Phaser.Physics.Arcade.Sprite {
     level;
@@ -80,7 +81,9 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.graphicsStatusInWait.clear();
 
         if (playerStats.HERO_SLOTS[index] != CST.EMPTY) {
-            this.heroImage = scene.add.image(x, y, CST.ICONS[playerStats.HERO_SLOTS[index]]).setDepth(CST.DEPTHS.Slots);
+            this.heroImage = new CharacterSprite(scene, x, y, CST.SPRITES32[playerStats.HERO_SLOTS[index]], 2).setDepth(CST.DEPTHS.Slots);
+            this.heroImage.play(CST.ANIMATIONS[playerStats.HERO_SLOTS[index]].Idle)
+            //scene.add.image(x, y, CST.ICONS[playerStats.HERO_SLOTS[index]]).setDepth(CST.DEPTHS.Slots);
             if (playerStats.BattleMode) 
                 this.setHeroWindowProgress(playerStats);     
         }

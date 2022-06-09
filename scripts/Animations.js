@@ -117,6 +117,93 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Hero Sceleton
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroSceleton.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroSceleton, { frames: [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroSceleton.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroSceleton, { frames: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroSceleton.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroSceleton, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroSceleton.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroSceleton, { frames: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+     // Hero Witch
+     scene.anims.create({
+        key: CST.ANIMATIONS.HeroWitch.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [1, 5, 9, 13, 17, 21] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWitch.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [2, 6, 10, 14, 18, 22, 26, 30] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWitch.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [3, 7, 11, 15, 19, 23, 27] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWitch.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Centurion
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroReaper.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroReaper, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroReaper.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroReaper, { frames: [11, 12, 13, 14, 15, 16, 17, 18] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroReaper.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroReaper, { frames: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroReaper.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroReaper, { frames: [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Hero Nightmare
     scene.anims.create({
         key: CST.ANIMATIONS.HeroNightmare.Idle,
@@ -142,6 +229,35 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.HeroNightmare.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Minotaur 
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMinotaur.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.HeroMinotaur, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMinotaur.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.HeroMinotaur, { frames: [9, 10, 11, 12, 13, 14, 15, 16] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMinotaur.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.HeroMinotaur, { frames: [36, 37, 38, 39, 40, 41, 42, 43, 44] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMinotaur.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.HeroMinotaur, { frames: [45, 46, 47, 48, 49, 50] }),
         frameRate: 8,
         repeat: 0
     });
