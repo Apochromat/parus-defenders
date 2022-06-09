@@ -18,9 +18,9 @@ export const CST = {
             Y1: 820
         },
         MonsterSpawnArea: {
-            X0: 1720,
+            X0: 1930,
             Y0: 730,
-            X1: 1770,
+            X1: 2000,
             Y1: 820
         },
         SaveDataDelay: 60000
@@ -65,8 +65,12 @@ export const CST = {
         HeroCat: "iconHeroCat",
         HeroMage: "iconHeroMage",
         HeroArchaeologist: "iconHeroArchaeologist",
+        HeroSceleton: "iconHeroSceleton",
         HeroCenturion: "iconHeroCenturion",
+        HeroWitch: "iconHeroWitch",
+        HeroReaper: "iconHeroReaper",
         HeroNightmare: "iconHeroNightmare",
+        HeroMinotaur: "iconHeroMinotaur",
         HeroWizard: "iconHeroWizard"
     },
     SPRITES32: {
@@ -79,7 +83,10 @@ export const CST = {
         HeroCenturion: "hero_centurion"
     },
     SPRITES48: {
-        MonsterHellhound: "monster_hellhound"
+        MonsterHellhound: "monster_hellhound",
+        HeroReaper: "hero_reaper",
+        HeroSceleton: "hero_sceleton",
+        HeroWitch: "hero_witch"
     },
     SPRITES64: {
         MonsterSlayer: "monster_slayer",
@@ -89,6 +96,9 @@ export const CST = {
     SPRITES80: {
         HeroNightmare: "hero_nightmare",
         HeroWizard: "hero_wisard"
+    },
+    SPRITES96: {
+        HeroMinotaur: "hero_minotaur",
     },
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
@@ -165,6 +175,38 @@ export const CST = {
                 250000
             ]
         },
+        HeroSceleton: {
+            Name: "Big Bone",
+            Description: "Увеличение HP и \nурона Big Bon`а",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroWitch: {
+            Name: "Ведьмочка",
+            Description: "Увеличение HP и \nурона Ведьмы",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
         HeroCenturion: {
             Name: "Центурион Рори",
             Description: "Увеличение HP и \nурона Рори",
@@ -181,9 +223,41 @@ export const CST = {
                 250000
             ]
         },
+        HeroReaper: {
+            Name: "Жнец",
+            Description: "Увеличение HP и \nурона Жнеца",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
         HeroNightmare: {
             Name: "Кошмар",
             Description: "Увеличение HP и \nурона Кошмара",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroMinotaur: {
+            Name: "Минотавр",
+            Description: "Увеличение HP и \nурона Минотавра",
             LevelCost: [
                 100,
                 250,
@@ -641,17 +715,41 @@ export const CST = {
             Hit: 'hero_archaeologist_hit',
             Death: 'hero_archaeologist_death'
         },
+        HeroSceleton: {
+            Idle: 'hero_sceleton_idle',
+            Walk: 'hero_sceleton_walk',
+            Hit: 'hero_sceleton_hit',
+            Death: 'hero_sceleton_death'
+        },
+        HeroWitch: {
+            Idle: 'hero_witch_idle',
+            Walk: 'hero_witch_walk',
+            Hit: 'hero_witch_hit',
+            Death: 'hero_witch_death'
+        },
         HeroCenturion: {
             Idle: 'hero_centurion_idle',
             Walk: 'hero_centurion_walk',
             Hit: 'hero_centurion_hit',
             Death: 'hero_centurion_death'
         },
+        HeroReaper: {
+            Idle: 'hero_reaper_idle',
+            Walk: 'hero_reaper_walk',
+            Hit: 'hero_reaper_hit',
+            Death: 'hero_reaper_death'
+        },
         HeroNightmare: {
             Idle: 'hero_nightmare_idle',
             Walk: 'hero_nightmare_walk',
             Hit: 'hero_nightmare_hit',
             Death: 'hero_nightmare_death'
+        },
+        HeroMinotaur: {
+            Idle: 'hero_minotaur_idle',
+            Walk: 'hero_minotaur_walk',
+            Hit: 'hero_minotaur_hit',
+            Death: 'hero_minotaur_death'
         },
         HeroWizard: {
             Idle: 'hero_wizard_idle',
@@ -780,12 +878,12 @@ export const CST = {
         },
         HeroCat: {
             Name: "Кот-Рыцарь",
-            HealPoints: 1500,
+            HealPoints: 800,
             PhysicalDamage: 75,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 1000,
+            SpawnCooldown: 3000,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
@@ -795,37 +893,22 @@ export const CST = {
         },
         HeroMage: {
             Name: "Тёмный Маг",
-            HealPoints: 1500,
+            HealPoints: 700,
             PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
-            SpawnCooldown: 1000,
+            SpawnCooldown: 3000,
             SpawnBatchSize: 3,
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
             Speed: 50,
-            MPCost: 25
+            MPCost: 35
         },
         HeroArchaeologist: {
             Name: "Археолог",
-            HealPoints: 1500,
-            PhysicalDamage: 100,
-            PoisonDamage: 10,
-            MagicDamage: 10,
-            AttackCooldown: 1000,
-            SpawnCooldown: 1000,
-            SpawnBatchSize: 3,
-            PhysicalProtection: 10,
-            PoisonProtection: 10,
-            MagicProtection: 10,
-            Speed: 50,
-            MPCost: 25
-        },
-        HeroCenturion: {
-            Name: "Центурион Рори",
-            HealPoints: 2000,
+            HealPoints: 1000,
             PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -835,12 +918,27 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 50,
-            MPCost: 25
+            Speed: 80,
+            MPCost: 50
         },
-        HeroNightmare: {
-            Name: "Кошмар",
-            HealPoints: 2500,
+        HeroSceleton: {
+            Name: "Big Bone",
+            HealPoints: 2000,
+            PhysicalDamage: 300,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            SpawnCooldown: 8000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 70
+        },
+        HeroWitch: {
+            Name: "Ведьмочка",
+            HealPoints: 1000,
             PhysicalDamage: 500,
             PoisonDamage: 10,
             MagicDamage: 10,
@@ -850,13 +948,13 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
-            Speed: 150,
-            MPCost: 25
+            Speed: 80,
+            MPCost: 90
         },
-        HeroWizard: {
-            Name: "Чародей",
-            HealPoints: 1000,
-            PhysicalDamage: 200,
+        HeroCenturion: {
+            Name: "Центурион Рори",
+            HealPoints: 2000,
+            PhysicalDamage: 130,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
@@ -865,8 +963,68 @@ export const CST = {
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
+            Speed: 50,
+            MPCost: 65
+        },
+        HeroReaper: {
+            Name: "Жнец",
+            HealPoints: 1000,
+            PhysicalDamage: 800,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 15000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 80,
+            MPCost: 200
+        },
+        HeroNightmare: {
+            Name: "Кошмар",
+            HealPoints: 2500,
+            PhysicalDamage: 500,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 20000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 150,
+            MPCost: 200
+        },
+        HeroMinotaur: {
+            Name: "Минотавр",
+            HealPoints: 4000,
+            PhysicalDamage: 600,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            SpawnCooldown: 30000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 400
+        },
+        HeroWizard: {
+            Name: "Чародей",
+            HealPoints: 1500,
+            PhysicalDamage: 300,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 10000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
             Speed: 100,
-            MPCost: 25
+            MPCost: 150
         }
     },
     PARUS: {

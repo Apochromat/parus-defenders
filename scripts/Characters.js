@@ -27,15 +27,35 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroArchaeologist));
                 this.scene.parus.currMP -= CST.CHARACTERS.HeroArchaeologist.MPCost;
                 break;
+            case "HeroSceleton":
+                this.heap[CharacterHeap.id] = new HeroSceleton(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroSceleton));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroSceleton.MPCost;
+                break;
             case "HeroCenturion":
                 this.heap[CharacterHeap.id] = new HeroCenturion(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCenturion));
                 this.scene.parus.currMP -= CST.CHARACTERS.HeroCenturion.MPCost;
                 break;
+            case "HeroWitch":
+                this.heap[CharacterHeap.id] = new HeroWitch(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroWitch));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroWitch.MPCost;
+                break;
+            case "HeroReaper":
+                this.heap[CharacterHeap.id] = new HeroReaper(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroReaper));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroReaper.MPCost;
+                break;
             case "HeroNightmare":
                 this.heap[CharacterHeap.id] = new HeroNightmare(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroNightmare));
                 this.scene.parus.currMP -= CST.CHARACTERS.HeroNightmare.MPCost;
+                break;
+            case "HeroMinotaur":
+                this.heap[CharacterHeap.id] = new HeroMinotaur(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroMinotaur));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroMinotaur.MPCost;
                 break;
             case "HeroWizard":
                 this.heap[CharacterHeap.id] = new HeroWizard(scene, x, y, CharacterHeap.id, this.heap);
@@ -1002,6 +1022,79 @@ export class HeroArchaeologist extends CharacterSprite {
     }
 }
 
+export class HeroSceleton extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES48.HeroSceleton, scale);
+        this.hp = CST.CHARACTERS.HeroSceleton.HealPoints;
+        this.speed = CST.CHARACTERS.HeroSceleton.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Death) {
+            this.play(CST.ANIMATIONS.HeroSceleton.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Death) {
+            this.play(CST.ANIMATIONS.HeroSceleton.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationIdle(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.HeroSceleton.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroSceleton.Death) {
+            this.play(CST.ANIMATIONS.HeroSceleton.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+}
+
 export class HeroCenturion extends CharacterSprite {
     constructor(scene, x, y, id, heap, scale = 3) {
         super(scene, x, y, CST.SPRITES32.HeroCenturion, scale);
@@ -1075,6 +1168,153 @@ export class HeroCenturion extends CharacterSprite {
     }
 }
 
+export class HeroWitch extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES48.HeroWitch, scale);
+        this.hp = CST.CHARACTERS.HeroWitch.HealPoints;
+        this.speed = CST.CHARACTERS.HeroWitch.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Death) {
+            this.play(CST.ANIMATIONS.HeroWitch.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Death) {
+            this.play(CST.ANIMATIONS.HeroWitch.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationIdle(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.HeroWitch.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroWitch.Death) {
+            this.play(CST.ANIMATIONS.HeroWitch.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+}
+
+
+export class HeroReaper extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES48.HeroReaper, scale);
+        this.hp = CST.CHARACTERS.HeroReaper.HealPoints;
+        this.speed = CST.CHARACTERS.HeroReaper.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Death) {
+            this.play(CST.ANIMATIONS.HeroReaper.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Death) {
+            this.play(CST.ANIMATIONS.HeroReaper.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationIdle(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.HeroReaper.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroReaper.Death) {
+            this.play(CST.ANIMATIONS.HeroReaper.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+}
+
 export class HeroNightmare extends CharacterSprite {
     constructor(scene, x, y, id, heap, scale = 3) {
         super(scene, x, y, CST.SPRITES80.HeroNightmare, scale);
@@ -1117,6 +1357,79 @@ export class HeroNightmare extends CharacterSprite {
     setAnimationDeath(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroNightmare.Death) {
             this.play(CST.ANIMATIONS.HeroNightmare.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+}
+
+export class HeroMinotaur extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES96.HeroMinotaur, scale);
+        this.hp = CST.CHARACTERS.HeroMinotaur.HealPoints;
+        this.speed = CST.CHARACTERS.HeroMinotaur.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Death) {
+            this.play(CST.ANIMATIONS.HeroMinotaur.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Death) {
+            this.play(CST.ANIMATIONS.HeroMinotaur.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationIdle(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.HeroMinotaur.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMinotaur.Death) {
+            this.play(CST.ANIMATIONS.HeroMinotaur.Death);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
         }
