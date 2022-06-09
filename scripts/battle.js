@@ -87,30 +87,14 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     });
  
     heroes.getMatching("active", true).forEach(hero => {
-        if (enemies.getLength() == 0 && Math.round(hero.x) > CST.NUMBERS.HeroSpawnArea.X0+2) {
-            var VectorX, VectorY;
-            VectorX = (CST.NUMBERS.HeroSpawnArea.X0 - hero.x);
-            VectorY = (0);
-            var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
-            if (VectorX >= 0) {
-                hero.setAnimationWalk(false);
-            }
-            else {
-                hero.flipX = true;
-                hero.setAnimationWalk(true);
-            }
-
-            hero.setVelocity(VectorX / modul * hero.speed,VectorY / modul * hero.speed);
-            console.log(3);
-        }
-        else if (enemies.getLength() == 0) {
+        if (enemies.getLength() == 0) {
             hero.setAnimationIdle(false);
             hero.setVelocity(0, 0);
             hero.flipX = false;
             console.log(2);
             
         }
-        if (enemies.getLength() != 0) {
+        else if (enemies.getLength() != 0) {
             
             var enemy = enemies.getFirstAlive(true);
 
