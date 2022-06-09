@@ -1,4 +1,5 @@
 import { CST } from "../scripts/const.js";
+import { battle } from "../scripts/Battle.js";
 import { createAnimations } from "../scripts/Animations.js";
 import { createStatusBar, setStatusHP, setStatusMP, setStatusLVL, setStatusCOIN, setStatusWAVE } from "../scripts/CreateStatusBar.js";
 import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
@@ -88,7 +89,7 @@ export class PlayScene extends Phaser.Scene {
         this.createSpawnMonstersBar();
         this.createSpawnHeroesBar();
 
-        this.setPhysicsEnemies();
+       // this.setPhysicsEnemies();
     }
 
     update() {
@@ -97,6 +98,7 @@ export class PlayScene extends Phaser.Scene {
             console.log("Data Saved");
         }
         this.wave();
+        
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
@@ -135,6 +137,7 @@ export class PlayScene extends Phaser.Scene {
                
             this.battleFlag = 0;
         }
+        battle(this.parus,this.enemies,this.heroes);
     }
 
     wave() {
@@ -169,46 +172,46 @@ export class PlayScene extends Phaser.Scene {
         this.playerStats = loadPlayerData();
     }
 
-    setPhysicsEnemies() {
-        this.physics.add.collider(this.parus, this.enemies,
-            // При столкновении
-            (obj1, obj2) => {
-                obj2.setVelocity(0, 0);
-                obj2.setAnimationHit();
-                if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
-                    obj2.lastDamageTime = Date.now();
-                    if (!obj1.damage(obj2.specs.PhysicalDamage)) {
-                        for (let el in this.characterHeap.heap) {
-                            this.characterHeap.heap[el].specs.PhysicalDamage = 0;
-                            this.characterHeap.heap[el].death();
-                        }
-                        obj1.currHP = obj1.maxHP;
-                        obj1.currMP = obj1.maxMP;
-                        this.playerStats.BattleMode = false;
-                        this.playerStats.WAVE_PROGRESS = 0;
-                    };
-                }
-            }
-        );
+    // setPhysicsEnemies() {
+    //     this.physics.add.collider(this.parus, this.enemies,
+    //         // При столкновении
+    //         (obj1, obj2) => {
+    //             obj2.setVelocity(0, 0);
+    //             obj2.setAnimationHit();
+    //             if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
+    //                 obj2.lastDamageTime = Date.now();
+    //                 if (!obj1.damage(obj2.specs.PhysicalDamage)) {
+    //                     for (let el in this.characterHeap.heap) {
+    //                         this.characterHeap.heap[el].specs.PhysicalDamage = 0;
+    //                         this.characterHeap.heap[el].death();
+    //                     }
+    //                     obj1.currHP = obj1.maxHP;
+    //                     obj1.currMP = obj1.maxMP;
+    //                     this.playerStats.BattleMode = false;
+    //                     this.playerStats.WAVE_PROGRESS = 0;
+    //                 };
+    //             }
+    //         }
+    //     );
 
-        this.physics.add.collider(this.heroes, this.enemies,
-            // При столкновении
-            (obj1, obj2) => {
-                obj2.setVelocity(0, 0);
-                obj2.setAnimationHit();
-                obj1.setVelocity(0, 0);
-                obj1.setAnimationHit(false);
-                if (Date.now() - obj1.lastDamageTime >= obj1.specs.AttackCooldown) {
-                    obj1.lastDamageTime = Date.now();
-                    obj2.damage(obj1.specs.PhysicalDamage);
-                }
-                if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
-                    obj2.lastDamageTime = Date.now();
-                    obj1.damage(obj2.specs.PhysicalDamage);
-                }
-            }
-        );
-    }
+    //     this.physics.add.collider(this.heroes, this.enemies,
+    //         // При столкновении
+    //         (obj1, obj2) => {
+    //             obj2.setVelocity(0, 0);
+    //             obj2.setAnimationHit();
+    //             obj1.setVelocity(0, 0);
+    //             obj1.setAnimationHit(false);
+    //             if (Date.now() - obj1.lastDamageTime >= obj1.specs.AttackCooldown) {
+    //                 obj1.lastDamageTime = Date.now();
+    //                 obj2.damage(obj1.specs.PhysicalDamage);
+    //             }
+    //             if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
+    //                 obj2.lastDamageTime = Date.now();
+    //                 obj1.damage(obj2.specs.PhysicalDamage);
+    //             }
+    //         }
+    //     );
+    // }
 
     createGUI() {
         createStatusBar(this);
