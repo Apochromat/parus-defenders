@@ -1,3 +1,4 @@
+
 export const CST = {
     EMPTY: "Empty",
     SCENES: {
@@ -110,6 +111,7 @@ export const CST = {
         Psychosocial: "8-Bit_Misfits_Psychosocial"
     },
     MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
+    HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroWizard"],
     SHOPLIST: {
         Parus: {
             Name: "Парус",
