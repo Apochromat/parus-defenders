@@ -20,6 +20,8 @@ var playerDataTemplate = {
     LEVELS_SHOP: {
         Parus: 0,
         HeroCat: 0,
+        HeroMage: 0,
+        HeroArchaeologist: 0,
         HeroCenturion: 0,
         HeroNightmare: 0,
         HeroWizard: 0
@@ -41,12 +43,16 @@ var playerDataTemplate = {
     },
     LEVELS_HEROES: {
         HeroCat: 0,
+        HeroMage: 0,
+        HeroArchaeologist: 0,
         HeroCenturion: 0,
         HeroNightmare: 0,
         HeroWizard: 0
     },
     AVAILABLE_HEROES: [
         "HeroCat",
+        "HeroMage",
+        "HeroArchaeologist",
         "HeroCenturion",
         "HeroNightmare",
         "HeroWizard"

@@ -17,6 +17,16 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCat));
                 this.scene.parus.currMP -= CST.CHARACTERS.HeroCat.MPCost;
                 break;
+            case "HeroMage":
+                this.heap[CharacterHeap.id] = new HeroMage(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroMage));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroMage.MPCost;
+                break;
+            case "HeroArchaeologist":
+                this.heap[CharacterHeap.id] = new HeroArchaeologist(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroArchaeologist));
+                this.scene.parus.currMP -= CST.CHARACTERS.HeroArchaeologist.MPCost;
+                break;
             case "HeroCenturion":
                 this.heap[CharacterHeap.id] = new HeroCenturion(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCenturion));
@@ -815,6 +825,152 @@ export class HeroCat extends CharacterSprite {
     setAnimationDeath(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroCat.Death) {
             this.play(CST.ANIMATIONS.HeroCat.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+}
+
+export class HeroMage extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES64.HeroMage, scale);
+        this.hp = CST.CHARACTERS.HeroMage.HealPoints;
+        this.speed = CST.CHARACTERS.HeroMage.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Death) {
+            this.play(CST.ANIMATIONS.HeroMage.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Death) {
+            this.play(CST.ANIMATIONS.HeroMage.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationIdle(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.HeroMage.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroMage.Death) {
+            this.play(CST.ANIMATIONS.HeroMage.Death);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+}
+
+export class HeroArchaeologist extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES64.HeroArchaeologist, scale);
+        this.hp = CST.CHARACTERS.HeroArchaeologist.HealPoints;
+        this.speed = CST.CHARACTERS.HeroArchaeologist.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Death) {
+            this.play(CST.ANIMATIONS.HeroArchaeologist.Idle);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Death) {
+            this.play(CST.ANIMATIONS.HeroArchaeologist.Walk);
+            this.setVelocityX(isLeftOriented ? -this.speed : this.speed);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationIdle(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.HeroArchaeologist.Hit);
+            this.setVelocity(0, 0);
+            this.flipX = isLeftOriented;
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.HeroArchaeologist.Death) {
+            this.play(CST.ANIMATIONS.HeroArchaeologist.Death);
             this.setVelocity(0, 0);
             this.flipX = isLeftOriented;
         }

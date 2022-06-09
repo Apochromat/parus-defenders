@@ -63,6 +63,8 @@ export const CST = {
         MagicDamage: "icon_magic_damage",
         PoisonDamage: "icon_poison_damage",
         HeroCat: "iconHeroCat",
+        HeroMage: "iconHeroMage",
+        HeroArchaeologist: "iconHeroArchaeologist",
         HeroCenturion: "iconHeroCenturion",
         HeroNightmare: "iconHeroNightmare",
         HeroWizard: "iconHeroWizard"
@@ -80,7 +82,9 @@ export const CST = {
         MonsterHellhound: "monster_hellhound"
     },
     SPRITES64: {
-        MonsterSlayer: "monster_slayer"
+        MonsterSlayer: "monster_slayer",
+        HeroMage: "hero_mage",
+        HeroArchaeologist: "hero_archaeologist"
     },
     SPRITES80: {
         HeroNightmare: "hero_nightmare",
@@ -116,6 +120,38 @@ export const CST = {
         HeroCat: {
             Name: "Кот-рыцарь",
             Description: "Увеличение HP и \nурона Кота",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroMage: {
+            Name: "Тёмный Маг",
+            Description: "Увеличение HP и \nурона Мага",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroArchaeologist: {
+            Name: "Археолог",
+            Description: "Увеличение HP и \nурона Археолога",
             LevelCost: [
                 100,
                 250,
@@ -593,6 +629,18 @@ export const CST = {
             Hit: 'hero_cat_hit',
             Death: 'hero_cat_death'
         },
+        HeroMage: {
+            Idle: 'hero_mage_idle',
+            Walk: 'hero_mage_walk',
+            Hit: 'hero_mage_hit',
+            Death: 'hero_mage_death'
+        },
+        HeroArchaeologist: {
+            Idle: 'hero_archaeologist_idle',
+            Walk: 'hero_archaeologist_walk',
+            Hit: 'hero_archaeologist_hit',
+            Death: 'hero_archaeologist_death'
+        },
         HeroCenturion: {
             Idle: 'hero_centurion_idle',
             Walk: 'hero_centurion_walk',
@@ -734,6 +782,36 @@ export const CST = {
             Name: "Кот-Рыцарь",
             HealPoints: 1500,
             PhysicalDamage: 75,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 1000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 25
+        },
+        HeroMage: {
+            Name: "Тёмный Маг",
+            HealPoints: 1500,
+            PhysicalDamage: 100,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 1000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 25
+        },
+        HeroArchaeologist: {
+            Name: "Археолог",
+            HealPoints: 1500,
+            PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,

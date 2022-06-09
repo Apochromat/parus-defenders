@@ -30,6 +30,64 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Hero Mage
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [16, 17, 18, 19, 20, 21, 22] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [0, 1, 2, 3, 4, 5, 6] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [32, 33, 34, 35, 36, 37, 38, 39] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [64, 65, 66, 67, 68, 69, 70, 71] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Archaeologist
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [32, 33, 34, 35, 36] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Hero Centurion
     scene.anims.create({
         key: CST.ANIMATIONS.HeroCenturion.Idle,
