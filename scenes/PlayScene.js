@@ -48,11 +48,11 @@ export class PlayScene extends Phaser.Scene {
     skillBar;
 
     scrollablePanel;
+    scrollablePanelHeroes;
     statusBar;
     backButton;
     fullscreenButton;
     battleButton;
-    spawnButton;
 
     battleFlag = 0;
 
@@ -87,6 +87,7 @@ export class PlayScene extends Phaser.Scene {
 
         this.createGUI();
         this.createSpawnMonstersBar();
+        this.createSpawnHeroesBar();
 
        // this.setPhysicsEnemies();
     }
@@ -119,6 +120,7 @@ export class PlayScene extends Phaser.Scene {
             this.shopBar.visible = false;
             this.battleButton.visible = false;
             this.scrollablePanel.visible = false;
+            this.scrollablePanelHeroes.visible = false;
             this.battleFlag = 1;
         }
         else if (!this.playerStats.BattleMode && this.battleFlag == 1) {
@@ -126,6 +128,7 @@ export class PlayScene extends Phaser.Scene {
             this.shopBar.visible = true;
             this.battleButton.visible = true;
             this.scrollablePanel.visible = true;
+            this.scrollablePanelHeroes.visible = true;
 
             for (let i = 0; i < this.parus.heroWindows.length; i++) {
                 this.parus.heroWindows[i].coof = 1;
@@ -232,12 +235,6 @@ export class PlayScene extends Phaser.Scene {
         this.backButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.MENU);
         });
-
-        this.spawnButton = this.add.image(75, this.game.renderer.height-62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
-        this.spawnButton.setInteractive();
-        this.spawnButton.on("pointerup", () => {
-            this.characterHeap.createHero("HeroCenturion", this, CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.Y0).setAnimationWalk(false);});
-        this.spawnButton.visible = false;
         }
 
         
@@ -254,7 +251,7 @@ export class PlayScene extends Phaser.Scene {
             background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x3d3d3d),
 
             panel: {
-                child: this.createGrid(this),
+                child: this.createGrid(this, 1),
                 mask: {
                     mask: true,
                     padding: 1,
@@ -265,12 +262,6 @@ export class PlayScene extends Phaser.Scene {
                 focus: false,
                 speed: 0.1
             },
-
-            header: this.rexUI.add.label({
-                height: 30,
-                orientation: 0,
-                text: this.add.text(0, 0, 'Spawn Menu', { fontFamily: 'Garamond', fontSize: 24, color: '#ffffff' }),
-            }),
 
             space: {
                 left: 10,
@@ -293,7 +284,52 @@ export class PlayScene extends Phaser.Scene {
             })
     }
 
-    createGrid(scene) {
+    createSpawnHeroesBar() {
+        this.scrollablePanelHeroes = this.rexUI.add.scrollablePanel({
+            x: 200,
+            y: 520,
+            width: 200,
+            height: 250,
+
+            scrollMode: 0,
+
+            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x3d3d3d),
+
+            panel: {
+                child: this.createGrid(this, 2),
+                mask: {
+                    mask: true,
+                    padding: 1,
+                }
+            },
+
+            mouseWheelScroller: {
+                focus: false,
+                speed: 0.1
+            },
+
+            space: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+
+                panel: 10,
+                header: 10
+            }
+        }).layout()
+
+        this.scrollablePanelHeroes
+            .setChildrenInteractive()
+            .on('child.click', function (args) {
+                console.log(args.text);
+                args.scene.characterHeap.createHero(args.text, args.scene,
+                    randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
+                    randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
+            })
+    }
+
+    createGrid(scene, type) {
         // Create table body
         var sizer = scene.rexUI.add.fixWidthSizer({
             space: {
@@ -306,25 +342,46 @@ export class PlayScene extends Phaser.Scene {
             }
         }).addBackground(scene.rexUI.add.roundRectangle(0, 0, 10, 10, 0, 0x939393))
 
-        for (let el of CST.MONSTERLIST) {
-            sizer.add(scene.rexUI.add.label({
-                width: 300, height: 60,
-
-                background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                text: scene.add.text(0, 0, `${el}`, {
-                    fontSize: 18
-                }),
-
-                align: 'center',
-                space: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10,
-                }
-            }));
+        if (type == 1) {
+            for (let el of CST.MONSTERLIST) {
+                sizer.add(scene.rexUI.add.label({
+                    width: 300, height: 60,
+    
+                    background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
+                    text: scene.add.text(0, 0, `${el}`, {
+                        fontSize: 18
+                    }),
+    
+                    align: 'center',
+                    space: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10,
+                    }
+                }));
+            }
         }
-
+        else{
+            for (let el of CST.HEROLIST) {
+                sizer.add(scene.rexUI.add.label({
+                    width: 300, height: 60,
+    
+                    background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
+                    text: scene.add.text(0, 0, `${el}`, {
+                        fontSize: 18
+                    }),
+    
+                    align: 'center',
+                    space: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10,
+                    }
+                }));
+            }
+        }
         return sizer;
     }
 }
