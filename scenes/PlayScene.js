@@ -106,7 +106,7 @@ export class PlayScene extends Phaser.Scene {
         setStatusCOIN(this, this.playerStats.COINS);
 
         for (let el in this.characterHeap.heap) 
-            this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
+            //this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
         
         if (this.playerStats.BattleMode) 
             for (let i = 0; i < this.parus.heroWindows.length; i++) 
@@ -217,7 +217,7 @@ export class PlayScene extends Phaser.Scene {
         createSkillsBar(this);
         createHeroesBar(this);
 
-        this.battleButton = this.add.image(this.game.renderer.width - 75, this.game.renderer.height - 62, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
+        this.battleButton = this.add.image(this.game.renderer.width - 85, this.game.renderer.height - 72, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
         this.battleButton.on("pointerup", () => {
             if (this.waveObject != undefined) {
@@ -237,18 +237,21 @@ export class PlayScene extends Phaser.Scene {
         this.spawnButton.setInteractive();
         this.spawnButton.on("pointerup", () => {
             this.characterHeap.createHero("HeroCenturion", this, CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.Y0).setAnimationWalk(false);});
+        this.spawnButton.visible = false;
         }
+
+        
 
     createSpawnMonstersBar() {
         this.scrollablePanel = this.rexUI.add.scrollablePanel({
-            x: 850,
+            x: 200,
             y: 250,
             width: 200,
             height: 250,
 
             scrollMode: 0,
 
-            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x4e342e),
+            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x3d3d3d),
 
             panel: {
                 child: this.createGrid(this),
@@ -301,13 +304,13 @@ export class PlayScene extends Phaser.Scene {
                 item: 8,
                 line: 8,
             }
-        }).addBackground(scene.rexUI.add.roundRectangle(0, 0, 10, 10, 0, 0x260e04))
+        }).addBackground(scene.rexUI.add.roundRectangle(0, 0, 10, 10, 0, 0x939393))
 
         for (let el of CST.MONSTERLIST) {
             sizer.add(scene.rexUI.add.label({
                 width: 300, height: 60,
 
-                background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x7b5e57),
+                background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
                 text: scene.add.text(0, 0, `${el}`, {
                     fontSize: 18
                 }),

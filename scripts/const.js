@@ -7,21 +7,21 @@ export const CST = {
         LOAD: "LOAD"
     },
     NUMBERS: {
-        WIDTH: 1500,
-        HEIGHT: 720,
-        ParusX: 410,
-        ParusY: 415,
+        WIDTH: 1920,
+        HEIGHT: 1080,
+        ParusX: 580,
+        ParusY: 580,
         HeroSpawnArea: {
-            X0: 620,
-            Y0: 530,
-            X1: 700,
-            Y1: 620
+            X0: 810,
+            Y0: 730,
+            X1: 870,
+            Y1: 820
         },
         MonsterSpawnArea: {
-            X0: 1550,
-            Y0: 530,
-            X1: 1600,
-            Y1: 620
+            X0: 1720,
+            Y0: 730,
+            X1: 1770,
+            Y1: 820
         },
         SaveDataDelay: 60000
     },
@@ -63,11 +63,14 @@ export const CST = {
         MagicDamage: "icon_magic_damage",
         PoisonDamage: "icon_poison_damage",
         HeroCat: "iconHeroCat",
+        HeroMage: "iconHeroMage",
+        HeroArchaeologist: "iconHeroArchaeologist",
         HeroCenturion: "iconHeroCenturion",
         HeroNightmare: "iconHeroNightmare",
         HeroWizard: "iconHeroWizard"
     },
     SPRITES32: {
+        MonsterSlime: "monster_slime",
         MonsterTwig: "monster_twig",
         MonsterBrainer: "monster_brainer",
         MonsterGhoul: "monster_ghoul",
@@ -75,8 +78,13 @@ export const CST = {
         HeroCat: "hero_cat",
         HeroCenturion: "hero_centurion"
     },
+    SPRITES48: {
+        MonsterHellhound: "monster_hellhound"
+    },
     SPRITES64: {
-        MonsterSlayer: "monster_slayer"
+        MonsterSlayer: "monster_slayer",
+        HeroMage: "hero_mage",
+        HeroArchaeologist: "hero_archaeologist"
     },
     SPRITES80: {
         HeroNightmare: "hero_nightmare",
@@ -91,11 +99,11 @@ export const CST = {
     MUSIC: {
         Psychosocial: "8-Bit_Misfits_Psychosocial"
     },
-    MONSTERLIST: ["MonsterTwig", "MonsterBrainer", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
     SHOPLIST: {
         Parus: {
-            Name: "Укрепить Парус",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Парус",
+            Description: "Увеличение HP и \nMP Паруса",
             LevelCost: [
                 100,
                 250,
@@ -110,8 +118,40 @@ export const CST = {
             ]
         },
         HeroCat: {
-            Name: "Укрепить Кота-рыцаря",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Кот-рыцарь",
+            Description: "Увеличение HP и \nурона Кота",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroMage: {
+            Name: "Тёмный Маг",
+            Description: "Увеличение HP и \nурона Мага",
+            LevelCost: [
+                100,
+                250,
+                1000,
+                5000,
+                15000,
+                30000,
+                50000,
+                80000,
+                125000,
+                250000
+            ]
+        },
+        HeroArchaeologist: {
+            Name: "Археолог",
+            Description: "Увеличение HP и \nурона Археолога",
             LevelCost: [
                 100,
                 250,
@@ -126,8 +166,8 @@ export const CST = {
             ]
         },
         HeroCenturion: {
-            Name: "Укрепить Рори",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Центурион Рори",
+            Description: "Увеличение HP и \nурона Рори",
             LevelCost: [
                 100,
                 250,
@@ -142,8 +182,8 @@ export const CST = {
             ]
         },
         HeroNightmare: {
-            Name: "Укрепить Кошмара",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Кошмар",
+            Description: "Увеличение HP и \nурона Кошмара",
             LevelCost: [
                 100,
                 250,
@@ -158,8 +198,8 @@ export const CST = {
             ]
         },
         HeroWizard: {
-            Name: "Укрепить Чародея",
-            Description: "Увеличение HP и MP Паруса",
+            Name: "Чародей",
+            Description: "Увеличение HP и \nурона Чародея",
             LevelCost: [
                 100,
                 250,
@@ -231,7 +271,7 @@ export const CST = {
         },
         SpawnCooldown: {
             Name: "Перезарядка",
-            Description: "Уменьшение времени между \nвызовами героев",
+            Description: "Уменьшение времени \nмежду вызовами героев",
             Levels: [
                 "-0%",
                 "-2.5%",
@@ -312,7 +352,7 @@ export const CST = {
         },
         CriticalChance: {
             Name: "Критический шанс",
-            Description: "Увеличение шанса критического \nурона",
+            Description: "Увеличение шанса \nкритического урона",
             Levels: [
                 "0%",
                 "+1%",
@@ -392,7 +432,7 @@ export const CST = {
             ]
         },
         Speed: {
-            Name: "Скорость передвижения",
+            Name: "Скорость",
             Description: "Увеличение скорости \nпередвижения героев",
             Levels: [
                 "+0%",
@@ -419,7 +459,7 @@ export const CST = {
             ]
         },
         MPRecovery: {
-            Name: "Восстановление маны",
+            Name: "Регенерация маны", 
             Description: "Увеличение скорости \nвосстановления маны",
             Levels: [
                 "+0%",
@@ -528,6 +568,12 @@ export const CST = {
         }
     },
     ANIMATIONS: {
+        MonsterSlime: {
+            Idle: 'monster_slime_idle',
+            Walk: 'monster_slime_walk',
+            Hit: 'monster_slime_hit',
+            Death: 'monster_slime_death'
+        },
         MonsterTwig: {
             Idle: 'monster_twig_idle',
             Walk: 'monster_twig_walk',
@@ -539,6 +585,12 @@ export const CST = {
             Walk: 'monster_brainer_walk',
             Hit: 'monster_brainer_hit',
             Death: 'monster_brainer_death'
+        },
+        MonsterHellhound: {
+            Idle: 'monster_hellhound_idle',
+            Walk: 'monster_hellhound_walk',
+            Hit: 'monster_hellhound_hit',
+            Death: 'monster_hellhound_death'
         },
         MonsterGhoul: {
             Idle: 'monster_ghoul_idle',
@@ -577,6 +629,18 @@ export const CST = {
             Hit: 'hero_cat_hit',
             Death: 'hero_cat_death'
         },
+        HeroMage: {
+            Idle: 'hero_mage_idle',
+            Walk: 'hero_mage_walk',
+            Hit: 'hero_mage_hit',
+            Death: 'hero_mage_death'
+        },
+        HeroArchaeologist: {
+            Idle: 'hero_archaeologist_idle',
+            Walk: 'hero_archaeologist_walk',
+            Hit: 'hero_archaeologist_hit',
+            Death: 'hero_archaeologist_death'
+        },
         HeroCenturion: {
             Idle: 'hero_centurion_idle',
             Walk: 'hero_centurion_walk',
@@ -597,6 +661,19 @@ export const CST = {
         }
     },
     CHARACTERS: {
+        MonsterSlime: {
+            HealPoints: 300,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            Speed: 100,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Cost: 15,
+            Experience: 5
+        },
         MonsterTwig: {
             HealPoints: 500,
             PhysicalDamage: 10,
@@ -617,6 +694,19 @@ export const CST = {
             MagicDamage: 10,
             AttackCooldown: 1000,
             Speed: 100,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterHellhound: {
+            HealPoints: 700,
+            PhysicalDamage: 10,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            Speed: 300,
             PhysicalProtection: 10,
             PoisonProtection: 10,
             MagicProtection: 10,
@@ -680,7 +770,7 @@ export const CST = {
             PhysicalDamage: 200,
             PoisonDamage: 10,
             MagicDamage: 10,
-            AttackCooldown: 2000,
+            AttackCooldown: 1000,
             Speed: 50,
             PhysicalProtection: 10,
             PoisonProtection: 10,
@@ -691,7 +781,37 @@ export const CST = {
         HeroCat: {
             Name: "Кот-Рыцарь",
             HealPoints: 1500,
-            PhysicalDamage: 10,
+            PhysicalDamage: 75,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 1000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 25
+        },
+        HeroMage: {
+            Name: "Тёмный Маг",
+            HealPoints: 1500,
+            PhysicalDamage: 100,
+            PoisonDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            SpawnCooldown: 1000,
+            SpawnBatchSize: 3,
+            PhysicalProtection: 10,
+            PoisonProtection: 10,
+            MagicProtection: 10,
+            Speed: 50,
+            MPCost: 25
+        },
+        HeroArchaeologist: {
+            Name: "Археолог",
+            HealPoints: 1500,
+            PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
@@ -706,7 +826,7 @@ export const CST = {
         HeroCenturion: {
             Name: "Центурион Рори",
             HealPoints: 2000,
-            PhysicalDamage: 25,
+            PhysicalDamage: 100,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
@@ -721,7 +841,7 @@ export const CST = {
         HeroNightmare: {
             Name: "Кошмар",
             HealPoints: 2500,
-            PhysicalDamage: 100,
+            PhysicalDamage: 500,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
@@ -736,7 +856,7 @@ export const CST = {
         HeroWizard: {
             Name: "Чародей",
             HealPoints: 1000,
-            PhysicalDamage: 60,
+            PhysicalDamage: 200,
             PoisonDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
@@ -789,28 +909,28 @@ export const CST = {
     },
     HERO_SLOTS: {
         0: {
-            x: 300,
-            y: 546
+            x: 450,
+            y: 746
         },
         1: {
-            x: 520,
-            y: 546
+            x: 710,
+            y: 746
         },
         2: {
-            x: 300,
-            y: 434
+            x: 450,
+            y: 625
         },
         3: {
-            x: 520,
-            y: 434
+            x: 710,
+            y: 625
         },
         4: {
-            x: 300,
-            y: 315
+            x: 450,
+            y: 506
         },
         5: {
-            x: 520,
-            y: 315
+            x: 710,
+            y: 506
         },
     },
     DEPTHS: {
@@ -820,7 +940,7 @@ export const CST = {
         ToolBarMinor: 5001,
         ToolBarRecyclerView: 5004,
         HeroesBarField: 5006,
-        HeroesBarClose: 5006,
+        HeroesBarClose: 5005,
         HeroesBarRecyclerView: 5007,
         Slots: 1000
     },
@@ -832,6 +952,15 @@ export const CST = {
         MonsterWaveCoefficient: 5,
         MaximumMomentMonsters: 30,
         MonsterPreferences: {
+            MonsterSlime: {
+                MinWave: 1,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
             MonsterTwig: {
                 MinWave: 1,
                 MaxWave: 50,
@@ -842,7 +971,16 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterBrainer: {
-                MinWave: 1,
+                MinWave: 5,
+                MaxWave: 50,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterHellhound: {
+                MinWave: 10,
                 MaxWave: 50,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -851,8 +989,8 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterGhoul: {
-                MinWave: 1,
-                MaxWave: -1,
+                MinWave: 15,
+                MaxWave: 80,
                 MinBatch: 3,
                 MaxBatch: 5,
                 HealthBoost: 0.1,
@@ -860,7 +998,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterHedgehog: {
-                MinWave: 1,
+                MinWave: 15,
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -869,7 +1007,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterSlayer: {
-                MinWave: 1,
+                MinWave: 20,
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
@@ -878,7 +1016,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             BossBlackDragon: {
-                MinWave: 20,
+                MinWave: 40,
                 MaxWave: 50,
                 MinBatch: 1,
                 MaxBatch: 1,
@@ -887,7 +1025,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             BossCthulhu: {
-                MinWave: 20,
+                MinWave: 40,
                 MaxWave: 50,
                 MinBatch: 1,
                 MaxBatch: 1,

@@ -30,6 +30,64 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Hero Mage
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [16, 17, 18, 19, 20, 21, 22] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [0, 1, 2, 3, 4, 5, 6] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [32, 33, 34, 35, 36, 37, 38, 39] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [64, 65, 66, 67, 68, 69, 70, 71] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Hero Archaeologist
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [32, 33, 34, 35, 36] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Hero Centurion
     scene.anims.create({
         key: CST.ANIMATIONS.HeroCenturion.Idle,
@@ -76,7 +134,7 @@ export function createAnimations(scene) {
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroNightmare.Hit,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 ] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57] }),
         frameRate: 8,
         repeat: 0
     });
@@ -98,7 +156,7 @@ export function createAnimations(scene) {
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroWizard.Walk,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [16, 17, 18, 19, 20, 21, 22, 23 ] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
         frameRate: 8,
         repeat: -1
     });
@@ -184,6 +242,34 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Monster Slime
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSlime.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterSlime, { frames: [0, 1, 2, 3] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSlime.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterSlime, { frames: [7, 8, 9, 10, 11, 12] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSlime.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterSlime, { frames: [14, 15, 16, 17, 18, 19, 20] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSlime.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterSlime, { frames: [28, 29, 30, 31, 32] }),
+        frameRate: 8,
+        repeat: 0
+    });
 
     // Monster Twig
     scene.anims.create({
@@ -239,6 +325,35 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterBrainer.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterBrainer, { frames: [21, 22, 23, 24, 25, 26, 27] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Hellhound
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterHellhound.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.MonsterHellhound, { frames: [0, 1, 2, 3, 4, 5] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterHellhound.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.MonsterHellhound, { frames: [14, 15, 16, 17, 18] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterHellhound.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.MonsterHellhound, { frames: [7, 8, 9, 10, 11] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterHellhound.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.MonsterHellhound, { frames: [21, 22, 23, 24, 25, 26, 27] }),
         frameRate: 8,
         repeat: 0
     });

@@ -1,8 +1,8 @@
 import { CST } from "./const.js";
 
 export function createToolBar(scene){
-    scene.toolBarClose =  scene.add.image(scene.game.renderer.width - 128, scene.game.renderer.height-508, CST.IMAGES.ToolBarClose).setDepth(CST.DEPTHS.ToolBarClose);
-    scene.toolBarField =  scene.add.image(scene.game.renderer.width - 447, scene.game.renderer.height-270, CST.IMAGES.ToolBarField).setDepth(CST.DEPTHS.ToolBarField);
+    scene.toolBarClose =  scene.add.image(scene.game.renderer.width - 777, 169, CST.IMAGES.ToolBarClose).setDepth(CST.DEPTHS.ToolBarClose);
+    scene.toolBarField =  scene.add.image(scene.game.renderer.width - 300, 530, CST.IMAGES.ToolBarField).setDepth(CST.DEPTHS.ToolBarField);
 
     scene.toolBarClose.setInteractive();
 

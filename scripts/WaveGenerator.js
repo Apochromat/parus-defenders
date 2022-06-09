@@ -1,5 +1,5 @@
 import { CST } from "../scripts/const.js";
-import { randomIntFromInterval } from "../scripts/Misc.js";
+import { normalcdf, randomIntFromInterval, shuffle } from "../scripts/Misc.js";
 
 export class Wave {
     creationTime;
@@ -7,9 +7,12 @@ export class Wave {
     spawnDelay;
     number;
     monsterMaximum;
-    spawnedMonsters = 0;
+    allBatches = 0;
+    spawnedBatches = 0;
     scene;
     finished = false;
+    spawnList = [];
+    monstersForSpawn = [];
     constructor(scene, number) {
         this.number = number;
         this.scene = scene;
@@ -18,38 +21,56 @@ export class Wave {
         this.monsterMaximum = CST.WAVE_GENERATOR.MinMonsterAmount + number * CST.WAVE_GENERATOR.MonsterWaveCoefficient;
         this.spawnDelay = CST.WAVE_GENERATOR.MinSpawnDelay + CST.WAVE_GENERATOR.PlateauSpawnWave / number +
             randomIntFromInterval(-CST.WAVE_GENERATOR.SpawnDelayVariety, CST.WAVE_GENERATOR.SpawnDelayVariety);
+        for (const iterator of CST.MONSTERLIST) {
+            if (CST.WAVE_GENERATOR.MonsterPreferences[iterator].MinWave <= number &&
+                (CST.WAVE_GENERATOR.MonsterPreferences[iterator].MaxWave >= number || CST.WAVE_GENERATOR.MonsterPreferences[iterator].MaxWave == -1)) {
+                this.monstersForSpawn.push(iterator);
+            }
+        }
+        let intervalAmount = this.monstersForSpawn.length;
+        let interval = 6 / intervalAmount;
+        let lastProbablity = 0;
+        for (let i = 0; i < intervalAmount; i++) {
+            let currProbablity = normalcdf((i + 1) * interval - 3) - lastProbablity;
+            let spawnAmount = Math.floor(currProbablity * this.monsterMaximum);
+            lastProbablity += currProbablity;
+            let currentAdd = 0;
+            while (currentAdd < spawnAmount) {
+                let batchAmount = randomIntFromInterval(CST.WAVE_GENERATOR.MonsterPreferences[this.monstersForSpawn[i]].MinBatch,
+                    CST.WAVE_GENERATOR.MonsterPreferences[this.monstersForSpawn[i]].MaxBatch);
+                if (batchAmount > (spawnAmount - currentAdd)) {
+                    batchAmount = spawnAmount - currentAdd;
+                };
+                this.spawnList.push({
+                    name: this.monstersForSpawn[i],
+                    amount: batchAmount
+                });
+                currentAdd += batchAmount;
+            }
+        }
+        this.spawnList = shuffle(this.spawnList);
+        this.allBatches = this.spawnList.length;
+        console.log(this.spawnList);
     }
 
     run() {
-        if (this.monsterMaximum <= this.spawnedMonsters) {
-            this.finished = true;
-            console.log(`Spawned ${this.spawnedMonsters}/${this.monsterMaximum}`);
-            return false
-        }
         if ((Date.now() - this.lastSpawnTime >= this.spawnDelay) && (this.scene.enemies.getLength() <= CST.WAVE_GENERATOR.MaximumMomentMonsters)) {
+            let spawnInfo = this.spawnList.pop();
 
-            let monsterName = CST.MONSTERLIST[randomIntFromInterval(0, CST.MONSTERLIST.length-1)];
-            while ((CST.WAVE_GENERATOR.MonsterPreferences[monsterName].MinWave > this.number) ||
-                ((CST.WAVE_GENERATOR.MonsterPreferences[monsterName].MaxWave < this.number) && CST.WAVE_GENERATOR.MonsterPreferences[monsterName].MaxWave != -1)) {
-                monsterName = CST.MONSTERLIST[randomIntFromInterval(0, CST.MONSTERLIST.length-1)];
+            if (spawnInfo == undefined) {
+                this.finished = true;
+                console.log(`Spawned ${this.spawnedBatches}/${this.allBatches}`);
+                return false
             }
-
-            let spawnAmount = randomIntFromInterval(CST.WAVE_GENERATOR.MonsterPreferences[monsterName].MinBatch,
-                CST.WAVE_GENERATOR.MonsterPreferences[monsterName].MaxBatch);
-            if (spawnAmount > (this.monsterMaximum - this.spawnedMonsters)) {
-                spawnAmount = this.monsterMaximum - this.spawnedMonsters;
-            };
-
-            for (let i = 0; i < spawnAmount; i++) {
-                this.scene.characterHeap.createMonster(monsterName, this.scene,
+            for (let i = 0; i < spawnInfo.amount; i++) {
+                this.scene.characterHeap.createMonster(spawnInfo.name, this.scene,
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
             }
-            
-            this.spawnedMonsters += spawnAmount;
-            this.scene.playerStats.WAVE_PROGRESS = this.spawnedMonsters/this.monsterMaximum
-            this.lastSpawnTime = Date.now();
 
+            this.spawnedBatches += 1;
+            this.scene.playerStats.WAVE_PROGRESS = this.spawnedBatches / this.allBatches;
+            this.lastSpawnTime = Date.now();
         }
         return true
     }

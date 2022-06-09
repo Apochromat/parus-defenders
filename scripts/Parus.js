@@ -22,6 +22,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         scene.physics.world.enableBody(this);
         this.setImmovable(true);
         this.setLevel(level);
+        this.setScale(1.2);
     }
 
     damage(hp) {

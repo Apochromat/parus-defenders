@@ -29,7 +29,7 @@ export class OptionsScene extends Phaser.Scene {
             this.scene.start(CST.SCENES.MENU);
         });
 
-        this.fullscreenButton = this.add.image(860, 446, this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchON : CST.IMAGES.SwitchOFF).setDepth(CST.DEPTHS.ToolBarField);
+        this.fullscreenButton = this.add.image(CST.NUMBERS.WIDTH / 2 + 250, 665, this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchON : CST.IMAGES.SwitchOFF).setDepth(CST.DEPTHS.ToolBarField);
         this.fullscreenButton.setInteractive();
         this.fullscreenButton.on("pointerup", () => {
             this.actualData.OPTIONS.Fullscreen = !this.actualData.OPTIONS.Fullscreen;
@@ -38,10 +38,10 @@ export class OptionsScene extends Phaser.Scene {
             toggleFullScreen();
         });
 
-        this.eraseButton = this.add.image(860, 520, CST.IMAGES.EraseButton).setDepth(CST.DEPTHS.ToolBarField);
+        this.eraseButton = this.add.image(CST.NUMBERS.WIDTH / 2 + 250, 775, CST.IMAGES.EraseButton).setDepth(CST.DEPTHS.ToolBarField);
         this.eraseButton.setInteractive();
         this.eraseButton.on("pointerup", () => {
-            if (confirm("Вы действительно хотите сбросить пользовательские данные? Одменить это действие будет невозможно!")){
+            if (confirm("Вы действительно хотите сбросить пользовательские данные? Отменить это действие будет невозможно!")){
                 erasePlayerData();
                 this.actualData = loadPlayerData();
                 musicBar.setValue(this.actualData.OPTIONS.Music, 0, 100);
@@ -52,20 +52,20 @@ export class OptionsScene extends Phaser.Scene {
         });
 
         var musicBar = this.rexUI.add.numberBar({
-            x: 860,
-            y: 258,
-            width: 430, // Fixed width
+            x: CST.NUMBERS.WIDTH / 2 + 300,
+            y: 360,
+            width: 530, // Fixed width
 
-            background: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x260e04),
+            background: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x505050),
 
             slider: {
                 // width: 120, // Fixed width
-                track: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x170e04),
-                indicator: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x7b5e57),
+                track: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x323232),
+                indicator: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x939393),
                 input: 'click',
             },
 
-            text: this.add.text(0, 0, '').setFixedSize(35, 0),
+            text: this.add.text(0, 0, '', { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }).setFixedSize(35, 0),
 
             space: {
                 left: 10,
@@ -87,20 +87,20 @@ export class OptionsScene extends Phaser.Scene {
         .layout();
 
         var soundBar = this.rexUI.add.numberBar({
-            x: 860,
-            y: 328,
-            width: 430, // Fixed width
+            x: CST.NUMBERS.WIDTH / 2 + 300,
+            y: 460,
+            width: 530, // Fixed width
 
-            background: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x260e04),
+            background: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x505050),
 
             slider: {
                 // width: 120, // Fixed width
-                track: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x170e04),
-                indicator: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x7b5e57),
+                track: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x323232),
+                indicator: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x939393),
                 input: 'click',
             },
 
-            text: this.add.text(0, 0, '').setFixedSize(35, 0),
+            text: this.add.text(0, 0, '', { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }).setFixedSize(35, 0),
 
             space: {
                 left: 10,
