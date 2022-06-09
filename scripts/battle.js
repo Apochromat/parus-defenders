@@ -90,9 +90,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
         if (enemies.getLength() == 0) {
             hero.setAnimationIdle(false);
             hero.setVelocity(0, 0);
-            hero.flipX = false;
-            console.log(2);
-            
+            hero.flipX = false;   
         }
         else if (enemies.getLength() != 0) {
             
