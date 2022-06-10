@@ -34,6 +34,12 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         return true
     }
 
+    updateLevel(level){
+        if (this.level != level){
+            this.setLevel(level);
+        }
+    }
+
     setLevel(level) {
         this.level = level;
         this.maxHP = CST.PARUS[this.level].MaxHP;

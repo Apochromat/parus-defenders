@@ -77,7 +77,7 @@ export class PlayScene extends Phaser.Scene {
     create() {
         this.createPlayerStats()
         this.add.tileSprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.Background);
-        this.parus = new Parus(this, 5);
+        this.parus = new Parus(this, 0);
         this.parus.createHeroWindows(this.playerStats);
 
         this.characterHeap = new Characters.CharacterHeap(this);
@@ -98,7 +98,7 @@ export class PlayScene extends Phaser.Scene {
             console.log("Data Saved");
         }
         this.wave();
-        
+        this.parus.updateLevel(this.playerStats.LEVELS_SHOP.Parus);
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
