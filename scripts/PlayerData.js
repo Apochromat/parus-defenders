@@ -45,7 +45,7 @@ var playerDataTemplate = {
         MPRecovery: 0,
         PhisicalDamage: 0,
         MagicDamage: 0,
-        PoisonDamage: 0
+        LightningDamage: 0
     },
     LEVELS_HEROES: {
         HeroCat: 0,
