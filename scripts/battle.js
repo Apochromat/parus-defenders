@@ -1,5 +1,5 @@
 import { CharacterSprite } from "./CharacterSprite.js";
-import { CST } from "../scripts/const.js";
+import { CST } from "./const.js";
 export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     enemies.getMatching("active", true).forEach(enemy => {
         console.log(enemy);
