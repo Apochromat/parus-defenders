@@ -15,7 +15,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     BuildingSlots;
     heroWindows = [];
 
-    constructor(scene, level=0) {
+    constructor(scene, level = 0) {
         super(scene, CST.NUMBERS.ParusX, CST.NUMBERS.ParusY, CST.IMAGES.Parus);
 
         scene.sys.updateList.add(this);
@@ -34,8 +34,8 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         return true
     }
 
-    updateLevel(level){
-        if (this.level != level){
+    updateLevel(level) {
+        if (this.level != level) {
             this.setLevel(level);
         }
     }
@@ -52,7 +52,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     }
 
     createHeroWindows(playerStats) {
-        for (let i = 0; i < this.HeroSlots; i++){
+        for (let i = 0; i < this.HeroSlots; i++) {
             if (this.heroWindows[i] != undefined) {
                 if (this.heroWindows[i].heroImage != undefined) {
                     this.heroWindows[i].heroImage.destroy();
@@ -69,20 +69,20 @@ export class HeroWindow extends Phaser.GameObjects.Image {
     graphicsStatusInWait;
     graphicsStatusReady;
     graphicsStatusCell;
-    scene; 
-    x; 
-    y; 
+    scene;
+    x;
+    y;
     index;
     constructor(scene, x, y, index, playerStats) {
         super(scene, x, y, CST.IMAGES.CharacterWindow).setDepth(3);
         this.scene = scene;
         this.x = x;
-        this.y = y; 
+        this.y = y;
         this.index = index;
         this.coof = 1;
         this.heroImage;
 
-        if (this.graphicsStatusInWait == undefined) 
+        if (this.graphicsStatusInWait == undefined)
             this.initgraphicsStatusInWait(scene)
         this.graphicsStatusInWait.clear();
 
@@ -90,8 +90,8 @@ export class HeroWindow extends Phaser.GameObjects.Image {
             this.heroImage = new CharacterSprite(scene, x, y, CST.SPRITES32[playerStats.HERO_SLOTS[index]], 2).setDepth(CST.DEPTHS.Slots);
             this.heroImage.play(CST.ANIMATIONS[playerStats.HERO_SLOTS[index]].Idle)
             //scene.add.image(x, y, CST.ICONS[playerStats.HERO_SLOTS[index]]).setDepth(CST.DEPTHS.Slots);
-            if (playerStats.BattleMode) 
-                this.setHeroWindowProgress(playerStats);     
+            if (playerStats.BattleMode)
+                this.setHeroWindowProgress(playerStats);
         }
 
         scene.sys.displayList.add(this);
@@ -99,53 +99,53 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.setInteractive();
 
         this.on("pointerup", () => {
-            if (playerStats.BattleMode){
-                if (this.coof == 1 && 
+            if (playerStats.BattleMode) {
+                if (this.coof == 1 &&
                     playerStats.HERO_SLOTS[this.index] != CST.EMPTY &&
                     this.scene.parus.currMP >= CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].MPCost) {
                     this.graphicsStatusReady.clear();
                     this.coof = 0;
                     this.scene.characterHeap.createHero(playerStats.HERO_SLOTS[this.index], this.scene,
-                    randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
-                    randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
+                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
+                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
                     playerStats.HERO_SLOTS_SPAWNTIME[this.index] = Date.now();
                 }
             }
             else {
                 openHeroesBar(this.scene, this.index);
-            } 
+            }
         })
     }
 
-    initgraphicsStatusInWait(scene){
+    initgraphicsStatusInWait(scene) {
         this.graphicsStatusInWait = scene.add.graphics({ fillStyle: { color: 0x9966cc } }).setDepth(2);
         this.graphicsStatusCell = scene.add.graphics({ fillStyle: { color: 0x000000 } }).setDepth(1);
         this.graphicsStatusReady = scene.add.graphics({ fillStyle: { color: 0x51c751 } }).setDepth(1);
     }
 
-    setHeroWindowProgress(playerStats){
-        if (playerStats.HERO_SLOTS[this.index] != CST.EMPTY){
+    setHeroWindowProgress(playerStats) {
+        if (playerStats.HERO_SLOTS[this.index] != CST.EMPTY) {
             this.graphicsStatusInWait.clear();
             this.graphicsStatusReady.clear();
-            if ( ((Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index])/CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown) >= 1 || this.coof == 1) {
+            if (((Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown * (1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100))) >= 1 || this.coof == 1) {
                 this.coof = 1;
                 var rect = new Phaser.Geom.Rectangle(this.x - 39, this.y - 55, 79, 10);
                 this.graphicsStatusReady.fillRectShape(rect);
             }
             else {
                 this.graphicsStatusReady.clear();
-                var rect = new Phaser.Geom.Rectangle(this.x - 39, this.y - 55, 79*this.coof, 10);
+                var rect = new Phaser.Geom.Rectangle(this.x - 39, this.y - 55, 79 * this.coof, 10);
                 this.graphicsStatusInWait.fillRectShape(rect);
                 var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y - 57, 83, 14);
                 this.graphicsStatusCell.fillRectShape(cell);
-                this.coof = (Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index])/CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown;
+                this.coof = (Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown*(1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100));
             }
             var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y - 57, 83, 14);
             this.graphicsStatusCell.fillRectShape(cell);
-        }    
+        }
     }
 
-    clearWindowProgress(){
+    clearWindowProgress() {
         this.graphicsStatusCell.clear();
         this.graphicsStatusReady.clear();
         this.graphicsStatusInWait.clear();

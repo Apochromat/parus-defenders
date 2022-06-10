@@ -7,7 +7,7 @@ var playerDataTemplate = {
     Date: Date.now(),
     BattleMode: false,
     COINS: 1000,
-    SKILL_POINTS: 0,
+    SKILL_POINTS: 1,
     LVL: 1,
     EXPERIENCE: 0,
     WAVE: 1,
@@ -43,7 +43,7 @@ var playerDataTemplate = {
         ParusDefense: 0,
         Speed: 0,
         MPRecovery: 0,
-        PhisicalDamage: 0,
+        PhysicalDamage: 0,
         MagicDamage: 0,
         LightningDamage: 0
     },

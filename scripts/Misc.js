@@ -109,3 +109,14 @@ export function calculateDamageParus(playerStats, senderName) {
 
   return PhysicalDamage + MagicDamage + LightningDamage
 }
+
+export function heroSpecsWithplayerStats(playerStats, heroSpecs) {
+  heroSpecs.Speed *= (1 + playerStats.LEVELS_SKILLS.Speed * 5 / 100);
+  heroSpecs.HealPoints *= (1 + playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
+  heroSpecs.SpawnCooldown *= (1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100);
+}
+
+export function monsterSpecsWithplayerStats(playerStats, monsterSpecs) {
+  monsterSpecs.Cost *= (1 + playerStats.LEVELS_SKILLS.BonusGold * 2500 / 100);
+  monsterSpecs.Experience *= (1 + playerStats.LEVELS_SKILLS.BonusExperience * 5 / 100);
+}

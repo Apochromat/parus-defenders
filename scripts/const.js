@@ -62,7 +62,7 @@ export const CST = {
         ParusDefense: "icon_defense",
         Speed: "icon_speed",
         MPRecovery: "icon_mp",
-        PhisicalDamage: "icon_phisical_damage",
+        PhysicalDamage: "icon_physical_damage",
         MagicDamage: "icon_magic_damage",
         LightningDamage: "icon_lightning_damage",
         HeroCat: "iconHeroCat",
@@ -130,11 +130,7 @@ export const CST = {
                 1000,
                 5000,
                 15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
+                30000
             ]
         },
         HeroCat: {
@@ -601,7 +597,7 @@ export const CST = {
                 "+100%"
             ]
         },
-        PhisicalDamage: {
+        PhysicalDamage: {
             Name: "Физический урон",
             Description: "Увеличение физического \nурона",
             Levels: [

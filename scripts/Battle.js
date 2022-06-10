@@ -15,7 +15,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 enemy.flipX = true;
                 enemy.setAnimationWalk(true);
             }
-            enemy.setVelocity(VectorX / modul * enemy.speed, VectorY / modul * enemy.speed);
+            enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
             console.log(enemy.y);
         }
         else if (heroes.getLength() == 0) {
@@ -81,7 +81,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     enemy.flipX = true;
                     enemy.setAnimationWalk(true);
                 }
-                enemy.setVelocity(VectorXMin / modulMin * enemy.speed, VectorYMin / modulMin * enemy.speed);
+                enemy.setVelocity(VectorXMin / modulMin * enemy.specs.Speed, VectorYMin / modulMin * enemy.specs.Speed);
             }
 
         }
@@ -134,7 +134,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     hero.flipX = true;
                     hero.setAnimationWalk();
                 }
-                hero.setVelocity(VectorXMin / modulMin * hero.speed, VectorYMin / modulMin * hero.speed);
+                hero.setVelocity(VectorXMin / modulMin * hero.specs.Speed, VectorYMin / modulMin * hero.specs.Speed);
             }
         }
 

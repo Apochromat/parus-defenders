@@ -4,7 +4,6 @@ export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
     alive = true;
     specs;
     hp;
-    speed;
     lastDamageTime = 0;
     reachFlag = false;
     state; 

@@ -190,19 +190,23 @@ function createHeroesItem(scene, key, index, type) {
     else if (type == 1){
         table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 45, right: 0}, true);
         table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
-        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
-        table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].LightningDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
+        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100), 2), 1, 1, 'left', {right: 0}, true);
+        table.add(createLable(scene, `Damage: ${Math.floor(CST.CHARACTERS[key].PhysicalDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${
+                                                Math.floor(CST.CHARACTERS[key].LightningDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${
+                                                Math.floor(CST.CHARACTERS[key].MagicDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
         table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
+        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 2, 1, 'left', {right: 0}, true);
         table.add(createButtonAdd(scene, key, index, 1), 2, 2, 'right', {top: 5, left: 140}, true);
     }
     else {
         table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 45, right: 0}, true);
         table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
-        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints, 2), 1, 1, 'left', {right: 0}, true);
-        table.add(createLable(scene, `Damage: ${CST.CHARACTERS[key].PhysicalDamage}/${CST.CHARACTERS[key].LightningDamage}/${CST.CHARACTERS[key].MagicDamage}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
+        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100), 2), 1, 1, 'left', {right: 0}, true);
+        table.add(createLable(scene, `Damage: ${Math.floor(CST.CHARACTERS[key].PhysicalDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${
+                                                Math.floor(CST.CHARACTERS[key].LightningDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${
+                                                Math.floor(CST.CHARACTERS[key].MagicDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
         table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown, 2), 2, 1, 'left', {right: 0}, true);
+        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 2, 1, 'left', {right: 0}, true);
         table.add(createButtonAdd(scene, key, index, 0), 2, 2, 'right', {top: 5, left: 160}, true);
     }
     
