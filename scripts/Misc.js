@@ -117,6 +117,6 @@ export function heroSpecsWithplayerStats(playerStats, heroSpecs) {
 }
 
 export function monsterSpecsWithplayerStats(playerStats, monsterSpecs) {
-  monsterSpecs.Cost *= (1 + playerStats.LEVELS_SKILLS.BonusGold * 2500 / 100);
+  monsterSpecs.Cost *= (1 + playerStats.LEVELS_SKILLS.BonusGold * 2.5 / 100);
   monsterSpecs.Experience *= (1 + playerStats.LEVELS_SKILLS.BonusExperience * 5 / 100);
 }
