@@ -25,7 +25,8 @@ export const CST = {
             X1: 2000,
             Y1: 820
         },
-        SaveDataDelay: 60000
+        SaveDataDelay: 60000,
+        ManaRegenTime: 1000
     },
     IMAGES: {
         BackgroundEvening: 'backgroundEvening',
@@ -941,6 +942,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 25
         },
@@ -956,6 +959,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 35
         },
@@ -971,6 +976,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 80,
             MPCost: 50
         },
@@ -986,6 +993,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 70
         },
@@ -1001,6 +1010,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 70
         },
@@ -1016,6 +1027,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 80,
             MPCost: 90
         },
@@ -1031,6 +1044,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 65
         },
@@ -1046,6 +1061,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 80,
             MPCost: 200
         },
@@ -1061,6 +1078,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 150,
             MPCost: 200
         },
@@ -1076,6 +1095,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 400
         },
@@ -1091,6 +1112,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 50,
             MPCost: 600
         },
@@ -1106,6 +1129,8 @@ export const CST = {
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
+            CriticalChance: 1,
+            CriticalDamage: 300,
             Speed: 100,
             MPCost: 150
         }

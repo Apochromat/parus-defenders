@@ -1,3 +1,5 @@
+import { CST } from "./const.js";
+
 export function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -28,7 +30,6 @@ export function toggleFullScreen() {
     cancelFullScreen.call(doc);
   }
 }
-
 
 export function normalcdf(to, mean = 0, sigma = 1) {
   var z = (to - mean) / Math.sqrt(2 * sigma * sigma);
@@ -63,4 +64,48 @@ export function shuffle(array) {
   }
 
   return array;
+}
+
+export function calculateDamage(playerStats, senderName, receiverName) {
+
+  let PhysicalDamage, MagicDamage, LightningDamage;
+  PhysicalDamage = CST.CHARACTERS[senderName].PhysicalDamage;
+  MagicDamage = CST.CHARACTERS[senderName].MagicDamage;
+  LightningDamage = CST.CHARACTERS[senderName].LightningDamage;
+  if (senderName[0] = "H") {
+    // Применяем критический удар
+    if ((CST.CHARACTERS[senderName].CriticalChance + playerStats.LEVELS_SKILLS.CriticalChance) >= randomIntFromInterval(0, 100)) {
+      PhysicalDamage *= (1 + ((CST.CHARACTERS[senderName].CriticalDamage + playerStats.LEVELS_SKILLS.CriticalDamage) / 100));
+      MagicDamage *= (1 + ((CST.CHARACTERS[senderName].CriticalDamage + playerStats.LEVELS_SKILLS.CriticalDamage) / 100));
+      LightningDamage *= (1 + ((CST.CHARACTERS[senderName].CriticalDamage + playerStats.LEVELS_SKILLS.CriticalDamage) / 100));
+    }
+    // Применяем скилл Damage
+    PhysicalDamage *= (1 + (playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)));
+    MagicDamage *= (1 + (playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)));
+    LightningDamage *= (1 + (playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)));
+    // Применяем именованные Damage скиллы
+    PhysicalDamage *= (1 + (playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100)));
+    MagicDamage *= (1 + (playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100)));
+    LightningDamage *= (1 + (playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100)));
+  }
+  // Применяем уровни защищенности получателя
+  PhysicalDamage *= (1 - (CST.CHARACTERS[receiverName].PhysicalProtection / 100));
+  MagicDamage *= (1 - (CST.CHARACTERS[receiverName].MagicProtection / 100));
+  LightningDamage *= (1 - (CST.CHARACTERS[receiverName].LightningProtection / 100));
+
+  return PhysicalDamage + MagicDamage + LightningDamage
+}
+
+export function calculateDamageParus(playerStats, senderName) {
+  let PhysicalDamage, MagicDamage, LightningDamage;
+  PhysicalDamage = CST.CHARACTERS[senderName].PhysicalDamage;
+  MagicDamage = CST.CHARACTERS[senderName].MagicDamage;
+  LightningDamage = CST.CHARACTERS[senderName].LightningDamage;
+
+  // Применяем уровни защищенности Паруса
+  PhysicalDamage *= (1 - (playerStats.LEVELS_SKILLS.ParusDefense * (2.5 / 100)));
+  MagicDamage *= (1 - (playerStats.LEVELS_SKILLS.ParusDefense * (2.5 / 100)));
+  LightningDamage *= (1 - (playerStats.LEVELS_SKILLS.ParusDefense * (2.5 / 100)));
+
+  return PhysicalDamage + MagicDamage + LightningDamage
 }

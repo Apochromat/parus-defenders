@@ -17,6 +17,7 @@ export class PlayScene extends Phaser.Scene {
     enemies;
     heroes;
     parus;
+    lastManaRegen;
 
     graphicsHP;
     graphicsMP;
@@ -80,6 +81,8 @@ export class PlayScene extends Phaser.Scene {
         this.parus = new Parus(this, 0);
         this.parus.createHeroWindows(this.playerStats);
 
+        this.lastManaRegen = Date.now();
+
         this.characterHeap = new Characters.CharacterHeap(this);
         this.enemies = this.add.group();
         this.heroes = this.add.group();
@@ -89,7 +92,7 @@ export class PlayScene extends Phaser.Scene {
         this.createSpawnMonstersBar();
         this.createSpawnHeroesBar();
 
-       // this.setPhysicsEnemies();
+        // this.setPhysicsEnemies();
     }
 
     update() {
@@ -98,6 +101,7 @@ export class PlayScene extends Phaser.Scene {
             console.log("Data Saved");
         }
         this.wave();
+        this.regenerateMana();
         this.parus.updateLevel(this.playerStats.LEVELS_SHOP.Parus);
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
@@ -106,13 +110,13 @@ export class PlayScene extends Phaser.Scene {
         setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
 
-        for (let el in this.characterHeap.heap) 
+        for (let el in this.characterHeap.heap)
             //this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
-        
-        if (this.playerStats.BattleMode) 
-            for (let i = 0; i < this.parus.heroWindows.length; i++) 
-                this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);      
-        
+
+            if (this.playerStats.BattleMode)
+                for (let i = 0; i < this.parus.heroWindows.length; i++)
+                    this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
+
         if (this.playerStats.BattleMode && this.battleFlag == 0) {
             closeToolBar(this);
             closeHeroesBar(this);
@@ -134,10 +138,10 @@ export class PlayScene extends Phaser.Scene {
                 this.parus.heroWindows[i].coof = 1;
                 this.parus.heroWindows[i].clearWindowProgress();
             }
-               
+
             this.battleFlag = 0;
         }
-        battle(this.parus,this.enemies,this.heroes);
+        battle(this.parus, this.enemies, this.heroes);
     }
 
     wave() {
@@ -160,8 +164,8 @@ export class PlayScene extends Phaser.Scene {
         }
     }
 
-    updateLVL(){
-        if (this.playerStats.EXPERIENCE >= CST.LEVELS_EXP[this.playerStats.LVL]){
+    updateLVL() {
+        if (this.playerStats.EXPERIENCE >= CST.LEVELS_EXP[this.playerStats.LVL]) {
             this.playerStats.EXPERIENCE = this.playerStats.EXPERIENCE % CST.LEVELS_EXP[this.playerStats.LVL];
             this.playerStats.LVL += 1;
             this.playerStats.SKILL_POINTS += 1;
@@ -170,6 +174,15 @@ export class PlayScene extends Phaser.Scene {
 
     createPlayerStats() {
         this.playerStats = loadPlayerData();
+    }
+
+    regenerateMana() {
+        if ((Date.now() - this.lastManaRegen) >= (CST.NUMBERS.ManaRegenTime * (1 - this.playerStats.LEVELS_SKILLS.MPRecovery * 2.5 / 100))) {
+            this.lastManaRegen = Date.now();
+            if (this.parus.currMP < this.parus.maxMP) {
+                this.parus.currMP += 1;
+            }
+        }
     }
 
     // setPhysicsEnemies() {
@@ -235,9 +248,7 @@ export class PlayScene extends Phaser.Scene {
         this.backButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.MENU);
         });
-        }
-
-        
+    }
 
     createSpawnMonstersBar() {
         this.scrollablePanel = this.rexUI.add.scrollablePanel({
@@ -346,12 +357,12 @@ export class PlayScene extends Phaser.Scene {
             for (let el of CST.MONSTERLIST) {
                 sizer.add(scene.rexUI.add.label({
                     width: 300, height: 60,
-    
+
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
                     text: scene.add.text(0, 0, `${el}`, {
                         fontSize: 18
                     }),
-    
+
                     align: 'center',
                     space: {
                         left: 10,
@@ -362,16 +373,16 @@ export class PlayScene extends Phaser.Scene {
                 }));
             }
         }
-        else{
+        else {
             for (let el of CST.HEROLIST) {
                 sizer.add(scene.rexUI.add.label({
                     width: 300, height: 60,
-    
+
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
                     text: scene.add.text(0, 0, `${el}`, {
                         fontSize: 18
                     }),
-    
+
                     align: 'center',
                     space: {
                         left: 10,
