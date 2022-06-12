@@ -415,6 +415,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Boss Cultist
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [12, 13, 14, 15, 16, 17] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Monster Slime
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterSlime.Idle,

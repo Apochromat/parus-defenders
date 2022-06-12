@@ -141,7 +141,7 @@ export class PlayScene extends Phaser.Scene {
 
             this.battleFlag = 0;
         }
-        battle(this.parus, this.enemies, this.heroes);
+        battle(this.parus, this.enemies, this.heroes, this.characterHeap, this.playerStats);
     }
 
     wave() {

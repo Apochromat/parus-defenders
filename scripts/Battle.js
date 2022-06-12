@@ -19,9 +19,9 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             console.log(enemy.y);
         }
         else if (heroes.getLength() == 0) {
-            enemy.setVelocity(0, 0);
-            enemy.setAnimationHit();
+            enemy.setVelocity(0, 0);    
             if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
+                enemy.setAnimationHit();
                 enemy.lastDamageTime = Date.now();
                 if (!parus.damage(enemy.specs.PhysicalDamage)) {
                     for (let el in characterHeap.heap) {
@@ -59,14 +59,14 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
 
             if (Math.abs(Math.round(hero.x) - Math.round(enemy.x)) < 50 && Math.abs(Math.round(hero.y) - Math.round(enemy.y)) < 50) {
                 hero.setVelocity(0, 0);
-                hero.setAnimationHit();
                 enemy.setVelocity(0, 0);
-                enemy.setAnimationHit();
                 if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
+                    enemy.setAnimationHit();
                     enemy.lastDamageTime = Date.now();
                     hero.damage(enemy.specs.PhysicalDamage);
                 }
                 if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown) {
+                    hero.setAnimationHit();
                     hero.lastDamageTime = Date.now();
                     enemy.damage(hero.specs.PhysicalDamage);
                 }
@@ -113,15 +113,16 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             }
             if (Math.abs(Math.round(hero.x) - Math.round(enemy.x)) < 50 && Math.abs(Math.round(hero.y) - Math.round(enemy.y)) < 50) {
                 hero.setVelocity(0, 0);
-                hero.setAnimationHit();
                 enemy.setVelocity(0, 0);
-                enemy.setAnimationHit();
+
                 if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
                     enemy.lastDamageTime = Date.now();
+                    enemy.setAnimationHit();
                     hero.damage(enemy.specs.PhysicalDamage);
                 }
                 if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown) {
                     hero.lastDamageTime = Date.now();
+                    hero.setAnimationHit();
                     enemy.damage(hero.specs.PhysicalDamage);
                 }
             }

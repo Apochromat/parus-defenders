@@ -110,6 +110,9 @@ export const CST = {
     SPRITES128: {
         HeroStormhead: "hero_stormhead",
     },
+    SPRITES200: {
+        BossCultist: "boss_cultist",
+    },
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
     },
@@ -122,7 +125,7 @@ export const CST = {
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossCultist", "BossBlackDragon", "BossCthulhu"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
         Parus: {
@@ -726,6 +729,12 @@ export const CST = {
             Hit: 'monster_slayer_hit',
             Death: 'monster_slayer_death'
         },
+        BossCultist: {
+            Idle: 'boss_cultist_idle',
+            Walk: 'boss_cultist_walk',
+            Hit: 'boss_cultist_hit',
+            Death: 'boss_cultist_death'
+        },
         BossBlackDragon: {
             Idle: 'boss_black_dragon_idle',
             Walk: 'boss_black_dragon_walk',
@@ -903,6 +912,19 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10
+        },
+        BossCultist: {
+            HealPoints: 8000,
+            PhysicalDamage: 150,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 30000,
+            Experience: 100
         },
         BossCthulhu: {
             HealPoints: 20000,
@@ -1278,6 +1300,15 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossCultist: {
+                MinWave: 20,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
                 HealthBoost: 0.1,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
