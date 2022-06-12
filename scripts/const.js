@@ -95,6 +95,7 @@ export const CST = {
     },
     SPRITES64: {
         MonsterSlayer: "monster_slayer",
+        MonsterIEM: "monster_iem",
         HeroMage: "hero_mage",
         HeroTesla: "hero_tesla",
         HeroArchaeologist: "hero_archaeologist",
@@ -104,11 +105,15 @@ export const CST = {
         HeroNightmare: "hero_nightmare",
         HeroWizard: "hero_wisard"
     },
+    SPRITES90: {
+        MonsterWorm: "monster_worm",
+    },
     SPRITES96: {
         HeroMinotaur: "hero_minotaur",
     },
     SPRITES128: {
         HeroStormhead: "hero_stormhead",
+        MonsterNecromancer: "monster_necromancer"
     },
     SPRITES200: {
         BossCultist: "boss_cultist",
@@ -128,7 +133,7 @@ export const CST = {
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm"],
     BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
@@ -733,6 +738,24 @@ export const CST = {
             Hit: 'monster_slayer_hit',
             Death: 'monster_slayer_death'
         },
+        MonsterWorm: {
+            Idle: 'monster_worm_idle',
+            Walk: 'monster_worm_walk',
+            Hit: 'monster_worm_hit',
+            Death: 'monster_worm_death'
+        },
+        MonsterIEM: {
+            Idle: 'monster_iem_idle',
+            Walk: 'monster_iem_walk',
+            Hit: 'monster_iem_hit',
+            Death: 'monster_iem_death'
+        },
+        MonsterNecromancer: {
+            Idle: 'monster_necromancer_idle',
+            Walk: 'monster_necromancer_walk',
+            Hit: 'monster_necromancer_hit',
+            Death: 'monster_necromancer_death'
+        },
         BossCultist: {
             Idle: 'boss_cultist_idle',
             Walk: 'boss_cultist_walk',
@@ -916,6 +939,45 @@ export const CST = {
             LightningDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 1000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterWorm: {
+            HealPoints: 2000,
+            PhysicalDamage: 50,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            Speed: 40,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterIEM: {
+            HealPoints: 5000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 5000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterNecromancer: {
+            HealPoints: 1500,
+            PhysicalDamage: 50,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
             Speed: 50,
             PhysicalProtection: 10,
             LightningProtection: 10,
@@ -1324,6 +1386,33 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 3,
                 MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterWorm: {
+                MinWave: 20,
+                MaxWave: -1,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterIEM: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterNecromancer: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 1,
                 HealthBoost: 0.1,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1

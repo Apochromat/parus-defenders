@@ -676,6 +676,93 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Monster Worm
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [16, 17, 18, 19, 20, 21, 22, 23, 24] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [32, 33, 34, 35, 36, 37, 38, 39, 40] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [48, 49, 50, 51, 52, 53, 54, 55] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster IEM
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [0, 1, 2, 3, 4, 5, 6] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [0, 1, 2, 3, 4, 5, 6] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [7, 8, 9, 10, 11, 12, 13] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [14, 15, 16, 17, 18, 19, 20] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Necromancer
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [13, 14, 15, 16, 17, 18] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [39, 40, 41, 42, 43, 44, 45, 46, 47] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Thunderstruck
     scene.anims.create({
         key: CST.SPRITES64.Thunderstrike,
