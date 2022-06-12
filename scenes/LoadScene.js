@@ -1,7 +1,9 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
+import { shuffle } from "../scripts/Misc.js";
 import { loadPlayerData } from "../scripts/PlayerData.js";
 export class LoadScene extends Phaser.Scene {
+    playlist = [];
     constructor() {
         super({
             key: CST.SCENES.LOAD
@@ -29,6 +31,7 @@ export class LoadScene extends Phaser.Scene {
         this.load.setPath("./assets/audio");
         for (let prop in CST.MUSIC) {
             this.load.audio(CST.MUSIC[prop], CST.MUSIC[prop]+".mp3");
+            this.playlist.push(CST.MUSIC[prop]);
         }
     }
 
@@ -132,8 +135,9 @@ export class LoadScene extends Phaser.Scene {
         })
     }
     create() {
-        for (let prop in CST.MUSIC) {
-            this.game.music = this.sound.add(CST.MUSIC[prop]);
+        this.playlist = shuffle(this.playlist);
+        for (let el of this.playlist) {
+            this.game.music = this.sound.add(el);
         }
         this.game.music.play({
             mute: false,

@@ -128,7 +128,14 @@ export const CST = {
         BossCthulhu: "boss_cthulhu"
     },
     MUSIC: {
-        Psychosocial: "8-Bit_Misfits_Psychosocial"
+        Psychosocial: "8-Bit_Misfits_Psychosocial",
+        Centuries: "8-Bit_Misfits_Centuries",
+        GetLucky: "8-Bit_Misfits_Get_Lucky",
+        ImmigrantSong: "8-Bit_Misfits_Immigrant_Song",
+        Numb: "8-Bit_Misfits_Numb",
+        PersonalJesus: "8-Bit_Misfits_Personal_Jesus",
+        Teenagers: "8-Bit_Misfits_Teenagers",
+        Tattoo: "Rammstein_Tattoo"
     },
     EFFECTS: {
         Thunderstrike: "thunderstrike"
