@@ -427,7 +427,7 @@ export class PlayScene extends Phaser.Scene {
                 }));
             }
         }
-        if (type == 666) {
+        else if (type == 666) {
             for (let el of CST.BOSSLIST) {
                 sizer.add(scene.rexUI.add.label({
                     width: 300, height: 60,
