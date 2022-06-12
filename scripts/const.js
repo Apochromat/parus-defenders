@@ -113,6 +113,9 @@ export const CST = {
     SPRITES200: {
         BossCultist: "boss_cultist",
     },
+    SPRITES240: {
+        BossDemon: "boss_demon",
+    },
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
     },
@@ -126,7 +129,7 @@ export const CST = {
         Thunderstrike: "thunderstrike"
     },
     MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer"],
-    BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu"],
+    BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
         Parus: {
@@ -749,6 +752,12 @@ export const CST = {
             Tentacle: 'boss_cthulhu_tentacle',
             Death: 'boss_cthulhu_death'
         },
+        BossDemon: {
+            Idle: 'boss_demon_idle',
+            Walk: 'boss_demon_walk',
+            Hit: 'boss_demon_hit',
+            Death: 'boss_demon_death'
+        },
         HeroCat: {
             Idle: 'hero_cat_idle',
             Walk: 'hero_cat_walk',
@@ -934,6 +943,19 @@ export const CST = {
             MagicDamage: 10,
             AttackCooldown: 2000,
             Speed: 15,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 30000,
+            Experience: 100
+        },
+        BossDemon: {
+            HealPoints: 20000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 30,
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
@@ -1321,6 +1343,15 @@ export const CST = {
                 MinBatch: 1,
                 MaxBatch: 1,
                 HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossDemon: {
+                MinWave: 40,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.2,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },

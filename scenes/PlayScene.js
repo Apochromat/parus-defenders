@@ -49,6 +49,7 @@ export class PlayScene extends Phaser.Scene {
     skillBar;
 
     scrollablePanel;
+    scrollablePanelBosses;
     scrollablePanelHeroes;
     statusBar;
     backButton;
@@ -90,6 +91,7 @@ export class PlayScene extends Phaser.Scene {
 
         this.createGUI();
         this.createSpawnMonstersBar();
+        this.createSpawnBossBar();
         this.createSpawnHeroesBar();
 
         // this.setPhysicsEnemies();
@@ -262,9 +264,9 @@ export class PlayScene extends Phaser.Scene {
     createSpawnMonstersBar() {
         this.scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 200,
-            y: 250,
+            y: 220,
             width: 200,
-            height: 250,
+            height: 150,
 
             scrollMode: 0,
 
@@ -279,7 +281,7 @@ export class PlayScene extends Phaser.Scene {
             },
 
             mouseWheelScroller: {
-                focus: false,
+                focus: true,
                 speed: 0.1
             },
 
@@ -304,12 +306,57 @@ export class PlayScene extends Phaser.Scene {
             })
     }
 
+    createSpawnBossBar() {
+        this.scrollablePanelBosses = this.rexUI.add.scrollablePanel({
+            x: 200,
+            y: 370,
+            width: 200,
+            height: 150,
+
+            scrollMode: 0,
+
+            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x3d3d3d),
+
+            panel: {
+                child: this.createGrid(this, 666),
+                mask: {
+                    mask: true,
+                    padding: 1,
+                }
+            },
+
+            mouseWheelScroller: {
+                focus: true,
+                speed: 0.1
+            },
+
+            space: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+
+                panel: 10,
+                header: 10
+            }
+        }).layout()
+
+        this.scrollablePanelBosses
+            .setChildrenInteractive()
+            .on('child.click', function (args) {
+                console.log(args.text);
+                args.scene.characterHeap.createMonster(args.text, args.scene,
+                    randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
+                    randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
+            })
+    }
+
     createSpawnHeroesBar() {
         this.scrollablePanelHeroes = this.rexUI.add.scrollablePanel({
             x: 200,
             y: 520,
             width: 200,
-            height: 250,
+            height: 150,
 
             scrollMode: 0,
 
@@ -324,7 +371,7 @@ export class PlayScene extends Phaser.Scene {
             },
 
             mouseWheelScroller: {
-                focus: false,
+                focus: true,
                 speed: 0.1
             },
 
@@ -368,9 +415,25 @@ export class PlayScene extends Phaser.Scene {
                     width: 300, height: 60,
 
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                    text: scene.add.text(0, 0, `${el}`, {
-                        fontSize: 18
-                    }),
+                    text: scene.add.text(0, 0, `${el}`,{ fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+
+                    align: 'center',
+                    space: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10,
+                    }
+                }));
+            }
+        }
+        if (type == 666) {
+            for (let el of CST.BOSSLIST) {
+                sizer.add(scene.rexUI.add.label({
+                    width: 300, height: 60,
+
+                    background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
+                    text: scene.add.text(0, 0, `${el}`, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
 
                     align: 'center',
                     space: {
@@ -388,9 +451,7 @@ export class PlayScene extends Phaser.Scene {
                     width: 300, height: 60,
 
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                    text: scene.add.text(0, 0, `${el}`, {
-                        fontSize: 18
-                    }),
+                    text: scene.add.text(0, 0, `${el}`, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
 
                     align: 'center',
                     space: {

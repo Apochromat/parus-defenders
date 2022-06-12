@@ -76,6 +76,12 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 200
             });
         }
+        for (let prop in CST.SPRITES240) {
+            this.load.spritesheet(CST.SPRITES240[prop], CST.SPRITES240[prop]+".png", {
+                frameHeight: 240,
+                frameWidth: 240
+            });
+        }
         for (let prop in CST.SPRITESDRAGON) {
             this.load.spritesheet(CST.SPRITESDRAGON[prop], CST.SPRITESDRAGON[prop]+".png", {
                 frameHeight: 87,

@@ -415,6 +415,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+     // Boss Demon
+     scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [11, 12, 13, 14, 15, 16] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [11, 12, 13, 14, 15, 16] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Boss Cultist
     scene.anims.create({
         key: CST.ANIMATIONS.BossCultist.Idle,
