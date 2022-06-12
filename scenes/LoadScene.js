@@ -86,9 +86,9 @@ export class LoadScene extends Phaser.Scene {
 
     preload() {
         //load image, spritesheet, sound
+        this.loadAudio();
         this.loadImages();
         this.loadIcons();
-        this.loadAudio();
         this.loadSprites();
 
         //create loading bar
@@ -98,8 +98,11 @@ export class LoadScene extends Phaser.Scene {
             }
         })
 
+        let progressText = this.add.text(this.game.renderer.width / 2, this.game.renderer.height / 2 - 50, 0, { fontFamily: 'ClearSans', fontSize: 36, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
+
         this.load.on("progress", (percent) => {
             loadingBar.fillRect(50, this.game.renderer.height / 2, (this.game.renderer.width - 100) * percent, 50);
+            progressText.setText(`${Math.trunc(percent*100)}%`);
         })
 
         this.load.on("complete", () => {
