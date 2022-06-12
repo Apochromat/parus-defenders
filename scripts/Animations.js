@@ -351,7 +351,6 @@ export function createAnimations(scene) {
     });
 
     // Boss Cthulhu
-
     scene.anims.create({
         key: CST.ANIMATIONS.BossCthulhu.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
@@ -388,7 +387,6 @@ export function createAnimations(scene) {
     });
 
     // Boss Black Dragon
-
     scene.anims.create({
         key: CST.ANIMATIONS.BossBlackDragon.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
@@ -616,6 +614,14 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterSlayer.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterSlayer, { frames: [32, 33, 34, 35, 36, 37] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Thunderstruck
+    scene.anims.create({
+        key: CST.SPRITES64.Thunderstrike,
+        frames: scene.anims.generateFrameNumbers(CST.EFFECTS.Thunderstrike, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
         frameRate: 8,
         repeat: 0
     });

@@ -869,6 +869,11 @@ export class HeroMage extends CharacterSprite {
                 this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.HeroMage.Hit);
+            let anim = this.scene.add.sprite(this.x + 32, this.y, CST.SPRITES64.Thunderstrike).setDepth(CST.DEPTHS.Effects);
+            anim.play(CST.EFFECTS.Thunderstrike);
+            anim.once('animationcomplete', () => {
+                this.destroy();
+            })
         }
         return this;
     }

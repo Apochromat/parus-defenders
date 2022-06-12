@@ -97,7 +97,8 @@ export const CST = {
         MonsterSlayer: "monster_slayer",
         HeroMage: "hero_mage",
         HeroTesla: "hero_tesla",
-        HeroArchaeologist: "hero_archaeologist"
+        HeroArchaeologist: "hero_archaeologist",
+        Thunderstrike: "thunderstrike"
     },
     SPRITES80: {
         HeroNightmare: "hero_nightmare",
@@ -117,6 +118,9 @@ export const CST = {
     },
     MUSIC: {
         Psychosocial: "8-Bit_Misfits_Psychosocial"
+    },
+    EFFECTS: {
+        Thunderstrike: "thunderstrike"
     },
     MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
@@ -1204,7 +1208,8 @@ export const CST = {
         HeroesBarField: 5006,
         HeroesBarClose: 5005,
         HeroesBarRecyclerView: 5007,
-        Slots: 1000
+        Slots: 1000,
+        Effects: 18000
     },
     WAVE_GENERATOR: {
         MinSpawnDelay: 500,
