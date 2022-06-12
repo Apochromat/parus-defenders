@@ -13,7 +13,7 @@ var playerDataTemplate = {
     WAVE: 1,
     WAVE_PROGRESS: 0,
     OPTIONS: {
-        Music: 80,
+        Music: 10,
         Sounds: 80,
         Fullscreen: false
     },

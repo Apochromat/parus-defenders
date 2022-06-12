@@ -125,7 +125,8 @@ export const CST = {
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossCultist", "BossBlackDragon", "BossCthulhu"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer"],
+    BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
         Parus: {
@@ -1240,6 +1241,7 @@ export const CST = {
         MinMonsterAmount: 5,
         MonsterWaveCoefficient: 5,
         MaximumMomentMonsters: 30,
+        WavesPerBoss: 10,
         MonsterPreferences: {
             MonsterSlime: {
                 MinWave: 1,
@@ -1305,7 +1307,7 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             BossCultist: {
-                MinWave: 20,
+                MinWave: 10,
                 MaxWave: 50,
                 MinBatch: 1,
                 MaxBatch: 1,

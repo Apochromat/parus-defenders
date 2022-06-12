@@ -107,7 +107,6 @@ export class PlayScene extends Phaser.Scene {
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
-        setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
 
         for (let el in this.characterHeap.heap)
@@ -146,6 +145,13 @@ export class PlayScene extends Phaser.Scene {
 
     wave() {
         if (this.playerStats.BattleMode) {
+            if (this.waveObject.boss != undefined) {
+                setStatusWAVE(this, 1, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, this.waveObject.boss.hp);
+            }
+            else {
+                setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 0);
+            }
+
             if (!this.waveObject.finished) {
                 this.waveObject.run();
             }
@@ -161,6 +167,9 @@ export class PlayScene extends Phaser.Scene {
                 this.playerStats.WAVE += 1;
                 this.playerStats.WAVE_PROGRESS = 0;
             }
+        }
+        else {
+            setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 0);
         }
     }
 

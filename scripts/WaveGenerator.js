@@ -3,6 +3,7 @@ import { normalcdf, randomIntFromInterval, shuffle } from "../scripts/Misc.js";
 
 export class Wave {
     creationTime;
+    boss;
     lastSpawnTime;
     spawnDelay;
     number;
@@ -13,6 +14,8 @@ export class Wave {
     finished = false;
     spawnList = [];
     monstersForSpawn = [];
+    bossesForSpawn = [];
+    bossForSpawn;
     constructor(scene, number) {
         this.number = number;
         this.scene = scene;
@@ -26,6 +29,16 @@ export class Wave {
                 (CST.WAVE_GENERATOR.MonsterPreferences[iterator].MaxWave >= number || CST.WAVE_GENERATOR.MonsterPreferences[iterator].MaxWave == -1)) {
                 this.monstersForSpawn.push(iterator);
             }
+        }
+        if (this.number % CST.WAVE_GENERATOR.WavesPerBoss == 0) {
+            for (const iterator of CST.BOSSLIST) {
+                if (CST.WAVE_GENERATOR.MonsterPreferences[iterator].MinWave <= number &&
+                    (CST.WAVE_GENERATOR.MonsterPreferences[iterator].MaxWave >= number || CST.WAVE_GENERATOR.MonsterPreferences[iterator].MaxWave == -1)) {
+                    this.bossesForSpawn.push(iterator);
+                }
+            }
+            this.bossesForSpawn = shuffle(this.bossesForSpawn);
+            this.bossForSpawn = this.bossesForSpawn[0];
         }
         let intervalAmount = this.monstersForSpawn.length;
         let interval = 6 / intervalAmount;
@@ -60,6 +73,12 @@ export class Wave {
             if (spawnInfo == undefined) {
                 this.finished = true;
                 console.log(`Spawned ${this.spawnedBatches}/${this.allBatches}`);
+                if (this.number % CST.WAVE_GENERATOR.WavesPerBoss == 0) {
+                    this.boss = this.scene.characterHeap.createBoss(this.bossForSpawn, this.scene,
+                        randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
+                        randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
+                    console.log(`Spawned ${this.bossForSpawn}`);
+                }
                 return false
             }
             for (let i = 0; i < spawnInfo.amount; i++) {

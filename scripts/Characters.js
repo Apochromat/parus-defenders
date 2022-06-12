@@ -162,6 +162,30 @@ export class CharacterHeap {
         return this.heap[CharacterHeap.id - 1];
     }
 
+    createBoss(type = "BossCultist", scene, x, y) {
+        switch (type) {
+            case "BossCultist":
+                this.heap[CharacterHeap.id] = new BossCultist(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCultist));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossBlackDragon":
+                this.heap[CharacterHeap.id] = new BossBlackDragon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossBlackDragon));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossCthulhu":
+                this.heap[CharacterHeap.id] = new BossCthulhu(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCthulhu));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+        }
+        scene.enemies.add(this.heap[CharacterHeap.id]);
+        this.heap[CharacterHeap.id].setDepth(y + this.heap[CharacterHeap.id].height);
+        CharacterHeap.id++;
+        return this.heap[CharacterHeap.id - 1];
+    }
+
 }
 
 export class MonsterSlime extends CharacterSprite {
@@ -945,7 +969,7 @@ export class HeroMage extends CharacterSprite {
             let anim = this.scene.add.sprite(this.x + 32, this.y, CST.SPRITES64.Thunderstrike).setDepth(CST.DEPTHS.Effects);
             anim.play(CST.EFFECTS.Thunderstrike);
             anim.once('animationcomplete', () => {
-                this.destroy();
+                anim.destroy();
             })
         }
         return this;
