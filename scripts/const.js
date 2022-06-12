@@ -140,206 +140,67 @@ export const CST = {
         Parus: {
             Name: "Парус",
             Description: "Увеличение HP и \nMP Паруса",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000
-            ]
+            BeginCost: 500
         },
         HeroCat: {
             Name: "Кот-рыцарь",
             Description: "Увеличение HP и \nурона Кота",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 100
         },
         HeroMage: {
             Name: "Тёмный Маг",
             Description: "Увеличение HP и \nурона Мага",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 500
         },
         HeroArchaeologist: {
             Name: "Археолог",
             Description: "Увеличение HP и \nурона Археолога",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 500
         },
         HeroSceleton: {
             Name: "Big Bone",
             Description: "Увеличение HP и \nурона Big Bon`а",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 1500
         },
         HeroTesla: {
             Name: "Тесла",
             Description: "Увеличение HP и \nурона Тесла",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroWitch: {
             Name: "Ведьмочка",
             Description: "Увеличение HP и \nурона Ведьмы",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroCenturion: {
             Name: "Центурион Рори",
             Description: "Увеличение HP и \nурона Рори",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroReaper: {
             Name: "Жнец",
             Description: "Увеличение HP и \nурона Жнеца",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroNightmare: {
             Name: "Кошмар",
             Description: "Увеличение HP и \nурона Кошмара",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         },
         HeroMinotaur: {
             Name: "Минотавр",
             Description: "Увеличение HP и \nурона Минотавра",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         },
         HeroStormhead: {
             Name: "Ш.Т.О.Р.М",
             Description: "Увеличение HP и \nурона Ш.Т.О.Р.М",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         },
         HeroWizard: {
             Name: "Чародей",
             Description: "Увеличение HP и \nурона Чародея",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         }
     },
     SKILLSLIST: {
@@ -1017,7 +878,7 @@ export const CST = {
             LightningDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 2000,
-            Speed: 30,
+            Speed: 100,
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
