@@ -473,6 +473,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+     // Boss Mother Miranda
+     scene.anims.create({
+        key: CST.ANIMATIONS.BossMiranda.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossMiranda, { frames: [13, 14, 15, 16, 17] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossMiranda.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossMiranda, { frames: [13, 14, 15, 16, 17] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossMiranda.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossMiranda, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossMiranda.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossMiranda, { frames: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Monster Slime
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterSlime.Idle,

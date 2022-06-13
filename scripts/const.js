@@ -117,6 +117,7 @@ export const CST = {
     },
     SPRITES200: {
         BossCultist: "boss_cultist",
+        BossMiranda: "boss_miranda",
     },
     SPRITES240: {
         BossDemon: "boss_demon",
@@ -141,7 +142,7 @@ export const CST = {
         Thunderstrike: "thunderstrike"
     },
     MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm"],
-    BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon"],
+    BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon", "BossMiranda"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
         Parus: {
@@ -649,6 +650,12 @@ export const CST = {
             Hit: 'boss_demon_hit',
             Death: 'boss_demon_death'
         },
+        BossMiranda: {
+            Idle: 'boss_miranda_idle',
+            Walk: 'boss_miranda_walk',
+            Hit: 'boss_miranda_hit',
+            Death: 'boss_miranda_death'
+        },
         HeroCat: {
             Idle: 'hero_cat_idle',
             Walk: 'hero_cat_walk',
@@ -887,6 +894,19 @@ export const CST = {
             MagicDamage: 10,
             AttackCooldown: 2000,
             Speed: 100,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 30000,
+            Experience: 100
+        },
+        BossMiranda: {
+            HealPoints: 20000,
+            PhysicalDamage: 200,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 70,
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
@@ -1306,6 +1326,15 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             BossDemon: {
+                MinWave: 40,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.2,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossMiranda: {
                 MinWave: 40,
                 MaxWave: 50,
                 MinBatch: 1,
