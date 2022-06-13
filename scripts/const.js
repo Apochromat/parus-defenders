@@ -133,7 +133,9 @@ export const CST = {
         GetLucky: "8-Bit_Misfits_Get_Lucky",
         ImmigrantSong: "8-Bit_Misfits_Immigrant_Song",
         Numb: "8-Bit_Misfits_Numb",
-        Tattoo: "Rammstein_Tattoo"
+        Tattoo: "Rammstein_Tattoo",
+        NeroForte: "8-Bit_Misfits_Nero_Forte",
+        TheDevilInI: "8-Bit_Misfits_The_Devil_in_I"
     },
     EFFECTS: {
         Thunderstrike: "thunderstrike"

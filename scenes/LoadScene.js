@@ -136,18 +136,50 @@ export class LoadScene extends Phaser.Scene {
     }
     create() {
         this.playlist = shuffle(this.playlist);
+        this.game.music = []
         for (let el of this.playlist) {
-            this.game.music = this.sound.add(el);
+            this.game.music.push(this.sound.add(el));
         }
-        this.game.music.play({
-            mute: false,
-            volume: loadPlayerData().OPTIONS.Music/100,
+
+        for (let i in this.game.music) {
+            if (i == this.game.music.length - 1){
+                this.game.music[i].once('complete', function(music){
+                    this.manager.game.music[0].play({
+                        mute: (loadPlayerData().OPTIONS.Music/10 <= 0) ? true : false,
+                        volume: loadPlayerData().OPTIONS.Music/10,
+                        // rate: 1,
+                        // detune: 0,
+                        // seek: 0,
+                        loop: false,
+                        // delay: 0
+                    });
+                });
+            }
+            else{
+                this.game.music[i].once('complete', function(music){
+                    this.manager.game.music[parseInt(i)+1].play({
+                        mute: (loadPlayerData().OPTIONS.Music/10 <= 0) ? true : false,
+                        volume: loadPlayerData().OPTIONS.Music/10,
+                        // rate: 1,
+                        // detune: 0,
+                        // seek: 0,
+                        loop: false,
+                        // delay: 0
+                    });
+                });
+            }
+        }
+
+        this.game.music[0].play({
+            mute: (loadPlayerData().OPTIONS.Music/10 <= 0) ? true : false,
+            volume: loadPlayerData().OPTIONS.Music/10,
             // rate: 1,
             // detune: 0,
             // seek: 0,
-            loop: true,
+            loop: false,
             // delay: 0
         });
+        
         this.scene.start(CST.SCENES.MENU);
     }
 }

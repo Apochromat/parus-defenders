@@ -16,7 +16,7 @@ export class OptionsScene extends Phaser.Scene {
             key: 'rexuiplugin',
             url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
             sceneKey: 'rexUI'
-        });  
+        });
     }
     create() {
         this.actualData = loadPlayerData();
@@ -42,11 +42,11 @@ export class OptionsScene extends Phaser.Scene {
         this.eraseButton = this.add.image(CST.NUMBERS.WIDTH / 2 + 250, 775, CST.IMAGES.EraseButton).setDepth(CST.DEPTHS.ToolBarField);
         this.eraseButton.setInteractive();
         this.eraseButton.on("pointerup", () => {
-            if (confirm("Вы действительно хотите сбросить пользовательские данные? Отменить это действие будет невозможно!")){
+            if (confirm("Вы действительно хотите сбросить пользовательские данные? Отменить это действие будет невозможно!")) {
                 erasePlayerData();
                 this.actualData = loadPlayerData();
-                musicBar.setValue(this.actualData.OPTIONS.Music, 0, 100);
-                soundBar.setValue(this.actualData.OPTIONS.Sounds, 0, 100);
+                musicBar.setValue(this.actualData.OPTIONS.Music, 0, 10);
+                soundBar.setValue(this.actualData.OPTIONS.Sounds, 0, 10);
                 this.fullscreenButton.setTexture(this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchON : CST.IMAGES.SwitchOFF);
                 alert("ДАННЫЕ УДАЛЕНЫ");
             }
@@ -79,13 +79,16 @@ export class OptionsScene extends Phaser.Scene {
             },
 
             valuechangeCallback: function (value, oldValue, musicBar) {
-                musicBar.text = Math.round(Phaser.Math.Linear(0, 100, value));
-                this.scene.game.music.setVolume(value);
-                this.scene.actualData.OPTIONS.Music = Math.round(Phaser.Math.Linear(0, 100, value));
+                musicBar.text = Math.round(Phaser.Math.Linear(0, 10, value));
+                for (let el of this.scene.game.music) {
+                    el.setMute((Math.round(Phaser.Math.Linear(0, 10, value)) <= 0) ? true : false);
+                    el.setVolume(Math.round(Phaser.Math.Linear(0, 10, value))/10);
+                }
+                this.scene.actualData.OPTIONS.Music = Math.round(Phaser.Math.Linear(0, 10, value));
                 savePlayerData(this.scene.actualData);
             }
         })
-        .layout();
+            .layout();
 
         var soundBar = this.rexUI.add.numberBar({
             x: CST.NUMBERS.WIDTH / 2 + 300,
@@ -114,15 +117,15 @@ export class OptionsScene extends Phaser.Scene {
             },
 
             valuechangeCallback: function (value, oldValue, soundBar) {
-                soundBar.text = Math.round(Phaser.Math.Linear(0, 100, value));
-                this.scene.actualData.OPTIONS.Sounds = Math.round(Phaser.Math.Linear(0, 100, value));
+                soundBar.text = Math.round(Phaser.Math.Linear(0, 10, value));
+                this.scene.actualData.OPTIONS.Sounds = Math.round(Phaser.Math.Linear(0, 10, value));
                 savePlayerData(this.scene.actualData);
             },
         })
-        .layout();
+            .layout();
 
-        musicBar.setValue(savedMusic, 0, 100);
-        soundBar.setValue(savedSounds, 0, 100);
+        musicBar.setValue(savedMusic, 0, 10);
+        soundBar.setValue(savedSounds, 0, 10);
 
     }
     update() {
