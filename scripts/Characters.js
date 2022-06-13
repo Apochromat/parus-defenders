@@ -1,6 +1,6 @@
 import { CharacterSprite } from "./CharacterSprite.js";
 import { CST } from "../scripts/const.js";
-import { heroSpecsWithplayerStats, monsterSpecsWithplayerStats, randomIntFromInterval } from "./Misc.js";
+import { calculateHeroSpecs, heroSpecsWithplayerStats, monsterSpecsWithplayerStats, randomIntFromInterval } from "./Misc.js";
 
 export class CharacterHeap {
     scene;
@@ -16,85 +16,97 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id] = new HeroCat(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCat));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroCat);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroCat.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroCat.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroCat);
                 break;
             case "HeroMage":
                 this.heap[CharacterHeap.id] = new HeroMage(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroMage));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroMage);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroMage.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroMage.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroMage);
                 break;
             case "HeroArchaeologist":
                 this.heap[CharacterHeap.id] = new HeroArchaeologist(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroArchaeologist));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroArchaeologist);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroArchaeologist.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroArchaeologist.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroArchaeologist);
                 break;
             case "HeroSceleton":
                 this.heap[CharacterHeap.id] = new HeroSceleton(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroSceleton));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroSceleton);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroSceleton.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroSceleton.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroSceleton);
                 break;
             case "HeroCenturion":
                 this.heap[CharacterHeap.id] = new HeroCenturion(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroCenturion));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroCenturion);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroCenturion.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroCenturion.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroCenturion);
                 break;
             case "HeroTesla":
                 this.heap[CharacterHeap.id] = new HeroTesla(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroTesla));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroTesla);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroTesla.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroTesla.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroTesla);
                 break;
             case "HeroWitch":
                 this.heap[CharacterHeap.id] = new HeroWitch(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroWitch));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroWitch);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroWitch.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroWitch.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroWitch);
                 break;
             case "HeroReaper":
                 this.heap[CharacterHeap.id] = new HeroReaper(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroReaper));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroReaper);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroReaper.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroReaper.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroReaper);
                 break;
             case "HeroNightmare":
                 this.heap[CharacterHeap.id] = new HeroNightmare(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroNightmare));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroNightmare);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroNightmare.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroNightmare.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroNightmare);
                 break;
             case "HeroMinotaur":
                 this.heap[CharacterHeap.id] = new HeroMinotaur(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroMinotaur));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroMinotaur);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroMinotaur.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroMinotaur.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroMinotaur);
                 break;
             case "HeroStormhead":
                 this.heap[CharacterHeap.id] = new HeroStormhead(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroStormhead));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroStormhead);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroStormhead.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroStormhead.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroStormhead);
                 break;
             case "HeroWizard":
                 this.heap[CharacterHeap.id] = new HeroWizard(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.HeroWizard));
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroWizard);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= CST.CHARACTERS.HeroWizard.MPCost;
+                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroWizard.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroWizard);
                 break;
         }
         scene.heroes.add(this.heap[CharacterHeap.id]);
@@ -138,6 +150,55 @@ export class CharacterHeap {
             case "MonsterSlayer":
                 this.heap[CharacterHeap.id] = new MonsterSlayer(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterSlayer));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "MonsterWorm":
+                this.heap[CharacterHeap.id] = new MonsterWorm(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterWorm));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "MonsterIEM":
+                this.heap[CharacterHeap.id] = new MonsterIEM(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterIEM));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "MonsterNecromancer":
+                this.heap[CharacterHeap.id] = new MonsterNecromancer(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterNecromancer));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossCultist":
+                this.heap[CharacterHeap.id] = new BossCultist(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCultist));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossBlackDragon":
+                this.heap[CharacterHeap.id] = new BossBlackDragon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossBlackDragon));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossCthulhu":
+                this.heap[CharacterHeap.id] = new BossCthulhu(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCthulhu));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossDemon":
+                this.heap[CharacterHeap.id] = new BossDemon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossDemon));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+        }
+        scene.enemies.add(this.heap[CharacterHeap.id]);
+        this.heap[CharacterHeap.id].setDepth(y + this.heap[CharacterHeap.id].height);
+        CharacterHeap.id++;
+        return this.heap[CharacterHeap.id - 1];
+    }
+
+    createBoss(type = "BossCultist", scene, x, y) {
+        switch (type) {
+            case "BossCultist":
+                this.heap[CharacterHeap.id] = new BossCultist(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCultist));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
             case "BossBlackDragon":
@@ -635,6 +696,278 @@ export class MonsterSlayer extends CharacterSprite {
 
 }
 
+export class MonsterWorm extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES64.MonsterWorm, scale);
+        this.hp = CST.CHARACTERS.MonsterWorm.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterWorm.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Death) {
+            this.play(CST.ANIMATIONS.MonsterWorm.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Death) {
+            this.play(CST.ANIMATIONS.MonsterWorm.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterWorm.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Death) {
+            this.play(CST.ANIMATIONS.MonsterWorm.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class MonsterIEM extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES64.MonsterIEM, scale);
+        this.hp = CST.CHARACTERS.MonsterIEM.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterIEM.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Death) {
+            this.play(CST.ANIMATIONS.MonsterIEM.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Death) {
+            this.play(CST.ANIMATIONS.MonsterIEM.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterIEM.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Death) {
+            this.play(CST.ANIMATIONS.MonsterIEM.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class MonsterNecromancer extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES128.MonsterNecromancer, scale);
+        this.hp = CST.CHARACTERS.MonsterNecromancer.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterNecromancer.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Death) {
+            this.play(CST.ANIMATIONS.MonsterNecromancer.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Death) {
+            this.play(CST.ANIMATIONS.MonsterNecromancer.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterNecromancer.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Death) {
+            this.play(CST.ANIMATIONS.MonsterNecromancer.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class BossCultist extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 1) {
+        super(scene, x, y, CST.SPRITES200.BossCultist, scale);
+        this.hp = CST.CHARACTERS.BossCultist.HealPoints;
+        this.speed = CST.CHARACTERS.BossCultist.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Death) {
+            this.play(CST.ANIMATIONS.BossCultist.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Death) {
+            this.play(CST.ANIMATIONS.BossCultist.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.BossCultist.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Death) {
+            this.play(CST.ANIMATIONS.BossCultist.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
 export class BossBlackDragon extends CharacterSprite {
     constructor(scene, x, y, id, heap, scale = 5) {
         super(scene, x, y, CST.SPRITESDRAGON.BossBlackDragon, scale);
@@ -775,6 +1108,74 @@ export class BossCthulhu extends CharacterSprite {
 
 }
 
+export class BossDemon extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES240.BossDemon, scale);
+        this.hp = CST.CHARACTERS.BossDemon.HealPoints;
+        this.speed = CST.CHARACTERS.BossDemon.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Death) {
+            this.play(CST.ANIMATIONS.BossDemon.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Death) {
+            this.play(CST.ANIMATIONS.BossDemon.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.BossDemon.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Death) {
+            this.play(CST.ANIMATIONS.BossDemon.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
 export class HeroCat extends CharacterSprite {
     constructor(scene, x, y, id, heap, scale = 3) {
         super(scene, x, y, CST.SPRITES32.HeroCat, scale);
@@ -869,6 +1270,11 @@ export class HeroMage extends CharacterSprite {
                 this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.HeroMage.Hit);
+            let anim = this.scene.add.sprite(this.x + 32, this.y, CST.SPRITES64.Thunderstrike).setDepth(CST.DEPTHS.Effects);
+            anim.play(CST.EFFECTS.Thunderstrike);
+            anim.once('animationcomplete', () => {
+                anim.destroy();
+            })
         }
         return this;
     }

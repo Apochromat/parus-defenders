@@ -120,3 +120,57 @@ export function monsterSpecsWithplayerStats(playerStats, monsterSpecs) {
   monsterSpecs.Cost *= (1 + playerStats.LEVELS_SKILLS.BonusGold * 2.5 / 100);
   monsterSpecs.Experience *= (1 + playerStats.LEVELS_SKILLS.BonusExperience * 5 / 100);
 }
+
+export function calculateParusWindows(x) {
+  /* Function:
+  f(0 <= x <= 2) = 1;
+  f(3 <= x <= 7) = 2;
+  f(8 <= x <= 14) = 3;
+  f(15 <= x <= 24) = 4;
+  f(25 <= x <= 48) = 5;
+  f(48 <= x < inf) = 6;
+  */
+  let k = 0.05;
+  let m = -32;
+  let l = 6.43;
+  return Math.min(Math.trunc(-Math.exp(-k*(x+m))+l), 6);
+}
+
+export function calculateParusBuildings(x) {
+  /* Function:
+  f(0 <= x <= 15) = 0;
+  f(16 <= x <= 33) = 1;
+  f(33 <= x <= 77) = 2;
+  f(58 <= x <= inf) = 3;
+  */
+  let k = 0.01194;
+  let m = -150;
+  let l = 6;
+  return Math.min(Math.trunc(-Math.exp(-k*(x+m))+l), 6);
+}
+
+export function calculateParusMaxMP(x) {
+  return Math.trunc(150 + 8 * x);
+}
+
+export function calculateParusMaxHP(x) {
+  return Math.trunc(250 + 40 * x);
+}
+
+export function calculateCost(key, level, beginCost) {
+  if (key == "Parus") {
+    return beginCost + level * 3000
+  }
+  return Math.trunc(beginCost * (1.2 ** (level)));
+}
+
+export function calculateHeroSpecs(basic, level) {
+  if (level == 0) return 0;
+  return Math.trunc(basic * (1.1 ** (level-1)));
+}
+
+export function addIfNotInclude(array, item) {
+  if (array.indexOf(item) === -1) {
+    array.push(item);
+  }
+}

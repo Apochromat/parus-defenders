@@ -1,24 +1,25 @@
 import { CST } from "./const.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
+import { calculateHeroSpecs } from "./Misc.js";
 
-export function createHeroesBar(scene){
-    scene.heroesBarField =  scene.add.image(scene.game.renderer.width - 300, 530, CST.IMAGES.HeroesBarField).setDepth(CST.DEPTHS.HeroesBarField);
-    scene.heroesBarClose =  scene.add.image(scene.game.renderer.width - 777, 169, CST.IMAGES.HeroesBarClose).setDepth(CST.DEPTHS.HeroesBarClose);
+export function createHeroesBar(scene) {
+    scene.heroesBarField = scene.add.image(scene.game.renderer.width - 300, 530, CST.IMAGES.HeroesBarField).setDepth(CST.DEPTHS.HeroesBarField);
+    scene.heroesBarClose = scene.add.image(scene.game.renderer.width - 777, 169, CST.IMAGES.HeroesBarClose).setDepth(CST.DEPTHS.HeroesBarClose);
 
     scene.heroesBarClose.setInteractive();
 
     scene.heroesBarField.visible = false;
     scene.heroesBarClose.visible = false;
-    
+
     scene.heroesBarClose.on("pointerup", () => {
         closeHeroesBar(scene);
     });
 }
 
-export function closeHeroesBar(scene){
+export function closeHeroesBar(scene) {
     scene.heroesBarField.visible = false;
     scene.heroesBarClose.visible = false;
-    
+
     if (scene.itemCurrentHero != undefined) {
         scene.itemCurrentHero.destroy();
     }
@@ -27,7 +28,7 @@ export function closeHeroesBar(scene){
     }
 }
 
-export function openHeroesBar(scene, index, t = null){
+export function openHeroesBar(scene, index, t = null) {
     closeToolBar(scene);
     closeHeroesBar(scene);
 
@@ -61,7 +62,7 @@ export function openHeroesBar(scene, index, t = null){
             height: 24,
             orientation: 0,
             text: scene.add.text(0, 0, "Окно Героя: " + index, { fontFamily: 'Garamond', fontSize: 32, color: '#ffffff' }),
-            space: {left: 0, right: 10, top: 0, bottom: 10 }
+            space: { left: 0, right: 10, top: 0, bottom: 10 }
         }),
 
         space: {
@@ -108,7 +109,7 @@ export function openHeroesBar(scene, index, t = null){
             bottom: 10,
             panel: 10
         }
-    }).layout().setDepth(CST.DEPTHS.HeroesBarRecyclerView); 
+    }).layout().setDepth(CST.DEPTHS.HeroesBarRecyclerView);
 
     let targets = [];
     let targetsRemove = [];
@@ -122,36 +123,36 @@ export function openHeroesBar(scene, index, t = null){
     scene.recyclerViewHeroes.setChildrenInteractive({
         targets: targets
     })
-    .on('child.click', function(child) {
-        let currName = child.getParentSizer().name;
-        if (child.getParentSizer().type == 0) {
-            scene.playerStats.AVAILABLE_HEROES.splice(scene.playerStats.AVAILABLE_HEROES.indexOf(currName), 1);
-            if (scene.playerStats.HERO_SLOTS[child.getParentSizer().index] != CST.EMPTY) {
-                scene.playerStats.AVAILABLE_HEROES.push(scene.playerStats.HERO_SLOTS[child.getParentSizer().index]);
+        .on('child.click', function (child) {
+            let currName = child.getParentSizer().name;
+            if (child.getParentSizer().type == 0) {
+                scene.playerStats.AVAILABLE_HEROES.splice(scene.playerStats.AVAILABLE_HEROES.indexOf(currName), 1);
+                if (scene.playerStats.HERO_SLOTS[child.getParentSizer().index] != CST.EMPTY) {
+                    scene.playerStats.AVAILABLE_HEROES.push(scene.playerStats.HERO_SLOTS[child.getParentSizer().index]);
+                }
+                scene.playerStats.HERO_SLOTS[child.getParentSizer().index] = currName;
             }
-            scene.playerStats.HERO_SLOTS[child.getParentSizer().index] = currName;
-        }
-        scene.parus.createHeroWindows(scene.playerStats);
-        openHeroesBar(scene, child.getParentSizer().index, scene.recyclerViewHeroes.t);
-    }) 
+            scene.parus.createHeroWindows(scene.playerStats);
+            openHeroesBar(scene, child.getParentSizer().index, scene.recyclerViewHeroes.t);
+        })
 
     scene.itemCurrentHero.setChildrenInteractive({
         targets: targetsRemove
     })
-    .on('child.click', function(child) {
-        if (child.getParentSizer().type == 1) {
-            scene.playerStats.AVAILABLE_HEROES.push(scene.playerStats.HERO_SLOTS[child.getParentSizer().index]);
-            scene.playerStats.HERO_SLOTS[child.getParentSizer().index] = CST.EMPTY;
-        }
-        scene.parus.createHeroWindows(scene.playerStats);
-        openHeroesBar(scene, child.getParentSizer().index, scene.recyclerViewHeroes.t);
-    }) 
-    if (t != null){
+        .on('child.click', function (child) {
+            if (child.getParentSizer().type == 1) {
+                scene.playerStats.AVAILABLE_HEROES.push(scene.playerStats.HERO_SLOTS[child.getParentSizer().index]);
+                scene.playerStats.HERO_SLOTS[child.getParentSizer().index] = CST.EMPTY;
+            }
+            scene.parus.createHeroWindows(scene.playerStats);
+            openHeroesBar(scene, child.getParentSizer().index, scene.recyclerViewHeroes.t);
+        })
+    if (t != null) {
         scene.recyclerViewHeroes.t = t;
-    }      
+    }
 }
 
-function createGrid(scene, index=0) {
+function createGrid(scene, index = 0) {
     var sizer = scene.rexUI.add.fixWidthSizer({
         space: {
             top: 3,
@@ -160,8 +161,8 @@ function createGrid(scene, index=0) {
         }
     })
     for (let el of scene.playerStats.AVAILABLE_HEROES) {
-        if (el == undefined) {continue}
-        sizer.add(createHeroesItem(scene, el, index), 
+        if (el == undefined) { continue }
+        sizer.add(createHeroesItem(scene, el, index),
             { expand: true }
         )
     }
@@ -174,46 +175,44 @@ function createHeroesItem(scene, key, index, type) {
         width: 600,
         height: 160,
         column: 3,
-        row: 3,
+        row: 4,
         rowProportions: 1,
         columnProportions: 2,
         space: { column: -100, row: 10, left: 0, right: 0, top: 0, bottom: 0 }
     }).setDepth(CST.DEPTHS.HeroesBarRecyclerView)
-    .addBackground(
-        scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
-    );
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
+        );
     table.index = index;
 
     if (scene.playerStats.HERO_SLOTS[index] == CST.EMPTY && type == 1) {
-        table.add(createLable(scene, "ПУСТОЕ ОКНО"), 1, 1, 'left', {left: 20}, true);
+        table.add(createLable(scene, "ПУСТОЕ ОКНО"), 1, 1, 'left', { left: 20 }, true);
     }
-    else if (type == 1){
-        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 45, right: 0}, true);
-        table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
-        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100), 2), 1, 1, 'left', {right: 0}, true);
-        table.add(createLable(scene, `Damage: ${Math.floor(CST.CHARACTERS[key].PhysicalDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${
-                                                Math.floor(CST.CHARACTERS[key].LightningDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${
-                                                Math.floor(CST.CHARACTERS[key].MagicDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
-        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 2, 1, 'left', {right: 0}, true);
-        table.add(createButtonAdd(scene, key, index, 1), 2, 2, 'right', {top: 5, left: 140}, true);
+    else if (type == 1) {
+        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', { left: 45, right: 0 }, true);
+        table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', { left: 0, top: 5 }, true);
+        table.add(createLable(scene, `HP: ${calculateHeroSpecs(CST.CHARACTERS[key].HealPoints, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100)}`, 2), 1, 1, 'left', { right: 0 }, true);
+        table.add(createLable(scene, `MP: ${calculateHeroSpecs(CST.CHARACTERS[key].MPCost, scene.playerStats.LEVELS_SHOP[key])}`, 2), 1, 3, 'left', { right: 0 }, true);
+        table.add(createLable(scene, `Damage: ${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].PhysicalDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].LightningDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].MagicDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', { right: 0, bottom: 20 }, true);
+        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', { left: 100 }, true);
+        table.add(createLable(scene, "CD: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 2, 1, 'left', { right: 0 }, true);
+        table.add(createButtonAdd(scene, key, index, 1), 2, 2, 'right', { top: 5, left: 140 }, true);
     }
     else {
-        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 45, right: 0}, true);
-        table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
-        table.add(createLable(scene, "HP: " + CST.CHARACTERS[key].HealPoints * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100), 2), 1, 1, 'left', {right: 0}, true);
-        table.add(createLable(scene, `Damage: ${Math.floor(CST.CHARACTERS[key].PhysicalDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${
-                                                Math.floor(CST.CHARACTERS[key].LightningDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${
-                                                Math.floor(CST.CHARACTERS[key].MagicDamage * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', {right: 0, bottom: 20}, true);
-        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_HEROES[key], 1), 2, 0, 'right', {left: 100}, true);
-        table.add(createLable(scene, "CoolDown: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 2, 1, 'left', {right: 0}, true);
-        table.add(createButtonAdd(scene, key, index, 0), 2, 2, 'right', {top: 5, left: 160}, true);
+        table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', { left: 45, right: 0 }, true);
+        table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', { left: 0, top: 5 }, true);
+        table.add(createLable(scene, `HP: ${calculateHeroSpecs(CST.CHARACTERS[key].HealPoints, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100)}`, 2), 1, 1, 'left', { right: 0 }, true);
+        table.add(createLable(scene, `MP: ${calculateHeroSpecs(CST.CHARACTERS[key].MPCost, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100)}`, 2), 1, 3, 'left', { right: 0 }, true);
+        table.add(createLable(scene, `Damage: ${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].PhysicalDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].LightningDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].MagicDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', { right: 0, bottom: 20 }, true);
+        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', { left: 100 }, true);
+        table.add(createLable(scene, "CD: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 2, 1, 'left', { right: 0 }, true);
+        table.add(createButtonAdd(scene, key, index, 0), 2, 2, 'right', { top: 5, left: 160 }, true);
     }
-    
+
     return scene.rexUI.add.sizer({
     })
         .add(
-        table, 1, 'center', 0, true 
+            table, 1, 'center', 0, true
         );
 }
 
@@ -229,20 +228,20 @@ function createLable(scene, name, type) {
     var label
     if (type == 1) { //LVL text
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 32, color: '#51c751' }),
+            text: scene.add.text(0, 0, name, { fontFamily: 'Garamond', fontSize: 32, color: '#51c751' }),
         });
     }
-    else if(type == 2){ //description
+    else if (type == 2) { //description
         label = scene.rexUI.add.label({
             text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
         });
     }
-    else{
+    else {
         label = scene.rexUI.add.label({
             text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 32, color: '#ffffff' }),
         });
     }
-    
+
     return label;
 }
 
@@ -251,28 +250,28 @@ function createButtonAdd(scene, key, index, type) {
         column: 1,
         row: 1,
         name: key,
-        space: {left: 0, right: 0, top: 0, bottom: 90 }
+        space: { left: 0, right: 0, top: 0, bottom: 90 }
     })
-    .addBackground(
-        scene.rexUI.add.roundRectangle(0, 0, 20, 20, 5, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),)
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 20, 20, 5, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1))
         .setDepth(CST.DEPTHS.ToolBarRecyclerView);
     table.index = index;
-    
+
     if (type == 0) {
         table.type = 0
         table.add(
             scene.rexUI.add.label({
                 text: scene.add.text(0, 0, "EQUIP", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
-                space: {left: 20, right: 0, top: 5, bottom: 0 }
+                space: { left: 20, right: 0, top: 5, bottom: 0 }
             })
         );
     }
-    else if(type == 1) {
+    else if (type == 1) {
         table.type = 1
         table.add(
             scene.rexUI.add.label({
                 text: scene.add.text(0, 0, "REMOVE", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
-                space: {left: 20, right: 0, top: 5, bottom: 0 }
+                space: { left: 20, right: 0, top: 5, bottom: 0 }
             })
         );
     }

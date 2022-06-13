@@ -351,7 +351,6 @@ export function createAnimations(scene) {
     });
 
     // Boss Cthulhu
-
     scene.anims.create({
         key: CST.ANIMATIONS.BossCthulhu.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITECTHULHU.BossCthulhu, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
@@ -388,7 +387,6 @@ export function createAnimations(scene) {
     });
 
     // Boss Black Dragon
-
     scene.anims.create({
         key: CST.ANIMATIONS.BossBlackDragon.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
@@ -413,6 +411,64 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.BossBlackDragon.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITESDRAGON.BossBlackDragon, { frames: [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+     // Boss Demon
+     scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [11, 12, 13, 14, 15, 16] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [11, 12, 13, 14, 15, 16] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossDemon.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES240.BossDemon, { frames: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Boss Cultist
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [12, 13, 14, 15, 16, 17] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.BossCultist.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES200.BossCultist, { frames: [18, 19, 20, 21, 22, 23] }),
         frameRate: 8,
         repeat: 0
     });
@@ -616,6 +672,101 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterSlayer.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterSlayer, { frames: [32, 33, 34, 35, 36, 37] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Worm
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [16, 17, 18, 19, 20, 21, 22, 23, 24] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [32, 33, 34, 35, 36, 37, 38, 39, 40] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterWorm.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES90.MonsterWorm, { frames: [48, 49, 50, 51, 52, 53, 54, 55] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster IEM
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [0, 1, 2, 3, 4, 5, 6] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [0, 1, 2, 3, 4, 5, 6] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [7, 8, 9, 10, 11, 12, 13] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterIEM.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [14, 15, 16, 17, 18, 19, 20] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Necromancer
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [13, 14, 15, 16, 17, 18] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNecromancer.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [39, 40, 41, 42, 43, 44, 45, 46, 47] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Thunderstruck
+    scene.anims.create({
+        key: CST.SPRITES64.Thunderstrike,
+        frames: scene.anims.generateFrameNumbers(CST.EFFECTS.Thunderstrike, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
         frameRate: 8,
         repeat: 0
     });

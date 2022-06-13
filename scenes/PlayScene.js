@@ -49,6 +49,7 @@ export class PlayScene extends Phaser.Scene {
     skillBar;
 
     scrollablePanel;
+    scrollablePanelBosses;
     scrollablePanelHeroes;
     statusBar;
     backButton;
@@ -90,6 +91,7 @@ export class PlayScene extends Phaser.Scene {
 
         this.createGUI();
         this.createSpawnMonstersBar();
+        this.createSpawnBossBar();
         this.createSpawnHeroesBar();
 
         // this.setPhysicsEnemies();
@@ -107,7 +109,6 @@ export class PlayScene extends Phaser.Scene {
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
-        setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 4500);
         setStatusCOIN(this, this.playerStats.COINS);
 
         for (let el in this.characterHeap.heap)
@@ -142,10 +143,18 @@ export class PlayScene extends Phaser.Scene {
             this.battleFlag = 0;
         }
         battle(this.parus, this.enemies, this.heroes, this.characterHeap,this.playerStats);
+
     }
 
     wave() {
         if (this.playerStats.BattleMode) {
+            if (this.waveObject.boss != undefined) {
+                setStatusWAVE(this, 1, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, this.waveObject.boss.hp);
+            }
+            else {
+                setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 0);
+            }
+
             if (!this.waveObject.finished) {
                 this.waveObject.run();
             }
@@ -161,6 +170,9 @@ export class PlayScene extends Phaser.Scene {
                 this.playerStats.WAVE += 1;
                 this.playerStats.WAVE_PROGRESS = 0;
             }
+        }
+        else {
+            setStatusWAVE(this, 0, this.playerStats.WAVE_PROGRESS, this.playerStats.WAVE, 0);
         }
     }
 
@@ -185,46 +197,6 @@ export class PlayScene extends Phaser.Scene {
         }
     }
 
-    // setPhysicsEnemies() {
-    //     this.physics.add.collider(this.parus, this.enemies,
-    //         // При столкновении
-    //         (obj1, obj2) => {
-    //             obj2.setVelocity(0, 0);
-    //             obj2.setAnimationHit();
-    //             if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
-    //                 obj2.lastDamageTime = Date.now();
-    //                 if (!obj1.damage(obj2.specs.PhysicalDamage)) {
-    //                     for (let el in this.characterHeap.heap) {
-    //                         this.characterHeap.heap[el].specs.PhysicalDamage = 0;
-    //                         this.characterHeap.heap[el].death();
-    //                     }
-    //                     obj1.currHP = obj1.maxHP;
-    //                     obj1.currMP = obj1.maxMP;
-    //                     this.playerStats.BattleMode = false;
-    //                     this.playerStats.WAVE_PROGRESS = 0;
-    //                 };
-    //             }
-    //         }
-    //     );
-
-    //     this.physics.add.collider(this.heroes, this.enemies,
-    //         // При столкновении
-    //         (obj1, obj2) => {
-    //             obj2.setVelocity(0, 0);
-    //             obj2.setAnimationHit();
-    //             obj1.setVelocity(0, 0);
-    //             obj1.setAnimationHit(false);
-    //             if (Date.now() - obj1.lastDamageTime >= obj1.specs.AttackCooldown) {
-    //                 obj1.lastDamageTime = Date.now();
-    //                 obj2.damage(obj1.specs.PhysicalDamage);
-    //             }
-    //             if (Date.now() - obj2.lastDamageTime >= obj2.specs.AttackCooldown) {
-    //                 obj2.lastDamageTime = Date.now();
-    //                 obj1.damage(obj2.specs.PhysicalDamage);
-    //             }
-    //         }
-    //     );
-    // }
 
     createGUI() {
         createStatusBar(this);
@@ -253,9 +225,9 @@ export class PlayScene extends Phaser.Scene {
     createSpawnMonstersBar() {
         this.scrollablePanel = this.rexUI.add.scrollablePanel({
             x: 200,
-            y: 250,
+            y: 220,
             width: 200,
-            height: 250,
+            height: 150,
 
             scrollMode: 0,
 
@@ -270,7 +242,7 @@ export class PlayScene extends Phaser.Scene {
             },
 
             mouseWheelScroller: {
-                focus: false,
+                focus: true,
                 speed: 0.1
             },
 
@@ -295,12 +267,57 @@ export class PlayScene extends Phaser.Scene {
             })
     }
 
+    createSpawnBossBar() {
+        this.scrollablePanelBosses = this.rexUI.add.scrollablePanel({
+            x: 200,
+            y: 370,
+            width: 200,
+            height: 150,
+
+            scrollMode: 0,
+
+            background: this.rexUI.add.roundRectangle(0, 0, 2, 2, 10, 0x3d3d3d),
+
+            panel: {
+                child: this.createGrid(this, 666),
+                mask: {
+                    mask: true,
+                    padding: 1,
+                }
+            },
+
+            mouseWheelScroller: {
+                focus: true,
+                speed: 0.1
+            },
+
+            space: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10,
+
+                panel: 10,
+                header: 10
+            }
+        }).layout()
+
+        this.scrollablePanelBosses
+            .setChildrenInteractive()
+            .on('child.click', function (args) {
+                console.log(args.text);
+                args.scene.characterHeap.createMonster(args.text, args.scene,
+                    randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
+                    randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
+            })
+    }
+
     createSpawnHeroesBar() {
         this.scrollablePanelHeroes = this.rexUI.add.scrollablePanel({
             x: 200,
             y: 520,
             width: 200,
-            height: 250,
+            height: 150,
 
             scrollMode: 0,
 
@@ -315,7 +332,7 @@ export class PlayScene extends Phaser.Scene {
             },
 
             mouseWheelScroller: {
-                focus: false,
+                focus: true,
                 speed: 0.1
             },
 
@@ -359,9 +376,25 @@ export class PlayScene extends Phaser.Scene {
                     width: 300, height: 60,
 
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                    text: scene.add.text(0, 0, `${el}`, {
-                        fontSize: 18
-                    }),
+                    text: scene.add.text(0, 0, `${el}`,{ fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+
+                    align: 'center',
+                    space: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10,
+                    }
+                }));
+            }
+        }
+        else if (type == 666) {
+            for (let el of CST.BOSSLIST) {
+                sizer.add(scene.rexUI.add.label({
+                    width: 300, height: 60,
+
+                    background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
+                    text: scene.add.text(0, 0, `${el}`, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
 
                     align: 'center',
                     space: {
@@ -379,9 +412,7 @@ export class PlayScene extends Phaser.Scene {
                     width: 300, height: 60,
 
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                    text: scene.add.text(0, 0, `${el}`, {
-                        fontSize: 18
-                    }),
+                    text: scene.add.text(0, 0, `${el}`, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
 
                     align: 'center',
                     space: {

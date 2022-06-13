@@ -1,7 +1,7 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { PlayScene } from "../scenes/PlayScene.js";
 import { CST } from "../scripts/const.js";
-import { randomIntFromInterval } from "../scripts/Misc.js";
+import { calculateParusBuildings, calculateParusMaxHP, calculateParusMaxMP, calculateParusWindows, randomIntFromInterval } from "../scripts/Misc.js";
 import { openHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { CharacterSprite } from "./CharacterSprite.js";
 
@@ -42,12 +42,12 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
 
     setLevel(level) {
         this.level = level;
-        this.maxHP = CST.PARUS[this.level].MaxHP;
-        this.maxMP = CST.PARUS[this.level].MaxMP;
+        this.maxHP = calculateParusMaxHP(level);
+        this.maxMP = calculateParusMaxMP(level);
         this.currHP = this.maxHP;
         this.currMP = this.maxMP;
-        this.HeroSlots = CST.PARUS[this.level].HeroSlots;
-        this.BuildingSlots = CST.PARUS[this.level].BuildingSlots;
+        this.HeroSlots = calculateParusWindows(level);
+        this.BuildingSlots = calculateParusBuildings(level);
         this.createHeroWindows(this.scene.playerStats);
     }
 

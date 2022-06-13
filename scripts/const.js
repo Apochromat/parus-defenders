@@ -95,19 +95,31 @@ export const CST = {
     },
     SPRITES64: {
         MonsterSlayer: "monster_slayer",
+        MonsterIEM: "monster_iem",
         HeroMage: "hero_mage",
         HeroTesla: "hero_tesla",
-        HeroArchaeologist: "hero_archaeologist"
+        HeroArchaeologist: "hero_archaeologist",
+        Thunderstrike: "thunderstrike"
     },
     SPRITES80: {
         HeroNightmare: "hero_nightmare",
         HeroWizard: "hero_wisard"
+    },
+    SPRITES90: {
+        MonsterWorm: "monster_worm",
     },
     SPRITES96: {
         HeroMinotaur: "hero_minotaur",
     },
     SPRITES128: {
         HeroStormhead: "hero_stormhead",
+        MonsterNecromancer: "monster_necromancer"
+    },
+    SPRITES200: {
+        BossCultist: "boss_cultist",
+    },
+    SPRITES240: {
+        BossDemon: "boss_demon",
     },
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
@@ -116,214 +128,86 @@ export const CST = {
         BossCthulhu: "boss_cthulhu"
     },
     MUSIC: {
-        Psychosocial: "8-Bit_Misfits_Psychosocial"
+        Psychosocial: "8-Bit_Misfits_Psychosocial",
+        Centuries: "8-Bit_Misfits_Centuries",
+        GetLucky: "8-Bit_Misfits_Get_Lucky",
+        ImmigrantSong: "8-Bit_Misfits_Immigrant_Song",
+        Numb: "8-Bit_Misfits_Numb",
+        Tattoo: "Rammstein_Tattoo",
+        NeroForte: "8-Bit_Misfits_Nero_Forte",
+        TheDevilInI: "8-Bit_Misfits_The_Devil_in_I"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "BossBlackDragon", "BossCthulhu"],
+    EFFECTS: {
+        Thunderstrike: "thunderstrike"
+    },
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm"],
+    BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
         Parus: {
             Name: "Парус",
             Description: "Увеличение HP и \nMP Паруса",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000
-            ]
+            BeginCost: 500
         },
         HeroCat: {
             Name: "Кот-рыцарь",
             Description: "Увеличение HP и \nурона Кота",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 100
         },
         HeroMage: {
             Name: "Тёмный Маг",
             Description: "Увеличение HP и \nурона Мага",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 500
         },
         HeroArchaeologist: {
             Name: "Археолог",
             Description: "Увеличение HP и \nурона Археолога",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 500
         },
         HeroSceleton: {
             Name: "Big Bone",
             Description: "Увеличение HP и \nурона Big Bon`а",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 1500
         },
         HeroTesla: {
             Name: "Тесла",
             Description: "Увеличение HP и \nурона Тесла",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroWitch: {
             Name: "Ведьмочка",
             Description: "Увеличение HP и \nурона Ведьмы",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroCenturion: {
             Name: "Центурион Рори",
             Description: "Увеличение HP и \nурона Рори",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroReaper: {
             Name: "Жнец",
             Description: "Увеличение HP и \nурона Жнеца",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 2500
         },
         HeroNightmare: {
             Name: "Кошмар",
             Description: "Увеличение HP и \nурона Кошмара",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         },
         HeroMinotaur: {
             Name: "Минотавр",
             Description: "Увеличение HP и \nурона Минотавра",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         },
         HeroStormhead: {
             Name: "Ш.Т.О.Р.М",
             Description: "Увеличение HP и \nурона Ш.Т.О.Р.М",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         },
         HeroWizard: {
             Name: "Чародей",
             Description: "Увеличение HP и \nурона Чародея",
-            LevelCost: [
-                100,
-                250,
-                1000,
-                5000,
-                15000,
-                30000,
-                50000,
-                80000,
-                125000,
-                250000
-            ]
+            BeginCost: 5000
         }
     },
     SKILLSLIST: {
@@ -722,6 +606,30 @@ export const CST = {
             Hit: 'monster_slayer_hit',
             Death: 'monster_slayer_death'
         },
+        MonsterWorm: {
+            Idle: 'monster_worm_idle',
+            Walk: 'monster_worm_walk',
+            Hit: 'monster_worm_hit',
+            Death: 'monster_worm_death'
+        },
+        MonsterIEM: {
+            Idle: 'monster_iem_idle',
+            Walk: 'monster_iem_walk',
+            Hit: 'monster_iem_hit',
+            Death: 'monster_iem_death'
+        },
+        MonsterNecromancer: {
+            Idle: 'monster_necromancer_idle',
+            Walk: 'monster_necromancer_walk',
+            Hit: 'monster_necromancer_hit',
+            Death: 'monster_necromancer_death'
+        },
+        BossCultist: {
+            Idle: 'boss_cultist_idle',
+            Walk: 'boss_cultist_walk',
+            Hit: 'boss_cultist_hit',
+            Death: 'boss_cultist_death'
+        },
         BossBlackDragon: {
             Idle: 'boss_black_dragon_idle',
             Walk: 'boss_black_dragon_walk',
@@ -734,6 +642,12 @@ export const CST = {
             Brainstorm: 'boss_cthulhu_brainstorm',
             Tentacle: 'boss_cthulhu_tentacle',
             Death: 'boss_cthulhu_death'
+        },
+        BossDemon: {
+            Idle: 'boss_demon_idle',
+            Walk: 'boss_demon_walk',
+            Hit: 'boss_demon_hit',
+            Death: 'boss_demon_death'
         },
         HeroCat: {
             Idle: 'hero_cat_idle',
@@ -901,6 +815,58 @@ export const CST = {
             Cost: 25,
             Experience: 10
         },
+        MonsterWorm: {
+            HealPoints: 2000,
+            PhysicalDamage: 50,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            Speed: 40,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterIEM: {
+            HealPoints: 5000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 5000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterNecromancer: {
+            HealPoints: 1500,
+            PhysicalDamage: 50,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        BossCultist: {
+            HealPoints: 8000,
+            PhysicalDamage: 150,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 30000,
+            Experience: 100
+        },
         BossCthulhu: {
             HealPoints: 20000,
             PhysicalDamage: 4000,
@@ -908,6 +874,19 @@ export const CST = {
             MagicDamage: 10,
             AttackCooldown: 2000,
             Speed: 15,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 30000,
+            Experience: 100
+        },
+        BossDemon: {
+            HealPoints: 20000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 2000,
+            Speed: 100,
             PhysicalProtection: 10,
             LightningProtection: 10,
             MagicProtection: 10,
@@ -1206,7 +1185,8 @@ export const CST = {
         HeroesBarField: 5006,
         HeroesBarClose: 5005,
         HeroesBarRecyclerView: 5007,
-        Slots: 1000
+        Slots: 1000,
+        Effects: 18000
     },
     WAVE_GENERATOR: {
         MinSpawnDelay: 500,
@@ -1215,6 +1195,7 @@ export const CST = {
         MinMonsterAmount: 5,
         MonsterWaveCoefficient: 5,
         MaximumMomentMonsters: 30,
+        WavesPerBoss: 10,
         MonsterPreferences: {
             MonsterSlime: {
                 MinWave: 1,
@@ -1279,12 +1260,57 @@ export const CST = {
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },
+            MonsterWorm: {
+                MinWave: 20,
+                MaxWave: -1,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterIEM: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterNecromancer: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossCultist: {
+                MinWave: 10,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
             BossBlackDragon: {
                 MinWave: 40,
                 MaxWave: 50,
                 MinBatch: 1,
                 MaxBatch: 1,
                 HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            BossDemon: {
+                MinWave: 40,
+                MaxWave: 50,
+                MinBatch: 1,
+                MaxBatch: 1,
+                HealthBoost: 0.2,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },

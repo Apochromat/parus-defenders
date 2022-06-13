@@ -1,7 +1,9 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { CST } from "../scripts/const.js";
+import { shuffle } from "../scripts/Misc.js";
 import { loadPlayerData } from "../scripts/PlayerData.js";
 export class LoadScene extends Phaser.Scene {
+    playlist = [];
     constructor() {
         super({
             key: CST.SCENES.LOAD
@@ -29,6 +31,7 @@ export class LoadScene extends Phaser.Scene {
         this.load.setPath("./assets/audio");
         for (let prop in CST.MUSIC) {
             this.load.audio(CST.MUSIC[prop], CST.MUSIC[prop]+".mp3");
+            this.playlist.push(CST.MUSIC[prop]);
         }
     }
 
@@ -58,6 +61,12 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 80
             });
         }
+        for (let prop in CST.SPRITES90) {
+            this.load.spritesheet(CST.SPRITES90[prop], CST.SPRITES90[prop]+".png", {
+                frameHeight: 90,
+                frameWidth: 90
+            });
+        }
         for (let prop in CST.SPRITES96) {
             this.load.spritesheet(CST.SPRITES96[prop], CST.SPRITES96[prop]+".png", {
                 frameHeight: 96,
@@ -68,6 +77,18 @@ export class LoadScene extends Phaser.Scene {
             this.load.spritesheet(CST.SPRITES128[prop], CST.SPRITES128[prop]+".png", {
                 frameHeight: 128,
                 frameWidth: 128
+            });
+        }
+        for (let prop in CST.SPRITES200) {
+            this.load.spritesheet(CST.SPRITES200[prop], CST.SPRITES200[prop]+".png", {
+                frameHeight: 200,
+                frameWidth: 200
+            });
+        }
+        for (let prop in CST.SPRITES240) {
+            this.load.spritesheet(CST.SPRITES240[prop], CST.SPRITES240[prop]+".png", {
+                frameHeight: 240,
+                frameWidth: 240
             });
         }
         for (let prop in CST.SPRITESDRAGON) {
@@ -86,9 +107,9 @@ export class LoadScene extends Phaser.Scene {
 
     preload() {
         //load image, spritesheet, sound
+        this.loadAudio();
         this.loadImages();
         this.loadIcons();
-        this.loadAudio();
         this.loadSprites();
 
         //create loading bar
@@ -98,8 +119,11 @@ export class LoadScene extends Phaser.Scene {
             }
         })
 
+        let progressText = this.add.text(this.game.renderer.width / 2, this.game.renderer.height / 2 - 50, 0, { fontFamily: 'ClearSans', fontSize: 36, color: '#ffffff', stroke: "#000000", strokeThickness: 3 }).setDepth(2);
+
         this.load.on("progress", (percent) => {
             loadingBar.fillRect(50, this.game.renderer.height / 2, (this.game.renderer.width - 100) * percent, 50);
+            progressText.setText(`${Math.trunc(percent*100)}%`);
         })
 
         this.load.on("complete", () => {
@@ -111,18 +135,51 @@ export class LoadScene extends Phaser.Scene {
         })
     }
     create() {
-        for (let prop in CST.MUSIC) {
-            this.game.music = this.sound.add(CST.MUSIC[prop]);
+        this.playlist = shuffle(this.playlist);
+        this.game.music = []
+        for (let el of this.playlist) {
+            this.game.music.push(this.sound.add(el));
         }
-        this.game.music.play({
-            mute: false,
-            volume: loadPlayerData().OPTIONS.Music/100,
+
+        for (let i in this.game.music) {
+            if (i == this.game.music.length - 1){
+                this.game.music[i].once('complete', function(music){
+                    this.manager.game.music[0].play({
+                        mute: (loadPlayerData().OPTIONS.Music/10 <= 0) ? true : false,
+                        volume: loadPlayerData().OPTIONS.Music/10,
+                        // rate: 1,
+                        // detune: 0,
+                        // seek: 0,
+                        loop: false,
+                        // delay: 0
+                    });
+                });
+            }
+            else{
+                this.game.music[i].once('complete', function(music){
+                    this.manager.game.music[parseInt(i)+1].play({
+                        mute: (loadPlayerData().OPTIONS.Music/10 <= 0) ? true : false,
+                        volume: loadPlayerData().OPTIONS.Music/10,
+                        // rate: 1,
+                        // detune: 0,
+                        // seek: 0,
+                        loop: false,
+                        // delay: 0
+                    });
+                });
+            }
+        }
+
+        this.game.music[0].play({
+            mute: (loadPlayerData().OPTIONS.Music/10 <= 0) ? true : false,
+            volume: loadPlayerData().OPTIONS.Music/10,
             // rate: 1,
             // detune: 0,
             // seek: 0,
-            loop: true,
+            loop: false,
             // delay: 0
         });
+        
         this.scene.start(CST.SCENES.MENU);
     }
 }

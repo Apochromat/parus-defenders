@@ -6,20 +6,20 @@ var DisableSaving = true;
 var playerDataTemplate = {
     Date: Date.now(),
     BattleMode: false,
-    COINS: 1000,
+    COINS: 1000000,
     SKILL_POINTS: 1,
     LVL: 1,
     EXPERIENCE: 0,
     WAVE: 1,
     WAVE_PROGRESS: 0,
     OPTIONS: {
-        Music: 80,
-        Sounds: 80,
+        Music: 5,
+        Sounds: 5,
         Fullscreen: false
     },
     LEVELS_SHOP: {
         Parus: 0,
-        HeroCat: 0,
+        HeroCat: 1,
         HeroMage: 0,
         HeroArchaeologist: 0,
         HeroSceleton: 0,
@@ -47,33 +47,8 @@ var playerDataTemplate = {
         MagicDamage: 0,
         LightningDamage: 0
     },
-    LEVELS_HEROES: {
-        HeroCat: 0,
-        HeroMage: 0,
-        HeroArchaeologist: 0,
-        HeroSceleton: 0,
-        HeroCenturion: 0,
-        HeroTesla: 0,
-        HeroWitch: 0,
-        HeroReaper: 0,
-        HeroNightmare: 0,
-        HeroMinotaur: 0,
-        HeroStormhead: 0,
-        HeroWizard: 0
-    },
     AVAILABLE_HEROES: [
-        "HeroCat",
-        "HeroMage",
-        "HeroArchaeologist",
-        "HeroSceleton",
-        "HeroCenturion",
-        "HeroTesla",
-        "HeroWitch",
-        "HeroReaper",
-        "HeroNightmare",
-        "HeroMinotaur",
-        "HeroStormhead",
-        "HeroWizard"
+        "HeroCat"
     ],
     HERO_SLOTS: [
         CST.EMPTY,

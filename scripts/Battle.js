@@ -165,7 +165,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     }
                 }
                 console.log(hero.array.length);
-                if (modul < modulMin) {
+                if (modul < modulMin) { 
                     modulMin = modul;
                     VectorXMin = VectorX;
                     VectorYMin = VectorY;

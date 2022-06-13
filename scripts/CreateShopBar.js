@@ -2,6 +2,7 @@ import { CST } from "./const.js";
 import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
 import { setStatusCOIN } from "../scripts/CreateStatusBar.js";
+import { addIfNotInclude, calculateCost } from "./Misc.js";
 
 export function createShopBar(scene){
     scene.shopBar = scene.add.image(scene.game.renderer.width - 60, 300, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarField);
@@ -87,11 +88,10 @@ export function openToolbarLeft(scene, t = null){
     })
     .on('child.click', function(child) {
         let currName = child.getParentSizer().name;
-        if ((scene.playerStats.COINS - CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]]) >= 0 &&
-            CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]] != undefined
-        ) {
-            scene.playerStats.COINS -= CST.SHOPLIST[currName].LevelCost[scene.playerStats.LEVELS_SHOP[currName]];
+        if ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0) {
+            scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);
             setStatusCOIN(scene, scene.playerStats.COINS);
+            if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus") addIfNotInclude(scene.playerStats.AVAILABLE_HEROES, currName);
             scene.playerStats.LEVELS_SHOP[currName] += 1;
             closeToolBar(scene);
             openToolbarLeft(scene, scene.recyclerViewShop.t);
@@ -137,7 +137,7 @@ function createShopItem(scene, key) {
     table.add(createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
     table.add(createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', {right: 0}, true);
     table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', {left: 150}, true);
-    table.add(createLable(scene,  CST.SHOPLIST[key].LevelCost[scene.playerStats.LEVELS_SHOP[key]], 2), 2, 1, 'center', {left: 150}, true);
+    table.add(createLable(scene, calculateCost(key, scene.playerStats.LEVELS_SHOP[key], CST.SHOPLIST[key].BeginCost), 2), 2, 1, 'center', {left: 150}, true);
     table.add(createButtonAdd(scene, key), 2, 2, 'right', {top: 5, left: 160}, true);
 
     return scene.rexUI.add.sizer({
