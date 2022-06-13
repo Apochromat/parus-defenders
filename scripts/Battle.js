@@ -2,11 +2,10 @@ import { CharacterSprite } from "./CharacterSprite.js";
 import { CST } from "./const.js";
 export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     enemies.getMatching("active", true).forEach(enemy => {
-        console.log(enemy.specs.Range);
-        if (heroes.getLength() == 0 && Math.abs(enemy.x - parus.x) >= enemy.specs.Range + 100) {//
+        if (heroes.getLength() == 0 && Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range+200) {//
             var VectorX, VectorY;
-            VectorX = (parus.x + 200 - enemy.x);
-            VectorY = (parus.y + 150 - enemy.y);
+            VectorX = (parus.x - enemy.x);
+            VectorY = (parus.y+150 - enemy.y);
             var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
             if (VectorX > 0) {
                 enemy.setAnimationWalk(false);
@@ -15,10 +14,10 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 enemy.flipX = true;
                 enemy.setAnimationWalk(true);
             }
+            console.log(enemy.specs.Speed);
             enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
         }
         else if (heroes.getLength() == 0) {
-
             enemy.setVelocity(0, 0);
             enemy.setAnimationHit();
             if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
@@ -39,8 +38,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
 
         if (heroes.getLength() != 0) {
             var hero = heroes.getFirstAlive(true);
-
-
             var VectorX, VectorY, VectorXMin, VectorYMin;
             VectorXMin = (hero.x - enemy.x);
             VectorYMin = (hero.y - enemy.y);
@@ -51,17 +48,13 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
                 her.lengthForEnemy = modul;
                 for (var i = 0; i < enemy.array.length; i++) {
-                    //  // //console.log(enemy.array[i].lengthForEnemy);
-                    // //console.log(hero.array.includes(ene));
-                    // //console.log(ene);
                     if (enemy.array[i] == undefined && !(enemy.array.includes(her))) {
                         enemy.array[i] = her;
-                        // //console.log(2);
                     }
                     else if (enemy.array[i] && !(enemy.array.includes(her))) {
                         if (modul < enemy.array[i].lengthForEnemy) {
                             for (var j = 1; j < enemy.array.length; j++) {
-                                enemy.array[j] = hero.array[j - 1];
+                                enemy.array[j] = enemy.array[j - 1];
                             }
                             enemy.array[0] = her;
                         }
@@ -74,58 +67,32 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     heroinPriority = hero;
                 }
             }
-
-            for (var i = 0; i < enemy.array.length; i++) {
-                //console.log(enemy.array);
-                if (enemy.array[i]) {
-                    hero = enemy.array[i];
-                    if (hero.alive) {
-                        //console.log(13);
-                        if (Math.abs(hero.x - enemy.x) <= enemy.specs.Range) {
-                            hero.setVelocity(0, 0);
-                            //console.log(hero);
-                            hero.setAnimationHit();
-                            enemy.setVelocity(0, 0);
-                            enemy.setAnimationHit();
-                            if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
-                                enemy.lastDamageTime = Date.now();
-                                hero.damage(enemy.specs.PhysicalDamage);
-                            }
-                            if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown) {
-                                hero.lastDamageTime = Date.now();
-                                enemy.damage(hero.specs.PhysicalDamage);
-                                //console.log(15);
-
-                            }
-
-                        }
-                    }
-                    else {
-
-                        if (VectorXMin > 0) {
-                            enemy.flipX = true;
-                            console.log(23);
-                            enemy.setAnimationWalk();
-                        }
-                        else {
-                            enemy.flipX = false;
-                            console.log(24);
-                            enemy.setAnimationWalk();
-                        }
-
-                    }
+            if (Math.abs(hero.x - enemy.x) > enemy.specs.Range) {
+                if (VectorXMin > 0) {
+                    enemy.flipX = false;
+                    enemy.setAnimationWalk();
                 }
                 else {
-                    //console.log(33);
                     enemy.flipX = true;
-                    enemy.array.splice(enemy.array.indexOf(hero), 1);
+                    enemy.setAnimationWalk();
                 }
-            }
-            enemy.flipX = true;
-            if (Math.abs(hero.x - enemy.x) > enemy.specs.Range) {
                 enemy.setVelocity(VectorXMin / modulMin * enemy.specs.Speed, VectorYMin / modulMin * enemy.specs.Speed);
             }
-
+            if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown && Math.abs(hero.x - enemy.x) <= enemy.specs.Range) {
+                enemy.setVelocity(0, 0);
+                enemy.setAnimationHit();
+                enemy.lastDamageTime = Date.now();
+                for (var i = 0; i < enemy.array.length; i++) {
+                    if (enemy.array[i]) {
+                        if (Math.abs(enemy.x - enemy.array[i].x) <= enemy.specs.Range) {
+                            enemy.array[i].damage(enemy.specs.PhysicalDamage);
+                            if (!enemy.array[i].alive) {
+                                enemy.array[i] = undefined;
+                            }
+                        }
+                    }
+                }
+            }
         }
     });
 
@@ -135,12 +102,9 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             hero.setAnimationIdle(false);
             hero.setVelocity(0, 0);
             hero.flipX = false;
-            //  // //console.log(hero.id);
         }
         else if (enemies.getLength() != 0) {
-            
             var enemy = enemies.getFirstAlive(true);
-
             var VectorX, VectorY, VectorXMin, VectorYMin;
             VectorXMin = (enemy.x - hero.x);
             VectorYMin = (enemy.y - hero.y);
@@ -150,29 +114,24 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 VectorY = (ene.y - hero.y);
                 var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
                 ene.lengthForEnemy = modul;
-                console.log(hero.array);
                 for (var i = 0; i < hero.array.length; i++) {
                     if (hero.array[i] == undefined && !(hero.array.includes(ene))) {
                         hero.array[i] = ene;
                     }
-                    else if (hero.array[i] && !(hero.array.includes(ene))) {
-                        if (modul < hero.array[i].lengthForEnemy) {
-                            for (var j = 1; j < hero.array.length; j++) {
+                    else if (hero.array[i] && !(hero.array.includes(ene)) && enemy.lengthForEnemy<hero.array.lengthForEnemy) {
+                            for (var j = i+1; j < hero.array.length; j++) {
                                 hero.array[j] = hero.array[j - 1];
                             }
-                            hero.array[0] = ene;
+                            hero.array[i] = ene;
                         }
-                    }
                 }
-                console.log(hero.array.length);
-                if (modul < modulMin) { 
+                if (modul < modulMin) {
                     modulMin = modul;
                     VectorXMin = VectorX;
                     VectorYMin = VectorY;
-
+                    enemy=ene;
                 }
             }
-           // console.log(hero.array);
             if (Math.abs(hero.x - enemy.x) > hero.specs.Range) {
                 if (VectorXMin > 0) {
                     hero.flipX = false;
@@ -182,52 +141,33 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     hero.flipX = true;
                     hero.setAnimationWalk();
                 }
-                console.log(15);
-               
                 hero.setVelocity(VectorXMin / modulMin * hero.specs.Speed, VectorYMin / modulMin * hero.specs.Speed);
-            
+              
             }
-            //console.log(hero.array);
-           // console.log(hero.array);
+            
             for (var i = 0; i < hero.array.length; i++) {
-                console.log(hero.array);
-                //console.log(hero.array);
                 if (hero.array[i]) {
-                    enemy = hero.array[i];
-                    if (enemy.alive) {
-                        //console.log(1);
-                        if (Math.abs(hero.x - enemy.x) <= hero.specs.Range) {
-                            hero.setVelocity(0, 0);
-                            //console.log(enemy);
-                            hero.setAnimationHit();
-                            enemy.setVelocity(0, 0);
-                            enemy.setAnimationHit();
-                            if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
-                                enemy.lastDamageTime = Date.now();
-                                hero.damage(enemy.specs.PhysicalDamage);
-                            }
-                            if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown) {
-                                hero.lastDamageTime = Date.now();
-                                enemy.damage(hero.specs.PhysicalDamage);
-                                //console.log(15);
-
-                            }
-
-                        }
-                    }
-                    else {
-                        //console.log(3);
-                        hero.array[hero.array.indexOf(enemy)]=undefined;
-                        hero.array.sort();
-                        console.log(hero.array);
+                    if (!hero.array[i].alive) {
+                        hero.array[i] = undefined;
                     }
                 }
-                else {
-                    //console.log(3);
-                    hero.array.splice(hero.array.indexOf(enemy), 1);
+            }
+            console.log(2);
+            if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown && Math.abs(hero.x - enemy.x) <= hero.specs.Range) {
+                console.log(1);
+                hero.setVelocity(0, 0);
+                hero.setAnimationHit();
+                hero.lastDamageTime = Date.now();
+                
+                for (var i = 0; i < hero.array.length; i++) {
+                   
+                    if (hero.array[i]) {
+                        if (Math.abs(hero.x - hero.array[i].x) <= hero.specs.Range) {
+                            hero.array[i].damage(hero.specs.PhysicalDamage);
+                        }
+                    }
                 }
             }
         }
-
     });
 };

@@ -232,6 +232,7 @@ export class MonsterSlime extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterSlime.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterSlime.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -299,6 +300,7 @@ export class MonsterTwig extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterTwig.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterTwig.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -366,6 +368,7 @@ export class MonsterBrainer extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterBrainer.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterBrainer.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -434,6 +437,7 @@ export class MonsterHellhound extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterHellhound.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterHellhound.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -502,6 +506,7 @@ export class MonsterGhoul extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterGhoul.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterGhoul.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -570,6 +575,7 @@ export class MonsterHedgehog extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterHedgehog.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterHedgehog.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -640,6 +646,7 @@ export class MonsterSlayer extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterSlayer.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterSlayer.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -708,6 +715,7 @@ export class MonsterWorm extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterWorm.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterWorm.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -776,6 +784,7 @@ export class MonsterIEM extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterIEM.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterIEM.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -844,6 +853,7 @@ export class MonsterNecromancer extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterNecromancer.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterNecromancer.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -912,6 +922,7 @@ export class BossCultist extends CharacterSprite {
         this.speed = CST.CHARACTERS.BossCultist.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.BossCultist.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -980,6 +991,7 @@ export class BossMiranda extends CharacterSprite {
         this.speed = CST.CHARACTERS.BossMiranda.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.BossMiranda.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1048,6 +1060,7 @@ export class BossBlackDragon extends CharacterSprite {
         this.speed = CST.CHARACTERS.BossBlackDragon.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.BossBlackDragon.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1116,6 +1129,7 @@ export class BossCthulhu extends CharacterSprite {
         this.speed = CST.CHARACTERS.BossCthulhu.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.BossCthulhu.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1188,6 +1202,7 @@ export class BossDemon extends CharacterSprite {
         this.speed = CST.CHARACTERS.BossDemon.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.BossDemon.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1256,6 +1271,7 @@ export class HeroCat extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroCat.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroCat.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1321,6 +1337,7 @@ export class HeroMage extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroMage.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroMage.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1391,6 +1408,7 @@ export class HeroArchaeologist extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroArchaeologist.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroArchaeologist.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1456,6 +1474,7 @@ export class HeroSceleton extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroSceleton.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroSceleton.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1522,6 +1541,7 @@ export class HeroCenturion extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroCenturion.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroCenturion.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1653,6 +1673,7 @@ export class HeroWitch extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroWitch.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroWitch.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1719,6 +1740,7 @@ export class HeroReaper extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroReaper.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroReaper.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1785,6 +1807,7 @@ export class HeroNightmare extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroNightmare.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroNightmare.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1850,6 +1873,7 @@ export class HeroMinotaur extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroMinotaur.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroMinotaur.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1915,6 +1939,7 @@ export class HeroStormhead extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroStormhead.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroStormhead.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1980,6 +2005,7 @@ export class HeroWizard extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroWizard.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroWizard.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {

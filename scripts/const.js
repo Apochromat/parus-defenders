@@ -742,7 +742,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 15,
             Experience: 5,
-            Range: 50
+            Range: 50,
+            EnemyControl:4
         },
         MonsterTwig: {
             HealPoints: 500,
@@ -755,7 +756,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterBrainer: {
             HealPoints: 700,
@@ -768,7 +771,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterHellhound: {
             HealPoints: 700,
@@ -781,7 +786,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterGhoul: {
             HealPoints: 800,
@@ -794,7 +801,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterHedgehog: {
             HealPoints: 900,
@@ -807,7 +816,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterSlayer: {
             HealPoints: 1000,
@@ -820,7 +831,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterWorm: {
             HealPoints: 2000,
@@ -833,7 +846,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterIEM: {
             HealPoints: 5000,
@@ -846,7 +861,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         MonsterNecromancer: {
             HealPoints: 1500,
@@ -859,7 +876,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         BossCultist: {
             HealPoints: 8000,
@@ -872,7 +891,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 30000,
-            Experience: 100
+            Experience: 100,
+            Range: 60,
+            EnemyControl:4
         },
         BossCthulhu: {
             HealPoints: 20000,
@@ -885,7 +906,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 30000,
-            Experience: 100
+            Experience: 100,
+            Range: 60,
+            EnemyControl:4
         },
         BossDemon: {
             HealPoints: 20000,
@@ -898,7 +921,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 30000,
-            Experience: 100
+            Experience: 100,
+            Range: 60,
+            EnemyControl:4
         },
         BossMiranda: {
             HealPoints: 20000,
@@ -911,7 +936,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 30000,
-            Experience: 100
+            Experience: 100,
+            Range: 60,
+            EnemyControl:4
         },
         BossBlackDragon: {
             HealPoints: 10000,
@@ -924,7 +951,9 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 10000,
-            Experience: 10
+            Experience: 10,
+            Range: 60,
+            EnemyControl:4
         },
         HeroCat: {
             Name: "Кот-Рыцарь",
@@ -942,7 +971,8 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 50,
             MPCost: 25,
-            Range: 50
+            Range: 50,
+            EnemyControl:4
         },
         HeroMage: {
             Name: "Тёмный Маг",
@@ -959,7 +989,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 35
+            MPCost: 35,
+            Range: 60,
+            EnemyControl:4
         },
         HeroArchaeologist: {
             Name: "Археолог",
@@ -976,7 +1008,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 80,
-            MPCost: 50
+            MPCost: 50,
+            Range: 60,
+            EnemyControl:4
         },
         HeroSceleton: {
             Name: "Big Bone",
@@ -993,7 +1027,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 70
+            MPCost: 70,
+            Range: 60,
+            EnemyControl:4
         },
         HeroTesla: {
             Name: "Тесла",
@@ -1010,7 +1046,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 70
+            MPCost: 70,
+            Range: 60,
+            EnemyControl:4
         },
         HeroWitch: {
             Name: "Ведьмочка",
@@ -1027,7 +1065,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 80,
-            MPCost: 90
+            MPCost: 90,
+            Range: 60,
+            EnemyControl:4
         },
         HeroCenturion: {
             Name: "Центурион Рори",
@@ -1044,7 +1084,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 65
+            MPCost: 65,
+            Range: 60,
+            EnemyControl:4
         },
         HeroReaper: {
             Name: "Жнец",
@@ -1061,7 +1103,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 80,
-            MPCost: 200
+            MPCost: 200,
+            Range: 60,
+            EnemyControl:4
         },
         HeroNightmare: {
             Name: "Кошмар",
@@ -1078,7 +1122,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 150,
-            MPCost: 200
+            MPCost: 200,
+            Range: 60,
+            EnemyControl:4
         },
         HeroMinotaur: {
             Name: "Минотавр",
@@ -1095,7 +1141,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 400
+            MPCost: 400,
+            Range: 60,
+            EnemyControl:4
         },
         HeroStormhead: {
             Name: "Ш.Т.О.Р.М",
@@ -1112,7 +1160,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 600
+            MPCost: 600,
+            Range: 60,
+            EnemyControl:4
         },
         HeroWizard: {
             Name: "Чародей",
@@ -1129,7 +1179,9 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 100,
-            MPCost: 150
+            MPCost: 150,
+            Range: 60,
+            EnemyControl:4
         }
     },
     PARUS: {

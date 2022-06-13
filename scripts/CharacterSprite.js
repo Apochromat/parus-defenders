@@ -7,9 +7,8 @@ export class CharacterSprite extends Phaser.Physics.Arcade.Sprite {
     lastDamageTime = 0;
     reachFlag = false;
     state; 
-    array =  new Array(3);
     lengthForEnemy=10000;
-    constructor(scene, x, y, texture, scale, array,lengthForEnemy) {
+    constructor(scene, x, y, texture, scale,lengthForEnemy) {
         super(scene, x, y, texture);
 
         scene.sys.updateList.add(this);
