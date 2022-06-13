@@ -820,7 +820,8 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 15,
-            Experience: 5
+            Experience: 5,
+            Range: 50
         },
         MonsterTwig: {
             HealPoints: 500,
@@ -941,7 +942,8 @@ export const CST = {
             CriticalChance: 1,
             CriticalDamage: 300,
             Speed: 50,
-            MPCost: 25
+            MPCost: 25,
+            Range: 50
         },
         HeroMage: {
             Name: "Тёмный Маг",
