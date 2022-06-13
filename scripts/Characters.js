@@ -1607,6 +1607,7 @@ export class HeroTesla extends CharacterSprite {
         this.speed = CST.CHARACTERS.HeroTesla.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.HeroTesla.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
