@@ -78,6 +78,13 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 }
                 enemy.setVelocity(VectorXMin / modulMin * enemy.specs.Speed, VectorYMin / modulMin * enemy.specs.Speed);
             }
+            for (var i = 0; i < enemy.array.length; i++) {
+                if (enemy.array[i]) {
+                    if (!enemy.array[i].alive) {
+                        enemy.array[i] = undefined;
+                    }
+                }
+            }
             if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown && Math.abs(hero.x - enemy.x) <= enemy.specs.Range) {
                 enemy.setVelocity(0, 0);
                 enemy.setAnimationHit();
@@ -86,9 +93,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     if (enemy.array[i]) {
                         if (Math.abs(enemy.x - enemy.array[i].x) <= enemy.specs.Range) {
                             enemy.array[i].damage(enemy.specs.PhysicalDamage);
-                            if (!enemy.array[i].alive) {
-                                enemy.array[i] = undefined;
-                            }
                         }
                     }
                 }
