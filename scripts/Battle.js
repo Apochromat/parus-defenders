@@ -1,5 +1,7 @@
 import { CharacterSprite } from "./CharacterSprite.js";
 import { CST } from "./const.js";
+import { calculateDamage } from "./Misc.js";
+import { calculateDamageParus } from "./Misc.js";
 export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     enemies.getMatching("active", true).forEach(enemy => {
         if (heroes.getLength() == 0 && Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range+200) {//
@@ -14,7 +16,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 enemy.flipX = true;
                 enemy.setAnimationWalk(true);
             }
-            console.log(enemy.specs.Speed);
+            
             enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
         }
         else if (heroes.getLength() == 0) {
@@ -22,7 +24,8 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             enemy.setAnimationHit();
             if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
                 enemy.lastDamageTime = Date.now();
-                if (!parus.damage(enemy.specs.PhysicalDamage)) {
+                
+                if (!parus.damage(calculateDamageParus(playerStats,enemy.constructor.name))) {
                     for (let el in characterHeap.heap) {
                         characterHeap.heap[el].specs.PhysicalDamage = 0;
                         characterHeap.heap[el].death();
@@ -92,7 +95,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 for (var i = 0; i < enemy.array.length; i++) {
                     if (enemy.array[i]) {
                         if (Math.abs(enemy.x - enemy.array[i].x) <= enemy.specs.Range) {
-                            enemy.array[i].damage(enemy.specs.PhysicalDamage);
+                            enemy.array[i].damage(calculateDamage(playerStats,String(enemy.constructor.name),String(enemy.array[i].constructor.name)));
                         }
                     }
                 }
@@ -103,6 +106,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     heroes.getMatching("active", true).forEach(hero => {
 
         if (enemies.getLength() == 0) {
+            
             hero.setAnimationIdle(false);
             hero.setVelocity(0, 0);
             hero.flipX = false;
@@ -156,9 +160,8 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     }
                 }
             }
-            console.log(2);
             if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown && Math.abs(hero.x - enemy.x) <= hero.specs.Range) {
-                console.log(1);
+              
                 hero.setVelocity(0, 0);
                 hero.setAnimationHit();
                 hero.lastDamageTime = Date.now();
@@ -167,7 +170,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                    
                     if (hero.array[i]) {
                         if (Math.abs(hero.x - hero.array[i].x) <= hero.specs.Range) {
-                            hero.array[i].damage(hero.specs.PhysicalDamage);
+                            hero.array[i].damage(calculateDamage(playerStats,String(hero.constructor.name),String(hero.array[i].constructor.name)));
                         }
                     }
                 }

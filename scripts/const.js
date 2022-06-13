@@ -922,8 +922,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 30000,
             Experience: 100,
-            Range: 60,
-            EnemyControl:4
+            Range: 200,
+            EnemyControl:15
         },
         BossMiranda: {
             HealPoints: 20000,
@@ -937,8 +937,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 30000,
             Experience: 100,
-            Range: 60,
-            EnemyControl:4
+            Range: 200,
+            EnemyControl:15
         },
         BossBlackDragon: {
             HealPoints: 10000,
@@ -953,7 +953,7 @@ export const CST = {
             Cost: 10000,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:15
         },
         HeroCat: {
             Name: "Кот-Рыцарь",
