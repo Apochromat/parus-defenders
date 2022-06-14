@@ -79,7 +79,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 }
 
             }
-            if (hero.array.includes(enemy) &&!enemy.ParusPriority) {
+            if (hero.array.includes(enemy)) {
                 if (Math.abs(hero.x - enemy.x) > enemy.specs.Range) {
                     if (VectorXMin > 0) {
                         enemy.flipX = false;
@@ -113,7 +113,41 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 }
             }
             else {
-                enemy.setVelocity(VectorXMin / modulMin * enemy.specs.Speed, VectorYMin / modulMin * enemy.specs.Speed);
+                if (Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range + 200) {//
+                    var VectorX, VectorY;
+                    VectorX = (parus.x - enemy.x);
+                    VectorY = (parus.y + 150 - enemy.y);
+                    var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
+                    console.log(1);
+                    if (VectorX > 0) {
+                        enemy.setAnimationWalk(false);
+                    }
+                    else {
+                        enemy.flipX = true;
+                        enemy.setAnimationWalk(true);
+                    }
+        
+                    enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
+                }
+                else{
+                    enemy.setVelocity(0, 0);
+                    enemy.setAnimationHit();
+                    if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
+                        enemy.lastDamageTime = Date.now();
+        
+                        if (!parus.damage(calculateDamageParus(playerStats, enemy.constructor.name))) {
+                            for (let el in characterHeap.heap) {
+                                characterHeap.heap[el].specs.PhysicalDamage = 0;
+                                characterHeap.heap[el].death();
+                            }
+                            parus.currHP = parus.maxHP;
+                            parus.currMP = parus.maxMP;
+                            playerStats.BattleMode = false;
+                            playerStats.WAVE_PROGRESS = 0;
+        
+                        };
+                    }
+                }
             }
         }
     });
