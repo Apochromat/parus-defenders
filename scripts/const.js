@@ -111,6 +111,9 @@ export const CST = {
     SPRITES96: {
         HeroMinotaur: "hero_minotaur",
     },
+    SPRITES100: {
+        MonsterReaper: "monster_reaper",
+    },
     SPRITES128: {
         HeroStormhead: "hero_stormhead",
         MonsterNecromancer: "monster_necromancer"
@@ -141,7 +144,7 @@ export const CST = {
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper"],
     BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon", "BossMiranda"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
@@ -625,6 +628,12 @@ export const CST = {
             Hit: 'monster_necromancer_hit',
             Death: 'monster_necromancer_death'
         },
+        MonsterReaper: {
+            Idle: 'monster_reaper_idle',
+            Walk: 'monster_reaper_walk',
+            Hit: 'monster_reaper_hit',
+            Death: 'monster_reaper_death'
+        },
         BossCultist: {
             Idle: 'boss_cultist_idle',
             Walk: 'boss_cultist_walk',
@@ -853,6 +862,19 @@ export const CST = {
             LightningDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 2000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterReaper: {
+            HealPoints: 5000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 5000,
             Speed: 50,
             PhysicalProtection: 10,
             LightningProtection: 10,
@@ -1291,7 +1313,16 @@ export const CST = {
                 MinWave: 30,
                 MaxWave: -1,
                 MinBatch: 1,
-                MaxBatch: 1,
+                MaxBatch: 3,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterReaper: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 3,
                 HealthBoost: 0.1,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
@@ -1300,7 +1331,7 @@ export const CST = {
                 MinWave: 30,
                 MaxWave: -1,
                 MinBatch: 1,
-                MaxBatch: 1,
+                MaxBatch: 3,
                 HealthBoost: 0.1,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1

@@ -763,6 +763,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Monster Reaper
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterReaper.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES100.MonsterReaper, { frames: [36, 37, 42, 43] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterReaper.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES100.MonsterReaper, { frames: [36, 37, 42, 43] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterReaper.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES100.MonsterReaper, { frames: [0, 1, 2, 3, 4, 5] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterReaper.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES100.MonsterReaper, { frames: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Monster Necromancer
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterNecromancer.Idle,

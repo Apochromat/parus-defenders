@@ -162,6 +162,11 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterIEM));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
+            case "MonsterReaper":
+                this.heap[CharacterHeap.id] = new MonsterReaper(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterReaper));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
             case "MonsterNecromancer":
                 this.heap[CharacterHeap.id] = new MonsterNecromancer(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterNecromancer));
@@ -805,6 +810,74 @@ export class MonsterIEM extends CharacterSprite {
     setAnimationDeath(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Death) {
             this.play(CST.ANIMATIONS.MonsterIEM.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class MonsterReaper extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 3) {
+        super(scene, x, y, CST.SPRITES100.MonsterReaper, scale);
+        this.hp = CST.CHARACTERS.MonsterReaper.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterReaper.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Death) {
+            this.play(CST.ANIMATIONS.MonsterReaper.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Death) {
+            this.play(CST.ANIMATIONS.MonsterReaper.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterReaper.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Death) {
+            this.play(CST.ANIMATIONS.MonsterReaper.Death);
         }
         return this;
     }
