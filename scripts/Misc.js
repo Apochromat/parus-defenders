@@ -98,7 +98,6 @@ export function calculateDamage(playerStats, senderName, receiverName) {
 
 export function calculateDamageParus(playerStats, senderName) {
   let PhysicalDamage, MagicDamage, LightningDamage;
-  console.log(senderName);
   PhysicalDamage = CST.CHARACTERS[senderName].PhysicalDamage;
   MagicDamage = CST.CHARACTERS[senderName].MagicDamage;
   LightningDamage = CST.CHARACTERS[senderName].LightningDamage;
