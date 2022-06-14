@@ -763,6 +763,65 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Monster Sprout
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSprout.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.MonsterSprout, { frames: [1, 5, 9, 13] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSprout.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.MonsterSprout, { frames: [2, 6, 10, 14, 18] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSprout.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.MonsterSprout, { frames: [0, 4, 8, 12, 16, 20] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSprout.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.MonsterSprout, { frames: [3, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+     // Monster Bringer
+     scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBringer.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES140.MonsterBringer, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBringer.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES140.MonsterBringer, { frames: [14, 15, 16, 17, 18, 19, 20, 21] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBringer.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES140.MonsterBringer, { frames: [28, 29, 30, 31, 32, 33, 34, 35] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBringer.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES140.MonsterBringer, { frames: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+
     // Monster Reaper
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterReaper.Idle,
@@ -817,6 +876,93 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterNecromancer.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES128.MonsterNecromancer, { frames: [39, 40, 41, 42, 43, 44, 45, 46, 47] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Soul Wizard
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSoulWizard.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES250.MonsterSoulWizard, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSoulWizard.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES250.MonsterSoulWizard, { frames: [24, 25, 26, 27, 28, 29, 30, 31] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSoulWizard.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES250.MonsterSoulWizard, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterSoulWizard.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES250.MonsterSoulWizard, { frames: [32, 33, 34, 35, 36, 37, 38] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Fire Wizard
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterFireWizard.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES150.MonsterFireWizard, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterFireWizard.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES150.MonsterFireWizard, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterFireWizard.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES150.MonsterFireWizard, { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterFireWizard.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES150.MonsterFireWizard, { frames: [24, 25, 26, 27, 28, 29, 30, 31] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Guardian
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterGuardian.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES120.MonsterGuardian, { frames: [2, 7, 12, 17, 22, 27] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterGuardian.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES120.MonsterGuardian, { frames: [3, 8, 13, 18, 23, 28, 33, 38] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterGuardian.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES120.MonsterGuardian, { frames: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterGuardian.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES120.MonsterGuardian, { frames: [4, 9, 14, 19, 24, 29, 34, 39, 44, 49] }),
         frameRate: 8,
         repeat: 0
     });

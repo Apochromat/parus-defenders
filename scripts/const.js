@@ -1,5 +1,4 @@
 
-
 export const CST = {
     EMPTY: "Empty",
     SCENES: {
@@ -110,13 +109,23 @@ export const CST = {
     },
     SPRITES96: {
         HeroMinotaur: "hero_minotaur",
+        MonsterSprout: "monster_sprout"
     },
     SPRITES100: {
         MonsterReaper: "monster_reaper",
     },
+    SPRITES120:{
+        MonsterGuardian: "monster_guardian"
+    },
     SPRITES128: {
         HeroStormhead: "hero_stormhead",
         MonsterNecromancer: "monster_necromancer"
+    },
+    SPRITES140: {
+        MonsterBringer: "monster_bringer"
+    },
+    SPRITES150: {
+        MonsterFireWizard: "monster_fire_wizard"
     },
     SPRITES200: {
         BossCultist: "boss_cultist",
@@ -124,6 +133,9 @@ export const CST = {
     },
     SPRITES240: {
         BossDemon: "boss_demon",
+    },
+    SPRITES250: {
+        MonsterSoulWizard: "monster_soul_wizard",
     },
     SPRITESDRAGON: {
         BossBlackDragon: "boss_black_dragon"
@@ -144,7 +156,7 @@ export const CST = {
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper", "MonsterBringer", "MonsterSprout", "MonsterSoulWizard", "MonsterFireWizard" , "MonsterGuardian"],
     BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon", "BossMiranda"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
@@ -616,11 +628,23 @@ export const CST = {
             Hit: 'monster_worm_hit',
             Death: 'monster_worm_death'
         },
+        MonsterBringer: {
+            Idle: 'monster_bringer_idle',
+            Walk: 'monster_bringer_walk',
+            Hit: 'monster_bringer_hit',
+            Death: 'monster_bringer_death'
+        },
         MonsterIEM: {
             Idle: 'monster_iem_idle',
             Walk: 'monster_iem_walk',
             Hit: 'monster_iem_hit',
             Death: 'monster_iem_death'
+        },
+        MonsterSprout: {
+            Idle: 'monster_sprout_idle',
+            Walk: 'monster_sprout_walk',
+            Hit: 'monster_sprout_hit',
+            Death: 'monster_sprout_death'
         },
         MonsterNecromancer: {
             Idle: 'monster_necromancer_idle',
@@ -633,6 +657,24 @@ export const CST = {
             Walk: 'monster_reaper_walk',
             Hit: 'monster_reaper_hit',
             Death: 'monster_reaper_death'
+        },
+        MonsterSoulWizard: {
+            Idle: 'monster_soul_wizard_idle',
+            Walk: 'monster_soul_wizard_walk',
+            Hit: 'monster_soul_wizard_hit',
+            Death: 'monster_soul_wizard_death'
+        },
+        MonsterFireWizard: {
+            Idle: 'monster_fire_wizard_idle',
+            Walk: 'monster_fire_wizard_walk',
+            Hit: 'monster_fire_wizard_hit',
+            Death: 'monster_fire_wizard_death'
+        },
+        MonsterGuardian: {
+            Idle: 'monster_guardian_idle',
+            Walk: 'monster_guardian_walk',
+            Hit: 'monster_guardian_hit',
+            Death: 'monster_guardian_death'
         },
         BossCultist: {
             Idle: 'boss_cultist_idle',
@@ -856,6 +898,32 @@ export const CST = {
             Cost: 25,
             Experience: 10
         },
+        MonsterSprout: {
+            HealPoints: 5000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterBringer: {
+            HealPoints: 5000,
+            PhysicalDamage: 500,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
         MonsterNecromancer: {
             HealPoints: 1500,
             PhysicalDamage: 50,
@@ -875,6 +943,45 @@ export const CST = {
             LightningDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 5000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterSoulWizard: {
+            HealPoints: 2000,
+            PhysicalDamage: 200,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterFireWizard: {
+            HealPoints: 2000,
+            PhysicalDamage: 200,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterGuardian: {
+            HealPoints: 5000,
+            PhysicalDamage: 300,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
             Speed: 50,
             PhysicalProtection: 10,
             LightningProtection: 10,
@@ -1318,7 +1425,43 @@ export const CST = {
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },
+            MonsterSprout: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 3,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterBringer: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 2,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
             MonsterReaper: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 3,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterSoulWizard: {
+                MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 3,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterFireWizard: {
                 MinWave: 30,
                 MaxWave: -1,
                 MinBatch: 1,
@@ -1329,6 +1472,15 @@ export const CST = {
             },
             MonsterNecromancer: {
                 MinWave: 30,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 3,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterGuardian: {
+                MinWave: 40,
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 3,
