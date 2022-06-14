@@ -743,7 +743,8 @@ export const CST = {
             Cost: 15,
             Experience: 5,
             Range: 50,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterTwig: {
             HealPoints: 500,
@@ -788,7 +789,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:3,
+            ParusPriority:true
         },
         MonsterGhoul: {
             HealPoints: 800,
