@@ -142,6 +142,11 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterGhoul));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
+            case "MonsterBot":
+                this.heap[CharacterHeap.id] = new MonsterBot(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterBot));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
             case "MonsterHedgehog":
                 this.heap[CharacterHeap.id] = new MonsterHedgehog(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterHedgehog));
@@ -197,29 +202,9 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterGuardian));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
-            case "BossCultist":
-                this.heap[CharacterHeap.id] = new BossCultist(scene, x, y, CharacterHeap.id, this.heap);
-                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCultist));
-                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
-                break;
-            case "BossBlackDragon":
-                this.heap[CharacterHeap.id] = new BossBlackDragon(scene, x, y, CharacterHeap.id, this.heap);
-                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossBlackDragon));
-                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
-                break;
-            case "BossCthulhu":
-                this.heap[CharacterHeap.id] = new BossCthulhu(scene, x, y, CharacterHeap.id, this.heap);
-                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCthulhu));
-                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
-                break;
-            case "BossDemon":
-                this.heap[CharacterHeap.id] = new BossDemon(scene, x, y, CharacterHeap.id, this.heap);
-                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossDemon));
-                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
-                break;
-            case "BossMiranda":
-                this.heap[CharacterHeap.id] = new BossMiranda(scene, x, y, CharacterHeap.id, this.heap);
-                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossMiranda));
+            case "MonsterMiner":
+                this.heap[CharacterHeap.id] = new MonsterMiner(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterMiner));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
         }
@@ -244,6 +229,16 @@ export class CharacterHeap {
             case "BossCthulhu":
                 this.heap[CharacterHeap.id] = new BossCthulhu(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCthulhu));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossDemon":
+                this.heap[CharacterHeap.id] = new BossDemon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossDemon));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "BossMiranda":
+                this.heap[CharacterHeap.id] = new BossMiranda(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossMiranda));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
         }
@@ -561,6 +556,74 @@ export class MonsterGhoul extends CharacterSprite {
     setAnimationDeath(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
             this.play(CST.ANIMATIONS.MonsterGhoul.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class MonsterBot extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 4) {
+        super(scene, x, y, CST.SPRITES40.MonsterBot, scale);
+        this.hp = CST.CHARACTERS.MonsterBot.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterBot.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Death) {
+            this.play(CST.ANIMATIONS.MonsterBot.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Death) {
+            this.play(CST.ANIMATIONS.MonsterBot.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterBot.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Death) {
+            this.play(CST.ANIMATIONS.MonsterBot.Death);
         }
         return this;
     }
@@ -1004,7 +1067,7 @@ export class MonsterBringer extends CharacterSprite {
 }
 
 export class MonsterGuardian extends CharacterSprite {
-    constructor(scene, x, y, id, heap, scale = 3) {
+    constructor(scene, x, y, id, heap, scale = 2.4) {
         super(scene, x, y, CST.SPRITES120.MonsterGuardian, scale);
         this.hp = CST.CHARACTERS.MonsterGuardian.HealPoints;
         this.speed = CST.CHARACTERS.MonsterGuardian.Speed;
@@ -1343,8 +1406,76 @@ export class MonsterFireWizard extends CharacterSprite {
 
 }
 
+export class MonsterMiner extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 1.5) {
+        super(scene, x, y, CST.SPRITES196.MonsterMiner, scale);
+        this.hp = CST.CHARACTERS.MonsterMiner.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterMiner.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Death) {
+            this.play(CST.ANIMATIONS.MonsterMiner.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Death) {
+            this.play(CST.ANIMATIONS.MonsterMiner.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterMiner.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Death) {
+            this.play(CST.ANIMATIONS.MonsterMiner.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
 export class BossCultist extends CharacterSprite {
-    constructor(scene, x, y, id, heap, scale = 1) {
+    constructor(scene, x, y, id, heap, scale = 1.5) {
         super(scene, x, y, CST.SPRITES200.BossCultist, scale);
         this.hp = CST.CHARACTERS.BossCultist.HealPoints;
         this.speed = CST.CHARACTERS.BossCultist.Speed;

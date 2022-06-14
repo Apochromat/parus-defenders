@@ -345,7 +345,7 @@ export class PlayScene extends Phaser.Scene {
             .setChildrenInteractive()
             .on('child.click', function (args) {
                 console.log(args.text);
-                args.scene.characterHeap.createMonster(args.text, args.scene,
+                args.scene.characterHeap.createBoss(args.text, args.scene,
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
             })

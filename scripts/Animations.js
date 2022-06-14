@@ -647,6 +647,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Monster Bot
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBot.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES40.MonsterBot, { frames: [0, 4, 8, 12] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBot.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES40.MonsterBot, { frames: [2, 6, 10, 14, 18, 22, 26, 30] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBot.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES40.MonsterBot, { frames: [1, 5, 9, 13] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterBot.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES40.MonsterBot, { frames: [3, 7, 11, 15, 19, 23] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Monster Hedgehog
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterHedgehog.Idle,
@@ -963,6 +992,35 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterGuardian.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES120.MonsterGuardian, { frames: [4, 9, 14, 19, 24, 29, 34, 39, 44, 49] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Miner
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterMiner.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES196.MonsterMiner, { frames: [2, 7, 12, 17] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterMiner.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES196.MonsterMiner, { frames: [3, 8, 13, 18, 23, 28, 33, 38] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterMiner.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES196.MonsterMiner, { frames: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterMiner.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES196.MonsterMiner, { frames: [4, 9, 14, 19, 24, 29, 34, 39, 44, 49] }),
         frameRate: 8,
         repeat: 0
     });

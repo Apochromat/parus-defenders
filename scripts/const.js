@@ -86,6 +86,9 @@ export const CST = {
         HeroCat: "hero_cat",
         HeroCenturion: "hero_centurion"
     },
+    SPRITES40: {
+        MonsterBot: "monster_bot",
+    },
     SPRITES48: {
         MonsterHellhound: "monster_hellhound",
         HeroReaper: "hero_reaper",
@@ -127,6 +130,9 @@ export const CST = {
     SPRITES150: {
         MonsterFireWizard: "monster_fire_wizard"
     },
+    SPRITES196: {
+        MonsterMiner: "monster_miner"
+    },
     SPRITES200: {
         BossCultist: "boss_cultist",
         BossMiranda: "boss_miranda",
@@ -156,7 +162,7 @@ export const CST = {
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper", "MonsterBringer", "MonsterSprout", "MonsterSoulWizard", "MonsterFireWizard" , "MonsterGuardian"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterBot", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper", "MonsterBringer", "MonsterSprout", "MonsterSoulWizard", "MonsterFireWizard" , "MonsterGuardian", "MonsterMiner"],
     BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon", "BossMiranda"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
@@ -610,6 +616,12 @@ export const CST = {
             Hit: 'monster_ghoul_hit',
             Death: 'monster_ghoul_death'
         },
+        MonsterBot: {
+            Idle: 'monster_bot_idle',
+            Walk: 'monster_bot_walk',
+            Hit: 'monster_bot_hit',
+            Death: 'monster_bot_death'
+        },
         MonsterHedgehog: {
             Idle: 'monster_hedgehog_idle',
             Walk: 'monster_hedgehog_walk',
@@ -675,6 +687,12 @@ export const CST = {
             Walk: 'monster_guardian_walk',
             Hit: 'monster_guardian_hit',
             Death: 'monster_guardian_death'
+        },
+        MonsterMiner: {
+            Idle: 'monster_miner_idle',
+            Walk: 'monster_miner_walk',
+            Hit: 'monster_miner_hit',
+            Death: 'monster_miner_death'
         },
         BossCultist: {
             Idle: 'boss_cultist_idle',
@@ -846,6 +864,19 @@ export const CST = {
             Cost: 25,
             Experience: 10
         },
+        MonsterBot: {
+            HealPoints: 1500,
+            PhysicalDamage: 200,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 1000,
+            Speed: 80,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
         MonsterHedgehog: {
             HealPoints: 900,
             PhysicalDamage: 10,
@@ -979,6 +1010,19 @@ export const CST = {
         MonsterGuardian: {
             HealPoints: 5000,
             PhysicalDamage: 300,
+            LightningDamage: 10,
+            MagicDamage: 10,
+            AttackCooldown: 3000,
+            Speed: 50,
+            PhysicalProtection: 10,
+            LightningProtection: 10,
+            MagicProtection: 10,
+            Cost: 25,
+            Experience: 10
+        },
+        MonsterMiner: {
+            HealPoints: 5000,
+            PhysicalDamage: 200,
             LightningDamage: 10,
             MagicDamage: 10,
             AttackCooldown: 3000,
@@ -1389,6 +1433,15 @@ export const CST = {
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },
+            MonsterBot: {
+                MinWave: 15,
+                MaxWave: 80,
+                MinBatch: 3,
+                MaxBatch: 5,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
             MonsterHedgehog: {
                 MinWave: 15,
                 MaxWave: -1,
@@ -1480,6 +1533,15 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             },
             MonsterGuardian: {
+                MinWave: 40,
+                MaxWave: -1,
+                MinBatch: 1,
+                MaxBatch: 3,
+                HealthBoost: 0.1,
+                AttackBoost: 0.1,
+                BatchComparativeBoost: 0.1
+            },
+            MonsterMiner: {
                 MinWave: 40,
                 MaxWave: -1,
                 MinBatch: 1,
