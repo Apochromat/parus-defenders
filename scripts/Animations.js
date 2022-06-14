@@ -502,6 +502,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Summon Golem
+    scene.anims.create({
+        key: CST.ANIMATIONS.SummonGolem.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.SummonGolem, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.SummonGolem.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.SummonGolem, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.SummonGolem.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.SummonGolem, { frames: [16, 17, 18, 19, 20, 21, 22] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.SummonGolem.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.SummonGolem, { frames: [32, 33, 34, 35, 36] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Monster Slime
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterSlime.Idle,
@@ -763,6 +792,35 @@ export function createAnimations(scene) {
         repeat: 0
     });
 
+    // Monster Dark Knight
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterDarkKnight.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterDarkKnight, { frames: [0, 1, 2, 3] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterDarkKnight.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterDarkKnight, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterDarkKnight.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterDarkKnight, { frames: [24, 25, 26, 27, 28, 29] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterDarkKnight.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.MonsterDarkKnight, { frames: [16, 17, 18, 19, 20, 21, 22, 23] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
     // Monster IEM
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterIEM.Idle,
@@ -788,6 +846,35 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterIEM.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES64.MonsterIEM, { frames: [14, 15, 16, 17, 18, 19, 20] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Toaster
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterToaster.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_TOASTER.MonsterToaster, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterToaster.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_TOASTER.MonsterToaster, { frames: [11, 12, 13, 14, 15, 16, 17, 18] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterToaster.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_TOASTER.MonsterToaster, { frames: [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterToaster.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_TOASTER.MonsterToaster, { frames: [33, 34, 35, 36, 37, 38, 39] }),
         frameRate: 8,
         repeat: 0
     });
@@ -1021,6 +1108,35 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterMiner.Death,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES196.MonsterMiner, { frames: [4, 9, 14, 19, 24, 29, 34, 39, 44, 49] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Monster Nanny
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNanny.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.MonsterNanny, { frames: [1, 5, 9, 13, 17] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNanny.Walk,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.MonsterNanny, { frames: [2, 6, 10, 14, 18, 22, 26, 30] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNanny.Hit,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.MonsterNanny, { frames: [0, 4, 8, 12, 16, 20, 24, 28] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.MonsterNanny.Death,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.MonsterNanny, { frames: [3, 7, 11, 15, 19, 23, 27, 31, 35] }),
         frameRate: 8,
         repeat: 0
     });

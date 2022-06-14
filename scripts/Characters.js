@@ -117,6 +117,11 @@ export class CharacterHeap {
 
     createMonster(type = "MonsterTwig", scene, x, y) {
         switch (type) {
+            case "SummonGolem":
+                this.heap[CharacterHeap.id] = new SummonGolem(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.SummonGolem));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
             case "MonsterSlime":
                 this.heap[CharacterHeap.id] = new MonsterSlime(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterSlime));
@@ -157,6 +162,11 @@ export class CharacterHeap {
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterSlayer));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
+            case "MonsterToaster":
+                this.heap[CharacterHeap.id] = new MonsterToaster(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterToaster));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
             case "MonsterWorm":
                 this.heap[CharacterHeap.id] = new MonsterWorm(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterWorm));
@@ -175,6 +185,11 @@ export class CharacterHeap {
             case "MonsterBringer":
                 this.heap[CharacterHeap.id] = new MonsterBringer(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterBringer));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "MonsterDarkKnight":
+                this.heap[CharacterHeap.id] = new MonsterDarkKnight(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterDarkKnight));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
             case "MonsterReaper":
@@ -205,6 +220,11 @@ export class CharacterHeap {
             case "MonsterMiner":
                 this.heap[CharacterHeap.id] = new MonsterMiner(scene, x, y, CharacterHeap.id, this.heap);
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterMiner));
+                monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
+                break;
+            case "MonsterNanny":
+                this.heap[CharacterHeap.id] = new MonsterNanny(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.MonsterNanny));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
         }
@@ -248,6 +268,73 @@ export class CharacterHeap {
         return this.heap[CharacterHeap.id - 1];
     }
 
+}
+
+export class SummonGolem extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 4) {
+        super(scene, x, y, CST.SPRITES32.SummonGolem, scale);
+        this.hp = CST.CHARACTERS.SummonGolem.HealPoints;
+        this.speed = CST.CHARACTERS.SummonGolem.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Death) {
+            this.play(CST.ANIMATIONS.SummonGolem.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Death) {
+            this.play(CST.ANIMATIONS.SummonGolem.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.SummonGolem.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Death) {
+            this.play(CST.ANIMATIONS.SummonGolem.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
 }
 
 export class MonsterSlime extends CharacterSprite {
@@ -862,6 +949,74 @@ export class MonsterWorm extends CharacterSprite {
 
 }
 
+export class MonsterDarkKnight extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 4) {
+        super(scene, x, y, CST.SPRITES32.MonsterDarkKnight, scale);
+        this.hp = CST.CHARACTERS.MonsterDarkKnight.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterDarkKnight.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Death) {
+            this.play(CST.ANIMATIONS.MonsterDarkKnight.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Death) {
+            this.play(CST.ANIMATIONS.MonsterDarkKnight.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterDarkKnight.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Death) {
+            this.play(CST.ANIMATIONS.MonsterDarkKnight.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
 export class MonsterIEM extends CharacterSprite {
     constructor(scene, x, y, id, heap, scale = 3) {
         super(scene, x, y, CST.SPRITES64.MonsterIEM, scale);
@@ -1202,6 +1357,74 @@ export class MonsterReaper extends CharacterSprite {
 
 }
 
+export class MonsterToaster extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 5) {
+        super(scene, x, y, CST.SPRITE_TOASTER.MonsterToaster, scale);
+        this.hp = CST.CHARACTERS.MonsterToaster.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterToaster.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Death) {
+            this.play(CST.ANIMATIONS.MonsterToaster.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Death) {
+            this.play(CST.ANIMATIONS.MonsterToaster.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterToaster.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Death) {
+            this.play(CST.ANIMATIONS.MonsterToaster.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
 export class MonsterNecromancer extends CharacterSprite {
     constructor(scene, x, y, id, heap, scale = 3) {
         super(scene, x, y, CST.SPRITES128.MonsterNecromancer, scale);
@@ -1442,6 +1665,74 @@ export class MonsterMiner extends CharacterSprite {
     setAnimationDeath(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Death) {
             this.play(CST.ANIMATIONS.MonsterMiner.Death);
+        }
+        return this;
+    }
+
+    death() {
+        if (this.alive) {
+            this.alive = false;
+            this.scene.playerStats.EXPERIENCE += this.specs.Experience;
+            this.scene.playerStats.COINS += this.specs.Cost;
+            this.setAnimationDeath();
+            this.remove();
+        }
+    }
+
+    damage(_hp) {
+        this.hp -= _hp;
+        if (this.hp <= 0) {
+            this.death();
+            return false
+        }
+        return true
+    }
+
+    remove() {
+        this.once('animationcomplete', () => {
+            this.destroy()
+            delete this.heap[this.id];
+        })
+    }
+
+}
+
+export class MonsterNanny extends CharacterSprite {
+    constructor(scene, x, y, id, heap, scale = 4) {
+        super(scene, x, y, CST.SPRITES80.MonsterNanny, scale);
+        this.hp = CST.CHARACTERS.MonsterNanny.HealPoints;
+        this.speed = CST.CHARACTERS.MonsterNanny.Speed;
+        this.id = id;
+        this.heap = heap;
+    }
+
+    setAnimationIdle(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Idle && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Death) {
+            this.play(CST.ANIMATIONS.MonsterNanny.Idle);
+        }
+        return this;
+    }
+
+    setAnimationWalk(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Walk && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Death) {
+            this.play(CST.ANIMATIONS.MonsterNanny.Walk);
+        }
+        return this;
+    }
+
+    setAnimationHit(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Death) {
+            this.once('animationcomplete', () => {
+                this.setAnimationWalk(isLeftOriented)
+            })
+            this.play(CST.ANIMATIONS.MonsterNanny.Hit);
+        }
+        return this;
+    }
+
+    setAnimationDeath(isLeftOriented = true) {
+        if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Death) {
+            this.play(CST.ANIMATIONS.MonsterNanny.Death);
         }
         return this;
     }
@@ -1819,7 +2110,7 @@ export class BossDemon extends CharacterSprite {
 }
 
 export class HeroCat extends CharacterSprite {
-    constructor(scene, x, y, id, heap, scale = 3) {
+    constructor(scene, x, y, id, heap, scale = 4) {
         super(scene, x, y, CST.SPRITES32.HeroCat, scale);
         this.hp = CST.CHARACTERS.HeroCat.HealPoints;
         this.speed = CST.CHARACTERS.HeroCat.Speed;
