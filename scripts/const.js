@@ -759,7 +759,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterBrainer: {
             HealPoints: 700,
@@ -774,7 +775,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterHellhound: {
             HealPoints: 700,
@@ -805,7 +807,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterHedgehog: {
             HealPoints: 900,
@@ -820,7 +823,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterSlayer: {
             HealPoints: 1000,
@@ -835,7 +839,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterWorm: {
             HealPoints: 2000,
@@ -850,7 +855,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterIEM: {
             HealPoints: 5000,
@@ -865,7 +871,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterNecromancer: {
             HealPoints: 1500,
@@ -880,7 +887,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         BossCultist: {
             HealPoints: 8000,
@@ -895,7 +903,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         BossCthulhu: {
             HealPoints: 20000,
@@ -910,7 +919,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            ParusPriority:false
         },
         BossDemon: {
             HealPoints: 20000,
@@ -925,7 +935,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 200,
-            EnemyControl:15
+            EnemyControl:15,
+            ParusPriority:false
         },
         BossMiranda: {
             HealPoints: 20000,
@@ -940,7 +951,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 200,
-            EnemyControl:15
+            EnemyControl:15,
+            ParusPriority:false
         },
         BossBlackDragon: {
             HealPoints: 10000,
@@ -955,7 +967,8 @@ export const CST = {
             Cost: 10000,
             Experience: 10,
             Range: 60,
-            EnemyControl:15
+            EnemyControl:15,
+             ParusPriority:false
         },
         HeroCat: {
             Name: "Кот-Рыцарь",
@@ -974,7 +987,8 @@ export const CST = {
             Speed: 50,
             MPCost: 25,
             Range: 50,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroMage: {
             Name: "Тёмный Маг",
@@ -993,7 +1007,8 @@ export const CST = {
             Speed: 50,
             MPCost: 35,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroArchaeologist: {
             Name: "Археолог",
@@ -1012,7 +1027,8 @@ export const CST = {
             Speed: 80,
             MPCost: 50,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroSceleton: {
             Name: "Big Bone",
@@ -1031,7 +1047,8 @@ export const CST = {
             Speed: 50,
             MPCost: 70,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroTesla: {
             Name: "Тесла",
@@ -1050,7 +1067,8 @@ export const CST = {
             Speed: 50,
             MPCost: 70,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroWitch: {
             Name: "Ведьмочка",
@@ -1069,7 +1087,8 @@ export const CST = {
             Speed: 80,
             MPCost: 90,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroCenturion: {
             Name: "Центурион Рори",
@@ -1088,7 +1107,8 @@ export const CST = {
             Speed: 50,
             MPCost: 65,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroReaper: {
             Name: "Жнец",
@@ -1107,7 +1127,8 @@ export const CST = {
             Speed: 80,
             MPCost: 200,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroNightmare: {
             Name: "Кошмар",
@@ -1126,7 +1147,8 @@ export const CST = {
             Speed: 150,
             MPCost: 200,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroMinotaur: {
             Name: "Минотавр",
@@ -1145,7 +1167,8 @@ export const CST = {
             Speed: 50,
             MPCost: 400,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroStormhead: {
             Name: "Ш.Т.О.Р.М",
@@ -1164,7 +1187,8 @@ export const CST = {
             Speed: 50,
             MPCost: 600,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         },
         HeroWizard: {
             Name: "Чародей",
@@ -1183,7 +1207,8 @@ export const CST = {
             Speed: 100,
             MPCost: 150,
             Range: 60,
-            EnemyControl:4
+            EnemyControl:4,
+            InFight: false
         }
     },
     PARUS: {

@@ -252,7 +252,7 @@ export class MonsterSlime extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlime.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlime.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterSlime.Hit);
         }
@@ -301,6 +301,7 @@ export class MonsterTwig extends CharacterSprite {
         this.id = id;
         this.heap = heap;
         this.array=new Array(CST.CHARACTERS.MonsterTwig.EnemyControl);
+     
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -320,7 +321,7 @@ export class MonsterTwig extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterTwig.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterTwig.Hit);
         }
@@ -388,7 +389,7 @@ export class MonsterBrainer extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBrainer.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterBrainer.Hit);
         }
@@ -457,7 +458,7 @@ export class MonsterHellhound extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHellhound.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHellhound.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterHellhound.Hit);
         }
@@ -526,7 +527,7 @@ export class MonsterGhoul extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGhoul.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterGhoul.Hit);
         }
@@ -597,7 +598,7 @@ export class MonsterHedgehog extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterHedgehog.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterHedgehog.Hit);
         }
@@ -666,7 +667,7 @@ export class MonsterSlayer extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSlayer.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterSlayer.Hit);
         }
@@ -735,7 +736,7 @@ export class MonsterWorm extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterWorm.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterWorm.Hit);
         }
@@ -804,7 +805,7 @@ export class MonsterIEM extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterIEM.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterIEM.Hit);
         }
@@ -873,7 +874,7 @@ export class MonsterNecromancer extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNecromancer.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterNecromancer.Hit);
         }
@@ -942,7 +943,7 @@ export class BossCultist extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossCultist.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.BossCultist.Hit);
         }
@@ -1011,7 +1012,7 @@ export class BossMiranda extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossMiranda.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossMiranda.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.BossMiranda.Hit);
         }
@@ -1080,7 +1081,7 @@ export class BossBlackDragon extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossBlackDragon.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.BossBlackDragon.Hit);
         }
@@ -1151,7 +1152,7 @@ export class BossCthulhu extends CharacterSprite {
             this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Tentacle &&
             this.anims.currentAnim.key != CST.ANIMATIONS.BossCthulhu.Death)) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(randomIntFromInterval(0, 1) == 1 ? CST.ANIMATIONS.BossCthulhu.Brainstorm : CST.ANIMATIONS.BossCthulhu.Tentacle);
 
@@ -1222,7 +1223,7 @@ export class BossDemon extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.BossDemon.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.BossDemon.Hit);
         }
