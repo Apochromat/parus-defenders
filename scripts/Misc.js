@@ -72,7 +72,7 @@ export function calculateDamage(playerStats, senderName, receiverName) {
   PhysicalDamage = CST.CHARACTERS[senderName].PhysicalDamage;
   MagicDamage = CST.CHARACTERS[senderName].MagicDamage;
   LightningDamage = CST.CHARACTERS[senderName].LightningDamage;
-  if (senderName[0] = "H") {
+  if (senderName[0] == "H") {
     // Применяем критический удар
     if ((CST.CHARACTERS[senderName].CriticalChance + playerStats.LEVELS_SKILLS.CriticalChance) >= randomIntFromInterval(0, 100)) {
       PhysicalDamage *= (1 + ((CST.CHARACTERS[senderName].CriticalDamage + playerStats.LEVELS_SKILLS.CriticalDamage) / 100));
