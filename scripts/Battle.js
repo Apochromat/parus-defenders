@@ -41,7 +41,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             }
         }
 
-        if (heroes.getLength() != 0) {
+        else if (heroes.getLength() != 0) {
             var hero = heroes.getFirstAlive(true);
             var VectorXMin = (hero.x - enemy.x);
             var VectorYMin = (hero.y - enemy.y);
@@ -201,18 +201,18 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     }
                     else if (hero.array[i] && !(hero.array.includes(ene)) &&!hero.array.includes(undefined)) {
                         if (ene.lengthForEnemy < hero.array[i].lengthForEnemy) {
-                           // console.log(hero.array)
+                           
                             for (var j = hero.array.length - 2; j > i; j--) {
                                 hero.array[j + 1] = hero.array[j];
                             }
                             hero.array[i] = ene;
-                            //console.log(3,hero.array)
+                            
                         }
                         
                     }
-                   // console.log(4,hero.array)
+            
                 }
-                //     console.log(hero.array)
+        
                 if (modul < modulMin) {
                     modulMin = modul;
                     VectorXMin = VectorX;
