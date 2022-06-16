@@ -87,7 +87,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             
             if (flag && enemy.specs.Range + 100 > modulMin) {
                 hero = enemy.array[0];
-//console.log(1);
                 if (Math.abs(hero.x - enemy.x) > enemy.specs.Range) {
                     if (VectorXMin > 0) {
                         enemy.flipX = false;
@@ -115,7 +114,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     else {
                         enemy.flipX = true;
                     }
-                   // console.log(enemy.array);
                     enemy.lastDamageTime = Date.now();
                     for (var i = 0; i < enemy.array.length; i++) {
                         if (enemy.array[i]) {
@@ -129,14 +127,12 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
 
             }
             else {
-              //  console.log(2);
                 if (Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range + 200) {//
                     var VectorX, VectorY;
                     VectorX = (parus.x - enemy.x);
                     VectorY = (parus.y + 150 - enemy.y);
                     var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
                     if (VectorX > 0) {
-                      //  console.log(33)
                         enemy.setAnimationWalk(false);
                     }
                     else {

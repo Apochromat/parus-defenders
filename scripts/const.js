@@ -840,7 +840,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 15,
-            Experience: 5
+            Experience: 5,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterSlime: {
             HealPoints: 300,
@@ -933,7 +936,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterDarkKnight: {
             HealPoints: 1500,
@@ -946,7 +952,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 250,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterHedgehog: {
             HealPoints: 900,
@@ -1007,7 +1016,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterIEM: {
             HealPoints: 5000,
@@ -1036,7 +1048,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterBringer: {
             HealPoints: 5000,
@@ -1049,7 +1064,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterNecromancer: {
             HealPoints: 1500,
@@ -1078,7 +1096,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterSoulWizard: {
             HealPoints: 2000,
@@ -1091,7 +1112,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterFireWizard: {
             HealPoints: 2000,
@@ -1104,7 +1128,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterGuardian: {
             HealPoints: 5000,
@@ -1117,7 +1144,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterMiner: {
             HealPoints: 5000,
@@ -1130,7 +1160,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         MonsterNanny: {
             HealPoints: 5000,
@@ -1143,7 +1176,10 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 10,
             Cost: 25,
-            Experience: 10
+            Experience: 10,
+            Range: 50,
+            EnemyControl:4,
+            ParusPriority:false
         },
         BossCultist: {
             HealPoints: 8000,

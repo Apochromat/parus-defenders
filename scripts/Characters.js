@@ -277,6 +277,7 @@ export class SummonGolem extends CharacterSprite {
         this.speed = CST.CHARACTERS.SummonGolem.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.SummonGolem.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -296,7 +297,7 @@ export class SummonGolem extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.SummonGolem.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.SummonGolem.Hit);
         }
@@ -688,6 +689,7 @@ export class MonsterBot extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterBot.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterBot.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -707,7 +709,7 @@ export class MonsterBot extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBot.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterBot.Hit);
         }
@@ -965,6 +967,7 @@ export class MonsterDarkKnight extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterDarkKnight.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterDarkKnight.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -984,7 +987,7 @@ export class MonsterDarkKnight extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterDarkKnight.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterDarkKnight.Hit);
         }
@@ -1102,6 +1105,7 @@ export class MonsterSprout extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterSprout.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterSprout.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1121,7 +1125,7 @@ export class MonsterSprout extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSprout.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSprout.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterSprout.Hit);
         }
@@ -1170,6 +1174,7 @@ export class MonsterBringer extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterBringer.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterBringer.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1189,7 +1194,7 @@ export class MonsterBringer extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBringer.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterBringer.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterBringer.Hit);
         }
@@ -1238,6 +1243,7 @@ export class MonsterGuardian extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterGuardian.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterGuardian.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1257,7 +1263,7 @@ export class MonsterGuardian extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGuardian.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterGuardian.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterGuardian.Hit);
         }
@@ -1306,6 +1312,7 @@ export class MonsterReaper extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterReaper.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterReaper.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1325,7 +1332,7 @@ export class MonsterReaper extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterReaper.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterReaper.Hit);
         }
@@ -1374,6 +1381,7 @@ export class MonsterToaster extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterToaster.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterToaster.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1393,7 +1401,7 @@ export class MonsterToaster extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterToaster.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterToaster.Hit);
         }
@@ -1511,6 +1519,7 @@ export class MonsterSoulWizard extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterSoulWizard.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterSoulWizard.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1530,7 +1539,7 @@ export class MonsterSoulWizard extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSoulWizard.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterSoulWizard.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterSoulWizard.Hit);
         }
@@ -1579,6 +1588,7 @@ export class MonsterFireWizard extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterFireWizard.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterFireWizard.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1598,7 +1608,7 @@ export class MonsterFireWizard extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterFireWizard.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterFireWizard.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterFireWizard.Hit);
         }
@@ -1647,6 +1657,7 @@ export class MonsterMiner extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterMiner.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterMiner.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1666,7 +1677,7 @@ export class MonsterMiner extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterMiner.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterMiner.Hit);
         }
@@ -1715,6 +1726,7 @@ export class MonsterNanny extends CharacterSprite {
         this.speed = CST.CHARACTERS.MonsterNanny.Speed;
         this.id = id;
         this.heap = heap;
+        this.array=new Array(CST.CHARACTERS.MonsterNanny.EnemyControl);
     }
 
     setAnimationIdle(isLeftOriented = true) {
@@ -1734,7 +1746,7 @@ export class MonsterNanny extends CharacterSprite {
     setAnimationHit(isLeftOriented = true) {
         if (this.anims.currentAnim == null || this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Hit && this.anims.currentAnim.key != CST.ANIMATIONS.MonsterNanny.Death) {
             this.once('animationcomplete', () => {
-                this.setAnimationWalk(isLeftOriented)
+                this.setAnimationIdle(isLeftOriented)
             })
             this.play(CST.ANIMATIONS.MonsterNanny.Hit);
         }
