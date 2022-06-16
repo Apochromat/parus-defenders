@@ -43,6 +43,12 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 32
             });
         }
+        for (let prop in CST.SPRITES40) {
+            this.load.spritesheet(CST.SPRITES40[prop], CST.SPRITES40[prop]+".png", {
+                frameHeight: 40,
+                frameWidth: 40
+            });
+        }
         for (let prop in CST.SPRITES48) {
             this.load.spritesheet(CST.SPRITES48[prop], CST.SPRITES48[prop]+".png", {
                 frameHeight: 48,
@@ -73,10 +79,40 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 96
             });
         }
+        for (let prop in CST.SPRITES100) {
+            this.load.spritesheet(CST.SPRITES100[prop], CST.SPRITES100[prop]+".png", {
+                frameHeight: 100,
+                frameWidth: 100
+            });
+        }
+        for (let prop in CST.SPRITES120) {
+            this.load.spritesheet(CST.SPRITES120[prop], CST.SPRITES120[prop]+".png", {
+                frameHeight: 120,
+                frameWidth: 120
+            });
+        }
         for (let prop in CST.SPRITES128) {
             this.load.spritesheet(CST.SPRITES128[prop], CST.SPRITES128[prop]+".png", {
                 frameHeight: 128,
                 frameWidth: 128
+            });
+        }
+        for (let prop in CST.SPRITES140) {
+            this.load.spritesheet(CST.SPRITES140[prop], CST.SPRITES140[prop]+".png", {
+                frameHeight: 140,
+                frameWidth: 140
+            });
+        }
+        for (let prop in CST.SPRITES150) {
+            this.load.spritesheet(CST.SPRITES150[prop], CST.SPRITES150[prop]+".png", {
+                frameHeight: 150,
+                frameWidth: 150
+            });
+        }
+        for (let prop in CST.SPRITES196) {
+            this.load.spritesheet(CST.SPRITES196[prop], CST.SPRITES196[prop]+".png", {
+                frameHeight: 196,
+                frameWidth: 196
             });
         }
         for (let prop in CST.SPRITES200) {
@@ -89,6 +125,18 @@ export class LoadScene extends Phaser.Scene {
             this.load.spritesheet(CST.SPRITES240[prop], CST.SPRITES240[prop]+".png", {
                 frameHeight: 240,
                 frameWidth: 240
+            });
+        }
+        for (let prop in CST.SPRITES250) {
+            this.load.spritesheet(CST.SPRITES250[prop], CST.SPRITES250[prop]+".png", {
+                frameHeight: 250,
+                frameWidth: 250
+            });
+        }
+        for (let prop in CST.SPRITE_TOASTER) {
+            this.load.spritesheet(CST.SPRITE_TOASTER[prop], CST.SPRITE_TOASTER[prop]+".png", {
+                frameHeight: 22,
+                frameWidth: 106
             });
         }
         for (let prop in CST.SPRITESDRAGON) {
