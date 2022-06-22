@@ -88,7 +88,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
 
         if (playerStats.HERO_SLOTS[index] != CST.EMPTY) {
             this.heroImage = new CharacterSprite(scene, x, y, CST.SPRITES32[playerStats.HERO_SLOTS[index]], 2).setDepth(CST.DEPTHS.Slots);
-            this.heroImage.play(CST.ANIMATIONS[playerStats.HERO_SLOTS[index]].Idle)
+            this.heroImage.play(CST.ANIMATIONS[playerStats.HERO_SLOTS[index]].IdleWindow)
             //scene.add.image(x, y, CST.ICONS[playerStats.HERO_SLOTS[index]]).setDepth(CST.DEPTHS.Slots);
             if (playerStats.BattleMode)
                 this.setHeroWindowProgress(playerStats);

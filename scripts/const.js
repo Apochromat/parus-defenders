@@ -769,72 +769,84 @@ export const CST = {
         },
         HeroCat: {
             Idle: 'hero_cat_idle',
+            IdleWindow: 'hero_cat_idle_window',
             Walk: 'hero_cat_walk',
             Hit: 'hero_cat_hit',
             Death: 'hero_cat_death'
         },
         HeroMage: {
             Idle: 'hero_mage_idle',
+            IdleWindow: 'hero_mage_idle_window',
             Walk: 'hero_mage_walk',
             Hit: 'hero_mage_hit',
             Death: 'hero_mage_death'
         },
         HeroArchaeologist: {
             Idle: 'hero_archaeologist_idle',
+            IdleWindow: 'hero_archaeologist_idle_window',
             Walk: 'hero_archaeologist_walk',
             Hit: 'hero_archaeologist_hit',
             Death: 'hero_archaeologist_death'
         },
         HeroSceleton: {
             Idle: 'hero_sceleton_idle',
+            IdleWindow: 'hero_sceleton_idle_window',
             Walk: 'hero_sceleton_walk',
             Hit: 'hero_sceleton_hit',
             Death: 'hero_sceleton_death'
         },
         HeroTesla: {
             Idle: 'hero_tesla_idle',
+            IdleWindow: 'hero_tesla_idle_window',
             Walk: 'hero_tesla_walk',
             Hit: 'hero_tesla_hit',
             Death: 'hero_tesla_death'
         },
         HeroWitch: {
             Idle: 'hero_witch_idle',
+            IdleWindow: 'hero_witch_idle_window',
             Walk: 'hero_witch_walk',
             Hit: 'hero_witch_hit',
             Death: 'hero_witch_death'
         },
         HeroCenturion: {
             Idle: 'hero_centurion_idle',
+            IdleWindow: 'hero_centurion_idle_window',
             Walk: 'hero_centurion_walk',
             Hit: 'hero_centurion_hit',
             Death: 'hero_centurion_death'
         },
         HeroReaper: {
             Idle: 'hero_reaper_idle',
+            IdleWindow: 'hero_reaper_idle_window',
             Walk: 'hero_reaper_walk',
             Hit: 'hero_reaper_hit',
             Death: 'hero_reaper_death'
         },
         HeroNightmare: {
             Idle: 'hero_nightmare_idle',
+            IdleWindow: 'hero_nightmare_idle_window',
             Walk: 'hero_nightmare_walk',
             Hit: 'hero_nightmare_hit',
             Death: 'hero_nightmare_death'
         },
         HeroMinotaur: {
             Idle: 'hero_minotaur_idle',
+            IdleWindow: 'hero_minotaur_idle_window',
             Walk: 'hero_minotaur_walk',
             Hit: 'hero_minotaur_hit',
             Death: 'hero_minotaur_death'
         },
         HeroStormhead: {
             Idle: 'hero_stormhead_idle',
+            IdleWindow: 'hero_stormhead_idle_window',
             Walk: 'hero_stormhead_walk',
             Hit: 'hero_stormhead_hit',
             Death: 'hero_stormhead_death'
         },
         HeroWizard: {
             Idle: 'hero_wizard_idle',
+            IdleWindow: 'hero_wizard_idle_window',
             Walk: 'hero_wizard_walk',
             Hit: 'hero_wizard_hit',
             Death: 'hero_wizard_death'
