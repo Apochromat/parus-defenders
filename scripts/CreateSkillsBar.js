@@ -15,8 +15,21 @@ export function createSkillsBar(scene){
     scene.toolBarRight.on("pointerup", () => {
         openToolbarRight(scene);
     });
+    scene.toolBarRight.on("pointerout", () => {
+        scene.toolBarRight.setTexture(CST.IMAGES.ToolBarRight);
+    });
+    scene.toolBarRight.on("pointerover", () => {
+        scene.toolBarRight.setTexture(CST.IMAGES.ToolBarRightChoose);
+    });
+
     scene.skillBar.on("pointerup", () => {
         openToolbarRight(scene);
+    });
+    scene.skillBar.on("pointerout", () => {
+        scene.skillBar.setTexture(CST.IMAGES.ToolBarRight);
+    });
+    scene.skillBar.on("pointerover", () => {
+        scene.skillBar.setTexture(CST.IMAGES.ToolBarRightChoose);
     });
 }
 

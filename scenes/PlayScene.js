@@ -125,6 +125,7 @@ export class PlayScene extends Phaser.Scene {
             this.shopBar.visible = false;
             this.battleButton.visible = false;
             this.scrollablePanel.visible = false;
+            this.scrollablePanelBosses.visible = false;
             this.scrollablePanelHeroes.visible = false;
             this.battleFlag = 1;
         }
@@ -133,6 +134,7 @@ export class PlayScene extends Phaser.Scene {
             this.shopBar.visible = true;
             this.battleButton.visible = true;
             this.scrollablePanel.visible = true;
+            this.scrollablePanelBosses.visible = true;
             this.scrollablePanelHeroes.visible = true;
 
             for (let i = 0; i < this.parus.heroWindows.length; i++) {
@@ -214,11 +216,23 @@ export class PlayScene extends Phaser.Scene {
             this.waveObject = new Wave(this, this.playerStats.WAVE);
             this.playerStats.BattleMode = true;
         });
+        this.battleButton.on("pointerout", () => {
+            this.battleButton.setTexture(CST.IMAGES.BattleButton);
+        });
+        this.battleButton.on("pointerover", () => {
+            this.battleButton.setTexture(CST.IMAGES.BattleButtonChoose);
+        });
 
         this.backButton = this.add.image(50, 50, CST.IMAGES.BackButton).setDepth(CST.DEPTHS.ToolBarField);
         this.backButton.setInteractive();
         this.backButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.MENU);
+        });
+        this.backButton.on("pointerout", () => {
+            this.backButton.setTexture(CST.IMAGES.BackButton);
+        });
+        this.backButton.on("pointerover", () => {
+            this.backButton.setTexture(CST.IMAGES.BackButtonChoose);
         });
     }
 

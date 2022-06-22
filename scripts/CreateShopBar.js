@@ -4,25 +4,38 @@ import { closeToolBar } from "../scripts/CreateToolBar.js";
 import { setStatusCOIN } from "../scripts/CreateStatusBar.js";
 import { addIfNotInclude, calculateCost } from "./Misc.js";
 
-export function createShopBar(scene){
+export function createShopBar(scene) {
     scene.shopBar = scene.add.image(scene.game.renderer.width - 60, 300, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarField);
-    scene.toolBarLeft =  scene.add.image(scene.game.renderer.width - 790, 300, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarMinor);
+    scene.toolBarLeft = scene.add.image(scene.game.renderer.width - 790, 300, CST.IMAGES.ToolBarLeft).setDepth(CST.DEPTHS.ToolBarMinor);
 
     scene.toolBarLeft.setInteractive();
     scene.shopBar.setInteractive();
 
     scene.toolBarLeft.visible = false;
     scene.shopBar.visible = true;
-    
+
     scene.toolBarLeft.on("pointerup", () => {
         openToolbarLeft(scene);
     });
+    scene.toolBarLeft.on("pointerout", () => {
+        scene.toolBarLeft.setTexture(CST.IMAGES.ToolBarLeft);
+    });
+    scene.toolBarLeft.on("pointerover", () => {
+        scene.toolBarLeft.setTexture(CST.IMAGES.ToolBarLeftChoose);
+    });
+
     scene.shopBar.on("pointerup", () => {
         openToolbarLeft(scene);
     });
+    scene.shopBar.on("pointerout", () => {
+        scene.shopBar.setTexture(CST.IMAGES.ToolBarLeft);
+    });
+    scene.shopBar.on("pointerover", () => {
+        scene.shopBar.setTexture(CST.IMAGES.ToolBarLeftChoose);
+    });
 }
 
-export function openToolbarLeft(scene, t = null){
+export function openToolbarLeft(scene, t = null) {
     closeHeroesBar(scene);
 
     if (scene.recyclerViewSkills != undefined) {
@@ -42,7 +55,7 @@ export function openToolbarLeft(scene, t = null){
     if (scene.recyclerViewShop != undefined) {
         scene.recyclerViewShop.destroy();
     }
-    
+
     scene.recyclerViewShop = scene.rexUI.add.scrollablePanel({
         x: scene.game.renderer.width - 365,
         y: 530,
@@ -86,18 +99,18 @@ export function openToolbarLeft(scene, t = null){
     scene.recyclerViewShop.setChildrenInteractive({
         targets: targets
     })
-    .on('child.click', function(child) {
-        let currName = child.getParentSizer().name;
-        if ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0) {
-            scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);
-            setStatusCOIN(scene, scene.playerStats.COINS);
-            if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus") addIfNotInclude(scene.playerStats.AVAILABLE_HEROES, currName);
-            scene.playerStats.LEVELS_SHOP[currName] += 1;
-            closeToolBar(scene);
-            openToolbarLeft(scene, scene.recyclerViewShop.t);
-        }
-    })
-    if (t != null){
+        .on('child.click', function (child) {
+            let currName = child.getParentSizer().name;
+            if ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0) {
+                scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);
+                setStatusCOIN(scene, scene.playerStats.COINS);
+                if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus") addIfNotInclude(scene.playerStats.AVAILABLE_HEROES, currName);
+                scene.playerStats.LEVELS_SHOP[currName] += 1;
+                closeToolBar(scene);
+                openToolbarLeft(scene, scene.recyclerViewShop.t);
+            }
+        })
+    if (t != null) {
         scene.recyclerViewShop.t = t;
     }
 }
@@ -112,7 +125,7 @@ function createGrid(scene) {
     })
 
     for (let el in CST.SHOPLIST) {
-        sizer.add(createShopItem(scene, el), 
+        sizer.add(createShopItem(scene, el),
             { expand: true }
         )
     }
@@ -129,21 +142,21 @@ function createShopItem(scene, key) {
         columnProportions: 1,
         space: { column: -150, row: 10, left: 0, right: 0, top: 0, bottom: 0 }
     }).setDepth(CST.DEPTHS.ToolBarRecyclerView)
-    .addBackground(
-        scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
-    );
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 10, 10, 14, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),
+        );
 
-    table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 25, right: 150}, true);
-    table.add(createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
-    table.add(createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', {right: 0}, true);
-    table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', {left: 150}, true);
-    table.add(createLable(scene, calculateCost(key, scene.playerStats.LEVELS_SHOP[key], CST.SHOPLIST[key].BeginCost), 2), 2, 1, 'center', {left: 150}, true);
-    table.add(createButtonAdd(scene, key), 2, 2, 'right', {top: 5, left: 160}, true);
+    table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', { left: 25, right: 150 }, true);
+    table.add(createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', { left: 0, top: 5 }, true);
+    table.add(createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', { right: 0 }, true);
+    table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', { left: 150 }, true);
+    table.add(createLable(scene, calculateCost(key, scene.playerStats.LEVELS_SHOP[key], CST.SHOPLIST[key].BeginCost), 2), 2, 1, 'center', { left: 150 }, true);
+    table.add(createButtonAdd(scene, key), 2, 2, 'right', { top: 5, left: 160 }, true);
 
     return scene.rexUI.add.sizer({
     })
         .add(
-        table, 1, 'center', 0, true 
+            table, 1, 'center', 0, true
         );
 }
 
@@ -159,25 +172,25 @@ function createLable(scene, name, type) {
     var label
     if (type == 1) { //LVL text
         label = scene.rexUI.add.label({
-            text: scene.add.text(0, 0, name,{ fontFamily: 'Garamond', fontSize: 32, color: '#51c751' }),
+            text: scene.add.text(0, 0, name, { fontFamily: 'Garamond', fontSize: 32, color: '#51c751' }),
         });
     }
-    else if(type == 2){ //cost text
+    else if (type == 2) { //cost text
         label = scene.rexUI.add.label({
             text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
         });
     }
-    else if(type == 3){ //description
+    else if (type == 3) { //description
         label = scene.rexUI.add.label({
             text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
         });
     }
-    else{
+    else {
         label = scene.rexUI.add.label({
             text: scene.add.text(0, 0, name, { fontFamily: 'ClearSans', fontSize: 32, color: '#ffffff' }),
         });
     }
-    
+
     return label;
 }
 
@@ -186,17 +199,29 @@ function createButtonAdd(scene, key) {
         column: 1,
         row: 1,
         name: key,
-        space: {left: 0, right: 0, top: 0, bottom: 90 }
+        space: { left: 0, right: 0, top: 0, bottom: 90 }
     })
-    .addBackground(
-        scene.rexUI.add.roundRectangle(0, 0, 20, 20, 5, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1),)
+        .addBackground(
+            scene.rexUI.add.roundRectangle(0, 0, 20, 20, 5, 0x3d3d3d).setStrokeStyle(3, 0x939393, 1))
         .setDepth(CST.DEPTHS.ToolBarRecyclerView);
 
-    table.add(
-        scene.rexUI.add.label({
-            text: scene.add.text(0, 0, "UPGRADE", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
-            space: {left: 20, right: 0, top: 5, bottom: 0 }
-        })
-    );
-    return scene.rexUI.add.sizer({}).add(table, 1, 'center', 0, true);
+    if (scene.playerStats.LEVELS_SHOP[key] != 0 || key == "Parus") {
+        table.add(
+            scene.rexUI.add.label({
+                text: scene.add.text(0, 0, "UPGRADE", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+                space: { left: 20, right: 0, top: 5, bottom: 0 }
+            })
+        );
+        return scene.rexUI.add.sizer({}).add(table, 1, 'center', 0, true);
+    }
+    else {
+        table.add(
+            scene.rexUI.add.label({
+                text: scene.add.text(0, 0, "BUY", { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+                space: { left: 45, right: 0, top: 5, bottom: 0 }
+            })
+        );
+        return scene.rexUI.add.sizer({}).add(table, 1, 'center', 0, true);
+    }
+    
 }

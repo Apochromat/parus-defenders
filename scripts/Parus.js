@@ -115,6 +115,13 @@ export class HeroWindow extends Phaser.GameObjects.Image {
                 openHeroesBar(this.scene, this.index);
             }
         })
+
+        this.on("pointerover", () => {
+            this.setTexture(CST.IMAGES.CharacterWindowChoose);
+        })
+        this.on("pointerout", () => {
+            this.setTexture(CST.IMAGES.CharacterWindow);
+        })
     }
 
     initgraphicsStatusInWait(scene) {
