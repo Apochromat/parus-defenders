@@ -6,6 +6,7 @@ import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
 import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
 import { closeHeroesBar, createHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { closeBuildingsBar, createBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { randomIntFromInterval, toggleFullScreen } from "../scripts/Misc.js";
 import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
@@ -37,6 +38,11 @@ export class PlayScene extends Phaser.Scene {
     recyclerViewHeroes;
     heroesBarField;
     heroesBarClose;
+
+    itemCurrentBuilding;
+    recyclerViewBuildings;
+    buildingBarField;
+    buildingBarClose;
 
     waveObject;
 
@@ -121,6 +127,7 @@ export class PlayScene extends Phaser.Scene {
         if (this.playerStats.BattleMode && this.battleFlag == 0) {
             closeToolBar(this);
             closeHeroesBar(this);
+            closeBuildingsBar(this);
             this.skillBar.visible = false;
             this.shopBar.visible = false;
             this.battleButton.visible = false;
@@ -206,6 +213,7 @@ export class PlayScene extends Phaser.Scene {
         createShopBar(this);
         createSkillsBar(this);
         createHeroesBar(this);
+        createBuildingsBar(this);
 
         this.battleButton = this.add.image(this.game.renderer.width - 85, this.game.renderer.height - 72, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();

@@ -87,7 +87,12 @@ export const CST = {
         HeroNightmare: "iconHeroNightmare",
         HeroMinotaur: "iconHeroMinotaur",
         HeroStormhead: "iconHeroStormhead",
-        HeroWizard: "iconHeroWizard"
+        HeroWizard: "iconHeroWizard",
+        BuildingPodkova: "iconBuildingPodkova",
+        BuildingMPObelisk: "iconBuildingMPObelisk",
+        BuildingHPObelisk: "iconBuildingHPObelisk",
+        BuildingCDObelisk: "iconBuildingCDObelisk",
+        BuildingPlasmaGun: "iconBuildingPlasmaGun"
     },
     SPRITES32: {
         MonsterSlime: "monster_slime",
@@ -160,6 +165,18 @@ export const CST = {
     },
     SPRITES360: {
         BuildingPodkova: "building_podkova",
+    },
+    SPRITE_MP_OBELISK: {
+        BuildingMPObelisk: "building_mp_obelisk",
+    },
+    SPRITE_HP_OBELISK: {
+        BuildingHPObelisk: "building_hp_obelisk",
+    },
+    SPRITE_CD_OBELISK: {
+        BuildingCDObelisk: "building_cd_obelisk",
+    },
+    SPRITE_PLASMA_GUN: {
+        BuildingPlasmaGun: "building_plasma_gun",
     },
     SPRITE_TOASTER: {
         MonsterToaster: "monster_toaster",
@@ -250,6 +267,31 @@ export const CST = {
         HeroWizard: {
             Name: "Чародей",
             Description: "Увеличение HP и \nурона Чародея",
+            BeginCost: 5000
+        },
+        BuildingPodkova: {
+            Name: "Подкова",
+            Description: "Увеличение кол-ва \nвыпадающих монет",
+            BeginCost: 5000
+        },
+        BuildingMPObelisk: {
+            Name: "Обелиск Магии",
+            Description: "Мгновенно \nвосстанавливает MP",
+            BeginCost: 5000
+        },
+        BuildingHPObelisk: {
+            Name: "Обелиск Жизни",
+            Description: "Мгновенно \nвосстанавливает HP",
+            BeginCost: 5000
+        },
+        BuildingCDObelisk: {
+            Name: "Обелиск Времени",
+            Description: "Мгновенно \nобнуляет перезарядку\n героев",
+            BeginCost: 5000
+        },
+        BuildingPlasmaGun: {
+            Name: "BFG-9000",
+            Description: "Уничтожает всех \nпротивников на поле",
             BeginCost: 5000
         }
     },
@@ -855,7 +897,24 @@ export const CST = {
             Death: 'hero_wizard_death'
         },
         BuildingPodkova: {
-            Idle: 'building_podkova_idle'
+            Idle: 'building_podkova_idle',
+            Use: 'building_podkova_use'
+        },
+        BuildingMPObelisk: {
+            Idle: 'building_mp_obelisk_idle',
+            Use: 'building_mp_obelisk_use',
+        },
+        BuildingHPObelisk: {
+            Idle: 'building_hp_obelisk_idle',
+            Use: 'building_hp_obelisk_use',
+        },
+        BuildingCDObelisk: {
+            Idle: 'building_cd_obelisk_idle',
+            Use: 'building_cd_obelisk_use',
+        },
+        BuildingPlasmaGun: {
+            Idle: 'building_plasma_gun_idle',
+            Use: 'building_plasma_gun_use',
         }
     },
     CHARACTERS: {
@@ -1530,6 +1589,36 @@ export const CST = {
             Range: 60,
             EnemyControl:4,
             InFight: false
+        },
+        BuildingPodkova: {
+            Name: "Подкова",
+            Description: "Увеличение кол-ва \nвыпадающих монет",
+            MPCost: 150,
+            CoolDown: 20000
+        },
+        BuildingMPObelisk: {
+            Name: "Обелиск Магии",
+            Description: "Мгновенно \nвосстанавливает MP",
+            MPCost: 150,
+            CoolDown: 20000
+        },
+        BuildingHPObelisk: {
+            Name: "Обелиск Жизни",
+            Description: "Мгновенно \nвосстанавливает HP",
+            MPCost: 150,
+            CoolDown: 20000
+        },
+        BuildingCDObelisk: {
+            Name: "Обелиск Времени",
+            Description: "Мгновенно \nобнуляет перезарядку\n героев",
+            MPCost: 150,
+            CoolDown: 20000
+        },
+        BuildingPlasmaGun: {
+            Name: "BFG-9000",
+            Description: "Уничтожает всех \nпротивников на поле",
+            MPCost: 150,
+            CoolDown: 20000
         }
     },
     PARUS: {

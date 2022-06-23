@@ -1,5 +1,6 @@
 import { CST } from "./const.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
+import { closeBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { calculateHeroSpecs } from "./Misc.js";
 
 export function createHeroesBar(scene) {
@@ -36,6 +37,7 @@ export function closeHeroesBar(scene) {
 
 export function openHeroesBar(scene, index, t = null) {
     closeToolBar(scene);
+    closeBuildingsBar(scene);
     closeHeroesBar(scene);
 
     scene.heroesBarField.visible = true;

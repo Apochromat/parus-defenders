@@ -3,6 +3,7 @@ import { PlayScene } from "../scenes/PlayScene.js";
 import { CST } from "../scripts/const.js";
 import { calculateParusBuildings, calculateParusMaxHP, calculateParusMaxMP, calculateParusWindows, randomIntFromInterval } from "../scripts/Misc.js";
 import { openHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { openBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { CharacterSprite } from "./CharacterSprite.js";
 
 export class Parus extends Phaser.Physics.Arcade.Sprite {
@@ -14,7 +15,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     HeroSlots;
     BuildingSlots;
     heroWindows = [];
-    buildingWindow;
+    buildingWindow = [];
 
     constructor(scene, level = 0) {
         super(scene, CST.NUMBERS.ParusX, CST.NUMBERS.ParusY, CST.IMAGES.Parus);
@@ -54,15 +55,15 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     }
 
     createBuildingWindow(playerStats) {
-        if (0 < this.BuildingSlots) {
-            if (this.buildingWindow != undefined) {
-                if (this.buildingWindow.buildingImage != undefined) {
-                    this.buildingWindow.buildingImage.destroy();
+        for (let i = 0; i < this.BuildingSlots; i++) {
+            if (this.buildingWindow[i] != undefined) {
+                if (this.buildingWindow[i].buildingImage != undefined) {
+                    this.buildingWindow[i].buildingImage.destroy();
                 }
                 //this.buildingWindows[i].clearWindowProgress();
-                this.buildingWindow.destroy();
+                this.buildingWindow[i].destroy();
             }
-            this.buildingWindow = new BuildingWindow(this.scene, 240, 820, playerStats);
+            this.buildingWindow[i] = new BuildingWindow(this.scene, 240, 820, i, playerStats);
         }
     }
 
@@ -160,7 +161,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
                 this.graphicsStatusInWait.fillRectShape(rect);
                 var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y - 57, 83, 14);
                 this.graphicsStatusCell.fillRectShape(cell);
-                this.coof = (Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown*(1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100));
+                this.coof = (Date.now() - playerStats.HERO_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnCooldown * (1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100));
             }
             var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y - 57, 83, 14);
             this.graphicsStatusCell.fillRectShape(cell);
@@ -175,18 +176,38 @@ export class HeroWindow extends Phaser.GameObjects.Image {
 }
 
 export class BuildingWindow extends Phaser.GameObjects.Image {
-    constructor(scene, x, y, playerStats) {
+    constructor(scene, x, y, index, playerStats) {
         super(scene, x, y, CST.IMAGES.CharacterWindow).setDepth(CST.DEPTHS.Slots + 1);
         this.scene = scene;
         this.x = x;
         this.y = y;
         this.buildingImage;
 
-        if (playerStats.BUILDING_SLOT != CST.EMPTY) {
-            switch (playerStats.BUILDING_SLOT) {
+        if (playerStats.BUILDING_SLOTS[index] != CST.EMPTY) {
+            switch (playerStats.BUILDING_SLOTS[index]) {
                 case "BuildingPodkova":
-                    this.buildingImage = new CharacterSprite(scene, x, y-130, CST.SPRITES360.BuildingPodkova, 1).setDepth(CST.DEPTHS.Slots);
+                    this.buildingImage = new CharacterSprite(scene, x, y - 130, CST.SPRITES360.BuildingPodkova, 1).setDepth(CST.DEPTHS.Slots);
                     this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Idle);
+                    break;
+                case "BuildingMPObelisk":
+                    this.buildingImage = new CharacterSprite(scene, x + 5, y - 180, CST.SPRITE_MP_OBELISK.BuildingMPObelisk, 1).setDepth(CST.DEPTHS.Slots);
+                    this.buildingImage.setScale(1.4);
+                    this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Idle);
+                    break;
+                case "BuildingHPObelisk":
+                    this.buildingImage = new CharacterSprite(scene, x, y - 110, CST.SPRITE_HP_OBELISK.BuildingHPObelisk, 1).setDepth(CST.DEPTHS.Slots);
+                    this.buildingImage.setScale(2.6);
+                    this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Idle);
+                    break;
+                case "BuildingCDObelisk":
+                    this.buildingImage = new CharacterSprite(scene, x - 5, y - 130, CST.SPRITE_HP_OBELISK.BuildingCDObelisk, 1).setDepth(CST.DEPTHS.Slots);
+                    this.buildingImage.setScale(1);
+                    this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Idle);
+                    break;
+                case "BuildingPlasmaGun":
+                    this.buildingImage = new CharacterSprite(scene, x + 45, y - 51, CST.SPRITE_PLASMA_GUN.BuildingPlasmaGun, 1).setDepth(CST.DEPTHS.Slots);
+                    this.buildingImage.setScale(0.5);
+                    this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Idle);
                     break;
             }
         }
@@ -196,6 +217,54 @@ export class BuildingWindow extends Phaser.GameObjects.Image {
         this.setInteractive();
 
         this.on("pointerup", () => {
+            if (playerStats.BattleMode) {
+                switch (playerStats.BUILDING_SLOTS[index]) {
+                    case "BuildingPodkova":
+                        this.buildingImage.once('animationcomplete', () => {
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Idle);
+                        })
+                        this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Use);
+                        this.scene.playerStats.COINS += 1000;
+                        break;
+                    case "BuildingMPObelisk":
+                        this.buildingImage.once('animationcomplete', () => {
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Idle);
+                        })
+                        this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Use);
+                        this.scene.parus.currMP = this.scene.parus.maxMP;
+                        break;
+                    case "BuildingHPObelisk":
+                        this.buildingImage.once('animationcomplete', () => {
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Idle);
+                        })
+                        this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Use);
+                        this.scene.parus.currHP = this.scene.parus.maxHP;
+                        break;
+                    case "BuildingCDObelisk":
+                        this.buildingImage.once('animationcomplete', () => {
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Idle);
+                        })
+                        this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Use);
+                        for (let i = 0; i < this.scene.parus.heroWindows.length; i++) {
+                            this.scene.parus.heroWindows[i].coof = 1;
+                        }
+                        break;
+                    case "BuildingPlasmaGun":
+                        this.buildingImage.once('animationcomplete', () => {
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Idle);
+                        })
+                        this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Use);
+                        for (let el in this.scene.characterHeap.heap) {
+                            this.scene.characterHeap.heap[el].specs.PhysicalDamage = 0;
+                            this.scene.characterHeap.heap[el].setAnimationDeath();
+                            this.scene.characterHeap.heap[el].remove();
+                        }
+                        break;
+                }
+            }
+            else{
+                openBuildingsBar(this.scene);
+            }   
         })
 
         this.on("pointerover", () => {

@@ -1,6 +1,7 @@
 import { CST } from "./const.js";
 import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
+import { closeBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { setStatusCOIN } from "../scripts/CreateStatusBar.js";
 import { addIfNotInclude, calculateCost } from "./Misc.js";
 
@@ -36,6 +37,7 @@ export function createShopBar(scene) {
 }
 
 export function openToolbarLeft(scene, t = null) {
+    closeBuildingsBar(scene);
     closeHeroesBar(scene);
 
     if (scene.recyclerViewSkills != undefined) {
@@ -104,7 +106,12 @@ export function openToolbarLeft(scene, t = null) {
             if ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0) {
                 scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);
                 setStatusCOIN(scene, scene.playerStats.COINS);
-                if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus") addIfNotInclude(scene.playerStats.AVAILABLE_HEROES, currName);
+                if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus" && currName != "BuildingPodkova" && currName != "BuildingMPObelisk" && currName != "BuildingHPObelisk" && currName != "BuildingCDObelisk" && currName != "BuildingPlasmaGun") {
+                    addIfNotInclude(scene.playerStats.AVAILABLE_HEROES, currName)
+                }
+                else if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus") {
+                    addIfNotInclude(scene.playerStats.AVAILABLE_BUILDINGS, currName)
+                }
                 scene.playerStats.LEVELS_SHOP[currName] += 1;
                 closeToolBar(scene);
                 openToolbarLeft(scene, scene.recyclerViewShop.t);

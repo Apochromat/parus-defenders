@@ -139,6 +139,30 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 360
             });
         }
+        for (let prop in CST.SPRITE_MP_OBELISK) {
+            this.load.spritesheet(CST.SPRITE_MP_OBELISK[prop], CST.SPRITE_MP_OBELISK[prop]+".png", {
+                frameHeight: 380,
+                frameWidth: 190
+            });
+        }
+        for (let prop in CST.SPRITE_HP_OBELISK) {
+            this.load.spritesheet(CST.SPRITE_HP_OBELISK[prop], CST.SPRITE_HP_OBELISK[prop]+".png", {
+                frameHeight: 140,
+                frameWidth: 100
+            });
+        }
+        for (let prop in CST.SPRITE_CD_OBELISK) {
+            this.load.spritesheet(CST.SPRITE_CD_OBELISK[prop], CST.SPRITE_CD_OBELISK[prop]+".png", {
+                frameHeight: 400,
+                frameWidth: 200
+            });
+        }
+        for (let prop in CST.SPRITE_PLASMA_GUN) {
+            this.load.spritesheet(CST.SPRITE_PLASMA_GUN[prop], CST.SPRITE_PLASMA_GUN[prop]+".png", {
+                frameHeight: 360,
+                frameWidth: 777
+            });
+        }
         for (let prop in CST.SPRITE_TOASTER) {
             this.load.spritesheet(CST.SPRITE_TOASTER[prop], CST.SPRITE_TOASTER[prop]+".png", {
                 frameHeight: 22,

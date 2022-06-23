@@ -30,7 +30,12 @@ var playerDataTemplate = {
         HeroNightmare: 0,
         HeroMinotaur: 0,
         HeroStormhead: 0,
-        HeroWizard: 0
+        HeroWizard: 0,
+        BuildingPodkova: 0,
+        BuildingMPObelisk: 0,
+        BuildingHPObelisk: 0,
+        BuildingCDObelisk: 0,
+        BuildingPlasmaGun: 0
     },
     LEVELS_SKILLS: {
         BonusGold: 0,
@@ -50,7 +55,12 @@ var playerDataTemplate = {
     AVAILABLE_HEROES: [
         "HeroCat"
     ],
-    BUILDING_SLOT: "BuildingPodkova",
+    AVAILABLE_BUILDINGS: [
+
+    ],
+    BUILDING_SLOTS: [
+        CST.EMPTY
+    ],
     HERO_SLOTS: [
         CST.EMPTY,
         CST.EMPTY,

@@ -1240,4 +1240,66 @@ export function createAnimations(scene) {
         frameRate: 2,
         repeat: -1
     });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPodkova.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES360.BuildingPodkova, { frames: [0, 1, 2, 3] }),
+        frameRate: 2,
+        repeat: -1
+    });
+
+    // MP Obelisk
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingMPObelisk.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_MP_OBELISK.BuildingMPObelisk, { frames: [14, 15, 16, 17, 18, 19, 20, 21] }),
+        frameRate: 8,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingMPObelisk.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_MP_OBELISK.BuildingMPObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // HP Obelisk
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingHPObelisk.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_HP_OBELISK.BuildingHPObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingHPObelisk.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_HP_OBELISK.BuildingHPObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // CD Obelisk
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingCDObelisk.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_CD_OBELISK.BuildingCDObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
+        frameRate: 8,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingCDObelisk.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_CD_OBELISK.BuildingCDObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Plasma gun
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPlasmaGun.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_PLASMA_GUN.BuildingPlasmaGun, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 16,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPlasmaGun.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_PLASMA_GUN.BuildingPlasmaGun, { frames: [0, 1, 2, 3] }),
+        frameRate: 48,
+        repeat: 25
+    });
 }
