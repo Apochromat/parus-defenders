@@ -15,7 +15,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     HeroSlots;
     BuildingSlots;
     heroWindows = [];
-    buildingWindow = [];
+    buildingWindows = [];
 
     constructor(scene, level = 0) {
         super(scene, CST.NUMBERS.ParusX, CST.NUMBERS.ParusY, CST.IMAGES.Parus);
@@ -51,19 +51,19 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         this.HeroSlots = calculateParusWindows(level);
         this.BuildingSlots = calculateParusBuildings(level);
         this.createHeroWindows(this.scene.playerStats);
-        this.createBuildingWindow(this.scene.playerStats);
+        this.createBuildingWindows(this.scene.playerStats);
     }
 
-    createBuildingWindow(playerStats) {
+    createBuildingWindows(playerStats) {
         for (let i = 0; i < this.BuildingSlots; i++) {
-            if (this.buildingWindow[i] != undefined) {
-                if (this.buildingWindow[i].buildingImage != undefined) {
-                    this.buildingWindow[i].buildingImage.destroy();
+            if (this.buildingWindows[i] != undefined) {
+                if (this.buildingWindows[i].buildingImage != undefined) {
+                    this.buildingWindows[i].buildingImage.destroy();
                 }
-                //this.buildingWindows[i].clearWindowProgress();
-                this.buildingWindow[i].destroy();
+                //this.buildingWindowss[i].clearWindowProgress();
+                this.buildingWindows[i].destroy();
             }
-            this.buildingWindow[i] = new BuildingWindow(this.scene, 240, 820, i, playerStats);
+            this.buildingWindows[i] = new buildingWindows(this.scene, 240, 820, i, playerStats);
         }
     }
 
@@ -175,13 +175,26 @@ export class HeroWindow extends Phaser.GameObjects.Image {
     }
 }
 
-export class BuildingWindow extends Phaser.GameObjects.Image {
+export class buildingWindows extends Phaser.GameObjects.Image {
+    graphicsStatusInWait;
+    graphicsStatusReady;
+    graphicsStatusCell;
+    scene;
+    x;
+    y;
+    index;
     constructor(scene, x, y, index, playerStats) {
         super(scene, x, y, CST.IMAGES.CharacterWindow).setDepth(CST.DEPTHS.Slots + 1);
         this.scene = scene;
         this.x = x;
         this.y = y;
+        this.index = index;
+        this.coof = 1;
         this.buildingImage;
+
+        if (this.graphicsStatusInWait == undefined)
+            this.initgraphicsStatusInWait(scene)
+        this.graphicsStatusInWait.clear();
 
         if (playerStats.BUILDING_SLOTS[index] != CST.EMPTY) {
             switch (playerStats.BUILDING_SLOTS[index]) {
@@ -210,6 +223,8 @@ export class BuildingWindow extends Phaser.GameObjects.Image {
                     this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Idle);
                     break;
             }
+            if (playerStats.BattleMode)
+                this.setBuildingWindowsProgress(playerStats);
         }
 
         scene.sys.displayList.add(this);
@@ -218,53 +233,61 @@ export class BuildingWindow extends Phaser.GameObjects.Image {
 
         this.on("pointerup", () => {
             if (playerStats.BattleMode) {
-                switch (playerStats.BUILDING_SLOTS[index]) {
-                    case "BuildingPodkova":
-                        this.buildingImage.once('animationcomplete', () => {
-                            this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Idle);
-                        })
-                        this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Use);
-                        this.scene.playerStats.COINS += 1000;
-                        break;
-                    case "BuildingMPObelisk":
-                        this.buildingImage.once('animationcomplete', () => {
-                            this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Idle);
-                        })
-                        this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Use);
-                        this.scene.parus.currMP = this.scene.parus.maxMP;
-                        break;
-                    case "BuildingHPObelisk":
-                        this.buildingImage.once('animationcomplete', () => {
-                            this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Idle);
-                        })
-                        this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Use);
-                        this.scene.parus.currHP = this.scene.parus.maxHP;
-                        break;
-                    case "BuildingCDObelisk":
-                        this.buildingImage.once('animationcomplete', () => {
-                            this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Idle);
-                        })
-                        this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Use);
-                        for (let i = 0; i < this.scene.parus.heroWindows.length; i++) {
-                            this.scene.parus.heroWindows[i].coof = 1;
-                        }
-                        break;
-                    case "BuildingPlasmaGun":
-                        this.buildingImage.once('animationcomplete', () => {
-                            this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Idle);
-                        })
-                        this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Use);
-                        for (let el in this.scene.characterHeap.heap) {
-                            this.scene.characterHeap.heap[el].specs.PhysicalDamage = 0;
-                            this.scene.characterHeap.heap[el].setAnimationDeath();
-                            this.scene.characterHeap.heap[el].remove();
-                        }
-                        break;
+                if (this.coof == 1 &&
+                    playerStats.BUILDING_SLOTS[this.index] != CST.EMPTY &&
+                    this.scene.parus.currMP >= this.scene.parus.maxMP*CST.CHARACTERS[playerStats.BUILDING_SLOTS[this.index]].MPCost) {
+                    this.graphicsStatusReady.clear();
+                    this.coof = 0;
+                    playerStats.BUILDING_SLOTS_SPAWNTIME[this.index] = Date.now();
+                    this.scene.parus.currMP -=  this.scene.parus.maxMP*CST.CHARACTERS[playerStats.BUILDING_SLOTS[this.index]].MPCost;
+                    switch (playerStats.BUILDING_SLOTS[index]) {
+                        case "BuildingPodkova":
+                            this.buildingImage.once('animationcomplete', () => {
+                                this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Idle);
+                            })
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Use);
+                            this.scene.playerStats.COINS += 1000;
+                            break;
+                        case "BuildingMPObelisk":
+                            this.buildingImage.once('animationcomplete', () => {
+                                this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Idle);
+                            })
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Use);
+                            this.scene.parus.currMP = this.scene.parus.maxMP;
+                            break;
+                        case "BuildingHPObelisk":
+                            this.buildingImage.once('animationcomplete', () => {
+                                this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Idle);
+                            })
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Use);
+                            this.scene.parus.currHP = this.scene.parus.maxHP*0.5;
+                            break;
+                        case "BuildingCDObelisk":
+                            this.buildingImage.once('animationcomplete', () => {
+                                this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Idle);
+                            })
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingCDObelisk.Use);
+                            for (let i = 0; i < this.scene.parus.heroWindows.length; i++) {
+                                this.scene.parus.heroWindows[i].coof = 1;
+                            }
+                            break;
+                        case "BuildingPlasmaGun":
+                            this.buildingImage.once('animationcomplete', () => {
+                                this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Idle);
+                            })
+                            this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Use);
+                            for (let el in this.scene.characterHeap.heap) {
+                                this.scene.characterHeap.heap[el].specs.PhysicalDamage = 0;
+                                this.scene.characterHeap.heap[el].setAnimationDeath();
+                                this.scene.characterHeap.heap[el].remove();
+                            }
+                            break;
+                    }
                 }
             }
-            else{
+            else {
                 openBuildingsBar(this.scene);
-            }   
+            }
         })
 
         this.on("pointerover", () => {
@@ -273,5 +296,39 @@ export class BuildingWindow extends Phaser.GameObjects.Image {
         this.on("pointerout", () => {
             this.setTexture(CST.IMAGES.CharacterWindow);
         })
+    }
+
+    initgraphicsStatusInWait(scene) {
+        this.graphicsStatusInWait = scene.add.graphics({ fillStyle: { color: 0x9966cc } }).setDepth(20000);
+        this.graphicsStatusCell = scene.add.graphics({ fillStyle: { color: 0x000000 } }).setDepth(10000);
+        this.graphicsStatusReady = scene.add.graphics({ fillStyle: { color: 0x51c751 } }).setDepth(10000);
+    }
+
+    setBuildingWindowProgress(playerStats) {
+        if (playerStats.BUILDING_SLOTS[this.index] != CST.EMPTY) {
+            this.graphicsStatusInWait.clear();
+            this.graphicsStatusReady.clear();
+            if (((Date.now() - playerStats.BUILDING_SLOTS_SPAWNTIME[this.index])/ (CST.CHARACTERS[playerStats.BUILDING_SLOTS[this.index]].CoolDown * (1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100))) >= 1 || this.coof == 1) {
+                this.coof = 1;
+                var rect = new Phaser.Geom.Rectangle(this.x - 39, this.y + 45, 79, 10);
+                this.graphicsStatusReady.fillRectShape(rect);
+            }
+            else {
+                this.graphicsStatusReady.clear();
+                var rect = new Phaser.Geom.Rectangle(this.x - 39, this.y + 45, 79 * this.coof, 10);
+                this.graphicsStatusInWait.fillRectShape(rect);
+                var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y + 45, 83, 14);
+                this.graphicsStatusCell.fillRectShape(cell);
+                this.coof = (Date.now() - playerStats.BUILDING_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.BUILDING_SLOTS[this.index]].CoolDown * (1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100));
+            }
+            var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y + 45, 83, 14);
+            this.graphicsStatusCell.fillRectShape(cell);
+        }
+    }
+
+    clearWindowProgress() {
+        this.graphicsStatusCell.clear();
+        this.graphicsStatusReady.clear();
+        this.graphicsStatusInWait.clear();
     }
 }

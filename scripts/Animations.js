@@ -1300,6 +1300,6 @@ export function createAnimations(scene) {
         key: CST.ANIMATIONS.BuildingPlasmaGun.Use,
         frames: scene.anims.generateFrameNumbers(CST.SPRITE_PLASMA_GUN.BuildingPlasmaGun, { frames: [0, 1, 2, 3] }),
         frameRate: 48,
-        repeat: 25
+        repeat: 15
     });
 }

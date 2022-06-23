@@ -1593,32 +1593,32 @@ export const CST = {
         BuildingPodkova: {
             Name: "Подкова",
             Description: "Увеличение кол-ва \nвыпадающих монет",
-            MPCost: 150,
+            MPCost: 0.2,
             CoolDown: 20000
         },
         BuildingMPObelisk: {
             Name: "Обелиск Магии",
             Description: "Мгновенно \nвосстанавливает MP",
-            MPCost: 150,
-            CoolDown: 20000
+            MPCost: 0,
+            CoolDown: 30000
         },
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
-            Description: "Мгновенно \nвосстанавливает HP",
-            MPCost: 150,
+            Description: "Мгновенно \nвосстанавливает 50% HP",
+            MPCost: 0.4,
             CoolDown: 20000
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
             Description: "Мгновенно \nобнуляет перезарядку\n героев",
-            MPCost: 150,
-            CoolDown: 20000
+            MPCost: 0.3,
+            CoolDown: 10000
         },
         BuildingPlasmaGun: {
             Name: "BFG-9000",
             Description: "Уничтожает всех \nпротивников на поле",
-            MPCost: 150,
-            CoolDown: 20000
+            MPCost: 0.5,
+            CoolDown: 30000
         }
     },
     PARUS: {

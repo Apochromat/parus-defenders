@@ -117,12 +117,12 @@ export class PlayScene extends Phaser.Scene {
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusCOIN(this, this.playerStats.COINS);
 
-        for (let el in this.characterHeap.heap)
-            //this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
-
-            if (this.playerStats.BattleMode)
-                for (let i = 0; i < this.parus.heroWindows.length; i++)
-                    this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
+        if (this.playerStats.BattleMode) {
+            for (let i = 0; i < this.parus.heroWindows.length; i++)
+                this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
+            for (let i = 0; i < this.parus.buildingWindows.length; i++)
+                this.parus.buildingWindows[i].setBuildingWindowProgress(this.playerStats);
+        }
 
         if (this.playerStats.BattleMode && this.battleFlag == 0) {
             closeToolBar(this);
@@ -148,10 +148,14 @@ export class PlayScene extends Phaser.Scene {
                 this.parus.heroWindows[i].coof = 1;
                 this.parus.heroWindows[i].clearWindowProgress();
             }
+            for (let i = 0; i < this.parus.buildingWindows.length; i++) {
+                this.parus.buildingWindows[i].coof = 1;
+                this.parus.buildingWindows[i].clearWindowProgress();
+            }
 
             this.battleFlag = 0;
         }
-        battle(this.parus, this.enemies, this.heroes, this.characterHeap,this.playerStats);
+        battle(this.parus, this.enemies, this.heroes, this.characterHeap, this.playerStats);
 
     }
 
@@ -398,7 +402,7 @@ export class PlayScene extends Phaser.Scene {
                     width: 300, height: 60,
 
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                    text: scene.add.text(0, 0, `${el}`,{ fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+                    text: scene.add.text(0, 0, `${el}`, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
 
                     align: 'center',
                     space: {

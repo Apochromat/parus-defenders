@@ -69,6 +69,9 @@ var playerDataTemplate = {
         CST.EMPTY,
         CST.EMPTY
     ],
+    BUILDING_SLOTS_SPAWNTIME: [
+        Date.now()
+    ],
     HERO_SLOTS_SPAWNTIME: [
         Date.now(),
         Date.now(),
