@@ -1232,4 +1232,12 @@ export function createAnimations(scene) {
         frameRate: 8,
         repeat: 0
     });
+
+    // Podkova
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPodkova.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES360.BuildingPodkova, { frames: [0, 1, 2, 3] }),
+        frameRate: 2,
+        repeat: -1
+    });
 }

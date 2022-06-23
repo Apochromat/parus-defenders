@@ -18,7 +18,7 @@ var playerDataTemplate = {
         Fullscreen: false
     },
     LEVELS_SHOP: {
-        Parus: 0,
+        Parus: 20,
         HeroCat: 1,
         HeroMage: 0,
         HeroArchaeologist: 0,
@@ -50,6 +50,7 @@ var playerDataTemplate = {
     AVAILABLE_HEROES: [
         "HeroCat"
     ],
+    BUILDING_SLOT: "BuildingPodkova",
     HERO_SLOTS: [
         CST.EMPTY,
         CST.EMPTY,

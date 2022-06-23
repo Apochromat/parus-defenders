@@ -158,6 +158,9 @@ export const CST = {
     SPRITES250: {
         MonsterSoulWizard: "monster_soul_wizard",
     },
+    SPRITES360: {
+        BuildingPodkova: "building_podkova",
+    },
     SPRITE_TOASTER: {
         MonsterToaster: "monster_toaster",
     },
@@ -850,6 +853,9 @@ export const CST = {
             Walk: 'hero_wizard_walk',
             Hit: 'hero_wizard_hit',
             Death: 'hero_wizard_death'
+        },
+        BuildingPodkova: {
+            Idle: 'building_podkova_idle'
         }
     },
     CHARACTERS: {

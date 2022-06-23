@@ -14,6 +14,7 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     HeroSlots;
     BuildingSlots;
     heroWindows = [];
+    buildingWindow;
 
     constructor(scene, level = 0) {
         super(scene, CST.NUMBERS.ParusX, CST.NUMBERS.ParusY, CST.IMAGES.Parus);
@@ -49,6 +50,20 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
         this.HeroSlots = calculateParusWindows(level);
         this.BuildingSlots = calculateParusBuildings(level);
         this.createHeroWindows(this.scene.playerStats);
+        this.createBuildingWindow(this.scene.playerStats);
+    }
+
+    createBuildingWindow(playerStats) {
+        if (0 < this.BuildingSlots) {
+            if (this.buildingWindow != undefined) {
+                if (this.buildingWindow.buildingImage != undefined) {
+                    this.buildingWindow.buildingImage.destroy();
+                }
+                //this.buildingWindows[i].clearWindowProgress();
+                this.buildingWindow.destroy();
+            }
+            this.buildingWindow = new BuildingWindow(this.scene, 240, 820, playerStats);
+        }
     }
 
     createHeroWindows(playerStats) {
@@ -156,5 +171,38 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.graphicsStatusCell.clear();
         this.graphicsStatusReady.clear();
         this.graphicsStatusInWait.clear();
+    }
+}
+
+export class BuildingWindow extends Phaser.GameObjects.Image {
+    constructor(scene, x, y, playerStats) {
+        super(scene, x, y, CST.IMAGES.CharacterWindow).setDepth(CST.DEPTHS.Slots + 1);
+        this.scene = scene;
+        this.x = x;
+        this.y = y;
+        this.buildingImage;
+
+        if (playerStats.BUILDING_SLOT != CST.EMPTY) {
+            switch (playerStats.BUILDING_SLOT) {
+                case "BuildingPodkova":
+                    this.buildingImage = new CharacterSprite(scene, x, y-130, CST.SPRITES360.BuildingPodkova, 1).setDepth(CST.DEPTHS.Slots);
+                    this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Idle);
+                    break;
+            }
+        }
+
+        scene.sys.displayList.add(this);
+        this.setScale(2.5);
+        this.setInteractive();
+
+        this.on("pointerup", () => {
+        })
+
+        this.on("pointerover", () => {
+            this.setTexture(CST.IMAGES.CharacterWindowChoose);
+        })
+        this.on("pointerout", () => {
+            this.setTexture(CST.IMAGES.CharacterWindow);
+        })
     }
 }

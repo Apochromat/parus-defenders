@@ -133,6 +133,12 @@ export class LoadScene extends Phaser.Scene {
                 frameWidth: 250
             });
         }
+        for (let prop in CST.SPRITES360) {
+            this.load.spritesheet(CST.SPRITES360[prop], CST.SPRITES360[prop]+".png", {
+                frameHeight: 360,
+                frameWidth: 360
+            });
+        }
         for (let prop in CST.SPRITE_TOASTER) {
             this.load.spritesheet(CST.SPRITE_TOASTER[prop], CST.SPRITE_TOASTER[prop]+".png", {
                 frameHeight: 22,
