@@ -63,7 +63,7 @@ export class Wave {
         }
         this.spawnList = shuffle(this.spawnList);
         this.allBatches = this.spawnList.length;
-        console.log(this.spawnList);
+        //console.log(this.spawnList);
     }
 
     run() {

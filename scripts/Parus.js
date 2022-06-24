@@ -253,7 +253,7 @@ export class buildingWindows extends Phaser.GameObjects.Image {
                                 this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Idle);
                             })
                             this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Use);
-                            this.scene.parus.currMP = this.scene.parus.maxMP;
+                            this.scene.parus.currMP = this.scene.parus.maxMP*0.5;
                             break;
                         case "BuildingHPObelisk":
                             this.buildingImage.once('animationcomplete', () => {
@@ -276,10 +276,8 @@ export class buildingWindows extends Phaser.GameObjects.Image {
                                 this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Idle);
                             })
                             this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Use);
-                            for (let el in this.scene.characterHeap.heap) {
-                                this.scene.characterHeap.heap[el].specs.PhysicalDamage = 0;
-                                this.scene.characterHeap.heap[el].setAnimationDeath();
-                                this.scene.characterHeap.heap[el].remove();
+                            for (let el of this.scene.enemies.children.entries) {
+                                el.death();
                             }
                             break;
                     }

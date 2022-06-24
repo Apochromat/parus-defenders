@@ -27,10 +27,9 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 enemy.lastDamageTime = Date.now();
                 if (!parus.damage(calculateDamageParus(playerStats, enemy.constructor.name))) {
                     for (let el in characterHeap.heap) {
-                        characterHeap.heap[el].specs.PhysicalDamage = 0;
-                        console.log(characterHeap.heap[el]);
+                        //(characterHeap.heap[el]);
                         characterHeap.heap[el].death();
-                        console.log(characterHeap.heap[el]);
+                        //console.log(characterHeap.heap[el]);
                     }
                 }
             }
@@ -63,7 +62,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     }
 
                     if (enemy.array[i]) {
-                        console.log(enemy.array[i].array);
+                        //console.log(enemy.array[i].array);
                         if (enemy.array[i].array.includes(enemy)) {
                             flag = true;
                         }
@@ -76,7 +75,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     VectorYMin = VectorY;
 
                 }
-
             }
 
 
@@ -144,7 +142,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                         enemy.setAnimationHit();
                         if (!parus.damage(calculateDamageParus(playerStats, enemy.constructor.name))) {
                             for (let el in characterHeap.heap) {
-                                characterHeap.heap[el].specs.PhysicalDamage = 0;
                                 characterHeap.heap[el].death();
                             }
                             parus.currHP = parus.maxHP;
@@ -185,7 +182,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     if (hero.array[i] == undefined && !(hero.array.includes(ene))) {
                         hero.array[i] = ene;
                     }
-                    else if (hero.array[i] && !(hero.array.includes(ene)) && !hero.array.includes(undefined) &&Math.abs(hero.array[i].x-hero.x)>hero.specs.Range) {
+                    else if (hero.array[i] && !(hero.array.includes(ene)) && !hero.array.includes(undefined) && Math.abs(hero.array[i].x - hero.x) > hero.specs.Range) {
                         if (ene.lengthForEnemy < hero.array[i].lengthForEnemy) {
 
                             for (var j = hero.array.length - 2; j > i; j--) {

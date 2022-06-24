@@ -10,7 +10,7 @@ var playerDataTemplate = {
     SKILL_POINTS: 1,
     LVL: 1,
     EXPERIENCE: 0,
-    WAVE: 1,
+    WAVE: 49,
     WAVE_PROGRESS: 0,
     OPTIONS: {
         Music: 5,

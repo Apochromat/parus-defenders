@@ -133,7 +133,7 @@ export function calculateParusWindows(x) {
   let k = 0.05;
   let m = -32;
   let l = 6.43;
-  return Math.min(Math.trunc(-Math.exp(-k*(x+m))+l), 6);
+  return Math.min(Math.trunc(-Math.exp(-k * (x + m)) + l), 6);
 }
 
 export function calculateParusBuildings(x) {
@@ -144,7 +144,7 @@ export function calculateParusBuildings(x) {
   let k = 0.01194;
   let m = -150;
   let l = 6;
-  return Math.min(Math.trunc(-Math.exp(-k*(x+m))+l), 1);
+  return Math.min(Math.trunc(-Math.exp(-k * (x + m)) + l), 1);
 }
 
 export function calculateParusMaxMP(x) {
@@ -164,7 +164,7 @@ export function calculateCost(key, level, beginCost) {
 
 export function calculateHeroSpecs(basic, level) {
   if (level == 0) return 0;
-  return Math.trunc(basic * (1.1 ** (level-1)));
+  return Math.trunc(basic * (1.1 ** (level - 1)));
 }
 
 export function addIfNotInclude(array, item) {

@@ -174,9 +174,7 @@ export class PlayScene extends Phaser.Scene {
             else if (this.enemies.getLength() == 0) {
                 this.playerStats.BattleMode = false;
                 for (let el in this.characterHeap.heap) {
-                    this.characterHeap.heap[el].specs.PhysicalDamage = 0;
-                    this.characterHeap.heap[el].setAnimationDeath();
-                    this.characterHeap.heap[el].remove();
+                    this.characterHeap.heap[el].death();
                 }
                 this.parus.currHP = this.parus.maxHP;
                 this.parus.currMP = this.parus.maxMP;
@@ -286,7 +284,6 @@ export class PlayScene extends Phaser.Scene {
         this.scrollablePanel
             .setChildrenInteractive()
             .on('child.click', function (args) {
-                console.log(args.text);
                 args.scene.characterHeap.createMonster(args.text, args.scene,
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
@@ -331,7 +328,6 @@ export class PlayScene extends Phaser.Scene {
         this.scrollablePanelBosses
             .setChildrenInteractive()
             .on('child.click', function (args) {
-                console.log(args.text);
                 args.scene.characterHeap.createBoss(args.text, args.scene,
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
                     randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
@@ -376,7 +372,6 @@ export class PlayScene extends Phaser.Scene {
         this.scrollablePanelHeroes
             .setChildrenInteractive()
             .on('child.click', function (args) {
-                console.log(args.text);
                 args.scene.characterHeap.createHero(args.text, args.scene,
                     randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
                     randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
