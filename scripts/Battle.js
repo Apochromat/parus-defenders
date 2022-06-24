@@ -9,18 +9,20 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
         parus.currMP = parus.maxMP;
         playerStats.WAVE_PROGRESS = 0;
     }
-    else {enemies.getMatching("active", true).forEach(enemy => {
+    else {enemies.getMatching("alive", true).forEach(enemy => {
         if ((heroes.getLength() == 0 || enemy.specs.ParusPriority) && Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range + 175) {//
             var VectorX, VectorY;
             VectorX = (parus.x - enemy.x);
             VectorY = (parus.y + 150 - enemy.y);
             var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
             if (VectorX > 0) {
+             
                 enemy.setAnimationWalk(false);
             }
             else {
                 enemy.flipX = true;
                 enemy.setAnimationWalk(true);
+             
             }
 
             enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
@@ -87,10 +89,12 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     if (VectorXMin > 0) {
                         enemy.flipX = false;
                         enemy.setAnimationWalk();
+                    
                     }
                     else {
                         enemy.flipX = true;
                         enemy.setAnimationWalk();
+                      
                     }
                     enemy.setVelocity(VectorXMin / modulMin * enemy.specs.Speed, VectorYMin / modulMin * enemy.specs.Speed);
                 }
@@ -130,10 +134,12 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
                     if (VectorX > 0) {
                         enemy.setAnimationWalk(false);
+                       
                     }
                     else {
                         enemy.flipX = true;
                         enemy.setAnimationWalk(true);
+                       
                     }
 
                     enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
@@ -159,7 +165,7 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
         }
     });
 
-    heroes.getMatching("active", true).forEach(hero => {
+    heroes.getMatching("alive", true).forEach(hero => {
 
         if (enemies.getLength() == 0) {
 
@@ -210,23 +216,17 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                 if (VectorXMin > 0) {
                     hero.flipX = false;
                     hero.setAnimationWalk();
+                    
                 }
                 else {
                     hero.flipX = true;
                     hero.setAnimationWalk();
+                 
                 }
                 hero.setVelocity(VectorXMin / modulMin * hero.specs.Speed, VectorYMin / modulMin * hero.specs.Speed);
 
             }
-            for (var i = 0; i < hero.array.length; i++) {
-                if (hero.array[i]) {
-                    if (!hero.array[i].alive) {
-                        hero.array[i] = undefined;
-
-                    }
-
-                }
-            }
+            
 
 
             if (Date.now() - hero.lastDamageTime >= hero.specs.AttackCooldown && Math.abs(hero.x - enemy.x) <= hero.specs.Range) {
@@ -240,6 +240,13 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                         if (Math.abs(hero.x - hero.array[i].x) <= hero.specs.Range) {
                             hero.array[i].damage(calculateDamage(playerStats, String(hero.constructor.name), String(hero.array[i].constructor.name)));
                         }
+                    }
+                }
+            }
+            for (var i = 0; i < hero.array.length; i++) {
+                if (hero.array[i]) {
+                    if (!hero.array[i].alive) {
+                        hero.array[i] = undefined;
                     }
                 }
             }
