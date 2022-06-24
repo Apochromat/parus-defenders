@@ -946,8 +946,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 15,
             Experience: 5,
-            Range: 50,
-            EnemyControl:4,
+            Range: 30,
+            EnemyControl:2,
             ParusPriority:false
         },
         MonsterTwig: {
@@ -963,7 +963,7 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl:3,
             ParusPriority:false
         },
         MonsterBrainer: {
@@ -979,7 +979,7 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl:3,
             ParusPriority:false
         },
         MonsterHellhound: {
@@ -1011,7 +1011,7 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl:3,
             ParusPriority:false
         },
         MonsterBot: {
@@ -1026,8 +1026,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 100,
+            EnemyControl:5,
             ParusPriority:false
         },
         MonsterDarkKnight: {
@@ -1058,8 +1058,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 60,
-            EnemyControl:4,
+            Range: 20,
+            EnemyControl:5,
             ParusPriority:false
         },
         MonsterSlayer: {
@@ -1075,7 +1075,7 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl:5,
             ParusPriority:false
         },
         MonsterWorm: {
@@ -1090,8 +1090,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 60,
-            EnemyControl:4,
+            Range: 50,
+            EnemyControl:2,
             ParusPriority:false
         },
         MonsterToaster: {
@@ -1107,7 +1107,7 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 50,
-            EnemyControl:4,
+            EnemyControl:6,
             ParusPriority:false
         },
         MonsterIEM: {
@@ -1138,8 +1138,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 70,
+            EnemyControl:5,
             ParusPriority:false
         },
         MonsterBringer: {
@@ -1154,8 +1154,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 100,
+            EnemyControl:8  ,
             ParusPriority:false
         },
         MonsterNecromancer: {
@@ -1186,8 +1186,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 70,
+            EnemyControl:6,
             ParusPriority:false
         },
         MonsterSoulWizard: {
@@ -1202,8 +1202,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 80,
+            EnemyControl:7,
             ParusPriority:false
         },
         MonsterFireWizard: {
@@ -1218,8 +1218,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 80,
+            EnemyControl:7,
             ParusPriority:false
         },
         MonsterGuardian: {
@@ -1266,8 +1266,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 25,
             Experience: 10,
-            Range: 50,
-            EnemyControl:4,
+            Range: 80,
+            EnemyControl:5,
             ParusPriority:false
         },
         BossCultist: {
@@ -1282,8 +1282,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 30000,
             Experience: 100,
-            Range: 60,
-            EnemyControl:4,
+            Range: 80,
+            EnemyControl:10,
             ParusPriority:false
         },
         BossCthulhu: {
@@ -1298,8 +1298,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 30000,
             Experience: 100,
-            Range: 60,
-            EnemyControl:4,
+            Range: 200,
+            EnemyControl:13,
             ParusPriority:false
         },
         BossDemon: {
@@ -1314,7 +1314,7 @@ export const CST = {
             MagicProtection: 10,
             Cost: 30000,
             Experience: 100,
-            Range: 200,
+            Range: 300,
             EnemyControl:15,
             ParusPriority:false
         },
@@ -1346,8 +1346,8 @@ export const CST = {
             MagicProtection: 10,
             Cost: 10000,
             Experience: 10,
-            Range: 60,
-            EnemyControl:15,
+            Range: 100,
+            EnemyControl:13,
              ParusPriority:false
         },
         HeroCat: {
@@ -1424,9 +1424,8 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 50,
             MPCost: 70,
-            Range: 60,
-            EnemyControl:4,
-            InFight: false
+            Range: 80,
+            EnemyControl:2,
         },
         HeroTesla: {
             Name: "Тесла",
@@ -1444,9 +1443,8 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 50,
             MPCost: 70,
-            Range: 60,
-            EnemyControl:4,
-            InFight: false
+            Range: 30,
+            EnemyControl:7,
         },
         HeroWitch: {
             Name: "Ведьмочка",
@@ -1485,8 +1483,7 @@ export const CST = {
             Speed: 50,
             MPCost: 65,
             Range: 60,
-            EnemyControl:4,
-            InFight: false
+            EnemyControl:3,
         },
         HeroReaper: {
             Name: "Жнец",
@@ -1505,8 +1502,8 @@ export const CST = {
             Speed: 80,
             MPCost: 200,
             Range: 60,
-            EnemyControl:4,
-            InFight: false
+            EnemyControl:4
+           
         },
         HeroNightmare: {
             Name: "Кошмар",
@@ -1524,9 +1521,9 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 150,
             MPCost: 200,
-            Range: 60,
-            EnemyControl:4,
-            InFight: false
+            Range: 50,
+            EnemyControl:4
+        
         },
         HeroMinotaur: {
             Name: "Минотавр",
@@ -1544,8 +1541,8 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 50,
             MPCost: 400,
-            Range: 60,
-            EnemyControl:4,
+            Range: 30,
+            EnemyControl:7,
             InFight: false
         },
         HeroStormhead: {
@@ -1564,9 +1561,8 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 50,
             MPCost: 600,
-            Range: 60,
-            EnemyControl:4,
-            InFight: false
+            Range: 100,
+            EnemyControl:10,
         },
         HeroWizard: {
             Name: "Чародей",
@@ -1586,7 +1582,6 @@ export const CST = {
             MPCost: 150,
             Range: 60,
             EnemyControl:4,
-            InFight: false
         },
         BuildingPodkova: {
             Name: "Подкова",
