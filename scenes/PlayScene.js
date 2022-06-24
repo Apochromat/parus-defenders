@@ -115,7 +115,7 @@ export class PlayScene extends Phaser.Scene {
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
-        setStatusCOIN(this, this.playerStats.COINS);
+        setStatusCOIN(this, Math.trunc(this.playerStats.COINS));
 
         if (this.playerStats.BattleMode) {
             for (let i = 0; i < this.parus.heroWindows.length; i++)
