@@ -12,6 +12,12 @@ export function createToolBar(scene){
     scene.toolBarClose.on("pointerup", () => {
         closeToolBar(scene);
     });
+    scene.toolBarClose.on("pointerout", () => {
+        scene.toolBarClose.setTexture(CST.IMAGES.ToolBarClose);
+    });
+    scene.toolBarClose.on("pointerover", () => {
+        scene.toolBarClose.setTexture(CST.IMAGES.ToolBarCloseChoose);
+    });
 }
 
 export function closeToolBar(scene){

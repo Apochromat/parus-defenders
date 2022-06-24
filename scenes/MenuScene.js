@@ -22,8 +22,21 @@ export class MenuScene extends Phaser.Scene {
         playButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.PLAY);
         })
+        playButton.on("pointerout", () => {
+            playButton.setTexture(CST.IMAGES.PlayButton);
+        })
+        playButton.on("pointerover", () => {
+            playButton.setTexture(CST.IMAGES.PlayButtonChoose);
+        })
+
         optionButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.OPTIONS);
+        })
+        optionButton.on("pointerout", () => {
+            optionButton.setTexture(CST.IMAGES.OptionsButton);
+        })
+        optionButton.on("pointerover", () => {
+            optionButton.setTexture(CST.IMAGES.OptionsButtonChoose);
         })
     }
 }

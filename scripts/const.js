@@ -33,20 +33,32 @@ export const CST = {
         BackgroundOptions: 'backgroundOptions',
         Background: "background",
         SwitchON: "switchOn",
+        SwitchONChoose: "switchOnChoose",
         SwitchOFF: "switchOff",
+        SwitchOFFChoose: "switchOffChoose",
         EraseButton: "eraseButton",
+        EraseButtonChoose: "eraseButtonChoose",
         Parus: "parus",
         CharacterWindow: "characterWindow",
+        CharacterWindowChoose: "characterWindowChoose",
         PlayButton: 'playButton',
+        PlayButtonChoose: 'playButtonChoose',
         BattleButton: "newWaveButton",
+        BattleButtonChoose: "newWaveButtonChoose",
         OptionsButton: 'optionsButton',
+        OptionsButtonChoose: 'optionsButtonChoose',
         BackButton: 'backButton',
+        BackButtonChoose: 'backButtonChoose',
         StatusBar: "statusBar",
         ToolBarClose: "toolBarClose",
+        ToolBarCloseChoose: "toolBarCloseChoose",
         ToolBarLeft: "toolBarLeft",
+        ToolBarLeftChoose: "toolBarLeftChoose",
         ToolBarRight: "toolBarRight",
+        ToolBarRightChoose: "toolBarRightChoose",
         ToolBarField: "toolBarField",
         HeroesBarClose: "heroesBarClose",
+        HeroesBarCloseChoose: "heroesBarCloseChoose",
         HeroesBarField: "heroesBarField"
     },
     ICONS: {
@@ -75,7 +87,12 @@ export const CST = {
         HeroNightmare: "iconHeroNightmare",
         HeroMinotaur: "iconHeroMinotaur",
         HeroStormhead: "iconHeroStormhead",
-        HeroWizard: "iconHeroWizard"
+        HeroWizard: "iconHeroWizard",
+        BuildingPodkova: "iconBuildingPodkova",
+        BuildingMPObelisk: "iconBuildingMPObelisk",
+        BuildingHPObelisk: "iconBuildingHPObelisk",
+        BuildingCDObelisk: "iconBuildingCDObelisk",
+        BuildingPlasmaGun: "iconBuildingPlasmaGun"
     },
     SPRITES32: {
         MonsterSlime: "monster_slime",
@@ -145,6 +162,21 @@ export const CST = {
     },
     SPRITES250: {
         MonsterSoulWizard: "monster_soul_wizard",
+    },
+    SPRITES360: {
+        BuildingPodkova: "building_podkova",
+    },
+    SPRITE_MP_OBELISK: {
+        BuildingMPObelisk: "building_mp_obelisk",
+    },
+    SPRITE_HP_OBELISK: {
+        BuildingHPObelisk: "building_hp_obelisk",
+    },
+    SPRITE_CD_OBELISK: {
+        BuildingCDObelisk: "building_cd_obelisk",
+    },
+    SPRITE_PLASMA_GUN: {
+        BuildingPlasmaGun: "building_plasma_gun",
     },
     SPRITE_TOASTER: {
         MonsterToaster: "monster_toaster",
@@ -235,6 +267,31 @@ export const CST = {
         HeroWizard: {
             Name: "Чародей",
             Description: "Увеличение HP и \nурона Чародея",
+            BeginCost: 5000
+        },
+        BuildingPodkova: {
+            Name: "Подкова",
+            Description: "Увеличение кол-ва \nвыпадающих монет",
+            BeginCost: 5000
+        },
+        BuildingMPObelisk: {
+            Name: "Обелиск Магии",
+            Description: "Мгновенно \nвосстанавливает MP",
+            BeginCost: 5000
+        },
+        BuildingHPObelisk: {
+            Name: "Обелиск Жизни",
+            Description: "Мгновенно \nвосстанавливает HP",
+            BeginCost: 5000
+        },
+        BuildingCDObelisk: {
+            Name: "Обелиск Времени",
+            Description: "Мгновенно \nобнуляет перезарядку\n героев",
+            BeginCost: 5000
+        },
+        BuildingPlasmaGun: {
+            Name: "BFG-9000",
+            Description: "Уничтожает всех \nпротивников на поле",
             BeginCost: 5000
         }
     },
@@ -757,75 +814,107 @@ export const CST = {
         },
         HeroCat: {
             Idle: 'hero_cat_idle',
+            IdleWindow: 'hero_cat_idle_window',
             Walk: 'hero_cat_walk',
             Hit: 'hero_cat_hit',
             Death: 'hero_cat_death'
         },
         HeroMage: {
             Idle: 'hero_mage_idle',
+            IdleWindow: 'hero_mage_idle_window',
             Walk: 'hero_mage_walk',
             Hit: 'hero_mage_hit',
             Death: 'hero_mage_death'
         },
         HeroArchaeologist: {
             Idle: 'hero_archaeologist_idle',
+            IdleWindow: 'hero_archaeologist_idle_window',
             Walk: 'hero_archaeologist_walk',
             Hit: 'hero_archaeologist_hit',
             Death: 'hero_archaeologist_death'
         },
         HeroSceleton: {
             Idle: 'hero_sceleton_idle',
+            IdleWindow: 'hero_sceleton_idle_window',
             Walk: 'hero_sceleton_walk',
             Hit: 'hero_sceleton_hit',
             Death: 'hero_sceleton_death'
         },
         HeroTesla: {
             Idle: 'hero_tesla_idle',
+            IdleWindow: 'hero_tesla_idle_window',
             Walk: 'hero_tesla_walk',
             Hit: 'hero_tesla_hit',
             Death: 'hero_tesla_death'
         },
         HeroWitch: {
             Idle: 'hero_witch_idle',
+            IdleWindow: 'hero_witch_idle_window',
             Walk: 'hero_witch_walk',
             Hit: 'hero_witch_hit',
             Death: 'hero_witch_death'
         },
         HeroCenturion: {
             Idle: 'hero_centurion_idle',
+            IdleWindow: 'hero_centurion_idle_window',
             Walk: 'hero_centurion_walk',
             Hit: 'hero_centurion_hit',
             Death: 'hero_centurion_death'
         },
         HeroReaper: {
             Idle: 'hero_reaper_idle',
+            IdleWindow: 'hero_reaper_idle_window',
             Walk: 'hero_reaper_walk',
             Hit: 'hero_reaper_hit',
             Death: 'hero_reaper_death'
         },
         HeroNightmare: {
             Idle: 'hero_nightmare_idle',
+            IdleWindow: 'hero_nightmare_idle_window',
             Walk: 'hero_nightmare_walk',
             Hit: 'hero_nightmare_hit',
             Death: 'hero_nightmare_death'
         },
         HeroMinotaur: {
             Idle: 'hero_minotaur_idle',
+            IdleWindow: 'hero_minotaur_idle_window',
             Walk: 'hero_minotaur_walk',
             Hit: 'hero_minotaur_hit',
             Death: 'hero_minotaur_death'
         },
         HeroStormhead: {
             Idle: 'hero_stormhead_idle',
+            IdleWindow: 'hero_stormhead_idle_window',
             Walk: 'hero_stormhead_walk',
             Hit: 'hero_stormhead_hit',
             Death: 'hero_stormhead_death'
         },
         HeroWizard: {
             Idle: 'hero_wizard_idle',
+            IdleWindow: 'hero_wizard_idle_window',
             Walk: 'hero_wizard_walk',
             Hit: 'hero_wizard_hit',
             Death: 'hero_wizard_death'
+        },
+        BuildingPodkova: {
+            Idle: 'building_podkova_idle',
+            Use: 'building_podkova_use'
+        },
+        BuildingMPObelisk: {
+            Idle: 'building_mp_obelisk_idle',
+            Use: 'building_mp_obelisk_use',
+        },
+        BuildingHPObelisk: {
+            Idle: 'building_hp_obelisk_idle',
+            Use: 'building_hp_obelisk_use',
+        },
+        BuildingCDObelisk: {
+            Idle: 'building_cd_obelisk_idle',
+            Use: 'building_cd_obelisk_use',
+        },
+        BuildingPlasmaGun: {
+            Idle: 'building_plasma_gun_idle',
+            Use: 'building_plasma_gun_use',
         }
     },
     CHARACTERS: {
@@ -1500,6 +1589,36 @@ export const CST = {
             Range: 60,
             EnemyControl:4,
             InFight: false
+        },
+        BuildingPodkova: {
+            Name: "Подкова",
+            Description: "Увеличение кол-ва \nвыпадающих монет",
+            MPCost: 0.2,
+            CoolDown: 20000
+        },
+        BuildingMPObelisk: {
+            Name: "Обелиск Магии",
+            Description: "Мгновенно \nвосстанавливает MP",
+            MPCost: 0,
+            CoolDown: 30000
+        },
+        BuildingHPObelisk: {
+            Name: "Обелиск Жизни",
+            Description: "Мгновенно \nвосстанавливает 50% HP",
+            MPCost: 0.4,
+            CoolDown: 20000
+        },
+        BuildingCDObelisk: {
+            Name: "Обелиск Времени",
+            Description: "Мгновенно \nобнуляет перезарядку\n героев",
+            MPCost: 0.3,
+            CoolDown: 10000
+        },
+        BuildingPlasmaGun: {
+            Name: "BFG-9000",
+            Description: "Уничтожает всех \nпротивников на поле",
+            MPCost: 0.5,
+            CoolDown: 30000
         }
     },
     PARUS: {

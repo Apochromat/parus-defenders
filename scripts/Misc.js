@@ -139,14 +139,12 @@ export function calculateParusWindows(x) {
 export function calculateParusBuildings(x) {
   /* Function:
   f(0 <= x <= 15) = 0;
-  f(16 <= x <= 33) = 1;
-  f(33 <= x <= 77) = 2;
-  f(58 <= x <= inf) = 3;
+  f(16 <= x <= inf) = 1;
   */
   let k = 0.01194;
   let m = -150;
   let l = 6;
-  return Math.min(Math.trunc(-Math.exp(-k*(x+m))+l), 6);
+  return Math.min(Math.trunc(-Math.exp(-k*(x+m))+l), 1);
 }
 
 export function calculateParusMaxMP(x) {

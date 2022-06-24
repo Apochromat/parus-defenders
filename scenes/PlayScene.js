@@ -6,6 +6,7 @@ import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
 import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
 import { closeHeroesBar, createHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { closeBuildingsBar, createBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { randomIntFromInterval, toggleFullScreen } from "../scripts/Misc.js";
 import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
@@ -37,6 +38,11 @@ export class PlayScene extends Phaser.Scene {
     recyclerViewHeroes;
     heroesBarField;
     heroesBarClose;
+
+    itemCurrentBuilding;
+    recyclerViewBuildings;
+    buildingBarField;
+    buildingBarClose;
 
     waveObject;
 
@@ -111,20 +117,22 @@ export class PlayScene extends Phaser.Scene {
         setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusCOIN(this, this.playerStats.COINS);
 
-        for (let el in this.characterHeap.heap)
-            //this.characterHeap.heap[el].damage(randomIntFromInterval(0, 2));
-
-            if (this.playerStats.BattleMode)
-                for (let i = 0; i < this.parus.heroWindows.length; i++)
-                    this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
+        if (this.playerStats.BattleMode) {
+            for (let i = 0; i < this.parus.heroWindows.length; i++)
+                this.parus.heroWindows[i].setHeroWindowProgress(this.playerStats);
+            for (let i = 0; i < this.parus.buildingWindows.length; i++)
+                this.parus.buildingWindows[i].setBuildingWindowProgress(this.playerStats);
+        }
 
         if (this.playerStats.BattleMode && this.battleFlag == 0) {
             closeToolBar(this);
             closeHeroesBar(this);
+            closeBuildingsBar(this);
             this.skillBar.visible = false;
             this.shopBar.visible = false;
             this.battleButton.visible = false;
             this.scrollablePanel.visible = false;
+            this.scrollablePanelBosses.visible = false;
             this.scrollablePanelHeroes.visible = false;
             this.battleFlag = 1;
         }
@@ -133,16 +141,21 @@ export class PlayScene extends Phaser.Scene {
             this.shopBar.visible = true;
             this.battleButton.visible = true;
             this.scrollablePanel.visible = true;
+            this.scrollablePanelBosses.visible = true;
             this.scrollablePanelHeroes.visible = true;
 
             for (let i = 0; i < this.parus.heroWindows.length; i++) {
                 this.parus.heroWindows[i].coof = 1;
                 this.parus.heroWindows[i].clearWindowProgress();
             }
+            for (let i = 0; i < this.parus.buildingWindows.length; i++) {
+                this.parus.buildingWindows[i].coof = 1;
+                this.parus.buildingWindows[i].clearWindowProgress();
+            }
 
             this.battleFlag = 0;
         }
-        battle(this.parus, this.enemies, this.heroes, this.characterHeap,this.playerStats);
+        battle(this.parus, this.enemies, this.heroes, this.characterHeap, this.playerStats);
 
     }
 
@@ -204,6 +217,7 @@ export class PlayScene extends Phaser.Scene {
         createShopBar(this);
         createSkillsBar(this);
         createHeroesBar(this);
+        createBuildingsBar(this);
 
         this.battleButton = this.add.image(this.game.renderer.width - 85, this.game.renderer.height - 72, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
@@ -214,11 +228,23 @@ export class PlayScene extends Phaser.Scene {
             this.waveObject = new Wave(this, this.playerStats.WAVE);
             this.playerStats.BattleMode = true;
         });
+        this.battleButton.on("pointerout", () => {
+            this.battleButton.setTexture(CST.IMAGES.BattleButton);
+        });
+        this.battleButton.on("pointerover", () => {
+            this.battleButton.setTexture(CST.IMAGES.BattleButtonChoose);
+        });
 
         this.backButton = this.add.image(50, 50, CST.IMAGES.BackButton).setDepth(CST.DEPTHS.ToolBarField);
         this.backButton.setInteractive();
         this.backButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.MENU);
+        });
+        this.backButton.on("pointerout", () => {
+            this.backButton.setTexture(CST.IMAGES.BackButton);
+        });
+        this.backButton.on("pointerover", () => {
+            this.backButton.setTexture(CST.IMAGES.BackButtonChoose);
         });
     }
 
@@ -376,7 +402,7 @@ export class PlayScene extends Phaser.Scene {
                     width: 300, height: 60,
 
                     background: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 14, 0x3d3d3d),
-                    text: scene.add.text(0, 0, `${el}`,{ fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
+                    text: scene.add.text(0, 0, `${el}`, { fontFamily: 'ClearSans', fontSize: 24, color: '#ffffff' }),
 
                     align: 'center',
                     space: {

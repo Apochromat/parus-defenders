@@ -10,6 +10,13 @@ export function createAnimations(scene) {
     });
 
     scene.anims.create({
+        key: CST.ANIMATIONS.HeroCat.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCat, { frames: [35, 36, 37, 38, 39, 40] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
         key: CST.ANIMATIONS.HeroCat.Walk,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCat, { frames: [28, 29, 30, 31, 32, 33, 34] }),
         frameRate: 8,
@@ -34,6 +41,13 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.HeroMage.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [16, 17, 18, 19, 20, 21, 22] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroMage.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroMage, { frames: [72, 73, 74, 75, 76, 77, 78] }),
         frameRate: 8,
         repeat: -1
     });
@@ -68,6 +82,13 @@ export function createAnimations(scene) {
     });
 
     scene.anims.create({
+        key: CST.ANIMATIONS.HeroArchaeologist.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [40, 41, 42, 43, 44, 45, 46, 47] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
         key: CST.ANIMATIONS.HeroArchaeologist.Walk,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroArchaeologist, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
         frameRate: 8,
@@ -92,6 +113,13 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.HeroCenturion.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [48, 49, 50, 51, 52] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroCenturion.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES32.HeroCenturion, { frames: [108, 109, 110, 111, 112] }),
         frameRate: 8,
         repeat: -1
     });
@@ -126,6 +154,13 @@ export function createAnimations(scene) {
     });
 
     scene.anims.create({
+        key: CST.ANIMATIONS.HeroSceleton.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroSceleton, { frames: [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
         key: CST.ANIMATIONS.HeroSceleton.Walk,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroSceleton, { frames: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48] }),
         frameRate: 8,
@@ -149,28 +184,35 @@ export function createAnimations(scene) {
     // Hero Tesla
     scene.anims.create({
         key: CST.ANIMATIONS.HeroTesla.Idle,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [1, 5, 9, 13, 17, 21] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [1, 6, 11, 16, 21, 26] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroTesla.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [4, 9, 14, 19, 24, 29] }),
         frameRate: 8,
         repeat: -1
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroTesla.Walk,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [2, 6, 10, 14, 18, 22] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [2, 7, 12, 17, 22, 27] }),
         frameRate: 8,
         repeat: -1
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroTesla.Hit,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45] }),
         frameRate: 8,
         repeat: 0
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroTesla.Death,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [3, 7, 11, 15, 19, 23, 27, 31] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES64.HeroTesla, { frames: [3, 8, 13, 18, 23, 28, 33, 38] }),
         frameRate: 8,
         repeat: 0
     });
@@ -178,14 +220,21 @@ export function createAnimations(scene) {
     // Hero Witch
     scene.anims.create({
         key: CST.ANIMATIONS.HeroWitch.Idle,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [1, 5, 9, 13, 17, 21] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [1, 6, 11, 16, 21, 26] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWitch.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [4, 9, 14, 19, 24, 29] }),
         frameRate: 8,
         repeat: -1
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroWitch.Walk,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [2, 6, 10, 14, 18, 22, 26, 30] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [2, 7, 12, 17, 22, 27, 32, 37] }),
         frameRate: 8,
         repeat: -1
     });
@@ -199,14 +248,21 @@ export function createAnimations(scene) {
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroWitch.Death,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroWitch, { frames: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45] }),
         frameRate: 8,
         repeat: 0
     });
 
-    // Hero Centurion
+    // Hero Reaper
     scene.anims.create({
         key: CST.ANIMATIONS.HeroReaper.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroReaper, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroReaper.IdleWindow,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES48.HeroReaper, { frames: [0, 1, 2, 3, 4] }),
         frameRate: 8,
         repeat: -1
@@ -242,6 +298,13 @@ export function createAnimations(scene) {
     });
 
     scene.anims.create({
+        key: CST.ANIMATIONS.HeroNightmare.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [115, 116, 117, 118, 119, 120, 121, 122, 123] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
         key: CST.ANIMATIONS.HeroNightmare.Walk,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroNightmare, { frames: [23, 24, 25, 26, 27, 28] }),
         frameRate: 8,
@@ -271,6 +334,13 @@ export function createAnimations(scene) {
     });
 
     scene.anims.create({
+        key: CST.ANIMATIONS.HeroMinotaur.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES96.HeroMinotaur, { frames: [0, 1, 2, 3, 4] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
         key: CST.ANIMATIONS.HeroMinotaur.Walk,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES96.HeroMinotaur, { frames: [9, 10, 11, 12, 13, 14, 15, 16] }),
         frameRate: 8,
@@ -294,28 +364,35 @@ export function createAnimations(scene) {
     // Hero Stormhead 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroStormhead.Idle,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [1, 5, 9, 13, 17, 21, 25, 29, 33] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [1, 6, 11, 16, 21, 26, 31, 36, 41] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroStormhead.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [4, 9, 14, 19, 24, 29, 34, 39, 44] }),
         frameRate: 8,
         repeat: -1
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroStormhead.Walk,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [2, 6, 10, 14, 18, 22, 26, 30, 34, 38] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [2, 7, 12, 17, 22, 27, 32, 37, 42, 47] }),
         frameRate: 8,
         repeat: -1
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroStormhead.Hit,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100] }),
         frameRate: 8,
         repeat: 0
     });
 
     scene.anims.create({
         key: CST.ANIMATIONS.HeroStormhead.Death,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [3, 7, 11, 15, 19, 23, 27, 31] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES128.HeroStormhead, { frames: [3, 8, 13, 18, 23, 28, 33, 38] }),
         frameRate: 8,
         repeat: 0
     });
@@ -325,6 +402,13 @@ export function createAnimations(scene) {
     scene.anims.create({
         key: CST.ANIMATIONS.HeroWizard.Idle,
         frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [32, 33, 34, 35, 36, 37] }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: CST.ANIMATIONS.HeroWizard.IdleWindow,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.HeroWizard, { frames: [40, 41, 42, 43, 44, 45] }),
         frameRate: 8,
         repeat: -1
     });
@@ -1147,5 +1231,75 @@ export function createAnimations(scene) {
         frames: scene.anims.generateFrameNumbers(CST.EFFECTS.Thunderstrike, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
         frameRate: 8,
         repeat: 0
+    });
+
+    // Podkova
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPodkova.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES360.BuildingPodkova, { frames: [0, 1, 2, 3] }),
+        frameRate: 2,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPodkova.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES360.BuildingPodkova, { frames: [0, 1, 2, 3] }),
+        frameRate: 2,
+        repeat: -1
+    });
+
+    // MP Obelisk
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingMPObelisk.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_MP_OBELISK.BuildingMPObelisk, { frames: [14, 15, 16, 17, 18, 19, 20, 21] }),
+        frameRate: 8,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingMPObelisk.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_MP_OBELISK.BuildingMPObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // HP Obelisk
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingHPObelisk.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_HP_OBELISK.BuildingHPObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingHPObelisk.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_HP_OBELISK.BuildingHPObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // CD Obelisk
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingCDObelisk.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_CD_OBELISK.BuildingCDObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
+        frameRate: 8,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingCDObelisk.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_CD_OBELISK.BuildingCDObelisk, { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }),
+        frameRate: 8,
+        repeat: 0
+    });
+
+    // Plasma gun
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPlasmaGun.Idle,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_PLASMA_GUN.BuildingPlasmaGun, { frames: [8, 9, 10, 11, 12, 13, 14, 15] }),
+        frameRate: 16,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: CST.ANIMATIONS.BuildingPlasmaGun.Use,
+        frames: scene.anims.generateFrameNumbers(CST.SPRITE_PLASMA_GUN.BuildingPlasmaGun, { frames: [0, 1, 2, 3] }),
+        frameRate: 48,
+        repeat: 15
     });
 }

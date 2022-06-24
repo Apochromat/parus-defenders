@@ -18,7 +18,7 @@ var playerDataTemplate = {
         Fullscreen: false
     },
     LEVELS_SHOP: {
-        Parus: 0,
+        Parus: 20,
         HeroCat: 1,
         HeroMage: 0,
         HeroArchaeologist: 0,
@@ -30,7 +30,12 @@ var playerDataTemplate = {
         HeroNightmare: 0,
         HeroMinotaur: 0,
         HeroStormhead: 0,
-        HeroWizard: 0
+        HeroWizard: 0,
+        BuildingPodkova: 0,
+        BuildingMPObelisk: 0,
+        BuildingHPObelisk: 0,
+        BuildingCDObelisk: 0,
+        BuildingPlasmaGun: 0
     },
     LEVELS_SKILLS: {
         BonusGold: 0,
@@ -50,6 +55,12 @@ var playerDataTemplate = {
     AVAILABLE_HEROES: [
         "HeroCat"
     ],
+    AVAILABLE_BUILDINGS: [
+
+    ],
+    BUILDING_SLOTS: [
+        CST.EMPTY
+    ],
     HERO_SLOTS: [
         CST.EMPTY,
         CST.EMPTY,
@@ -57,6 +68,9 @@ var playerDataTemplate = {
         CST.EMPTY,
         CST.EMPTY,
         CST.EMPTY
+    ],
+    BUILDING_SLOTS_SPAWNTIME: [
+        Date.now()
     ],
     HERO_SLOTS_SPAWNTIME: [
         Date.now(),

@@ -29,6 +29,12 @@ export class OptionsScene extends Phaser.Scene {
         this.backButton.on("pointerup", () => {
             this.scene.start(CST.SCENES.MENU);
         });
+        this.backButton.on("pointerout", () => {
+            this.backButton.setTexture(CST.IMAGES.BackButton);
+        });
+        this.backButton.on("pointerover", () => {
+            this.backButton.setTexture(CST.IMAGES.BackButtonChoose);
+        });
 
         this.fullscreenButton = this.add.image(CST.NUMBERS.WIDTH / 2 + 250, 665, this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchON : CST.IMAGES.SwitchOFF).setDepth(CST.DEPTHS.ToolBarField);
         this.fullscreenButton.setInteractive();
@@ -38,6 +44,12 @@ export class OptionsScene extends Phaser.Scene {
             this.fullscreenButton.setTexture(this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchON : CST.IMAGES.SwitchOFF);
             toggleFullScreen();
         });
+        this.fullscreenButton.on("pointerover", () => {
+            this.fullscreenButton.setTexture(this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchONChoose : CST.IMAGES.SwitchOFFChoose);
+        })
+        this.fullscreenButton.on("pointerout", () => {
+            this.fullscreenButton.setTexture(this.actualData.OPTIONS.Fullscreen ? CST.IMAGES.SwitchON : CST.IMAGES.SwitchOFF);
+        })
 
         this.eraseButton = this.add.image(CST.NUMBERS.WIDTH / 2 + 250, 775, CST.IMAGES.EraseButton).setDepth(CST.DEPTHS.ToolBarField);
         this.eraseButton.setInteractive();
@@ -51,6 +63,12 @@ export class OptionsScene extends Phaser.Scene {
                 alert("ДАННЫЕ УДАЛЕНЫ");
             }
         });
+        this.eraseButton.on("pointerover", () => {
+            this.eraseButton.setTexture(CST.IMAGES.EraseButtonChoose);
+        })
+        this.eraseButton.on("pointerout", () => {
+            this.eraseButton.setTexture(CST.IMAGES.EraseButton);
+        })
 
         var musicBar = this.rexUI.add.numberBar({
             x: CST.NUMBERS.WIDTH / 2 + 300,

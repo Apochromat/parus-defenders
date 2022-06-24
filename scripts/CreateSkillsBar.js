@@ -1,5 +1,6 @@
 import { CST } from "./const.js";
 import { closeHeroesBar } from "../scripts/CreateHeroesBar.js";
+import { closeBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { closeToolBar } from "../scripts/CreateToolBar.js";
 
 export function createSkillsBar(scene){
@@ -15,12 +16,26 @@ export function createSkillsBar(scene){
     scene.toolBarRight.on("pointerup", () => {
         openToolbarRight(scene);
     });
+    scene.toolBarRight.on("pointerout", () => {
+        scene.toolBarRight.setTexture(CST.IMAGES.ToolBarRight);
+    });
+    scene.toolBarRight.on("pointerover", () => {
+        scene.toolBarRight.setTexture(CST.IMAGES.ToolBarRightChoose);
+    });
+
     scene.skillBar.on("pointerup", () => {
         openToolbarRight(scene);
+    });
+    scene.skillBar.on("pointerout", () => {
+        scene.skillBar.setTexture(CST.IMAGES.ToolBarRight);
+    });
+    scene.skillBar.on("pointerover", () => {
+        scene.skillBar.setTexture(CST.IMAGES.ToolBarRightChoose);
     });
 }
 
 export function openToolbarRight(scene, t = null){
+    closeBuildingsBar(scene);
     closeHeroesBar(scene);
 
     if (scene.recyclerViewShop != undefined) {
