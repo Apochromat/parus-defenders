@@ -10,7 +10,7 @@ export class CharacterHeap {
     static id = 0;
     heap = {};
 
-    createHero(type = "HeroCat", scene, x, y) {
+    createHero(type = "HeroCat", scene, x, y, free = false) {
         switch (type) {
             case "HeroCat":
                 this.heap[CharacterHeap.id] = new HeroCat(scene, x, y, CharacterHeap.id, this.heap);
@@ -18,7 +18,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroCat);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroCat.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroCat);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroCat.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroCat);
                 break;
             case "HeroMage":
                 this.heap[CharacterHeap.id] = new HeroMage(scene, x, y, CharacterHeap.id, this.heap);
@@ -26,7 +26,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroMage);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroMage.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroMage);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroMage.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroMage);
                 break;
             case "HeroArchaeologist":
                 this.heap[CharacterHeap.id] = new HeroArchaeologist(scene, x, y, CharacterHeap.id, this.heap);
@@ -34,7 +34,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroArchaeologist);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroArchaeologist.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroArchaeologist);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroArchaeologist.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroArchaeologist);
                 break;
             case "HeroSceleton":
                 this.heap[CharacterHeap.id] = new HeroSceleton(scene, x, y, CharacterHeap.id, this.heap);
@@ -42,7 +42,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroSceleton);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroSceleton.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroSceleton);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroSceleton.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroSceleton);
                 break;
             case "HeroCenturion":
                 this.heap[CharacterHeap.id] = new HeroCenturion(scene, x, y, CharacterHeap.id, this.heap);
@@ -50,7 +50,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroCenturion);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroCenturion.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroCenturion);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroCenturion.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroCenturion);
                 break;
             case "HeroTesla":
                 this.heap[CharacterHeap.id] = new HeroTesla(scene, x, y, CharacterHeap.id, this.heap);
@@ -58,7 +58,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroTesla);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroTesla.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroTesla);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroTesla.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroTesla);
                 break;
             case "HeroWitch":
                 this.heap[CharacterHeap.id] = new HeroWitch(scene, x, y, CharacterHeap.id, this.heap);
@@ -66,7 +66,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroWitch);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroWitch.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroWitch);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroWitch.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroWitch);
                 break;
             case "HeroReaper":
                 this.heap[CharacterHeap.id] = new HeroReaper(scene, x, y, CharacterHeap.id, this.heap);
@@ -74,7 +74,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroReaper);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroReaper.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroReaper);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroReaper.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroReaper);
                 break;
             case "HeroNightmare":
                 this.heap[CharacterHeap.id] = new HeroNightmare(scene, x, y, CharacterHeap.id, this.heap);
@@ -82,7 +82,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroNightmare);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroNightmare.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroNightmare);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroNightmare.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroNightmare);
                 break;
             case "HeroMinotaur":
                 this.heap[CharacterHeap.id] = new HeroMinotaur(scene, x, y, CharacterHeap.id, this.heap);
@@ -90,7 +90,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroMinotaur);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroMinotaur.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroMinotaur);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroMinotaur.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroMinotaur);
                 break;
             case "HeroStormhead":
                 this.heap[CharacterHeap.id] = new HeroStormhead(scene, x, y, CharacterHeap.id, this.heap);
@@ -98,7 +98,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroStormhead);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroStormhead.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroStormhead);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroStormhead.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroStormhead);
                 break;
             case "HeroWizard":
                 this.heap[CharacterHeap.id] = new HeroWizard(scene, x, y, CharacterHeap.id, this.heap);
@@ -106,7 +106,7 @@ export class CharacterHeap {
                 heroSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 this.heap[CharacterHeap.id].hp = calculateHeroSpecs(this.heap[CharacterHeap.id].hp, this.scene.playerStats.LEVELS_SHOP.HeroWizard);
                 this.heap[CharacterHeap.id].hp *= (1 + this.scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100);
-                this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroWizard.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroWizard);
+                if (!free) this.scene.parus.currMP -= calculateHeroSpecs(CST.CHARACTERS.HeroWizard.MPCost, this.scene.playerStats.LEVELS_SHOP.HeroWizard);
                 break;
         }
         scene.heroes.add(this.heap[CharacterHeap.id]);

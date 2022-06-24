@@ -121,9 +121,11 @@ export class HeroWindow extends Phaser.GameObjects.Image {
                     this.scene.parus.currMP >= CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].MPCost) {
                     this.graphicsStatusReady.clear();
                     this.coof = 0;
+                    for (let i = 0; i < CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnBatchSize; i++) {
                     this.scene.characterHeap.createHero(playerStats.HERO_SLOTS[this.index], this.scene,
                         randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.X0, CST.NUMBERS.HeroSpawnArea.X1),
-                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1)).setAnimationWalk(false);
+                        randomIntFromInterval(CST.NUMBERS.HeroSpawnArea.Y0, CST.NUMBERS.HeroSpawnArea.Y1), i != 0).setAnimationWalk(false);
+                    }
                     playerStats.HERO_SLOTS_SPAWNTIME[this.index] = Date.now();
                 }
             }

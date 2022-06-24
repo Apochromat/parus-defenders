@@ -1654,10 +1654,10 @@ export const CST = {
     },
     WAVE_GENERATOR: {
         MinSpawnDelay: 500,
-        SpawnDelayVariety: 100,
+        SpawnDelayVariety: 200,
         PlateauSpawnWave: 1000,
         MinMonsterAmount: 5,
-        MonsterWaveCoefficient: 5,
+        MonsterWaveCoefficient: 3,
         MaximumMomentMonsters: 30,
         WavesPerBoss: 10,
         MonsterPreferences: {

@@ -6,7 +6,7 @@ var DisableSaving = true;
 var playerDataTemplate = {
     Date: Date.now(),
     BattleMode: false,
-    COINS: 1000000,
+    COINS: 10000,
     SKILL_POINTS: 1,
     LVL: 1,
     EXPERIENCE: 0,
@@ -18,7 +18,7 @@ var playerDataTemplate = {
         Fullscreen: false
     },
     LEVELS_SHOP: {
-        Parus: 20,
+        Parus: 0,
         HeroCat: 1,
         HeroMage: 0,
         HeroArchaeologist: 0,
