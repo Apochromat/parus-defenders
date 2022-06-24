@@ -31,7 +31,7 @@ var playerDataTemplate = {
         HeroMinotaur: 0,
         HeroStormhead: 0,
         HeroWizard: 0,
-        BuildingPodkova: 0,
+        BuildingPodkova: 1,
         BuildingMPObelisk: 0,
         BuildingHPObelisk: 0,
         BuildingCDObelisk: 0,
@@ -56,7 +56,7 @@ var playerDataTemplate = {
         "HeroCat"
     ],
     AVAILABLE_BUILDINGS: [
-
+        "BuildingPodkova"
     ],
     BUILDING_SLOTS: [
         CST.EMPTY
