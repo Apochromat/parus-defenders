@@ -271,22 +271,22 @@ export const CST = {
         },
         BuildingPodkova: {
             Name: "Подкова",
-            Description: "Увеличение кол-ва \nвыпадающих монет",
+            Description: "Увеличение кол-ва \nвыпадающих монет \n(+1%/LVL)",
             BeginCost: 5000
         },
         BuildingMPObelisk: {
             Name: "Обелиск Магии",
-            Description: "Мгновенно \nвосстанавливает MP",
+            Description: "Мгновенно \nвосстанавливает 50% MP",
             BeginCost: 5000
         },
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
-            Description: "Мгновенно \nвосстанавливает HP",
+            Description: "Мгновенно \nвосстанавливает 50% HP",
             BeginCost: 5000
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
-            Description: "Мгновенно \nобнуляет перезарядку\n героев",
+            Description: "Мгновенно \nобнуляет перезарядку \nгероев",
             BeginCost: 5000
         },
         BuildingPlasmaGun: {
@@ -1592,13 +1592,13 @@ export const CST = {
         },
         BuildingPodkova: {
             Name: "Подкова",
-            Description: "Увеличение кол-ва \nвыпадающих монет",
-            MPCost: 0.2,
-            CoolDown: 20000
+            Description: "Увеличение кол-ва \nвыпадающих монет \n(+1%/LVL)",
+            MPCost: 0,
+            CoolDown: 0
         },
         BuildingMPObelisk: {
             Name: "Обелиск Магии",
-            Description: "Мгновенно \nвосстанавливает MP",
+            Description: "Мгновенно \nвосстанавливает 50% MP",
             MPCost: 0,
             CoolDown: 30000
         },
@@ -1610,7 +1610,7 @@ export const CST = {
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
-            Description: "Мгновенно \nобнуляет перезарядку\n героев",
+            Description: "Мгновенно \nобнуляет перезарядку \nгероев",
             MPCost: 0.3,
             CoolDown: 10000
         },
