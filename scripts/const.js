@@ -1366,9 +1366,8 @@ export const CST = {
             CriticalDamage: 300,
             Speed: 50,
             MPCost: 25,
-            Range: 50,
-            EnemyControl:4,
-            InFight: false
+            Range: 30,
+            EnemyControl:2
         },
         HeroMage: {
             Name: "Тёмный Маг",
@@ -1387,8 +1386,7 @@ export const CST = {
             Speed: 50,
             MPCost: 35,
             Range: 60,
-            EnemyControl:4,
-            InFight: false
+            EnemyControl:2,
         },
         HeroArchaeologist: {
             Name: "Археолог",
