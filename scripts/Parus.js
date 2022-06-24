@@ -246,7 +246,6 @@ export class buildingWindows extends Phaser.GameObjects.Image {
                                 this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Idle);
                             })
                             this.buildingImage.play(CST.ANIMATIONS.BuildingPodkova.Use);
-                            this.scene.playerStats.COINS += 1000;
                             break;
                         case "BuildingMPObelisk":
                             this.buildingImage.once('animationcomplete', () => {
@@ -277,7 +276,7 @@ export class buildingWindows extends Phaser.GameObjects.Image {
                             })
                             this.buildingImage.play(CST.ANIMATIONS.BuildingPlasmaGun.Use);
                             for (let el of this.scene.enemies.children.entries) {
-                                el.death();
+                                el.death(true);
                             }
                             break;
                     }

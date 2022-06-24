@@ -311,11 +311,11 @@ export class SummonGolem extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -324,7 +324,7 @@ export class SummonGolem extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -379,11 +379,11 @@ export class MonsterSlime extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -392,7 +392,7 @@ export class MonsterSlime extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -448,11 +448,11 @@ export class MonsterTwig extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -461,7 +461,7 @@ export class MonsterTwig extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -516,11 +516,11 @@ export class MonsterBrainer extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -529,7 +529,7 @@ export class MonsterBrainer extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -585,11 +585,11 @@ export class MonsterHellhound extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -598,7 +598,7 @@ export class MonsterHellhound extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -654,11 +654,11 @@ export class MonsterGhoul extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -667,7 +667,7 @@ export class MonsterGhoul extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -723,11 +723,11 @@ export class MonsterBot extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -736,7 +736,7 @@ export class MonsterBot extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -794,11 +794,11 @@ export class MonsterHedgehog extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -807,7 +807,7 @@ export class MonsterHedgehog extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -863,11 +863,11 @@ export class MonsterSlayer extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -876,7 +876,7 @@ export class MonsterSlayer extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -932,11 +932,11 @@ export class MonsterWorm extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -945,7 +945,7 @@ export class MonsterWorm extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1001,11 +1001,11 @@ export class MonsterDarkKnight extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1014,7 +1014,7 @@ export class MonsterDarkKnight extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1070,11 +1070,11 @@ export class MonsterIEM extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1083,7 +1083,7 @@ export class MonsterIEM extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1139,11 +1139,11 @@ export class MonsterSprout extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1152,7 +1152,7 @@ export class MonsterSprout extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1208,11 +1208,11 @@ export class MonsterBringer extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1221,7 +1221,7 @@ export class MonsterBringer extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1277,11 +1277,11 @@ export class MonsterGuardian extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1290,7 +1290,7 @@ export class MonsterGuardian extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1346,11 +1346,11 @@ export class MonsterReaper extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1359,7 +1359,7 @@ export class MonsterReaper extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1415,11 +1415,11 @@ export class MonsterToaster extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1428,7 +1428,7 @@ export class MonsterToaster extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1484,11 +1484,11 @@ export class MonsterNecromancer extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1497,7 +1497,7 @@ export class MonsterNecromancer extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1553,11 +1553,11 @@ export class MonsterSoulWizard extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1566,7 +1566,7 @@ export class MonsterSoulWizard extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1622,11 +1622,11 @@ export class MonsterFireWizard extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1635,7 +1635,7 @@ export class MonsterFireWizard extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1691,11 +1691,11 @@ export class MonsterMiner extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1704,7 +1704,7 @@ export class MonsterMiner extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1760,11 +1760,11 @@ export class MonsterNanny extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1773,7 +1773,7 @@ export class MonsterNanny extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1829,11 +1829,11 @@ export class BossCultist extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1842,7 +1842,7 @@ export class BossCultist extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1898,11 +1898,11 @@ export class BossMiranda extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1911,7 +1911,7 @@ export class BossMiranda extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -1967,11 +1967,11 @@ export class BossBlackDragon extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -1980,7 +1980,7 @@ export class BossBlackDragon extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2040,11 +2040,11 @@ export class BossCthulhu extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -2053,7 +2053,7 @@ export class BossCthulhu extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2109,11 +2109,11 @@ export class BossDemon extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            this.scene.playerStats.COINS += this.specs.Cost;
+            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1+ 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
             this.setAnimationDeath();
             this.remove();
         }
@@ -2122,7 +2122,7 @@ export class BossDemon extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2178,7 +2178,7 @@ export class HeroCat extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2189,7 +2189,7 @@ export class HeroCat extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2249,7 +2249,7 @@ export class HeroMage extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2260,7 +2260,7 @@ export class HeroMage extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2315,7 +2315,7 @@ export class HeroArchaeologist extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2326,7 +2326,7 @@ export class HeroArchaeologist extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2381,7 +2381,7 @@ export class HeroSceleton extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2392,7 +2392,7 @@ export class HeroSceleton extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2448,7 +2448,7 @@ export class HeroCenturion extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2459,7 +2459,7 @@ export class HeroCenturion extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2514,7 +2514,7 @@ export class HeroTesla extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2525,7 +2525,7 @@ export class HeroTesla extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2581,7 +2581,7 @@ export class HeroWitch extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2592,7 +2592,7 @@ export class HeroWitch extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2648,7 +2648,7 @@ export class HeroReaper extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2659,7 +2659,7 @@ export class HeroReaper extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2715,7 +2715,7 @@ export class HeroNightmare extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2726,7 +2726,7 @@ export class HeroNightmare extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2781,7 +2781,7 @@ export class HeroMinotaur extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2792,7 +2792,7 @@ export class HeroMinotaur extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2847,7 +2847,7 @@ export class HeroStormhead extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2858,7 +2858,7 @@ export class HeroStormhead extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
@@ -2913,7 +2913,7 @@ export class HeroWizard extends CharacterSprite {
         return this;
     }
 
-    death() {
+    death(flag = false) {
         if (this.alive) {
             this.alive = false;
             this.setAnimationDeath();
@@ -2924,7 +2924,7 @@ export class HeroWizard extends CharacterSprite {
     damage(_hp) {
         this.hp -= _hp;
         if (this.hp <= 0) {
-            this.death();
+            this.death(true);
             return false
         }
         return true
