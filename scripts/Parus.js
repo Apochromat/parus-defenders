@@ -28,11 +28,11 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     }
 
     damage(hp) {
-        
-         if (this.currHP <= 0) {
+       
+         if (this.currHP-hp <= 0) {
             return false
          }
-        this.currHP -= hp;
+         this.currHP -= hp;
         return true
     }
 

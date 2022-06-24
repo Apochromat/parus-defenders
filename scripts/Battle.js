@@ -4,7 +4,12 @@ import { calculateDamage } from "./Misc.js";
 import { calculateDamageParus } from "./Misc.js";
 import { Parus } from "./Parus.js";
 export function battle(parus, enemies, heroes, characterHeap, playerStats) {
-    enemies.getMatching("active", true).forEach(enemy => {
+    if(!playerStats.BattleMode){
+        parus.currHP = parus.maxHP;
+        parus.currMP = parus.maxMP;
+        playerStats.WAVE_PROGRESS = 0;
+    }
+    else {enemies.getMatching("active", true).forEach(enemy => {
         if ((heroes.getLength() == 0 || enemy.specs.ParusPriority) && Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range + 175) {//
             var VectorX, VectorY;
             VectorX = (parus.x - enemy.x);
@@ -26,15 +31,14 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
                 enemy.lastDamageTime = Date.now();
                 if (!parus.damage(calculateDamageParus(playerStats, enemy.constructor.name))) {
-                    for (let el in characterHeap.heap) {
-                        //(characterHeap.heap[el]);
+                    for (let el in characterHeap.heap) {  
                         characterHeap.heap[el].death();
-                        //console.log(characterHeap.heap[el]);
+                       
                     }
+                    playerStats.BattleMode=false;
                 }
             }
         }
-
         else if (heroes.getLength() != 0) {
             var hero = heroes.getFirstAlive(true);
             var VectorXMin = (hero.x - enemy.x);
@@ -62,7 +66,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     }
 
                     if (enemy.array[i]) {
-                        //console.log(enemy.array[i].array);
                         if (enemy.array[i].array.includes(enemy)) {
                             flag = true;
                         }
@@ -243,5 +246,5 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
 
 
         }
-    });
+    });}
 };
