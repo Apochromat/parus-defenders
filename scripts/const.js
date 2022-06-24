@@ -1614,44 +1614,6 @@ export const CST = {
             CoolDown: 30000
         }
     },
-    PARUS: {
-        0: {
-            MaxHP: 250,
-            MaxMP: 250,
-            HeroSlots: 1,
-            BuildingSlots: 0
-        },
-        1: {
-            MaxHP: 500,
-            MaxMP: 500,
-            HeroSlots: 2,
-            BuildingSlots: 0
-        },
-        2: {
-            MaxHP: 1000,
-            MaxMP: 1000,
-            HeroSlots: 3,
-            BuildingSlots: 0
-        },
-        3: {
-            MaxHP: 1250,
-            MaxMP: 1250,
-            HeroSlots: 4,
-            BuildingSlots: 1
-        },
-        4: {
-            MaxHP: 1500,
-            MaxMP: 1500,
-            HeroSlots: 5,
-            BuildingSlots: 2
-        },
-        5: {
-            MaxHP: 2000,
-            MaxMP: 2000,
-            HeroSlots: 6,
-            BuildingSlots: 3
-        }
-    },
     HERO_SLOTS: {
         0: {
             x: 450,
@@ -1934,12 +1896,5 @@ export const CST = {
                 BatchComparativeBoost: 0.1
             }
         }
-    },
-    LEVELS_EXP:{
-        1: 10,
-        2: 50,
-        3: 100,
-        4: 250,
-        5: 500
     }
 }

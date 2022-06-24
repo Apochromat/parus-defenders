@@ -7,7 +7,7 @@ import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
 import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
 import { closeHeroesBar, createHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { closeBuildingsBar, createBuildingsBar } from "../scripts/CreateBuildingsBar.js";
-import { randomIntFromInterval, toggleFullScreen } from "../scripts/Misc.js";
+import { calculateLVLExperience, randomIntFromInterval, toggleFullScreen } from "../scripts/Misc.js";
 import { loadPlayerData, savePlayerData } from "../scripts/PlayerData.js";
 import { Parus } from "../scripts/Parus.js";
 import * as Characters from "../scripts/Characters.js";
@@ -114,7 +114,7 @@ export class PlayScene extends Phaser.Scene {
         setStatusHP(this, this.parus.currHP, this.parus.maxHP);
         setStatusMP(this, this.parus.currMP, this.parus.maxMP);
         this.updateLVL();
-        setStatusLVL(this, this.playerStats.EXPERIENCE, CST.LEVELS_EXP[this.playerStats.LVL], this.playerStats.LVL, this.playerStats.SKILL_POINTS);
+        setStatusLVL(this, this.playerStats.EXPERIENCE, calculateLVLExperience(this.playerStats.LVL), this.playerStats.LVL, this.playerStats.SKILL_POINTS);
         setStatusCOIN(this, Math.trunc(this.playerStats.COINS));
 
         if (this.playerStats.BattleMode) {
@@ -188,10 +188,10 @@ export class PlayScene extends Phaser.Scene {
     }
 
     updateLVL() {
-        if (this.playerStats.EXPERIENCE >= CST.LEVELS_EXP[this.playerStats.LVL]) {
-            this.playerStats.EXPERIENCE = this.playerStats.EXPERIENCE % CST.LEVELS_EXP[this.playerStats.LVL];
+        if (this.playerStats.EXPERIENCE >= calculateLVLExperience(this.playerStats.LVL)) {
+            this.playerStats.EXPERIENCE = this.playerStats.EXPERIENCE % calculateLVLExperience(this.playerStats.LVL);
             this.playerStats.LVL += 1;
-            this.playerStats.SKILL_POINTS += 1;
+            if (this.playerStats.LVL < 260) this.playerStats.SKILL_POINTS += 1;
         }
     }
 

@@ -172,3 +172,7 @@ export function addIfNotInclude(array, item) {
     array.push(item);
   }
 }
+
+export function calculateLVLExperience(LVL) {
+  return 10*(1.4)**LVL;
+}
