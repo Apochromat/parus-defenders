@@ -16,10 +16,9 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     BuildingSlots;
     heroWindows = [];
     buildingWindows = [];
-
-    constructor(scene, level = 0) {
+    alive;
+    constructor(scene, level = 0,alive=true) {
         super(scene, CST.NUMBERS.ParusX, CST.NUMBERS.ParusY, CST.IMAGES.Parus);
-
         scene.sys.updateList.add(this);
         scene.sys.displayList.add(this);
         scene.physics.world.enableBody(this);
@@ -29,10 +28,11 @@ export class Parus extends Phaser.Physics.Arcade.Sprite {
     }
 
     damage(hp) {
-        this.currHP -= hp;
-        if (this.currHP <= 0) {
+        
+         if (this.currHP <= 0) {
             return false
-        }
+         }
+        this.currHP -= hp;
         return true
     }
 

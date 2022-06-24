@@ -2,6 +2,7 @@ import { CharacterSprite } from "./CharacterSprite.js";
 import { CST } from "./const.js";
 import { calculateDamage } from "./Misc.js";
 import { calculateDamageParus } from "./Misc.js";
+import { Parus } from "./Parus.js";
 export function battle(parus, enemies, heroes, characterHeap, playerStats) {
     enemies.getMatching("active", true).forEach(enemy => {
         if ((heroes.getLength() == 0 || enemy.specs.ParusPriority) && Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range + 175) {//
@@ -19,24 +20,19 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
 
             enemy.setVelocity(VectorX / modul * enemy.specs.Speed, VectorY / modul * enemy.specs.Speed);
         }
-        else if (heroes.getLength() == 0 || enemy.specs.ParusPriority) {
+        else if (heroes.getLength() == 0 || enemy.specs.ParusPriority && playerStats.BattleMode) {
             enemy.setVelocity(0, 0);
-
             enemy.setAnimationHit();
             if (Date.now() - enemy.lastDamageTime >= enemy.specs.AttackCooldown) {
                 enemy.lastDamageTime = Date.now();
-
                 if (!parus.damage(calculateDamageParus(playerStats, enemy.constructor.name))) {
                     for (let el in characterHeap.heap) {
                         characterHeap.heap[el].specs.PhysicalDamage = 0;
+                        console.log(characterHeap.heap[el]);
                         characterHeap.heap[el].death();
+                        console.log(characterHeap.heap[el]);
                     }
-                    parus.currHP = parus.maxHP;
-                    parus.currMP = parus.maxMP;
-                    playerStats.BattleMode = false;
-                    playerStats.WAVE_PROGRESS = 0;
-
-                };
+                }
             }
         }
 
@@ -178,18 +174,18 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
             VectorXMin = (enemy.x - hero.x);
             VectorYMin = (enemy.y - hero.y);
             var modulMin = Math.sqrt(VectorXMin * VectorXMin + VectorYMin * VectorYMin);
-
             for (let ene of enemies.getMatching("active", true)) {
                 VectorX = (ene.x - hero.x);
                 VectorY = (ene.y - hero.y);
                 var modul = Math.sqrt(VectorX * VectorX + VectorY * VectorY);
                 ene.lengthForEnemy = modul;
                 hero.array.sort((a, b) => a.lengthForEnemy > b.lengthForEnemy ? 1 : -1);
+
                 for (var i = 0; i < hero.array.length; i++) {
                     if (hero.array[i] == undefined && !(hero.array.includes(ene))) {
                         hero.array[i] = ene;
                     }
-                    else if (hero.array[i] && !(hero.array.includes(ene)) && !hero.array.includes(undefined)) {
+                    else if (hero.array[i] && !(hero.array.includes(ene)) && !hero.array.includes(undefined) &&Math.abs(hero.array[i].x-hero.x)>hero.specs.Range) {
                         if (ene.lengthForEnemy < hero.array[i].lengthForEnemy) {
 
                             for (var j = hero.array.length - 2; j > i; j--) {
@@ -200,7 +196,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                         }
 
                     }
-
                 }
 
                 if (modul < modulMin) {
