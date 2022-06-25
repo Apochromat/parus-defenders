@@ -1220,7 +1220,7 @@ export function createAnimations(scene) {
 
     scene.anims.create({
         key: CST.ANIMATIONS.MonsterNanny.Death,
-        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.MonsterNanny, { frames: [3, 7, 11, 15, 19, 23, 27, 31, 35] }),
+        frames: scene.anims.generateFrameNumbers(CST.SPRITES80.MonsterNanny, { frames: [3, 7, 11, 15, 19, 23, 27, 31] }),
         frameRate: 8,
         repeat: 0
     });
