@@ -1,7 +1,7 @@
 import { CST } from "../scripts/const.js";
 
 var SAVE_KEY = "ParusSave";
-var DisableSaving = true;
+var DisableSaving = false;
 
 var playerDataTemplate = {
     Date: Date.now(),

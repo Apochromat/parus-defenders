@@ -1,7 +1,7 @@
 /// <reference path="../typings/phaser.d.ts" />
 import { PlayScene } from "../scenes/PlayScene.js";
 import { CST } from "../scripts/const.js";
-import { calculateParusBuildings, calculateParusMaxHP, calculateParusMaxMP, calculateParusWindows, randomIntFromInterval } from "../scripts/Misc.js";
+import { calculateHeroSpecs, calculateParusBuildings, calculateParusMaxHP, calculateParusMaxMP, calculateParusWindows, randomIntFromInterval } from "../scripts/Misc.js";
 import { openHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { openBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { CharacterSprite } from "./CharacterSprite.js";
@@ -118,7 +118,7 @@ export class HeroWindow extends Phaser.GameObjects.Image {
             if (playerStats.BattleMode) {
                 if (this.coof == 1 &&
                     playerStats.HERO_SLOTS[this.index] != CST.EMPTY &&
-                    this.scene.parus.currMP >= CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].MPCost) {
+                    this.scene.parus.currMP >= calculateHeroSpecs(CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].MPCost, this.scene.playerStats.LEVELS_SHOP[playerStats.HERO_SLOTS[this.index]])) {
                     this.graphicsStatusReady.clear();
                     this.coof = 0;
                     for (let i = 0; i < CST.CHARACTERS[playerStats.HERO_SLOTS[this.index]].SpawnBatchSize; i++) {

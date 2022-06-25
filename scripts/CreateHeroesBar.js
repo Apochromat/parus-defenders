@@ -199,21 +199,21 @@ function createHeroesItem(scene, key, index, type) {
     else if (type == 1) {
         table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', { left: 25, right: 0 }, true);
         table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', { left: 20, top: 5 }, true);
-        table.add(createLable(scene, `HP: ${calculateHeroSpecs(CST.CHARACTERS[key].HealPoints, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100)}`, 2), 1, 1, 'left', { left: 20 }, true);
-        table.add(createLable(scene, `MP: ${calculateHeroSpecs(CST.CHARACTERS[key].MPCost, scene.playerStats.LEVELS_SHOP[key])}`, 2), 2, 1, 'left', { left: 20 }, true);
+        table.add(createLable(scene, `HP: ${Math.trunc(calculateHeroSpecs(CST.CHARACTERS[key].HealPoints, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100))}`, 2), 1, 1, 'left', { left: 20 }, true);
+        table.add(createLable(scene, `MP: ${Math.trunc(calculateHeroSpecs(CST.CHARACTERS[key].MPCost, scene.playerStats.LEVELS_SHOP[key]))}`, 2), 2, 1, 'left', { left: 20 }, true);
         table.add(createLable(scene, `Damage: ${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].PhysicalDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].LightningDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].MagicDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', { left: 20, bottom: 20 }, true);
         table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 3, 0, 'right', { left: 100 }, true);
-        table.add(createLable(scene, "CD: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 3, 1, 'left', { left: 20 }, true);
+        table.add(createLable(scene, "CD: " + Math.trunc(CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2)), 3, 1, 'left', { left: 20 }, true);
         table.add(createButtonAdd(scene, key, index, 1), 3, 2, 'right', { top: 5, left: 95 }, true);
     }
     else {
         table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', { left: 25, right: 0 }, true);
         table.add(createLable(scene, CST.CHARACTERS[key].Name), 1, 0, 'left', { left: 20, top: 5 }, true);
-        table.add(createLable(scene, `HP: ${calculateHeroSpecs(CST.CHARACTERS[key].HealPoints, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100)}`, 2), 1, 1, 'left', { left: 20 }, true);
-        table.add(createLable(scene, `MP: ${calculateHeroSpecs(CST.CHARACTERS[key].MPCost, scene.playerStats.LEVELS_SHOP[key])}`, 2), 2, 1, 'left', { left: 20 }, true);
+        table.add(createLable(scene, `HP: ${Math.trunc(calculateHeroSpecs(CST.CHARACTERS[key].HealPoints, scene.playerStats.LEVELS_SHOP[key]) * (1 + scene.playerStats.LEVELS_SKILLS.HealPoints * 1.25 / 100))}`, 2), 1, 1, 'left', { left: 20 }, true);
+        table.add(createLable(scene, `MP: ${Math.trunc(calculateHeroSpecs(CST.CHARACTERS[key].MPCost, scene.playerStats.LEVELS_SHOP[key]))}`, 2), 2, 1, 'left', { left: 20 }, true);
         table.add(createLable(scene, `Damage: ${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].PhysicalDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.PhysicalDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].LightningDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100))))}/${Math.floor(calculateHeroSpecs(CST.CHARACTERS[key].MagicDamage, scene.playerStats.LEVELS_SHOP[key]) * (1 + (scene.playerStats.LEVELS_SKILLS.Damage * (1.25 / 100)) + (scene.playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100))))}`, 2), 1, 2, 'left', { left: 20, bottom: 20 }, true);
         table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 3, 0, 'right', { left: 100 }, true);
-        table.add(createLable(scene, "CD: " + CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2), 3, 1, 'left', { left: 20 }, true);
+        table.add(createLable(scene, "CD: " + Math.trunc(CST.CHARACTERS[key].SpawnCooldown * (1 - scene.playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100), 2)), 3, 1, 'left', { left: 20 }, true);
         table.add(createButtonAdd(scene, key, index, 0), 3, 2, 'right', { top: 5, left: 115 }, true);
     }
 

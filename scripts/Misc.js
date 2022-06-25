@@ -148,23 +148,23 @@ export function calculateParusBuildings(x) {
 }
 
 export function calculateParusMaxMP(x) {
-  return Math.trunc(150 + 8 * x);
+  return Math.trunc(150 + 50 * x);
 }
 
 export function calculateParusMaxHP(x) {
-  return Math.trunc(250 + 40 * x);
+  return Math.trunc(250 + 100 * x);
 }
 
 export function calculateCost(key, level, beginCost) {
   if (key == "Parus") {
-    return beginCost + level * 3000
+    return beginCost + level * 1000
   }
   return Math.trunc(beginCost * (1.2 ** (level)));
 }
 
 export function calculateHeroSpecs(basic, level) {
   if (level == 0) return 0;
-  return Math.trunc(basic * (1.1 ** (level - 1)));
+  return Math.trunc(basic * (1.05 ** (level - 1)));
 }
 
 export function addIfNotInclude(array, item) {
