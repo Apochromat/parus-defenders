@@ -19,14 +19,14 @@ export function setStatusHP(scene, currHP, maxHP) {
     scene.graphicsHP.clear();
     var rect = new Phaser.Geom.Rectangle(227+210, 26, 525 * currHP / maxHP, 14);
     scene.graphicsHP.fillRectShape(rect);
-    scene.titleHP.setText(currHP);
+    scene.titleHP.setText(Math.trunc(currHP));
 }
 
 export function setStatusMP(scene, currMP, maxMP) {
     scene.graphicsMP.clear();
     var rect = new Phaser.Geom.Rectangle(227+210, 60, 525 * currMP / maxMP, 14);
     scene.graphicsMP.fillRectShape(rect);
-    scene.titleMP.setText(currMP);
+    scene.titleMP.setText(Math.trunc(currMP));
 }
 
 export function setStatusLVL(scene, currXP, maxXP, LVL, skillPoints) {

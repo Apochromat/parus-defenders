@@ -137,6 +137,8 @@ export class PlayScene extends Phaser.Scene {
             this.battleFlag = 1;
         }
         else if (!this.playerStats.BattleMode && this.battleFlag == 1) {
+            this.parus.currHP = this.parus.maxHP;
+            this.parus.currMP = this.parus.maxMP;
             this.skillBar.visible = true;
             this.shopBar.visible = true;
             this.battleButton.visible = true;

@@ -88,6 +88,11 @@ export function calculateDamage(playerStats, senderName, receiverName) {
     MagicDamage *= (1 + (playerStats.LEVELS_SKILLS.MagicDamage * (2.5 / 100)));
     LightningDamage *= (1 + (playerStats.LEVELS_SKILLS.LightningDamage * (2.5 / 100)));
   }
+  else {
+    PhysicalDamage *= (1 + (CST.WAVE_GENERATOR.MonsterPreferences[senderName].AttackBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[senderName].MinWave)));
+    MagicDamage *= (1 + (CST.WAVE_GENERATOR.MonsterPreferences[senderName].AttackBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[senderName].MinWave)));
+    LightningDamage *= (1 + (CST.WAVE_GENERATOR.MonsterPreferences[senderName].AttackBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[senderName].MinWave)));
+  }
   // Применяем уровни защищенности получателя
   PhysicalDamage *= (1 - (CST.CHARACTERS[receiverName].PhysicalProtection / 100));
   MagicDamage *= (1 - (CST.CHARACTERS[receiverName].MagicProtection / 100));
@@ -101,6 +106,10 @@ export function calculateDamageParus(playerStats, senderName) {
   PhysicalDamage = CST.CHARACTERS[senderName].PhysicalDamage;
   MagicDamage = CST.CHARACTERS[senderName].MagicDamage;
   LightningDamage = CST.CHARACTERS[senderName].LightningDamage;
+
+  PhysicalDamage *= (1 + (CST.WAVE_GENERATOR.MonsterPreferences[senderName].AttackBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[senderName].MinWave)));
+  MagicDamage *= (1 + (CST.WAVE_GENERATOR.MonsterPreferences[senderName].AttackBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[senderName].MinWave)));
+  LightningDamage *= (1 + (CST.WAVE_GENERATOR.MonsterPreferences[senderName].AttackBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[senderName].MinWave)));
 
   // Применяем уровни защищенности Паруса
   PhysicalDamage *= (1 - (playerStats.LEVELS_SKILLS.ParusDefense * (2.5 / 100)));
@@ -119,6 +128,7 @@ export function heroSpecsWithplayerStats(playerStats, heroSpecs) {
 export function monsterSpecsWithplayerStats(playerStats, monsterSpecs) {
   monsterSpecs.Cost *= (1 + playerStats.LEVELS_SKILLS.BonusGold * 2.5 / 100);
   monsterSpecs.Experience *= (1 + playerStats.LEVELS_SKILLS.BonusExperience * 5 / 100);
+  monsterSpecs.HealPoints += monsterSpecs.HealPoints * (CST.WAVE_GENERATOR.MonsterPreferences[monsterSpecs.Name].HealthBoost * (playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences[monsterSpecs.Name].MinWave));
 }
 
 export function calculateParusWindows(x) {
@@ -148,16 +158,16 @@ export function calculateParusBuildings(x) {
 }
 
 export function calculateParusMaxMP(x) {
-  return Math.trunc(150 + 50 * x);
+  return Math.trunc(150 + 30 * x);
 }
 
 export function calculateParusMaxHP(x) {
-  return Math.trunc(250 + 100 * x);
+  return Math.trunc(250 + 80 * x);
 }
 
 export function calculateCost(key, level, beginCost) {
   if (key == "Parus") {
-    return beginCost + level * 1000
+    return beginCost + level * 1200
   }
   return Math.trunc(beginCost * (1.2 ** (level)));
 }
@@ -174,5 +184,5 @@ export function addIfNotInclude(array, item) {
 }
 
 export function calculateLVLExperience(LVL) {
-  return 10*(1.4)**LVL;
+  return 10 * (1.2) ** LVL;
 }

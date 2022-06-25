@@ -358,27 +358,27 @@ export const CST = {
         BuildingPodkova: {
             Name: "Подкова",
             Description: "Увеличение кол-ва \nвыпадающих монет \n(+1%/LVL)",
-            BeginCost: 5000
+            BeginCost: 20000
         },
         BuildingMPObelisk: {
             Name: "Обелиск Магии",
             Description: "Мгновенно \nвосстанавливает 50% MP",
-            BeginCost: 10000
+            BeginCost: 30000
         },
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
             Description: "Мгновенно \nвосстанавливает 50% HP",
-            BeginCost: 10000
+            BeginCost: 30000
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
             Description: "Мгновенно \nобнуляет перезарядку \nгероев",
-            BeginCost: 10000
+            BeginCost: 30000
         },
         BuildingPlasmaGun: {
             Name: "BFG-9000",
             Description: "Уничтожает всех \nпротивников на поле",
-            BeginCost: 20000
+            BeginCost: 50000
         }
     },
     SKILLSLIST: {
@@ -1005,6 +1005,7 @@ export const CST = {
     },
     CHARACTERS: {
         SummonGolem: {
+            Name: "SummonGolem",
             HealPoints: 300,
             PhysicalDamage: 10,
             LightningDamage: 10,
@@ -1021,6 +1022,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterSlime: {
+            Name: "MonsterSlime",
             HealPoints: 250,
             PhysicalDamage: 10,
             LightningDamage: 0,
@@ -1037,6 +1039,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterTwig: {
+            Name: "MonsterTwig",
             HealPoints: 400,
             PhysicalDamage: 15,
             LightningDamage: 0,
@@ -1053,6 +1056,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterBrainer: {
+            Name: "MonsterBrainer",
             HealPoints: 700,
             PhysicalDamage: 30,
             LightningDamage: 0,
@@ -1069,6 +1073,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterHellhound: {
+            Name: "MonsterHellhound",
             HealPoints: 800,
             PhysicalDamage: 50,
             LightningDamage: 0,
@@ -1085,6 +1090,7 @@ export const CST = {
             ParusPriority: true
         },
         MonsterGhoul: {
+            Name: "MonsterGhoul",
             HealPoints: 800,
             PhysicalDamage: 70,
             LightningDamage: 0,
@@ -1101,6 +1107,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterDarkKnight: {
+            Name: "MonsterDarkKnight",
             HealPoints: 1000,
             PhysicalDamage: 100,
             LightningDamage: 0,
@@ -1117,6 +1124,7 @@ export const CST = {
             ParusPriority:false
         },
         MonsterBot: {
+            Name: "MonsterBot",
             HealPoints: 1200,
             PhysicalDamage: 0,
             LightningDamage: 100,
@@ -1133,6 +1141,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterToaster: {
+            Name: "MonsterToaster",
             HealPoints: 1300,
             PhysicalDamage: 50,
             LightningDamage: 50,
@@ -1149,6 +1158,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterHedgehog: {
+            Name: "MonsterHedgehog",
             HealPoints: 2000,
             PhysicalDamage: 50,
             LightningDamage: 0,
@@ -1165,6 +1175,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterSlayer: {
+            Name: "MonsterSlayer",
             HealPoints: 1500,
             PhysicalDamage: 150,
             LightningDamage: 0,
@@ -1181,6 +1192,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterIEM: {
+            Name: "MonsterIEM",
             HealPoints: 1750,
             PhysicalDamage: 0,
             LightningDamage: 0,
@@ -1194,9 +1206,10 @@ export const CST = {
             Experience: 110,
             Range: 60,
             EnemyControl:4,
-            ParusPriority:false
+            ParusPriority:true
         },
         MonsterNecromancer: {
+            Name: "MonsterNecromancer",
             HealPoints: 2000,
             PhysicalDamage: 0,
             LightningDamage: 0,
@@ -1213,6 +1226,7 @@ export const CST = {
             ParusPriority:false
         },
         MonsterWorm: {
+            Name: "MonsterWorm",
             HealPoints: 1500,
             PhysicalDamage: 50,
             LightningDamage: 0,
@@ -1226,9 +1240,10 @@ export const CST = {
             Experience: 130,
             Range: 50,
             EnemyControl: 6,
-            ParusPriority: false
+            ParusPriority: true
         },
         MonsterReaper: {
+            Name: "MonsterReaper",
             HealPoints: 1500,
             PhysicalDamage: 100,
             LightningDamage: 0,
@@ -1245,6 +1260,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterBringer: {
+            Name: "MonsterBringer",
             HealPoints: 2000,
             PhysicalDamage: 125,
             LightningDamage: 0,
@@ -1261,6 +1277,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterSprout: {
+            Name: "MonsterSprout",
             HealPoints: 2000,
             PhysicalDamage: 150,
             LightningDamage: 0,
@@ -1277,6 +1294,7 @@ export const CST = {
             ParusPriority:false
         },
         MonsterNanny: {
+            Name: "MonsterNanny",
             HealPoints: 2000,
             PhysicalDamage: 100,
             LightningDamage: 100,
@@ -1293,6 +1311,7 @@ export const CST = {
             ParusPriority:false
         },
         MonsterSoulWizard: {
+            Name: "MonsterSoulWizard",
             HealPoints: 2300,
             PhysicalDamage: 50,
             LightningDamage: 50,
@@ -1309,6 +1328,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterFireWizard: {
+            Name: "MonsterFireWizard",
             HealPoints: 2400,
             PhysicalDamage: 50,
             LightningDamage: 100,
@@ -1325,6 +1345,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterGuardian: {
+            Name: "MonsterGuardian",
             HealPoints: 3000,
             PhysicalDamage: 500,
             LightningDamage: 0,
@@ -1341,6 +1362,7 @@ export const CST = {
             ParusPriority: false
         },
         MonsterMiner: {
+            Name: "MonsterMiner",
             HealPoints: 2300,
             PhysicalDamage: 0,
             LightningDamage: 0,
@@ -1358,6 +1380,7 @@ export const CST = {
         },
         
         BossCultist: {
+            Name: "BossCultist",
             HealPoints: 8000,
             PhysicalDamage: 150,
             LightningDamage: 0,
@@ -1374,6 +1397,7 @@ export const CST = {
             ParusPriority: false
         },
         BossBlackDragon: {
+            Name: "BossBlackDragon",
             HealPoints: 15000,
             PhysicalDamage: 300,
             LightningDamage: 0,
@@ -1390,6 +1414,7 @@ export const CST = {
              ParusPriority:false
         },
         BossCthulhu: {
+            Name: "BossCthulhu",
             HealPoints: 20000,
             PhysicalDamage: 300,
             LightningDamage: 0,
@@ -1406,6 +1431,7 @@ export const CST = {
             ParusPriority: false
         },
         BossDemon: {
+            Name: "BossDemon",
             HealPoints: 25000,
             PhysicalDamage: 0,
             LightningDamage: 200,
@@ -1422,6 +1448,7 @@ export const CST = {
             ParusPriority: false
         },
         BossMiranda: {
+            Name: "BossMiranda",
             HealPoints: 25000,
             PhysicalDamage: 200,
             LightningDamage: 600,
@@ -1600,7 +1627,7 @@ export const CST = {
             MagicDamage: 300,
             AttackCooldown: 2000,
             SpawnCooldown: 20000,
-            SpawnBatchSize: 1,
+            SpawnBatchSize: 2,
             PhysicalProtection: 20,
             LightningProtection: 0,
             MagicProtection: 30,
@@ -1680,25 +1707,25 @@ export const CST = {
             Name: "Обелиск Магии",
             Description: "Мгновенно \nвосстанавливает 50% MP",
             MPCost: 0,
-            CoolDown: 30000
+            CoolDown: 80000
         },
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
             Description: "Мгновенно \nвосстанавливает 50% HP",
             MPCost: 0.4,
-            CoolDown: 20000
+            CoolDown: 80000
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
             Description: "Мгновенно \nобнуляет перезарядку \nгероев",
             MPCost: 0.3,
-            CoolDown: 10000
+            CoolDown: 30000
         },
         BuildingPlasmaGun: {
             Name: "BFG-9000",
             Description: "Уничтожает всех \nпротивников на поле",
             MPCost: 0.5,
-            CoolDown: 30000
+            CoolDown: 60000
         }
     },
     HERO_SLOTS: {
@@ -1781,7 +1808,7 @@ export const CST = {
                 MinBatch: 3,
                 MaxBatch: 5,
                 HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                AttackBoost: 0.02,
                 BatchComparativeBoost: 0.1
             },
             MonsterGhoul: {
@@ -1942,7 +1969,7 @@ export const CST = {
                 MaxWave: 100,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.1,
+                HealthBoost: 0.12,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },
@@ -1951,7 +1978,7 @@ export const CST = {
                 MaxWave: 300,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.1,
+                HealthBoost: 0.12,
                 AttackBoost: 0.1,
                 BatchComparativeBoost: 0.1
             },

@@ -254,14 +254,24 @@ export class buildingWindows extends Phaser.GameObjects.Image {
                                 this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Idle);
                             })
                             this.buildingImage.play(CST.ANIMATIONS.BuildingMPObelisk.Use);
-                            this.scene.parus.currMP = this.scene.parus.maxMP*0.5;
+                            if ((this.scene.parus.currMP + this.scene.parus.maxMP*0.5) > this.scene.parus.maxMP) {
+                                this.scene.parus.currMP = this.scene.parus.maxMP
+                            }
+                            else {
+                                this.scene.parus.currMP += this.scene.parus.maxMP*0.5;
+                            }
                             break;
                         case "BuildingHPObelisk":
                             this.buildingImage.once('animationcomplete', () => {
                                 this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Idle);
                             })
                             this.buildingImage.play(CST.ANIMATIONS.BuildingHPObelisk.Use);
-                            this.scene.parus.currHP = this.scene.parus.maxHP*0.5;
+                            if ((this.scene.parus.currHP + this.scene.parus.maxHP*0.5) > this.scene.parus.maxMP) {
+                                this.scene.parus.currHP = this.scene.parus.maxHP
+                            }
+                            else {
+                                this.scene.parus.currHP += this.scene.parus.maxHP*0.5;
+                            }
                             break;
                         case "BuildingCDObelisk":
                             this.buildingImage.once('animationcomplete', () => {
