@@ -96,9 +96,9 @@ export class PlayScene extends Phaser.Scene {
         createAnimations(this);
 
         this.createGUI();
-        this.createSpawnMonstersBar();
-        this.createSpawnBossBar();
-        this.createSpawnHeroesBar();
+        // this.createSpawnMonstersBar();
+        // this.createSpawnBossBar();
+        // this.createSpawnHeroesBar();
 
         // this.setPhysicsEnemies();
     }
@@ -131,9 +131,9 @@ export class PlayScene extends Phaser.Scene {
             this.skillBar.visible = false;
             this.shopBar.visible = false;
             this.battleButton.visible = false;
-            this.scrollablePanel.visible = false;
-            this.scrollablePanelBosses.visible = false;
-            this.scrollablePanelHeroes.visible = false;
+            // this.scrollablePanel.visible = false;
+            // this.scrollablePanelBosses.visible = false;
+            // this.scrollablePanelHeroes.visible = false;
             this.battleFlag = 1;
         }
         else if (!this.playerStats.BattleMode && this.battleFlag == 1) {
@@ -142,9 +142,9 @@ export class PlayScene extends Phaser.Scene {
             this.skillBar.visible = true;
             this.shopBar.visible = true;
             this.battleButton.visible = true;
-            this.scrollablePanel.visible = true;
-            this.scrollablePanelBosses.visible = true;
-            this.scrollablePanelHeroes.visible = true;
+            // this.scrollablePanel.visible = true;
+            // this.scrollablePanelBosses.visible = true;
+            // this.scrollablePanelHeroes.visible = true;
 
             for (let i = 0; i < this.parus.heroWindows.length; i++) {
                 this.parus.heroWindows[i].coof = 1;

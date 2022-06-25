@@ -63,7 +63,6 @@ export class Wave {
         }
         this.spawnList = shuffle(this.spawnList);
         this.allBatches = this.spawnList.length;
-        //console.log(this.spawnList);
     }
 
     run() {
@@ -72,12 +71,10 @@ export class Wave {
 
             if (spawnInfo == undefined) {
                 this.finished = true;
-                console.log(`Spawned ${this.spawnedBatches}/${this.allBatches}`);
                 if (this.number % CST.WAVE_GENERATOR.WavesPerBoss == 0) {
                     this.boss = this.scene.characterHeap.createBoss(this.bossForSpawn, this.scene,
                         randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.X0, CST.NUMBERS.MonsterSpawnArea.X1),
                         randomIntFromInterval(CST.NUMBERS.MonsterSpawnArea.Y0, CST.NUMBERS.MonsterSpawnArea.Y1)).setAnimationWalk();
-                    console.log(`Spawned ${this.bossForSpawn}`);
                 }
                 return false
             }

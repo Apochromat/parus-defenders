@@ -212,7 +212,6 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
                     }
                     enemy = hero.array[0];
                 }
-                console.log(enemy.x);
                 if (Math.abs(hero.x - enemy.x) > hero.specs.Range && enemy.x<1900) {
                     if (VectorXMin > 0) {
                         hero.flipX = false;
