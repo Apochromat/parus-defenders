@@ -14,7 +14,7 @@ var playerDataTemplate = {
     WAVE_PROGRESS: 0,
     OPTIONS: {
         Music: 5,
-        Sounds: 5,
+        Sounds: 3,
         Fullscreen: false
     },
     LEVELS_SHOP: {

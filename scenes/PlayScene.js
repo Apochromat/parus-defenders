@@ -236,6 +236,10 @@ export class PlayScene extends Phaser.Scene {
         this.backButton = this.add.image(50, 50, CST.IMAGES.BackButton).setDepth(CST.DEPTHS.ToolBarField);
         this.backButton.setInteractive();
         this.backButton.on("pointerup", () => {
+            this.scene.scene.sound.pauseAll();
+            for (let el of this.game.music) {
+                el.resume();
+            }
             this.scene.start(CST.SCENES.MENU);
         });
         this.backButton.on("pointerout", () => {
