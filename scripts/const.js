@@ -137,7 +137,7 @@ export const CST = {
     SPRITES100: {
         MonsterReaper: "monster_reaper",
     },
-    SPRITES120:{
+    SPRITES120: {
         MonsterGuardian: "monster_guardian"
     },
     SPRITES128: {
@@ -197,10 +197,96 @@ export const CST = {
         NeroForte: "8-Bit_Misfits_Nero_Forte",
         TheDevilInI: "8-Bit_Misfits_The_Devil_in_I"
     },
+    SOUNDS: {
+        BossCthulhuDeath: "BossCthulhuDeath",
+        BossCthulhuHit: "BossCthulhuHit",
+        BossCthulhuMove: "BossCthulhuMove",
+        BossCultistDeath: "BossCultistDeath",
+        BossCultistHit: "BossCultistHit",
+        BossCultistMove: "BossCultistMove",
+        BossDemonDeath: "BossDemonDeath",
+        BossDemonHit: "BossDemonHit",
+        BossDemonMove: "BossDemonMove",
+        BossDragonDeath: "BossDragonDeath",
+        BossDragonHit: "BossDragonHit",
+        BossDragonMove: "BossDragonMove",
+        BossMirandaDeath: "BossMirandaDeath",
+        BossMirandaHit: "BossMirandaHit",
+        BossMirandaMove : "BossMirandaMove",
+        HeroArchaelogistDeath: "HeroArchaelogistDeath",
+        HeroArchaeologistHit: "HeroArchaeologistHit",
+        HeroCatDeath: "HeroCatDeath",
+        HeroCatHit: "HeroCatHit",
+        HeroCenturionDeath: "HeroCenturionDeath",
+        HeroCenturionHit: "HeroCenturionHit",
+        HeroMageDeath: "HeroMageDeath",
+        HeroMageHit: "HeroMageHit",
+        HeroMinotaurDeath: "HeroMinotaurDeath",
+        HeroMinotaurHit: "HeroMinotaurHit",
+        HeroNightmareDeath: "HeroNightmareDeath",
+        HeroNightmareHit: "HeroNightmareHit",
+        HeroReaperDeath: "HeroReaperDeath",
+        HeroReaperHit: "HeroReaperHit",
+        HeroSceletonDeath: "HeroSceletonDeath",
+        HeroSceletonHit: "HeroSceletonHit",
+        HeroStormheadDeath: "HeroStormheadDeath",
+        HeroStormheadHit: "HeroStormheadHit",
+        HeroTeslaDamage: "HeroTeslaDamage",
+        HeroTeslaDeath: "HeroTeslaDeath",
+        HeroWitchDeath: "HeroWitchDeath",
+        HeroWitchHit: "HeroWitchHit",
+        HeroWizardDeath: "HeroWizardDeath",
+        HeroWizardHit: "HeroWizardHit",
+        MonsterBotDamage: "MonsterBotDamage",
+        MonsterBotDeath: "MonsterBotDeath",
+        MonsterBrainerDamage: "MonsterBrainerDamage",
+        MonsterBrainerDeath: "MonsterBrainerDeath",
+        MonsterBringeDeath: "MonsterBringeDeath",
+        MonsterBringerHit: "MonsterBringerHit",
+        MonsterDarkKnightDeath: "MonsterDarkKnightDeath",
+        MonsterDarkKnightHit: "MonsterDarkKnightHit",
+        MonsterFireWizardDeath: "MonsterFireWizardDeath",
+        MonsterFireWizardHit: "MonsterFireWizardHit",
+        MonsterGhoulDeath: "MonsterGhoulDeath",
+        MonsterGhoulHit: "MonsterGhoulHit",
+        MonsterGuardianDeath: "MonsterGuardianDeath",
+        MonsterGuardianHit: "MonsterGuardianHit",
+        MonsterHedgehogDeath: "MonsterHedgehogDeath",
+        MonsterHedgehogHit: "MonsterHedgehogHit",
+        MonsterHellhoundDeath: "MonsterHellhoundDeath",
+        MonsterHellHoundHit: "MonsterHellHoundHit",
+        MonsterIEMDeath: "MonsterIEMDeath",
+        MonsterIEMHit: "MonsterIEMHit",
+        MonsterMinerDeath: "MonsterMinerDeath",
+        MonsterMinerHit: "MonsterMinerHit",
+        MonsterNannyDeath: "MonsterNannyDeath",
+        MonsterNannyHit: "MonsterNannyHit",
+        MonsterNecromancerDeath: "MonsterNecromancerDeath",
+        MonsterNecromancerHit: "MonsterNecromancerHit",
+        MonsterReaperDeath: "MonsterReaperDeath",
+        MonsterReaperHit: "MonsterReaperHit",
+        MonsterSlayerHit: "MonsterSlayerHit",
+        MonsterSlimeDeath: "MonsterSlimeDeath",
+        MonsterSlimeHit: "MonsterSlimeHit",
+        MonsterSlimeMove: "MonsterSlimeMove",
+        MonsterSoulWizardDeath: "MonsterSoulWizardDeath",
+        MonsterSoulWizardHit: "MonsterSoulWizardHit",
+        MonsterSproutDeath: "MonsterSproutDeath",
+        MonsterSproutHit: "MonsterSproutHit",
+        MonsterSproutMove: "MonsterSproutMove",
+        MonsterToasterDeath: "MonsterToasterDeath",
+        MonsterToasterHit: "MonsterToasterHit",
+        MonsterTwigDeath: "MonsterTwigDeath",
+        MonsterTwigHit: "MonsterTwigHit",
+        MonsterTwigMove: "MonsterTwigMove",
+        MonsterWormDeath: "MonsterWormDeath",
+        MonsterWormHit: "MonsterWormHit",
+        MonstrSlayerDeath: "MonstrSlayerDeath"
+    },
     EFFECTS: {
         Thunderstrike: "thunderstrike"
     },
-    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterDarkKnight", "MonsterBot", "MonsterToaster", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper", "MonsterBringer", "MonsterSprout", "MonsterNanny", "MonsterSoulWizard", "MonsterFireWizard" , "MonsterGuardian", "MonsterMiner"],
+    MONSTERLIST: ["MonsterSlime", "MonsterTwig", "MonsterBrainer", "MonsterHellhound", "MonsterGhoul", "MonsterDarkKnight", "MonsterBot", "MonsterToaster", "MonsterHedgehog", "MonsterSlayer", "MonsterIEM", "MonsterNecromancer", "MonsterWorm", "MonsterReaper", "MonsterBringer", "MonsterSprout", "MonsterNanny", "MonsterSoulWizard", "MonsterFireWizard", "MonsterGuardian", "MonsterMiner"],
     BOSSLIST: ["BossCultist", "BossBlackDragon", "BossCthulhu", "BossDemon", "BossMiranda"],
     HEROLIST: ["HeroCat", "HeroReaper", "HeroArchaeologist", "HeroCenturion", "HeroMage", "HeroTesla", "HeroMinotaur", "HeroNightmare", "HeroSceleton", "HeroWitch", "HeroStormhead", "HeroWizard"],
     SHOPLIST: {
@@ -540,7 +626,7 @@ export const CST = {
             ]
         },
         MPRecovery: {
-            Name: "Регенерация маны", 
+            Name: "Регенерация маны",
             Description: "Увеличение скорости \nвосстановления маны",
             Levels: [
                 "+0%",
@@ -931,8 +1017,8 @@ export const CST = {
             Cost: 15,
             Experience: 5,
             Range: 50,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterSlime: {
             HealPoints: 300,
@@ -947,8 +1033,8 @@ export const CST = {
             Cost: 15,
             Experience: 5,
             Range: 30,
-            EnemyControl:2,
-            ParusPriority:false
+            EnemyControl: 2,
+            ParusPriority: false
         },
         MonsterTwig: {
             HealPoints: 500,
@@ -963,8 +1049,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:3,
-            ParusPriority:false
+            EnemyControl: 3,
+            ParusPriority: false
         },
         MonsterBrainer: {
             HealPoints: 700,
@@ -979,8 +1065,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:3,
-            ParusPriority:false
+            EnemyControl: 3,
+            ParusPriority: false
         },
         MonsterHellhound: {
             HealPoints: 700,
@@ -995,8 +1081,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:3,
-            ParusPriority:true
+            EnemyControl: 3,
+            ParusPriority: true
         },
         MonsterGhoul: {
             HealPoints: 800,
@@ -1011,8 +1097,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:3,
-            ParusPriority:false
+            EnemyControl: 3,
+            ParusPriority: false
         },
         MonsterBot: {
             HealPoints: 1500,
@@ -1027,8 +1113,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 100,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         MonsterDarkKnight: {
             HealPoints: 1500,
@@ -1043,8 +1129,8 @@ export const CST = {
             Cost: 250,
             Experience: 10,
             Range: 50,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterHedgehog: {
             HealPoints: 900,
@@ -1059,8 +1145,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 20,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         MonsterSlayer: {
             HealPoints: 1000,
@@ -1075,8 +1161,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         MonsterWorm: {
             HealPoints: 2000,
@@ -1091,8 +1177,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 50,
-            EnemyControl:2,
-            ParusPriority:false
+            EnemyControl: 2,
+            ParusPriority: false
         },
         MonsterToaster: {
             HealPoints: 1500,
@@ -1107,8 +1193,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 50,
-            EnemyControl:6,
-            ParusPriority:false
+            EnemyControl: 6,
+            ParusPriority: false
         },
         MonsterIEM: {
             HealPoints: 5000,
@@ -1123,8 +1209,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterSprout: {
             HealPoints: 5000,
@@ -1139,8 +1225,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 70,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         MonsterBringer: {
             HealPoints: 5000,
@@ -1155,8 +1241,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 100,
-            EnemyControl:8  ,
-            ParusPriority:false
+            EnemyControl: 8,
+            ParusPriority: false
         },
         MonsterNecromancer: {
             HealPoints: 1500,
@@ -1171,8 +1257,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 60,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterReaper: {
             HealPoints: 5000,
@@ -1187,8 +1273,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 70,
-            EnemyControl:6,
-            ParusPriority:false
+            EnemyControl: 6,
+            ParusPriority: false
         },
         MonsterSoulWizard: {
             HealPoints: 2000,
@@ -1203,8 +1289,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 80,
-            EnemyControl:7,
-            ParusPriority:false
+            EnemyControl: 7,
+            ParusPriority: false
         },
         MonsterFireWizard: {
             HealPoints: 2000,
@@ -1219,8 +1305,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 80,
-            EnemyControl:7,
-            ParusPriority:false
+            EnemyControl: 7,
+            ParusPriority: false
         },
         MonsterGuardian: {
             HealPoints: 5000,
@@ -1235,8 +1321,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 50,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterMiner: {
             HealPoints: 5000,
@@ -1251,8 +1337,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 50,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterNanny: {
             HealPoints: 5000,
@@ -1267,8 +1353,8 @@ export const CST = {
             Cost: 25,
             Experience: 10,
             Range: 80,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         BossCultist: {
             HealPoints: 8000,
@@ -1283,8 +1369,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 80,
-            EnemyControl:10,
-            ParusPriority:false
+            EnemyControl: 10,
+            ParusPriority: false
         },
         BossCthulhu: {
             HealPoints: 20000,
@@ -1299,8 +1385,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 200,
-            EnemyControl:13,
-            ParusPriority:false
+            EnemyControl: 13,
+            ParusPriority: false
         },
         BossDemon: {
             HealPoints: 20000,
@@ -1315,8 +1401,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 300,
-            EnemyControl:15,
-            ParusPriority:false
+            EnemyControl: 15,
+            ParusPriority: false
         },
         BossMiranda: {
             HealPoints: 20000,
@@ -1331,8 +1417,8 @@ export const CST = {
             Cost: 30000,
             Experience: 100,
             Range: 200,
-            EnemyControl:15,
-            ParusPriority:false
+            EnemyControl: 15,
+            ParusPriority: false
         },
         BossBlackDragon: {
             HealPoints: 10000,
@@ -1347,8 +1433,8 @@ export const CST = {
             Cost: 10000,
             Experience: 10,
             Range: 100,
-            EnemyControl:13,
-             ParusPriority:false
+            EnemyControl: 13,
+            ParusPriority: false
         },
         HeroCat: {
             Name: "Кот-Рыцарь",
@@ -1367,7 +1453,7 @@ export const CST = {
             Speed: 50,
             MPCost: 25,
             Range: 30,
-            EnemyControl:2
+            EnemyControl: 2
         },
         HeroMage: {
             Name: "Тёмный Маг",
@@ -1386,7 +1472,7 @@ export const CST = {
             Speed: 50,
             MPCost: 35,
             Range: 60,
-            EnemyControl:2,
+            EnemyControl: 2,
         },
         HeroArchaeologist: {
             Name: "Археолог",
@@ -1405,7 +1491,7 @@ export const CST = {
             Speed: 80,
             MPCost: 50,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl: 4,
             InFight: false
         },
         HeroSceleton: {
@@ -1425,7 +1511,7 @@ export const CST = {
             Speed: 50,
             MPCost: 70,
             Range: 80,
-            EnemyControl:2,
+            EnemyControl: 2,
         },
         HeroTesla: {
             Name: "Тесла",
@@ -1444,7 +1530,7 @@ export const CST = {
             Speed: 50,
             MPCost: 70,
             Range: 30,
-            EnemyControl:7,
+            EnemyControl: 7,
         },
         HeroWitch: {
             Name: "Ведьмочка",
@@ -1463,7 +1549,7 @@ export const CST = {
             Speed: 80,
             MPCost: 90,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl: 4,
             InFight: false
         },
         HeroCenturion: {
@@ -1483,7 +1569,7 @@ export const CST = {
             Speed: 50,
             MPCost: 65,
             Range: 60,
-            EnemyControl:3,
+            EnemyControl: 3,
         },
         HeroReaper: {
             Name: "Жнец",
@@ -1502,8 +1588,8 @@ export const CST = {
             Speed: 80,
             MPCost: 200,
             Range: 60,
-            EnemyControl:4
-           
+            EnemyControl: 4
+
         },
         HeroNightmare: {
             Name: "Кошмар",
@@ -1522,8 +1608,8 @@ export const CST = {
             Speed: 150,
             MPCost: 200,
             Range: 50,
-            EnemyControl:4
-        
+            EnemyControl: 4
+
         },
         HeroMinotaur: {
             Name: "Минотавр",
@@ -1542,7 +1628,7 @@ export const CST = {
             Speed: 50,
             MPCost: 400,
             Range: 30,
-            EnemyControl:7,
+            EnemyControl: 7,
             InFight: false
         },
         HeroStormhead: {
@@ -1562,7 +1648,7 @@ export const CST = {
             Speed: 50,
             MPCost: 600,
             Range: 100,
-            EnemyControl:10,
+            EnemyControl: 10,
         },
         HeroWizard: {
             Name: "Чародей",
@@ -1581,7 +1667,7 @@ export const CST = {
             Speed: 100,
             MPCost: 150,
             Range: 60,
-            EnemyControl:4,
+            EnemyControl: 4,
         },
         BuildingPodkova: {
             Name: "Подкова",

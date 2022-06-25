@@ -33,6 +33,10 @@ export class LoadScene extends Phaser.Scene {
             this.load.audio(CST.MUSIC[prop], CST.MUSIC[prop]+".mp3");
             this.playlist.push(CST.MUSIC[prop]);
         }
+        this.load.setPath("./assets/sounds");
+        for (let prop in CST.SOUNDS) {
+            this.load.audio(CST.SOUNDS[prop], CST.SOUNDS[prop]+".mp3");
+        }
     }
 
     loadSprites() {
