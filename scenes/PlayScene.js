@@ -96,6 +96,7 @@ export class PlayScene extends Phaser.Scene {
         createAnimations(this);
 
         this.createGUI();
+        this.disableButtons();
         // this.createSpawnMonstersBar();
         // this.createSpawnBossBar();
         // this.createSpawnHeroesBar();
@@ -249,6 +250,16 @@ export class PlayScene extends Phaser.Scene {
         this.backButton.on("pointerover", () => {
             this.backButton.setTexture(CST.IMAGES.BackButtonChoose);
         });
+    }
+
+    disableButtons() {
+        for (let el of this.parus.heroWindows) {
+            el.disableInteractive();
+        }
+        this.shopBar.disableInteractive();
+        this.skillBar.disableInteractive();
+        this.backButton.disableInteractive();
+        this.battleButton.disableInteractive();
     }
 
     createSpawnMonstersBar() {
