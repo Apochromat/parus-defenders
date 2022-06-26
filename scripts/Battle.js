@@ -3,7 +3,8 @@ import { CST } from "./const.js";
 import { calculateDamage } from "./Misc.js";
 import { calculateDamageParus } from "./Misc.js";
 import { Parus } from "./Parus.js";
-export function battle(parus, enemies, heroes, characterHeap, playerStats) {
+export function battle(parus, enemies, heroes, characterHeap, playerStats, gamefreeze) {
+    if(!gamefreeze){
     enemies.getMatching("alive", true).forEach(enemy => {
         if ((heroes.getLength() == 0 || enemy.specs.ParusPriority) && Math.round(Math.abs(enemy.x - parus.x)) > enemy.specs.Range + 175) {//
             var VectorX, VectorY;
@@ -249,9 +250,14 @@ export function battle(parus, enemies, heroes, characterHeap, playerStats) {
         }
     });
 };
-export function battleFreeze(characterHeap){
+}
+export function battleFreeze(characterHeap,playerStats){
     for (let el in characterHeap.heap) {
         characterHeap.heap[el].setVelocity(0.0);
         characterHeap.heap[el].setAnimationIdle();
     }
+    playerStats.battleFreeze=true;
+}
+export function battleResume(playerStats){
+    playerStats.battleFreeze=false;
 }

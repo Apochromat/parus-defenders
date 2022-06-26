@@ -6,6 +6,7 @@ var DisableSaving = false;
 var playerDataTemplate = {
     Date: Date.now(),
     BattleMode: false,
+    GameFreeze: false,
     COINS: 10000,
     SKILL_POINTS: 1,
     LVL: 1,

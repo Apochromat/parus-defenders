@@ -1,5 +1,5 @@
 import { CST } from "../scripts/const.js";
-import { battle, battleFreeze } from "../scripts/Battle.js";
+import { battle, battleFreeze ,battleResume} from "../scripts/Battle.js";
 import { createAnimations } from "../scripts/Animations.js";
 import { createStatusBar, setStatusHP, setStatusMP, setStatusLVL, setStatusCOIN, setStatusWAVE } from "../scripts/CreateStatusBar.js";
 import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
@@ -63,7 +63,7 @@ export class PlayScene extends Phaser.Scene {
     battleButton;
 
     battleFlag = 0;
-
+    gamefreeze;
     constructor() {
         super({
             key: CST.SCENES.PLAY
@@ -157,7 +157,7 @@ export class PlayScene extends Phaser.Scene {
 
             this.battleFlag = 0;
         }
-        battle(this.parus, this.enemies, this.heroes, this.characterHeap, this.playerStats);
+        battle(this.parus, this.enemies, this.heroes, this.characterHeap, this.playerStats, this.playerStats.battleFreeze);
     }
 
     wave() {
