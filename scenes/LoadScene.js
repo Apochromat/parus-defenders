@@ -20,6 +20,13 @@ export class LoadScene extends Phaser.Scene {
         }
     }
 
+    loadDialogues() {
+        this.load.setPath("./assets/dialogues");
+        for (let prop in CST.DIALOGUES) {
+            this.load.image(CST.DIALOGUES[prop], CST.DIALOGUES[prop]+".png");
+        }
+    }
+
     loadIcons() {
         this.load.setPath("./assets/icons");
         for (let prop in CST.ICONS) {
@@ -191,6 +198,7 @@ export class LoadScene extends Phaser.Scene {
         //load image, spritesheet, sound
         this.loadAudio();
         this.loadImages();
+        this.loadDialogues();
         this.loadIcons();
         this.loadSprites();
 

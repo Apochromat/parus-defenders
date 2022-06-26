@@ -12,6 +12,10 @@ export const CST = {
         HEIGHT: 1080,
         ParusX: 580,
         ParusY: 580,
+        DialogueButton: {
+            x: 1675,
+            y: 885
+        },
         HeroSpawnArea: {
             X0: 810,
             Y0: 730,
@@ -24,7 +28,7 @@ export const CST = {
             X1: 2000,
             Y1: 820
         },
-        SaveDataDelay: 30000,
+        SaveDataDelay: 1000,
         ManaRegenTime: 1000
     },
     IMAGES: {
@@ -60,6 +64,16 @@ export const CST = {
         HeroesBarClose: "heroesBarClose",
         HeroesBarCloseChoose: "heroesBarCloseChoose",
         HeroesBarField: "heroesBarField"
+    },
+    DIALOGUES: {
+        DialogueButton: "dialogue_button",
+        DialogueButtonHover: "dialogue_button_hover",
+        Dialogue0: "dialogue_0",
+        Dialogue1: "dialogue_1",
+        Dialogue2: "dialogue_2",
+        Dialogue3: "dialogue_3",
+        Dialogue4: "dialogue_4",
+        Dialogue5: "dialogue_5",
     },
     ICONS: {
         Parus: "icon_parus",
@@ -1763,7 +1777,9 @@ export const CST = {
         HeroesBarClose: 5005,
         HeroesBarRecyclerView: 5007,
         Slots: 1000,
-        Effects: 18000
+        Effects: 8000,
+        Dialogue: 10000,
+        DialogueButton: 10001
     },
     WAVE_GENERATOR: {
         MinSpawnDelay: 500,

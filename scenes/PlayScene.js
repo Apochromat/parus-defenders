@@ -1,10 +1,10 @@
 import { CST } from "../scripts/const.js";
-import { battle, battleFreeze ,battleResume} from "../scripts/Battle.js";
+import { battle, battleFreeze, battleResume } from "../scripts/Battle.js";
 import { createAnimations } from "../scripts/Animations.js";
 import { createStatusBar, setStatusHP, setStatusMP, setStatusLVL, setStatusCOIN, setStatusWAVE } from "../scripts/CreateStatusBar.js";
 import { createToolBar, closeToolBar } from "../scripts/CreateToolBar.js";
-import { createShopBar, openToolbarLeft } from "../scripts/CreateShopBar.js";
-import { createSkillsBar, openToolbarRight } from "../scripts/CreateSkillsBar.js";
+import { createShopBar } from "../scripts/CreateShopBar.js";
+import { createSkillsBar } from "../scripts/CreateSkillsBar.js";
 import { closeHeroesBar, createHeroesBar } from "../scripts/CreateHeroesBar.js";
 import { closeBuildingsBar, createBuildingsBar } from "../scripts/CreateBuildingsBar.js";
 import { calculateLVLExperience, randomIntFromInterval, toggleFullScreen } from "../scripts/Misc.js";
@@ -19,6 +19,9 @@ export class PlayScene extends Phaser.Scene {
     heroes;
     parus;
     lastManaRegen;
+
+    learningSplash;
+    learningButton;
 
     graphicsHP;
     graphicsMP;
@@ -74,6 +77,7 @@ export class PlayScene extends Phaser.Scene {
     }
 
     preload() {
+        createAnimations(this);
         this.add.tileSprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.NUMBERS.WIDTH, CST.NUMBERS.HEIGHT, CST.IMAGES.BackgroundEvening);
         this.load.scenePlugin({
             key: 'rexuiplugin',
@@ -96,7 +100,6 @@ export class PlayScene extends Phaser.Scene {
         createAnimations(this);
 
         this.createGUI();
-        this.disableButtons();
         // this.createSpawnMonstersBar();
         // this.createSpawnBossBar();
         // this.createSpawnHeroesBar();
@@ -109,6 +112,7 @@ export class PlayScene extends Phaser.Scene {
             savePlayerData(this.playerStats);
             console.log("Data Saved");
         }
+        this.learning();
         this.wave();
         this.regenerateMana();
         this.parus.updateLevel(this.playerStats.LEVELS_SHOP.Parus);
@@ -189,6 +193,60 @@ export class PlayScene extends Phaser.Scene {
         }
     }
 
+    learning() {
+        if (!this.playerStats.LearningFlag) return 0;
+        this.disableButtons();
+        if (this.playerStats.LearningStage != -1) {
+            this.learningButton = this.add.sprite(CST.NUMBERS.DialogueButton.x, CST.NUMBERS.DialogueButton.y, CST.DIALOGUES.DialogueButton).setDepth(CST.DEPTHS.DialogueButton);
+
+            this.learningButton.setInteractive();
+            this.learningButton.on("pointerup", () => {
+                this.learningSplash.destroy();
+                if (this.playerStats.LearningStage == 5) {
+                    this.playerStats.LearningStage = -1;
+                    this.enableButtons();
+                    this.playerStats.LearningFlag = false;
+                }
+                else {
+                    this.playerStats.LearningStage += 1;
+                    this.playerStats.LearningFlag = true;
+                }
+                this.learningButton.destroy();
+            });
+            this.learningButton.on("pointerout", () => {
+                this.learningButton.setTexture(CST.DIALOGUES.DialogueButton);
+            });
+            this.learningButton.on("pointerover", () => {
+                this.learningButton.setTexture(CST.DIALOGUES.DialogueButtonHover);
+            });
+        }
+
+        if (this.playerStats.LearningStage == 0) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue0).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 1) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue1).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 2) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue2).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 3) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue3).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 4) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue4).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 5) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue5).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+    }
+
     updateLVL() {
         if (this.playerStats.EXPERIENCE >= calculateLVLExperience(this.playerStats.LVL)) {
             this.playerStats.EXPERIENCE = this.playerStats.EXPERIENCE % calculateLVLExperience(this.playerStats.LVL);
@@ -209,7 +267,6 @@ export class PlayScene extends Phaser.Scene {
             }
         }
     }
-
 
     createGUI() {
         createStatusBar(this);
@@ -254,12 +311,22 @@ export class PlayScene extends Phaser.Scene {
 
     disableButtons() {
         for (let el of this.parus.heroWindows) {
-            el.disableInteractive();
+            el.visible = false;
         }
-        this.shopBar.disableInteractive();
-        this.skillBar.disableInteractive();
-        this.backButton.disableInteractive();
-        this.battleButton.disableInteractive();
+        this.shopBar.visible = false;
+        this.skillBar.visible = false;
+        this.backButton.visible = false;
+        this.battleButton.visible = false;
+    }
+
+    enableButtons() {
+        for (let el of this.parus.heroWindows) {
+            el.visible = true;
+        }
+        this.shopBar.visible = true;
+        this.skillBar.visible = true;
+        this.backButton.visible = true;
+        this.battleButton.visible = true;
     }
 
     createSpawnMonstersBar() {

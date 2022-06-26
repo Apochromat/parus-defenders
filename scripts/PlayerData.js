@@ -1,12 +1,14 @@
 import { CST } from "../scripts/const.js";
 
 var SAVE_KEY = "ParusSave";
-var DisableSaving = false;
+var DisableSaving = true;
 
 var playerDataTemplate = {
     Date: Date.now(),
     BattleMode: false,
     GameFreeze: false,
+    LearningStage: 0,
+    LearningFlag: true,
     COINS: 10000,
     SKILL_POINTS: 1,
     LVL: 1,
