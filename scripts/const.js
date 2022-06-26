@@ -1077,15 +1077,15 @@ export const CST = {
             PhysicalDamage: 50,
             LightningDamage: 0,
             MagicDamage: 10,
-            AttackCooldown: 1000,
-            Speed: 200,
+            AttackCooldown: 1500,
+            Speed: 190,
             PhysicalProtection: 0,
             LightningProtection: 0,
             MagicProtection: 10,
             Cost: 125,
-            Experience: 40,
+            Experience: 50,
             Range: 60,
-            EnemyControl: 3,
+            EnemyControl: 6,
             ParusPriority: true
         },
         MonsterGhoul: {
@@ -1100,7 +1100,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 10,
             Cost: 150,
-            Experience: 50,
+            Experience: 100,
             Range: 60,
             EnemyControl: 3,
             ParusPriority: false
@@ -1117,7 +1117,7 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 20,
             Cost: 200,
-            Experience: 60,
+            Experience: 120,
             Range: 50,
             EnemyControl:4,
             ParusPriority:false
@@ -1134,7 +1134,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 50,
             Cost: 250,
-            Experience: 70,
+            Experience: 140,
             Range: 100,
             EnemyControl: 5,
             ParusPriority: false
@@ -1151,7 +1151,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 50,
             Cost: 275,
-            Experience: 80,
+            Experience: 160,
             Range: 50,
             EnemyControl: 4,
             ParusPriority: false
@@ -1168,7 +1168,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 0,
             Cost: 300,
-            Experience: 90,
+            Experience: 180,
             Range: 20,
             EnemyControl: 5,
             ParusPriority: false
@@ -1185,7 +1185,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 10,
             Cost: 325,
-            Experience: 100,
+            Experience: 200,
             Range: 60,
             EnemyControl: 5,
             ParusPriority: false
@@ -1202,7 +1202,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 0,
             Cost: 350,
-            Experience: 110,
+            Experience: 220,
             Range: 60,
             EnemyControl:4,
             ParusPriority:true
@@ -1219,7 +1219,7 @@ export const CST = {
             LightningProtection: 20,
             MagicProtection: 20,
             Cost: 375,
-            Experience: 120,
+            Experience: 250,
             Range: 60,
             EnemyControl:4,
             ParusPriority:false
@@ -1236,7 +1236,7 @@ export const CST = {
             LightningProtection: 10,
             MagicProtection: 0,
             Cost: 400,
-            Experience: 130,
+            Experience: 270,
             Range: 50,
             EnemyControl: 6,
             ParusPriority: true
@@ -1253,7 +1253,7 @@ export const CST = {
             LightningProtection: 40,
             MagicProtection: 20,
             Cost: 425,
-            Experience: 140,
+            Experience: 300,
             Range: 70,
             EnemyControl: 5,
             ParusPriority: false
@@ -1270,7 +1270,7 @@ export const CST = {
             LightningProtection: 40,
             MagicProtection: 20,
             Cost: 450,
-            Experience: 150,
+            Experience: 330,
             Range: 100,
             EnemyControl: 8,
             ParusPriority: false
@@ -1287,7 +1287,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 20,
             Cost: 475,
-            Experience: 160,
+            Experience: 360,
             Range: 70,
             EnemyControl:5,
             ParusPriority:false
@@ -1304,7 +1304,7 @@ export const CST = {
             LightningProtection: 0,
             MagicProtection: 0,
             Cost: 500,
-            Experience: 170,
+            Experience: 390,
             Range: 80,
             EnemyControl:5,
             ParusPriority:false
@@ -1321,7 +1321,7 @@ export const CST = {
             LightningProtection: 40,
             MagicProtection: 40,
             Cost: 525,
-            Experience: 180,
+            Experience: 400,
             Range: 80,
             EnemyControl: 7,
             ParusPriority: false
@@ -1338,7 +1338,7 @@ export const CST = {
             LightningProtection: 40,
             MagicProtection: 40,
             Cost: 550,
-            Experience: 190,
+            Experience: 400,
             Range: 80,
             EnemyControl: 7,
             ParusPriority: false
@@ -1355,7 +1355,7 @@ export const CST = {
             LightningProtection: 20,
             MagicProtection: 40,
             Cost: 575,
-            Experience: 200,
+            Experience: 500,
             Range: 50,
             EnemyControl: 4,
             ParusPriority: false
@@ -1372,7 +1372,7 @@ export const CST = {
             LightningProtection: 20,
             MagicProtection: 40,
             Cost: 600,
-            Experience: 210,
+            Experience: 500,
             Range: 50,
             EnemyControl: 4,
             ParusPriority: false
@@ -1392,7 +1392,7 @@ export const CST = {
             Cost: 25000,
             Experience: 5000,
             Range: 80,
-            EnemyControl: 10,
+            EnemyControl: 7,
             ParusPriority: false
         },
         BossBlackDragon: {
@@ -1409,8 +1409,8 @@ export const CST = {
             Cost: 50000,
             Experience: 7500,
             Range: 100,
-            EnemyControl:13,
-             ParusPriority:false
+            EnemyControl:7,
+            ParusPriority:false
         },
         BossCthulhu: {
             Name: "BossCthulhu",
@@ -1426,7 +1426,7 @@ export const CST = {
             Cost: 75000,
             Experience: 10000,
             Range: 200,
-            EnemyControl: 13,
+            EnemyControl: 9,
             ParusPriority: false
         },
         BossDemon: {
@@ -1443,7 +1443,7 @@ export const CST = {
             Cost: 100000,
             Experience: 15000,
             Range: 300,
-            EnemyControl: 15,
+            EnemyControl: 9,
             ParusPriority: false
         },
         BossMiranda: {
@@ -1460,7 +1460,7 @@ export const CST = {
             Cost: 200000,
             Experience: 20000,
             Range: 200,
-            EnemyControl: 15,
+            EnemyControl: 9,
             ParusPriority: false
         },
         HeroCat: {
@@ -1711,19 +1711,19 @@ export const CST = {
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
             Description: "Мгновенно \nвосстанавливает 50% HP",
-            MPCost: 0.4,
+            MPCost: 0.3,
             CoolDown: 80000
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
             Description: "Мгновенно \nобнуляет перезарядку \nгероев",
-            MPCost: 0.3,
+            MPCost: 0.1,
             CoolDown: 30000
         },
         BuildingPlasmaGun: {
             Name: "BFG-9000",
             Description: "Уничтожает всех \nпротивников на поле",
-            MPCost: 0.5,
+            MPCost: 0.3,
             CoolDown: 60000
         }
     },
@@ -1779,8 +1779,8 @@ export const CST = {
                 MaxWave: 20,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterTwig: {
@@ -1788,8 +1788,8 @@ export const CST = {
                 MaxWave: 30,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterBrainer: {
@@ -1797,17 +1797,17 @@ export const CST = {
                 MaxWave: 50,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterHellhound: {
                 MinWave: 20,
                 MaxWave: 60,
                 MinBatch: 3,
-                MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.02,
+                MaxBatch: 4,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterGhoul: {
@@ -1815,8 +1815,8 @@ export const CST = {
                 MaxWave: 80,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterBot: {
@@ -1824,8 +1824,8 @@ export const CST = {
                 MaxWave: 130,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterDarkKnight: {
@@ -1833,8 +1833,8 @@ export const CST = {
                 MaxWave: 120,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterHedgehog: {
@@ -1842,8 +1842,8 @@ export const CST = {
                 MaxWave: 160,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterSlayer: {
@@ -1851,8 +1851,8 @@ export const CST = {
                 MaxWave: 190,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterToaster: {
@@ -1860,8 +1860,8 @@ export const CST = {
                 MaxWave: 150,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterWorm: {
@@ -1869,8 +1869,8 @@ export const CST = {
                 MaxWave: 260,
                 MinBatch: 3,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterIEM: {
@@ -1878,8 +1878,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterSprout: {
@@ -1887,8 +1887,8 @@ export const CST = {
                 MaxWave: 350,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterBringer: {
@@ -1896,8 +1896,8 @@ export const CST = {
                 MaxWave: 300,
                 MinBatch: 2,
                 MaxBatch: 5,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterReaper: {
@@ -1905,8 +1905,8 @@ export const CST = {
                 MaxWave: 290,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterSoulWizard: {
@@ -1914,8 +1914,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterFireWizard: {
@@ -1923,8 +1923,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterNecromancer: {
@@ -1932,8 +1932,8 @@ export const CST = {
                 MaxWave: 250,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterGuardian: {
@@ -1941,8 +1941,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterMiner: {
@@ -1950,8 +1950,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             MonsterNanny: {
@@ -1959,8 +1959,8 @@ export const CST = {
                 MaxWave: 420,
                 MinBatch: 1,
                 MaxBatch: 3,
-                HealthBoost: 0.1,
-                AttackBoost: 0.1,
+                HealthBoost: 0.01,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             BossCultist: {
@@ -1968,8 +1968,8 @@ export const CST = {
                 MaxWave: 100,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.12,
-                AttackBoost: 0.1,
+                HealthBoost: 0.02,
+                AttackBoost: 0.02,
                 BatchComparativeBoost: 0.1
             },
             BossBlackDragon: {
@@ -1977,8 +1977,8 @@ export const CST = {
                 MaxWave: 300,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.12,
-                AttackBoost: 0.1,
+                HealthBoost: 0.02,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             BossDemon: {
@@ -1986,8 +1986,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.2,
-                AttackBoost: 0.1,
+                HealthBoost: 0.02,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             BossMiranda: {
@@ -1995,8 +1995,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.2,
-                AttackBoost: 0.1,
+                HealthBoost: 0.02,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             },
             BossCthulhu: {
@@ -2004,8 +2004,8 @@ export const CST = {
                 MaxWave: -1,
                 MinBatch: 1,
                 MaxBatch: 1,
-                HealthBoost: 0.2,
-                AttackBoost: 0.1,
+                HealthBoost: 0.02,
+                AttackBoost: 0.01,
                 BatchComparativeBoost: 0.1
             }
         }
