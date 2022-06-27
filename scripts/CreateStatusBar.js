@@ -45,7 +45,13 @@ export function setStatusWAVE(scene, type, coef, numWave = 0, numHPBoss = 0) {
     var rect = new Phaser.Geom.Rectangle(840+210, 60, 482 * coef, 14);
     scene.graphicsWAVE.fillRectShape(rect);
     if (type == 1) {
-        scene.titleWAVE.setText(`${numWave}               BOSS: ${Math.trunc(numHPBoss)} HP`);
+        if (numHPBoss > 0) {
+            scene.titleWAVE.setText(`${numWave}               BOSS: ${Math.trunc(numHPBoss)} HP`);
+        }
+        else {
+            scene.titleWAVE.setText(`${numWave}               BOSS: 0 HP`);
+        }
+        
     }
     else {
         scene.titleWAVE.setText(numWave);

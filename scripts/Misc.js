@@ -184,5 +184,5 @@ export function addIfNotInclude(array, item) {
 }
 
 export function calculateLVLExperience(LVL) {
-  return 10 * (1.2) ** LVL;
+  return 10 * (1.3) ** LVL;
 }
