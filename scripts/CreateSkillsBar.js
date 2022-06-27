@@ -25,6 +25,11 @@ export function createSkillsBar(scene){
 
     scene.skillBar.on("pointerup", () => {
         openToolbarRight(scene);
+        if (scene.playerStats.LearningStage == 14) {
+            scene.playerStats.LearningStage++;
+            scene.playerStats.LearningFlag = true;
+            scene.learningSplash.destroy();
+        }
     });
     scene.skillBar.on("pointerout", () => {
         scene.skillBar.setTexture(CST.IMAGES.ToolBarRight);
@@ -100,6 +105,11 @@ export function openToolbarRight(scene, t = null){
         targets: targets
     })
     .on('child.click', function(child) {
+        if (scene.playerStats.LearningStage == 15) {
+            scene.playerStats.LearningStage++;
+            scene.playerStats.LearningFlag = true;
+            scene.learningSplash.destroy();
+        }
         let currName = child.getParentSizer().name;
         if (scene.playerStats.SKILL_POINTS != 0 && CST.SKILLSLIST[currName].Levels[scene.playerStats.LEVELS_SKILLS[currName] + 1] != undefined)  {
             scene.playerStats.SKILL_POINTS -= 1;

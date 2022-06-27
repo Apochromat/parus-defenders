@@ -132,6 +132,11 @@ export function openHeroesBar(scene, index, t = null) {
         targets: targets
     })
         .on('child.click', function (child) {
+            if (scene.playerStats.LearningStage == 4) {
+                scene.playerStats.LearningStage++;
+                scene.playerStats.LearningFlag = true;
+                scene.learningSplash.destroy();
+            }
             let currName = child.getParentSizer().name;
             if (child.getParentSizer().type == 0) {
                 scene.playerStats.AVAILABLE_HEROES.splice(scene.playerStats.AVAILABLE_HEROES.indexOf(currName), 1);

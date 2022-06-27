@@ -27,6 +27,11 @@ export function createShopBar(scene) {
 
     scene.shopBar.on("pointerup", () => {
         openToolbarLeft(scene);
+        if (scene.playerStats.LearningStage == 11) {
+            scene.playerStats.LearningStage++;
+            scene.playerStats.LearningFlag = true;
+            scene.learningSplash.destroy();
+        }
     });
     scene.shopBar.on("pointerout", () => {
         scene.shopBar.setTexture(CST.IMAGES.ToolBarLeft);
@@ -102,6 +107,11 @@ export function openToolbarLeft(scene, t = null) {
         targets: targets
     })
         .on('child.click', function (child) {
+            if (scene.playerStats.LearningStage == 12) {
+                scene.playerStats.LearningStage++;
+                scene.playerStats.LearningFlag = true;
+                scene.learningSplash.destroy();
+            }
             let currName = child.getParentSizer().name;
             if (scene.playerStats.LEVELS_SHOP[currName] <= CST.SHOPLIST[currName].MaxLVL && ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0)) {
                 scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);

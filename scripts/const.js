@@ -74,6 +74,17 @@ export const CST = {
         Dialogue3: "dialogue_3",
         Dialogue4: "dialogue_4",
         Dialogue5: "dialogue_5",
+        Dialogue6: "dialogue_6",
+        Dialogue7: "dialogue_7",
+        Dialogue8: "dialogue_8",
+        Dialogue9: "dialogue_9",
+        Dialogue10: "dialogue_10",
+        Dialogue11: "dialogue_11",
+        Dialogue12: "dialogue_12",
+        Dialogue13: "dialogue_13",
+        Dialogue14: "dialogue_14",
+        Dialogue15: "dialogue_15",
+        Dialogue16: "dialogue_16"
     },
     ICONS: {
         Parus: "icon_parus",
@@ -225,7 +236,7 @@ export const CST = {
         BossDragonMove: "BossDragonMove",
         BossMirandaDeath: "BossMirandaDeath",
         BossMirandaHit: "BossMirandaHit",
-        BossMirandaMove : "BossMirandaMove",
+        BossMirandaMove: "BossMirandaMove",
         HeroArchaeologistDeath: "HeroArchaeologistDeath",
         HeroArchaeologistHit: "HeroArchaeologistHit",
         HeroCatDeath: "HeroCatDeath",
@@ -1169,8 +1180,8 @@ export const CST = {
             Cost: 200,
             Experience: 120,
             Range: 50,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterBot: {
             Name: "MonsterBot",
@@ -1254,8 +1265,8 @@ export const CST = {
             Cost: 350,
             Experience: 260,
             Range: 60,
-            EnemyControl:4,
-            ParusPriority:true
+            EnemyControl: 4,
+            ParusPriority: true
         },
         MonsterNecromancer: {
             Name: "MonsterNecromancer",
@@ -1271,8 +1282,8 @@ export const CST = {
             Cost: 375,
             Experience: 300,
             Range: 60,
-            EnemyControl:4,
-            ParusPriority:false
+            EnemyControl: 4,
+            ParusPriority: false
         },
         MonsterWorm: {
             Name: "MonsterWorm",
@@ -1339,8 +1350,8 @@ export const CST = {
             Cost: 475,
             Experience: 540,
             Range: 70,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         MonsterNanny: {
             Name: "MonsterNanny",
@@ -1356,8 +1367,8 @@ export const CST = {
             Cost: 500,
             Experience: 600,
             Range: 80,
-            EnemyControl:5,
-            ParusPriority:false
+            EnemyControl: 5,
+            ParusPriority: false
         },
         MonsterSoulWizard: {
             Name: "MonsterSoulWizard",
@@ -1427,7 +1438,7 @@ export const CST = {
             EnemyControl: 4,
             ParusPriority: false
         },
-        
+
         BossCultist: {
             Name: "BossCultist",
             HealPoints: 10000,
@@ -1459,8 +1470,8 @@ export const CST = {
             Cost: 50000,
             Experience: 7500,
             Range: 100,
-            EnemyControl:7,
-            ParusPriority:false
+            EnemyControl: 7,
+            ParusPriority: false
         },
         BossCthulhu: {
             Name: "BossCthulhu",
@@ -1550,7 +1561,7 @@ export const CST = {
             MPCost: 30,
             Range: 60,
             EnemyControl: 4
-           
+
         },
         HeroArchaeologist: {
             Name: "Археолог",
@@ -1686,7 +1697,7 @@ export const CST = {
             MPCost: 50,
             Range: 50,
             EnemyControl: 6
-        
+
         },
         HeroMinotaur: {
             Name: "Минотавр",

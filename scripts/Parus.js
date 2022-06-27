@@ -114,6 +114,11 @@ export class HeroWindow extends Phaser.GameObjects.Image {
         this.setInteractive();
 
         this.on("pointerup", () => {
+            if (scene.playerStats.LearningStage == 3 || scene.playerStats.LearningStage == 7) {
+                scene.playerStats.LearningStage++;
+                scene.playerStats.LearningFlag = true;
+                scene.learningSplash.destroy();
+            }
             if (playerStats.BattleMode) {
                 if (this.coof == 1 &&
                     playerStats.HERO_SLOTS[this.index] != CST.EMPTY &&

@@ -147,6 +147,11 @@ export class PlayScene extends Phaser.Scene {
             this.skillBar.visible = true;
             this.shopBar.visible = true;
             this.battleButton.visible = true;
+            if (this.playerStats.LearningStage == 9) {
+                this.playerStats.LearningStage++;
+                this.playerStats.LearningFlag = true;
+                this.learningSplash.destroy();
+            }
             // this.scrollablePanel.visible = true;
             // this.scrollablePanelBosses.visible = true;
             // this.scrollablePanelHeroes.visible = true;
@@ -195,16 +200,23 @@ export class PlayScene extends Phaser.Scene {
 
     learning() {
         if (!this.playerStats.LearningFlag) return 0;
-        this.disableButtons();
-        if (this.playerStats.LearningStage != -1) {
+        if (this.playerStats.LearningStage == 0) this.disableButtons();
+        if (this.playerStats.LearningStage == 0 || this.playerStats.LearningStage == 1 || this.playerStats.LearningStage == 2 || this.playerStats.LearningStage == 5 || this.playerStats.LearningStage == 8 ||this.playerStats.LearningStage == 9 || this.playerStats.LearningStage == 10 || this.playerStats.LearningStage == 13 || this.playerStats.LearningStage == 16) {
             this.learningButton = this.add.sprite(CST.NUMBERS.DialogueButton.x, CST.NUMBERS.DialogueButton.y, CST.DIALOGUES.DialogueButton).setDepth(CST.DEPTHS.DialogueButton);
 
             this.learningButton.setInteractive();
             this.learningButton.on("pointerup", () => {
                 this.learningSplash.destroy();
-                if (this.playerStats.LearningStage == 5) {
+                if (this.playerStats.LearningStage == 16) {
                     this.playerStats.LearningStage = -1;
                     this.enableButtons();
+                    this.playerStats.LearningFlag = false;
+                }
+                else if (this.playerStats.LearningStage == 8) {
+                    this.playerStats.LearningStage += 1;
+                    for (let el of this.parus.heroWindows) {
+                        el.visible = true;
+                    }
                     this.playerStats.LearningFlag = false;
                 }
                 else {
@@ -234,15 +246,72 @@ export class PlayScene extends Phaser.Scene {
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 3) {
+            for (let el of this.parus.heroWindows) {
+                el.visible = true;
+            }
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue3).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 4) {
+            this.shopBar.visible = true;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue4).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 5) {
+            closeHeroesBar(this);
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue5).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 6) {
+            this.battleButton.visible = true;
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue6).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 7) {
+            for (let el of this.parus.heroWindows) {
+                el.visible = true;
+            }
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue7).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 8) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue8).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 9) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue9).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 10) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue10).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 11) {
+            this.shopBar.visible = true;
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue11).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 12) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue12).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 13) {
+            closeToolBar(this);
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue13).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 14) {
+            this.shopBar.visible = true;
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue14).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 15) {
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue15).setDepth(CST.DEPTHS.Dialogue);
+            this.playerStats.LearningFlag = false;
+        }
+        else if (this.playerStats.LearningStage == 16) {
+            closeToolBar(this);
+            this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue16).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
     }
@@ -279,6 +348,11 @@ export class PlayScene extends Phaser.Scene {
         this.battleButton = this.add.image(this.game.renderer.width - 85, this.game.renderer.height - 72, CST.IMAGES.BattleButton).setDepth(CST.DEPTHS.ToolBarField);
         this.battleButton.setInteractive();
         this.battleButton.on("pointerup", () => {
+            if (this.playerStats.LearningStage == 6) {
+                this.playerStats.LearningStage++;
+                this.playerStats.LearningFlag = true;
+                this.learningSplash.destroy();
+            }
             if (this.waveObject != undefined) {
                 delete this.waveObject;
             }
