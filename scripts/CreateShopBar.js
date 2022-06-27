@@ -103,7 +103,7 @@ export function openToolbarLeft(scene, t = null) {
     })
         .on('child.click', function (child) {
             let currName = child.getParentSizer().name;
-            if ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0) {
+            if (((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0)) {
                 scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);
                 setStatusCOIN(scene, scene.playerStats.COINS);
                 if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus" && currName != "BuildingPodkova" && currName != "BuildingMPObelisk" && currName != "BuildingHPObelisk" && currName != "BuildingCDObelisk" && currName != "BuildingPlasmaGun") {

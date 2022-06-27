@@ -239,26 +239,31 @@ export class CharacterHeap {
         switch (type) {
             case "BossCultist":
                 this.heap[CharacterHeap.id] = new BossCultist(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].hp *= ( 1 + (CST.WAVE_GENERATOR.MonsterPreferences["BossCultist"].HealthBoost * (this.scene.playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences["BossCultist"].MinWave)));
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCultist));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
             case "BossBlackDragon":
                 this.heap[CharacterHeap.id] = new BossBlackDragon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].hp *= ( 1 + (CST.WAVE_GENERATOR.MonsterPreferences["BossBlackDragon"].HealthBoost * (this.scene.playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences["BossBlackDragon"].MinWave)));
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossBlackDragon));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
             case "BossCthulhu":
                 this.heap[CharacterHeap.id] = new BossCthulhu(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].hp *= ( 1 + (CST.WAVE_GENERATOR.MonsterPreferences["BossCthulhu"].HealthBoost * (this.scene.playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences["BossCthulhu"].MinWave)));
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossCthulhu));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
             case "BossDemon":
                 this.heap[CharacterHeap.id] = new BossDemon(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].hp *= ( 1 + (CST.WAVE_GENERATOR.MonsterPreferences["BossDemon"].HealthBoost * (this.scene.playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences["BossDemon"].MinWave)));
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossDemon));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;
             case "BossMiranda":
                 this.heap[CharacterHeap.id] = new BossMiranda(scene, x, y, CharacterHeap.id, this.heap);
+                this.heap[CharacterHeap.id].hp *= ( 1 + (CST.WAVE_GENERATOR.MonsterPreferences["BossMiranda"].HealthBoost * (this.scene.playerStats.WAVE - CST.WAVE_GENERATOR.MonsterPreferences["BossMiranda"].MinWave)));
                 this.heap[CharacterHeap.id].specs = JSON.parse(JSON.stringify(CST.CHARACTERS.BossMiranda));
                 monsterSpecsWithplayerStats(this.scene.playerStats, this.heap[CharacterHeap.id].specs);
                 break;

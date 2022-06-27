@@ -101,7 +101,7 @@ export function openToolbarRight(scene, t = null){
     })
     .on('child.click', function(child) {
         let currName = child.getParentSizer().name;
-        if (scene.playerStats.SKILL_POINTS != 0) {
+        if (scene.playerStats.SKILL_POINTS != 0 && CST.SKILLSLIST[currName].Levels[scene.playerStats.LEVELS_SKILLS[currName] + 1] != undefined)  {
             scene.playerStats.SKILL_POINTS -= 1;
             scene.playerStats.LEVELS_SKILLS[currName] += 1;
             closeToolBar(scene);
@@ -148,7 +148,12 @@ function createSkillsItem(scene, key) {
     table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', {left: 25, right: 150}, true);
     table.add(createLable(scene, CST.SKILLSLIST[key].Name), 1, 0, 'left', {left: 0, top: 5}, true);
     table.add(createLable(scene, CST.SKILLSLIST[key].Description, 2), 1, 1, 'left', {right: 0}, true);
-    table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);
+    if (CST.SKILLSLIST[key].Levels[scene.playerStats.LEVELS_SKILLS[key] + 1] != undefined) {
+        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SKILLS[key], 1), 2, 0, 'right', {left: 150}, true);  
+    }
+    else {
+        table.add(createLable(scene, "MAX LVL", 1), 2, 0, 'right', {left: 150}, true);  
+    }
     table.add(createLable(scene, CST.SKILLSLIST[key].Levels[scene.playerStats.LEVELS_SKILLS[key]], 1), 2, 1, 'right', {left: 150}, true);
     table.add(createButtonAdd(scene, key), 2, 2, 'right', {top: 5, left: 160}, true);
 
