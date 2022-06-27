@@ -172,6 +172,9 @@ export function calculateCost(key, level, beginCost) {
   else if(key == "BuildingMPObelisk" || key == "BuildingHPObelisk" || key == "BuildingCDObelisk" || key == "BuildingPlasmaGun") {
     return Math.trunc(beginCost * (1.4 ** (level)));
   }
+  if (level > 16) {
+    return Math.trunc(beginCost * (1.2 ** (16)) + beginCost * (1.1 ** (level)))
+  }
   return Math.trunc(beginCost * (1.2 ** (level)));
 }
 
