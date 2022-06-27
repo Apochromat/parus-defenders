@@ -169,6 +169,9 @@ export function calculateCost(key, level, beginCost) {
   if (key == "Parus") {
     return beginCost + level * 1200
   }
+  else if(key == "BuildingMPObelisk" || key == "BuildingHPObelisk" || key == "BuildingCDObelisk" || key == "BuildingPlasmaGun") {
+    return Math.trunc(beginCost * (1.4 ** (level)));
+  }
   return Math.trunc(beginCost * (1.2 ** (level)));
 }
 

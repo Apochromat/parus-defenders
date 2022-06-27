@@ -327,7 +327,7 @@ export class buildingWindows extends Phaser.GameObjects.Image {
                 this.graphicsStatusInWait.fillRectShape(rect);
                 var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y + 45, 83, 14);
                 this.graphicsStatusCell.fillRectShape(cell);
-                this.coof = (Date.now() - playerStats.BUILDING_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.BUILDING_SLOTS[this.index]].CoolDown * (1 - playerStats.LEVELS_SKILLS.SpawnCooldown * 2.5 / 100));
+                this.coof = (Date.now() - playerStats.BUILDING_SLOTS_SPAWNTIME[this.index]) / (CST.CHARACTERS[playerStats.BUILDING_SLOTS[this.index]].CoolDown * (1.05 - playerStats.LEVELS_SHOP[playerStats.BUILDING_SLOTS[this.index]] * 5 / 100));
             }
             var cell = new Phaser.Geom.Rectangle(this.x - 41, this.y + 45, 83, 14);
             this.graphicsStatusCell.fillRectShape(cell);

@@ -306,92 +306,128 @@ export const CST = {
         Parus: {
             Name: "Парус",
             Description: "Увеличение HP и \nMP Паруса",
-            BeginCost: 500
+            DescriptionAfterBuy: "Увеличение HP и \nMP Паруса",
+            BeginCost: 500,
+            MaxLVL: 9999,
         },
         HeroCat: {
             Name: "Кот-рыцарь",
-            Description: "Увеличение HP и \nурона Кота",
-            BeginCost: 500
+            Description: "Купить Кота-Рыцаря",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Кота",
+            BeginCost: 500,
+            MaxLVL: 999,
         },
         HeroReaper: {
             Name: "Жнец",
-            Description: "Увеличение HP и \nурона Жнеца",
-            BeginCost: 1000
+            Description: "Купить Жнеца",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Жнеца",
+            BeginCost: 1000,
+            MaxLVL: 999,
         },
         HeroArchaeologist: {
             Name: "Археолог",
-            Description: "Увеличение HP и \nурона Археолога",
-            BeginCost: 1000
+            Description: "Купить Археолога",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Археолога",
+            BeginCost: 1000,
+            MaxLVL: 999,
         },
         HeroCenturion: {
             Name: "Центурион Рори",
-            Description: "Увеличение HP и \nурона Рори",
-            BeginCost: 2000
+            Description: "Купить Рори",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Рори",
+            BeginCost: 2000,
+            MaxLVL: 999,
         },
         HeroMage: {
             Name: "Тёмный Маг",
-            Description: "Увеличение HP и \nурона Мага",
-            BeginCost: 2000
+            Description: "Купить Мага",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Мага",
+            BeginCost: 2000,
+            MaxLVL: 999,
         },
         HeroTesla: {
             Name: "Тесла",
-            Description: "Увеличение HP и \nурона Тесла",
-            BeginCost: 2500
+            Description: "Купить Тесла",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Тесла",
+            BeginCost: 2500,
+            MaxLVL: 999,
         },
         HeroSceleton: {
             Name: "Big Bone",
-            Description: "Увеличение HP и \nурона Big Bon`а",
-            BeginCost: 2500
+            Description: "Купить Big Bon`а",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Big Bon`а",
+            BeginCost: 2500,
+            MaxLVL: 999,
         },
         HeroWitch: {
             Name: "Ведьмочка",
-            Description: "Увеличение HP и \nурона Ведьмы",
-            BeginCost: 3000
+            Description: "Купить Ведьмы",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Ведьмы",
+            BeginCost: 3000,
+            MaxLVL: 999,
         },
         HeroNightmare: {
             Name: "Кошмар",
-            Description: "Увеличение HP и \nурона Кошмара",
-            BeginCost: 5000
+            Description: "Купить Кошмара",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Кошмара",
+            BeginCost: 5000,
+            MaxLVL: 999,
         },
         HeroMinotaur: {
             Name: "Минотавр",
-            Description: "Увеличение HP и \nурона Минотавра",
-            BeginCost: 5000
+            Description: "Купить Минотавра",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Минотавра",
+            BeginCost: 5000,
+            MaxLVL: 999,
         },
         HeroStormhead: {
             Name: "Ш.Т.О.Р.М",
-            Description: "Увеличение HP и \nурона Ш.Т.О.Р.М",
-            BeginCost: 5000
+            Description: "Купить Ш.Т.О.Р.М",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Ш.Т.О.Р.М",
+            BeginCost: 5000,
+            MaxLVL: 999,
         },
         HeroWizard: {
             Name: "Чародей",
-            Description: "Увеличение HP и \nурона Чародея",
-            BeginCost: 5000
+            Description: "Купить Чародея",
+            DescriptionAfterBuy: "Увеличение HP и \nурона Чародея",
+            BeginCost: 5000,
+            MaxLVL: 999,
         },
         BuildingPodkova: {
             Name: "Подкова",
             Description: "Увеличение кол-ва \nвыпадающих монет \n(+1%/LVL)",
-            BeginCost: 20000
+            DescriptionAfterBuy: "Увеличение кол-ва \nвыпадающих монет \n(+1%/LVL)",
+            BeginCost: 5000,
+            MaxLVL: 50,
         },
         BuildingMPObelisk: {
             Name: "Обелиск Магии",
             Description: "Мгновенно \nвосстанавливает 50% MP",
-            BeginCost: 30000
+            DescriptionAfterBuy: "Уменьшение CD\nна 5%",
+            BeginCost: 30000,
+            MaxLVL: 10,
         },
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
             Description: "Мгновенно \nвосстанавливает 50% HP",
-            BeginCost: 30000
+            DescriptionAfterBuy: "Уменьшение CD\nна 5%",
+            BeginCost: 30000,
+            MaxLVL: 10,
         },
         BuildingCDObelisk: {
             Name: "Обелиск Времени",
             Description: "Мгновенно \nобнуляет перезарядку \nгероев",
-            BeginCost: 30000
+            DescriptionAfterBuy: "Уменьшение CD\nна 5%",
+            BeginCost: 30000,
+            MaxLVL: 10,
         },
         BuildingPlasmaGun: {
             Name: "BFG-9000",
             Description: "Уничтожает всех \nпротивников на поле",
-            BeginCost: 50000
+            DescriptionAfterBuy: "Уменьшение CD\nна 5%",
+            BeginCost: 50000,
+            MaxLVL: 10,
         }
     },
     SKILLSLIST: {
@@ -1725,7 +1761,7 @@ export const CST = {
         BuildingHPObelisk: {
             Name: "Обелиск Жизни",
             Description: "Мгновенно \nвосстанавливает 50% HP",
-            MPCost: 0.3,
+            MPCost: 0.2,
             CoolDown: 80000
         },
         BuildingCDObelisk: {
@@ -1737,7 +1773,7 @@ export const CST = {
         BuildingPlasmaGun: {
             Name: "BFG-9000",
             Description: "Уничтожает всех \nпротивников на поле",
-            MPCost: 0.3,
+            MPCost: 0.2,
             CoolDown: 60000
         }
     },

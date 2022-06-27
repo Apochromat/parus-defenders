@@ -9,7 +9,7 @@ var playerDataTemplate = {
     GameFreeze: false,
     LearningStage: 0,
     LearningFlag: true,
-    COINS: 1000000,
+    COINS: 1000000000,
     SKILL_POINTS: 100,
     LVL: 1,
     EXPERIENCE: 0,

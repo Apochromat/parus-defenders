@@ -103,7 +103,7 @@ export function openToolbarLeft(scene, t = null) {
     })
         .on('child.click', function (child) {
             let currName = child.getParentSizer().name;
-            if (((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0)) {
+            if (scene.playerStats.LEVELS_SHOP[currName] <= CST.SHOPLIST[currName].MaxLVL && ((scene.playerStats.COINS - calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost)) >= 0)) {
                 scene.playerStats.COINS -= calculateCost(currName, scene.playerStats.LEVELS_SHOP[currName], CST.SHOPLIST[currName].BeginCost);
                 setStatusCOIN(scene, scene.playerStats.COINS);
                 if (scene.playerStats.LEVELS_SHOP[currName] == 0 && currName != "Parus" && currName != "BuildingPodkova" && currName != "BuildingMPObelisk" && currName != "BuildingHPObelisk" && currName != "BuildingCDObelisk" && currName != "BuildingPlasmaGun") {
@@ -155,9 +155,19 @@ function createShopItem(scene, key) {
 
     table.add(createIcon(scene, CST.ICONS[key]), 0, 1, 'center', { left: 25, right: 150 }, true);
     table.add(createLable(scene, CST.SHOPLIST[key].Name), 1, 0, 'left', { left: 0, top: 5 }, true);
-    table.add(createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', { right: 0 }, true);
-    table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', { left: 150 }, true);
-    table.add(createLable(scene, calculateCost(key, scene.playerStats.LEVELS_SHOP[key], CST.SHOPLIST[key].BeginCost), 2), 2, 1, 'center', { left: 150 }, true);
+    if (scene.playerStats.LEVELS_SHOP[key] == 0) {
+        table.add(createLable(scene, CST.SHOPLIST[key].Description, 3), 1, 1, 'left', { right: 0 }, true);
+    }
+    else if (scene.playerStats.LEVELS_SHOP[key] <= CST.SHOPLIST[key].MaxLVL) {
+        table.add(createLable(scene, CST.SHOPLIST[key].DescriptionAfterBuy, 3), 1, 1, 'left', { right: 0 }, true);
+    }
+    if (scene.playerStats.LEVELS_SHOP[key] <= CST.SHOPLIST[key].MaxLVL) {
+        table.add(createLable(scene, "LVL " + scene.playerStats.LEVELS_SHOP[key], 1), 2, 0, 'right', { left: 150 }, true);
+        table.add(createLable(scene, calculateCost(key, scene.playerStats.LEVELS_SHOP[key], CST.SHOPLIST[key].BeginCost), 2), 2, 1, 'center', { left: 150 }, true);
+    }
+    else {
+        table.add(createLable(scene, "MAX LVL", 1), 2, 0, 'right', { left: 150 }, true);
+    }
     table.add(createButtonAdd(scene, key), 2, 2, 'right', { top: 5, left: 160 }, true);
 
     return scene.rexUI.add.sizer({

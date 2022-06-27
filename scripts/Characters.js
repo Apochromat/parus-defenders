@@ -1834,7 +1834,14 @@ export class MonsterNecromancer extends CharacterSprite {
         if (this.alive) {
             this.alive = false;
             this.scene.playerStats.EXPERIENCE += this.specs.Experience;
-            if (flag == true) this.scene.playerStats.COINS += this.specs.Cost * (1 + 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
+            if (flag == true) {
+                if (this.scene.playerStats.BUILDING_SLOTS[0] == "Podkova") {
+                    this.scene.playerStats.COINS += this.specs.Cost * (1 + 0.01 * this.scene.playerStats.LEVELS_SHOP.BuildingPodkova);
+                }
+                else {
+                    this.scene.playerStats.COINS += this.specs.Cost;
+                } 
+            }
             this.setAnimationDeath();
             this.remove();
         }

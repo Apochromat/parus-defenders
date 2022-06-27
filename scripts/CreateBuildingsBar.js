@@ -202,7 +202,7 @@ function createBuildingsItem(scene, key, index, type) {
         table.add(createLable(scene, CST.CHARACTERS[key].Description, 2), 1, 1, 'left', { left: 20 }, true);
         table.add(createLable(scene, `MP: ${CST.CHARACTERS[key].MPCost*scene.parus.maxMP}`, 2), 1, 2, 'left', { left: 20 }, true);
         table.add(createLable(scene, "LVL "+ scene.playerStats.LEVELS_SHOP[key] , 1), 3, 0, 'right', { left: 100 }, true);
-        table.add(createLable(scene, `CD: ${CST.CHARACTERS[key].CoolDown}`, 2), 2, 2, 'left', { left: 20 }, true);
+        table.add(createLable(scene, `CD: ${CST.CHARACTERS[key].CoolDown*(1.05 - scene.playerStats.LEVELS_SHOP[key] * 5 / 100)}`, 2), 2, 2, 'left', { left: 20 }, true);
         table.add(createButtonAdd(scene, key, index, 1), 3, 2, 'right', { top: 5, left: 95 }, true);
     }
     else {
@@ -211,7 +211,7 @@ function createBuildingsItem(scene, key, index, type) {
         table.add(createLable(scene, CST.CHARACTERS[key].Description, 2), 1, 1, 'left', { left: 20 }, true);
         table.add(createLable(scene, `MP: ${CST.CHARACTERS[key].MPCost*scene.parus.maxMP}`, 2), 1, 2, 'left', { left: 20 }, true);
         table.add(createLable(scene, "LVL "+ scene.playerStats.LEVELS_SHOP[key] , 1), 3, 0, 'right', { left: 100 }, true);
-        table.add(createLable(scene, `CD: ${CST.CHARACTERS[key].CoolDown}`, 2), 2, 2, 'left', { left: 20 }, true);
+        table.add(createLable(scene, `CD: ${CST.CHARACTERS[key].CoolDown*(1.05 - scene.playerStats.LEVELS_SHOP[key] * 5 / 100)}`, 2), 2, 2, 'left', { left: 20 }, true);
         table.add(createButtonAdd(scene, key, index, 0), 3, 2, 'right', { top: 5, left: 115 }, true);
     }
 
