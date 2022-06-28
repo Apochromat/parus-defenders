@@ -283,33 +283,40 @@ export class PlayScene extends Phaser.Scene {
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 10) {
+            this.battleButton.visible = false;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue10).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 11) {
             this.shopBar.visible = true;
+            this.battleButton.visible = false;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue11).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 12) {
+            this.battleButton.visible = false;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue12).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 13) {
             closeToolBar(this);
+            this.battleButton.visible = false;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue13).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 14) {
+            this.battleButton.visible = false;
             this.shopBar.visible = true;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue14).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 15) {
+            this.battleButton.visible = false;
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue15).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
         }
         else if (this.playerStats.LearningStage == 16) {
+            this.battleButton.visible = false;
             closeToolBar(this);
             this.learningSplash = this.add.sprite(CST.NUMBERS.WIDTH / 2, CST.NUMBERS.HEIGHT / 2, CST.DIALOGUES.Dialogue16).setDepth(CST.DEPTHS.Dialogue);
             this.playerStats.LearningFlag = false;
